@@ -1,9 +1,7 @@
-# DA-3BB/Buch
-Das offizielle Repository für das Diplomarbeitsbuch "3BB - Sicherheit im Bahnnetz"
+# Das Fenrir Diplomarbeitsbuch
 
-# Aufbau
-Die Typst-Struktur ist in Kapitel eingeteilt. Unter "chapter/" können Kapitel erstellt werden (z.B. "fortisiem.typ"), die dann im "main.typ" File alle zusammengetragen werden. Dabei muss im main.typ file folgende Zeile für jedes Kapitel eingefügt werden:
+TODO
 
-```typst
-#include "chapter/fortisiem.typ"
-```
+## Notizen
+
+Um alle möglichen Gedanken und Arbeitsschritte niederschreiben und auf Git verewigen zu können ohne dabei direkt in den Inhalt des Diplomarbeitsbuches einzugreifen gibt es den Ordner `notizen`. Dieser wird nicht in die Erstellung des Buches miteinbezogen und dient somit als temporäre Gedankenablage. Der Inhalt kann somit auch beliebig sein :)
