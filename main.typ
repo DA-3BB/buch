@@ -1,30 +1,27 @@
 #import "@local/htl3r-da:0.1.0" as htl3r
 
 #show: htl3r.diplomarbeit.with(
-  title: "Fenrir",
-  subtitle: "Zum Schutz von OT-Netzwerken",
+  title: "3BB",
+  subtitle: "Sicherheit im Bahnnetz",
   department: "ITN",
   school_year: "2024/2025",
   authors: (
-    (name: "Julian Burger", supervisor: "Christian Schöndorfer", role: "Mitarbeiter"),
-    (name: "David Koch", supervisor: "Christian Schöndorfer", role: "Projektleiter"),
-    (name: "Bastian Uhlig", supervisor: "Clemens Kussbach", role: "Stv. Projektleiter"),
-    (name: "Gabriel Vogler", supervisor: "Clemens Kussbach", role: "Mitarbeiter"),
+    (name: "Albin Gashi", supervisor: "Christian Schöndorfer", role: "Projektleiter"),
+    (name: "Magdalena Feldhofer", supervisor: "Christian Schöndorfer", role: "Stv. Projektleiter"),
+    (name: "Marlene Reder", supervisor: "Richard Drechsler", role: "Mitarbeiter"),
+    (name: "Esther Mayer", supervisor: "Richard Drechsler", role: "Mitarbeiter"),
   ),
   supervisor_incl_ac_degree: (
     "Prof, Dipl.-Ing. Christian Schöndorfer",
-    "Prof, Dipl.-Ing. Clemens Kussbach",
+    "Prof, Dipl.-Ing. Richard Drechsler",
   ),
   sponsors: (
     "easyname GmbH",
     "Fortinet Austria GmbH",
-    "IKARUS Security Software GmbH",
-    "Nozomi Networks Inc.",
-    "Cyber Security Austria – Verein zur Förderung der Sicherheit Österreichs strategischer Infrastruktur",
-    "NTS Netzwerk Telekom Service AG",
+    "HTL 3 Rennweg",
   ),
-  abstract_german: [#include "text/kurzfassung.typ"],
-  abstract_english: [#include "text/abstract.typ"],
+  abstract_german: [#include "chapter/kurzfassung.typ"],
+  abstract_english: [#include "chapter/abstract.typ"],
   date: datetime.today(),
   print_ref: true,
   generative_ai_clause: none,
@@ -32,24 +29,4 @@
   bibliography: bibliography("refs.yml", full: true, title: [Literaturverzeichnis], style: "harvard-cite-them-right"),
 )
 
-#include "text/vorwort.typ"
-
-#include "text/topologie.typ"
-
-#include "text/active_directory.typ"
-
-#include "text/aufbau_klaeranlage.typ"
-
-#include "text/ot_administration.typ"
-
-#include "text/provisionierung_und_iac.typ"
-
-#include "text/angriffe.typ"
-
-#include "text/netzwerkueberwachung.typ"
-
-#include "text/nozomi_guardian.typ"
-
-#include "text/firewall_config.typ"
-
-#include "text/angriffe_gesichert.typ"
+#include "chapter/fortisiem.typ"
