@@ -1,8 +1,8 @@
 # Das 3BB Diplomarbeitsbuch
 
-TODO
-
 ## Notizen
+
+TODO
 
 # Typst setup (Windows)
 
