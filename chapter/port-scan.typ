@@ -340,3 +340,10 @@ Die Ports 80 (HTTP), 102 (S7) und 135 (TDE) sind - wie erwartet - offen. Auffäl
 
 Die LOGO!Soft 8.4 besitzt keine zentrale Port-Übersicht, daher ist es schwer, ohne einen Port-Scan herauszufinden, dass Port 8443 offen ist. \
 Die Einstellungen für die Ports sind fixiert und können vom User nicht verändert werden, was ein Grund für das fehlende Menü sein kann. #footnote[https://support.industry.siemens.com/forum/at/en/posts/logo-soft-comfort-port-conflict/160301]
+
+
+// TODOs 
+// add htl3r-template stuff
+// include sources from word file
+// add caption for table
+// include file in main 
