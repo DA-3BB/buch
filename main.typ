@@ -4,14 +4,14 @@
   title: "3BB",
   subtitle: "Sicherheit im Bahnnetz",
   department: "ITN",
-  school_year: "2024/2025",
+  school-year: "2024/2025",
   authors: (
     (name: "Albin Gashi", supervisor: "Christian Schöndorfer", role: "Projektleiter"),
     (name: "Magdalena Feldhofer", supervisor: "Christian Schöndorfer", role: "Stv. Projektleiter"),
     (name: "Marlene Reder", supervisor: "Richard Drechsler", role: "Mitarbeiter"),
-    (name: "Esther Mayer", supervisor: "Richard Drechsler", role: "Mitarbeiter"),
+    (name: "Esther Lina Mayer", supervisor: "Richard Drechsler", role: "Mitarbeiter"),
   ),
-  supervisor_incl_ac_degree: (
+  supervisor-incl-ac-degree: (
     "Prof, Dipl.-Ing. Christian Schöndorfer",
     "Prof, Dipl.-Ing. Richard Drechsler",
   ),
@@ -20,11 +20,11 @@
     "Fortinet Austria GmbH",
     "HTL 3 Rennweg",
   ),
-  abstract_german: [#include "chapter/kurzfassung.typ"],
-  abstract_english: [#include "chapter/abstract.typ"],
+  abstract-german: [#include "chapter/kurzfassung.typ"],
+  abstract-english: [#include "chapter/abstract.typ"],
   date: datetime.today(),
-  print_ref: true,
-  generative_ai_clause: none,
+  print-ref: true,
+  generative-ai-clause: none,
   abbreviation: yaml("abbr.yml"),
   bibliography: bibliography("refs.yml", full: true, title: [Literaturverzeichnis], style: "harvard-cite-them-right"),
 )
