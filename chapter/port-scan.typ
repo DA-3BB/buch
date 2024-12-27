@@ -1,3 +1,6 @@
+#import "@local/htl3r-da:0.1.0" as htl3r
+#htl3r.author("Esther Lina Mayer")
+
 = Port-Scanning
 == Theoretische Grundlagen
 Port-Scanning ist eine Methode, um herauszufinden, welche Ports in einem Netzwerk oder auf einem Host offen sind und Daten empfangen könnten. Es wird verwendet, um Schwachstellen zu entdecken und zu analysieren - nicht nur als Schutzmaßnahme durch Administratoren, sondern auch als potenzieller Angriffsvektor für Kriminelle. 
@@ -9,17 +12,19 @@ Die grundlegende Funktionsweise eines Port-Scans besteht darin, Pakete an Ports 
 
 Es gibt unterschiedlichste Arten von Scans und Tests, von denen die wichtigsten in der folgenden Tabelle zusammengefasst sind.
 
-#table(
-    columns: 3,
-    table.header(
-        [*Scan oder Test*], [*Beschreibung*], [*Art*],
+#figure(
+    table(
+        columns: (20%,70%,10%),
+        table.header(
+            [*Scan oder Test*], [*Beschreibung*], [*Art*],
+        ),
+        [TCP-Connect-Scan], [Vollständige TCP-Verbindung mittels Three-Way-Handshake \ Sendet TCP-SYN-Pakete \ Ende via RST oder FIN \ Erzeugt viele Logs (leicht erkennbar)], [Scan],
+        [TCP-SYN-Scan], [Half-Open-Scan, die Verbindung wird nicht abgeschlossen \ Sendet Pakete mit SYN-Flag (Verbindungsversuch vortäuschen) \ Kann für DoS verwendet werden (SYN-Floods)], [Scan],
+        [TCP-FIN/XMAS/NULL Scan], [Verbindungsloser Scan	Stealth-Scan], [Scan],
+        [Ping-Sweep], [Testet, welche Hosts erreichbar sind	\ Nutzt ICMP Echo Requests], [Test],
+        [Banner Grabbing], [Informationen über das Gerät sammeln (z.B. Dienste, Softwareversion, ...) \ Liest Banner der offenen Ports aus], [Test]
     ),
-    [TCP-Connect-Scan], [Vollständige TCP-Verbindung mittels Three-Way-Handshake \ Sendet TCP-SYN-Pakete \ Ende via RST oder FIN \ Erzeugt viele Logs (leicht erkennbar)], [Scan],
-    [TCP-SYN-Scan], [Half-Open-Scan, die Verbindung wird nicht abgeschlossen \ Sendet Pakete mit SYN-Flag (Verbindungsversuch vortäuschen) \ Kann für DoS verwendet werden (SYN-Floods)], [Scan],
-    [TCP-FIN/XMAS/NULL Scan], [Verbindungsloser Scan	Stealth-Scan], [Scan],
-    [Ping-Sweep], [Testet, welche Hosts erreichbar sind	\ Nutzt ICMP Echo Requests], [Test],
-    [Banner Grabbing], [Informationen über das Gerät sammeln (z.B. Dienste, Softwareversion, ...) \ Liest Banner der offenen Ports aus], [Test]
-
+    caption: [Beschreibung diverser Scan-Arten bzw. Tests]
 )
 
 #pagebreak()
@@ -136,7 +141,7 @@ Der Ping-Scan zeigt, dass zum Zeitpunkt des Scans drei Geräte auf den ICMP-Echo
 
 _Anmerkung: Falls etwaige Firewall-Settings keine ICMP-Echo-Requests zulassen, kann es sein, dass sie bei diesem Befehl nicht auftauchen. Für den Rahmen der Diplomarbeit kann dies jedoch ignoriert werden._
 
-== Erwartete Werte  // TODO pls proof read this 
+== Erwartete Werte
 Da keine Angriffe auf ein fremdes Netz gefahren werden, besteht die Möglichkeit, konfigurierte Parameter („Referenzwerte“) vom Raspberry Pi sowie der Siemens LOGO SPS zu sammeln. 
 Für die SPS kann man die LOGO!Soft Comfort 8.4 verwenden und in den Einstellungen bestimmte Parameter auslesen - wie im folgenden Unterkapitel beschrieben, aus welchen dann die offenen Ports ermittelt werden können. Beim Raspberry Pi werden die offenen Ports mit einem Befehl ausgelesen. 
 
@@ -152,15 +157,18 @@ In der LOGO!Soft Comfort findet man unter den Online-Einstellungen der SPS im Re
 
 Aus dieser Liste sind die verwendeten Dienste herauszulesen. Die zugehörigen Ports müssen nur noch ermittelt werden, um folgende Tabelle zu erstellen. 
 
-#table(
-    columns: 3,
-    table.header(
-        [*Dienst*], [*Port*], [*Anmerkung*],
+#figure(
+    table(
+        columns: (25%,10%,65%),
+        table.header(
+            [*Dienst*], [*Port*], [*Anmerkung*],
+        ),
+        [HTTP-Server],[80],[Verwendet für den Webserver, der das Gleisnetzwerk steuert],
+        [S7-Zugriff],[102],[Kommunikation zwischen Siemens-Geräten],
+        [Modbus-Zugriff],[502-510],[Modbus-TCP-Kommunikation],
+        [TDE-Zugriff],[135],[LOGO per Fernverbindung überwachen]
     ),
-    [HTTP-Server],[80],[Verwendet für den Webserver, der das Gleisnetzwerk steuert],
-    [S7-Zugriff],[102],[Kommunikation zwischen Siemens-Geräten],
-    [Modbus-Zugriff],[502-510],[Modbus-TCP-Kommunikation],
-    [TDE-Zugriff],[135],[LOGO per Fernverbindung überwachen]
+    caption: [Erwartete offene Ports der Siemens LOGO SPS]
 )
 
 // TODO update as soon as chapter is written (and named)
@@ -189,15 +197,18 @@ Die Optionen, welche für den Befehl verwendet wurden, zeigen die TCP-Ports (`-t
 
 Durch diesen Befehl kann nun ermittelt werden, welche Ports offen sind. 
 
-#table(
-    columns: 3,
-    table.header(
-        [*Dienst*], [*Port*], [*Anmerkung*],
+#figure(
+    table(
+        columns: (25%,10%,65%),
+        table.header(
+            [*Dienst*], [*Port*], [*Anmerkung*],
+        ),
+        [CUPS (cupsd)],[631],[Drucker-Dienst],
+        [SSH (sshd)],[22],[Fernzugriff auf den Raspberry Pi],
+        [Modbus (python3)],[502],[Modbus-Server zum Empfangen von Daten von der SPS],
+        [VNC (vncserver)],[5900],[VNC-Server für den Fernzugriff]
     ),
-    [CUPS (cupsd)],[631],[Drucker-Dienst],
-    [SSH (sshd)],[22],[Fernzugriff auf den Raspberry Pi],
-    [Modbus (python3)],[502],[Modbus-Server zum Empfangen von Daten von der SPS],
-    [VNC (vncserver)],[5900],[VNC-Server für den Fernzugriff]
+    caption: [Erwartete offene Ports des Raspberry Pi]
 )
 
 #pagebreak()
@@ -319,16 +330,18 @@ Im folgenden Abschnitt werden die Ergebnisse von nmap und unicornscan mit den er
 ===	Raspberry Pi
 Nach den erfolgreichen Scans lässt sich nun die folgende Tabelle aufstellen.
 
-
-#table(
-    columns: 4,
-    table.header(
-        [*Port*], [*Erwartet*], [*nmap*], [*unicornscan*],
+#figure(
+    table(
+        columns: (10%, 12%, 12%, 15%),
+        table.header(
+            [*Port*], [*Erwartet*], [*nmap*], [*unicornscan*],
+        ),
+        [22],[✔],[✔],[✔],
+        [502],[✔],[✔],[✔],
+        [631],[✔],[X],[X],
+        [5900],[✔],[✔],[✔]
     ),
-    [22],[✔],[✔],[✔],
-    [502],[✔],[✔],[✔],
-    [631],[✔],[X],[X],
-    [5900],[✔],[✔],[✔]
+    caption: [Vergleichstabelle der Port-Scans auf den Raspberry Pi]
 )
 
 Die Ports 22 (SSH), 502 (Modbus) und 5900 (VNC) sind alle wie erwartet offen. Der Port 631 für CUPS (Common Unix Printing System) ist jedoch bei keinem der beiden Scans als offen erkannt worden. 
@@ -336,16 +349,19 @@ Die Ports 22 (SSH), 502 (Modbus) und 5900 (VNC) sind alle wie erwartet offen. De
 ===	Siemens LOGO SPS
 Die erwarteten Werte sowie die Ergebnisse von nmap und unicornscan befinden sich in der folgenden Tabelle.
 
-#table(
-    columns: 4,
-    table.header(
-        [*Port*], [*Erwartet*], [*nmap*], [*unicornscan*],
+#figure(
+    table(
+        columns: (10%, 12%, 12%, 15%),
+        table.header(
+            [*Port*], [*Erwartet*], [*nmap*], [*unicornscan*],
+        ),
+        [80],[✔],[✔],[✔],
+        [102],[✔],[✔],[✔],
+        [135],[✔],[✔],[✔],
+        [502-510],[502-510],[510],[510],
+        [8443],[X],[✔],[✔]
     ),
-    [80],[✔],[✔],[✔],
-    [102],[✔],[✔],[✔],
-    [135],[✔],[✔],[✔],
-    [502-510],[502-510],[510],[510],
-    [8443],[X],[✔],[✔]
+    caption: [Vergleichstabelle der Port-Scans auf die Siemens LOGO SPS]
 )
 
 Die Ports 80 (HTTP), 102 (S7) und 135 (TDE) sind - wie erwartet - offen. Auffällig ist, dass statt der erwarteten Port-Range 502 bis 510 für Modbus nur Port 510 offen ist. Das kann daran liegen, dass die SPS kein Modbus-Server, sondern Modbus-Client ist und deswegen nur einen dieser Ports benötigt. Der Port 8443 ist ein alternativer HTTPS-Port, die SPS ist jedoch nur auf HTTP konfiguriert und nicht HTTPS. Dieser Port ist für die SPS also eine Schwachstelle, da in ihrer Konfiguration nichts auf diesen Port hinweist.  
@@ -355,7 +371,19 @@ Die Einstellungen für die Ports sind fixiert und können vom User nicht veränd
 
 
 // TODOs 
-// add htl3r-template stuff (AUTOR!)
 // include sources from word file
-// add caption for table
-// include file in main 
+
+/*
+Zugriff 16.11.2024
+https://nmap.org/book/man.html
+https://www.kali.org/tools/unicornscan/
+
+Zugriff 11.12.2024
+https://de.wikipedia.org/wiki/Portscanner
+
+Zugriff 12.12.2024
+https://de.wikipedia.org/wiki/Nmap
+
+Zugriff 13.12.2024
+https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=10002296
+*/
