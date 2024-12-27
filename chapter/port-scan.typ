@@ -22,6 +22,8 @@ Es gibt unterschiedlichste Arten von Scans und Tests, von denen die wichtigsten 
 
 )
 
+#pagebreak()
+
 ===	Rechtliches
 Bei Port-Scans gibt es diverse Streitigkeiten, ob sie legal oder rechtswidrig sind. In seinen eigenen Systemen kann es problemlos genutzt werden, um diverse Sicherheitschecks durchzuführen. Sollte man den Port-Scan verwenden, um z.B. einen Exploit-Versuch zu starten, so macht man sich strafbar. Schwächere Geräte können durch die vielen Verbindungsanfragen auch abstürzen oder in ihrer Verfügbarkeit leiden, was auch ohne Absicht zum Angriff als Sabotage gesehen werden kann und rechtliche Konsequenzen mit sich ziehen könnte.
 
@@ -30,13 +32,12 @@ Mögliche treffende Paragrafen aus dem Strafgesetzbuch #footnote[Siehe https://w
 - § 118a - Widerrechtlicher Zugriff auf ein Computersystem
 - § 126b - Störung der Funktionsfähigkeit eines Computersystems
 
-#pagebreak()
 
 == Vorbereitung
 Im folgenden Abschnitt werden die Komponenten sowie Tools und deren Installation genauer beschrieben.
 
 #figure(
-  image("../assets/angriffe/port-scanning/TEMP_netzplan.png", width: 70%),
+  image("../assets/angriffe/port-scanning/TEMP_netzplan.png", width: 60%),
   caption: "Netzplan aus Betrachtungssicht des Port-Scans"
 )
 
@@ -57,8 +58,6 @@ Compiled without:
 Available nsock engines: iocp poll select
 ```
 
-#pagebreak()
-
 === Installation von unicornscan
 Das zweite Tool, unicornscan, läuft auf einer Kali-Linux-Maschine. Um diese aufzusetzen, wurde WSL (Windows Subsystem for Linux) verwendet. Als erster Schritt werden mögliche Distributionen gelistet, die WSL installieren kann. Der Befehl hierfür lautet
 
@@ -76,6 +75,8 @@ kali-linux                      Kali Linux Rolling
 Aus dieser Liste kann man den Namen herauslesen, der in folgendem Befehl zur Installation der VM verwendet wird.
 
 `C:\Users\esthie>wsl --install -d kali-linux`
+
+#pagebreak()
 
 Nach der erfolgreichen Installation der Kali-Linux-Distribution sollte sich die VM automatisch starten. Falls sie sich nicht öffnet, kann man mit dem folgenden Befehl in die VM einsteigen.
 
@@ -135,20 +136,21 @@ Der Ping-Scan zeigt, dass zum Zeitpunkt des Scans drei Geräte auf den ICMP-Echo
 
 _Anmerkung: Falls etwaige Firewall-Settings keine ICMP-Echo-Requests zulassen, kann es sein, dass sie bei diesem Befehl nicht auftauchen. Für den Rahmen der Diplomarbeit kann dies jedoch ignoriert werden._
 
-#pagebreak()
-
-== Erwartete Werte
+== Erwartete Werte  // TODO pls proof read this 
 Da keine Angriffe auf ein fremdes Netz gefahren werden, besteht die Möglichkeit, konfigurierte Parameter („Referenzwerte“) vom Raspberry Pi sowie der Siemens LOGO SPS zu sammeln. 
+Für die SPS kann man die LOGO!Soft Comfort 8.4 verwenden und in den Einstellungen bestimmte Parameter auslesen - wie im folgenden Unterkapitel beschrieben, aus welchen dann die offenen Ports ermittelt werden können. Beim Raspberry Pi werden die offenen Ports mit einem Befehl ausgelesen. 
+
+#pagebreak()
 
 ===	Siemens LOGO SPS
 In der LOGO!Soft Comfort findet man unter den Online-Einstellungen der SPS im Reiter „Einstellungen für Zugriffskontrolle“ folgende Übersichtstabelle.
 
 #figure(
-  image("../assets/angriffe/port-scanning/sps_zugriffssicherheit.png", width: 80%),
+  image("../assets/angriffe/port-scanning/sps_zugriffssicherheit.png", width: 70%),
   caption: "Übersicht über die Zugriffssicherheit der SPS"
 )
 
-Aus der Liste ist herauszulesen, dass die folgenden Ports geöffnet sein könnten.
+Aus dieser Liste sind die verwendeten Dienste herauszulesen. Die zugehörigen Ports müssen nur noch ermittelt werden, um folgende Tabelle zu erstellen. 
 
 #table(
     columns: 3,
@@ -157,12 +159,20 @@ Aus der Liste ist herauszulesen, dass die folgenden Ports geöffnet sein könnte
     ),
     [HTTP-Server],[80],[Verwendet für den Webserver, der das Gleisnetzwerk steuert],
     [S7-Zugriff],[102],[Kommunikation zwischen Siemens-Geräten],
-    [Modbus-Zugriff],[502-510 #footnote[Diese Portrange wird in den allgemeinen Offline-Einstellungen der LOGO gelistet, wenn man den Modbus-Zugriff erlaubt. ]],[Modbus-TCP-Kommunikation],
+    [Modbus-Zugriff],[502-510],[Modbus-TCP-Kommunikation],
     [TDE-Zugriff],[135],[LOGO per Fernverbindung überwachen]
 )
 
+// TODO update as soon as chapter is written (and named)
+_Anmerkung: Für Modbus wird die Port-Range 502 bis 510 angenommen, da bei Aktivieren des Modbus-Zugriffs (genauer beschrieben im Kapitel SPS) diese Ports genannt werden._
+
+Diese Portrange wird in den allgemeinen Offline-Einstellungen der LOGO gelistet, wenn man den Modbus-Zugriff erlaubt. 
+
+#pagebreak()
+
+
 ===	Raspberry Pi
-Für den Raspberry Pi kann man einen Befehl zum Auflisten der Ports verwenden.#footnote[Die IPv6-Dienste werden nicht behandelt.] 
+Für den Raspberry Pi kann man einen Befehl zum Auflisten der Ports verwenden.#footnote[Die IPv6-Dienste werden nicht behandelt.] Der Befehl lautet wie folgt:
 
 ```
 root@raspberrypi:/home/admin/3bb_mod_bus# sudo netstat -tlpn
@@ -177,8 +187,6 @@ tcp        0      0 0.0.0.0:5900    0.0.0.0:*         LISTEN  729/vncserver-x11-
 
 Die Optionen, welche für den Befehl verwendet wurden, zeigen die TCP-Ports (`-t`), welche sich im LISTEN-Status befinden (`-l`), der Prozess - also PID sowie Programmname -, welcher den Port verwendet (`-p`) und die Portnummer selbst (`-n`).
 
-#pagebreak()
-
 Durch diesen Befehl kann nun ermittelt werden, welche Ports offen sind. 
 
 #table(
@@ -191,6 +199,8 @@ Durch diesen Befehl kann nun ermittelt werden, welche Ports offen sind.
     [Modbus (python3)],[502],[Modbus-Server zum Empfangen von Daten von der SPS],
     [VNC (vncserver)],[5900],[VNC-Server für den Fernzugriff]
 )
+
+#pagebreak()
 
 == Durchführung
 Nachdem nun die „Referenzwerte“ ermittelt wurden, werden - mit den beiden gewählten Tools - nun Port-Scans auf den Raspberry Pi und die Siemens LOGO SPS durchgeführt. 
@@ -302,6 +312,10 @@ TCP open            pcsync-https[ 8443]         from 10.100.0.1  ttl 254
 ```
 
 ==	Ergebnisse
+Im folgenden Abschnitt werden die Ergebnisse von nmap und unicornscan mit den erwarteten Werten in einer übersichtlichen Tabelle verglichen. 
+
+#pagebreak()
+
 ===	Raspberry Pi
 Nach den erfolgreichen Scans lässt sich nun die folgende Tabelle aufstellen.
 
@@ -318,8 +332,6 @@ Nach den erfolgreichen Scans lässt sich nun die folgende Tabelle aufstellen.
 )
 
 Die Ports 22 (SSH), 502 (Modbus) und 5900 (VNC) sind alle wie erwartet offen. Der Port 631 für CUPS (Common Unix Printing System) ist jedoch bei keinem der beiden Scans als offen erkannt worden. 
-
-#pagebreak()
 
 ===	Siemens LOGO SPS
 Die erwarteten Werte sowie die Ergebnisse von nmap und unicornscan befinden sich in der folgenden Tabelle.
@@ -338,12 +350,12 @@ Die erwarteten Werte sowie die Ergebnisse von nmap und unicornscan befinden sich
 
 Die Ports 80 (HTTP), 102 (S7) und 135 (TDE) sind - wie erwartet - offen. Auffällig ist, dass statt der erwarteten Port-Range 502 bis 510 für Modbus nur Port 510 offen ist. Das kann daran liegen, dass die SPS kein Modbus-Server, sondern Modbus-Client ist und deswegen nur einen dieser Ports benötigt. Der Port 8443 ist ein alternativer HTTPS-Port, die SPS ist jedoch nur auf HTTP konfiguriert und nicht HTTPS. Dieser Port ist für die SPS also eine Schwachstelle, da in ihrer Konfiguration nichts auf diesen Port hinweist.  
 
-Die LOGO!Soft 8.4 besitzt keine zentrale Port-Übersicht, daher ist es schwer, ohne einen Port-Scan herauszufinden, dass Port 8443 offen ist. \
+Die LOGO!Soft 8.4 besitzt keine zentrale Port-Übersicht, daher ist es schwer, ohne einen Port-Scan herauszufinden, dass Port 8443 offen ist. 
 Die Einstellungen für die Ports sind fixiert und können vom User nicht verändert werden, was ein Grund für das fehlende Menü sein kann. #footnote[https://support.industry.siemens.com/forum/at/en/posts/logo-soft-comfort-port-conflict/160301]
 
 
 // TODOs 
-// add htl3r-template stuff
+// add htl3r-template stuff (AUTOR!)
 // include sources from word file
 // add caption for table
 // include file in main 
