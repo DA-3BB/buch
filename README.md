@@ -7,7 +7,7 @@ TODO
 # Typst setup (Windows)
 
 ## Vorlage einbinden
-1. von github mit diesem Link (https://github.com/HTL3R-DA-24-25/da-vorlage) das Zip herunterladen
+1. von github mit diesem Link (https://github.com/HTL3R-Typst/htl3r-da) das Zip herunterladen
 2. das Zip entpacken
 3. Ordnerstruktur %appdata%/typst/packages/local/htl3r-da/0.1.0 erstellen
 4. entpackter Ordner in “0.1.0” verschieben
