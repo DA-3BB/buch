@@ -11,7 +11,21 @@ Es wurde eine Liste von FAQs als CSV-Datei importiert. Anschließend wurden 20 N
 
 == FortiGate Administrator 7.4
 === System and Network Settings
+Im ersten Kapitel des Kurses lernt man die Grundlagen über die FortiGate, also die Next-Generation Firewall (NGFW) von Fortinet. Man lernt wie man sich das erste mal mit der FortiGate verbinden kann, die Interfaces konfiguriert und DHCP- und VLAN-Einstellungen tätigt. Ebenfalls welche Möglichkeiten der Administrierung zur Verfügung stehen bzw. die Einschränken dieser, wie zum Beispiel "trusted Hosts".\ 
+Es gibt auch ein Feature um eine Firewall-Instanz in Mehrere aufzuteilen. Die einzelnen Virtual-Domains (VDOMs) können (per-default) nicht untereinander komminzieren, sind dementsprechend gut wenn man mehrere Kunden getrennt verwalten möchte (MSSP).
+// backups und updates? oder useless weil eh klar
+
 === Firewall Policies and NAT
+Dieser Teil beschäftigt sich hauptsächlich mit Firewall Policies, diese sind Regeln welche den Datenverkehr zwischen den Interfaces der Firewall einschränken. Es gibt verschiedene... //hier stop
+was sind sie, ein interface zu anderem, einschränken mit Src/Dest  IP, User, Address, Schedule, service, action..., implicit deny, sicherheit der Firewall der 1. gen 
+example ftp, einschränken auf paar server, dest: paar server, src: any, sched: always, serv: ftp, action:accept
+security profiles
+reihenfolge wichtig, policy id identifiziert
+first policy applies --> genauere am anfang
+logging: all, security events
+inspection modes
+NAT, SNAT, DNAT, static, pool
+VIP: DNAT, port forwarding, fw policies dont match, cli config: only deny action
 === Routing
 === Firewall Authentication
 === Fortinet Single Sign-On (FSSO)
