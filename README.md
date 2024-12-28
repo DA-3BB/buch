@@ -27,4 +27,8 @@ TODO
 3. (enablen)
 4. zum compilen: suchleiste → command —> Typst preview
 
+## Eventuell Fonts installieren
+https://fonts.google.com/specimen/Source+Code+Pro
+https://fonts.google.com/noto/specimen/Noto+Sans
+
 Um alle möglichen Gedanken und Arbeitsschritte niederschreiben und auf Git verewigen zu können ohne dabei direkt in den Inhalt des Diplomarbeitsbuches einzugreifen gibt es den Ordner `notizen`. Dieser wird nicht in die Erstellung des Buches miteinbezogen und dient somit als temporäre Gedankenablage. Der Inhalt kann somit auch beliebig sein :)
