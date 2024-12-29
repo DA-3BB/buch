@@ -199,3 +199,25 @@ vdom:
     plural: VDOMs
   long:
     singular: Virtual Domain
+
+gpio:
+  short:
+    singular: GPIO
+    plural: GPIOs
+  long:
+    singular: General Purpose Input/Output,
+  description: Ein Kontaktstifft der als Eingabe oder Ausgabekontakt am Raspberry Pi vorhanden ist.
+
+fub:
+  short:
+    singular: FUB
+  long: 
+    singular: Funktionsplan
+  description: Eine grafische Programmiersprache der Siemens LOGO!, die mit logische Funktionsblöcken funktioniert.
+
+
+snmp:
+  short:
+    singular: SNMP
+  long:
+    singular: Simple Network Management Protocol
