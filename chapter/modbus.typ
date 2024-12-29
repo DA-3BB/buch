@@ -1,6 +1,7 @@
 #import "@local/htl3r-da:0.1.0" as htl3r
 #htl3r.author("Marlene Reder")
 = MODBUS
+#htl3r.info("Derzeit befindet sich in diesem Kapitel ausschließlich die Sommerzusammenfassung, der Praxisbezug wird im weiterenverlauf noch hinzugefügt.")
 == Überblick
 Modbus ist ein Industrie Protokoll Standard von der Firma Modicon, heute Schneider Electrics, dass in den späten 70er Jahren auf dem Markt kam.
 
