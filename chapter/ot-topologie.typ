@@ -14,7 +14,7 @@ Um die Operational Technology möglichst Praxisnah darzustellen wurde ein Modell
 )
 
 
-Um einer normalen Eisenbahnstrecke recht zu werden ist die Eisenbahn in isolierte Blöcke, damit nicht die ganze Anlage unter Strom steht und kein Kurzschluss mit wegen der Wendeschleife entsteht. Die Näheres zum Ansteuerun dieser Blöcke ist im Kapitel x.x Blocksteuerung zu finden.
+Um einer normalen Eisenbahnstrecke recht zu werden ist die Eisenbahn in isolierte Blöcke, damit nicht die ganze Anlage unter Strom steht und kein Kurzschluss mit wegen der Wendeschleife entsteht. Die Näheres zum Ansteuern dieser Blöcke ist im Kapitel x.x Blocksteuerung zu finden.
 #htl3r.todo("Kapitelnummer hinzufügen")
 
 #figure(
@@ -23,9 +23,9 @@ Um einer normalen Eisenbahnstrecke recht zu werden ist die Eisenbahn in isoliert
 )
 
 
-Um sowohl die einzelnen Blöcke als auch die Weichen anzusteuern wurde sich die folgende Topologie überlegt. Diese hat um die Weichen zu steuern jeweils einen Servomotor, der wiederum an einem #htl3r.short[gpio]-Pin am Raspberry PI hängt. Der Raspberry PI wandelt dabei Eingangsignale in Pulsweite Modulation um die Servomotoren möglichst Präxise zu Steuern.\ 
+Um sowohl die einzelnen Blöcke als auch die Weichen anzusteuern wurde sich die folgende Topologie überlegt. Diese hat um die Weichen zu steuern jeweils einen Servomotor, der wiederum an einem #htl3r.short[gpio]-Pin am Raspberry PI hängt. Der Raspberry PI wandelt dabei Eingangsignale in Pulsweite Modulation um die Servomotoren möglichst präzise zu Steuern.\ 
 Für die Blöcke wird als gleichwertiges Gerät ein Relay Modul verwendet. Beide Geräte sind mithilfe eines des Hirschmann RS20 Switches mit dem Herzstück der Schlatung dem Logikmodul der Siemens LOGO!  zu verwunden und verwenden das Modbus TCP/IP Protokoll Befehle von der Logo zu erhalten. \
-Weiters erfasst die Steuerung Reflex-Lichtschranken um den Übergang der Eisenbahn von einem Block in den anderen zu erkennen.
+Weiters erfasst die Steuerung Reflex-Lichtschranken, um den Übergang der Eisenbahn von einem Block in den anderen zu erkennen.
 
 #figure(
     image("../assets/ot-topologie/3BB_Netzplan_v1_0.png"),
@@ -34,12 +34,12 @@ Weiters erfasst die Steuerung Reflex-Lichtschranken um den Übergang der Eisenba
 
 #htl3r.todo("Bilder der 'echten' Verkabelung")
 
-==== Stromversorung
-Dabei wurde beim Strom drauf geachtet, dass nirgendwo 230V Geräte im Einsatz sind,um die Sicherheit beim Arbeiten und im späteren Verlauf zu gewährleisten, wenn Schüler die Steuerung als Laborübung nutzen.\
+==== Stromversorgung
+Bei der Stromversorgung wurde darauf geachtet, dass nirgendwo 230V Geräte im Einsatz sind,um die Sicherheit beim Arbeiten und im späteren Verlauf zu gewährleisten, wenn Schüler die Steuerung als Laborübung nutzen.\
 Der Switch braucht dabei als einziges Gerät 24V, der Raspberry PI 5V und alle anderen Komponenten - LOGO!, Relay Modul, Reflexlicht Lichtschranke - werden mit dem 12V Netzteilbetrieben.
 
 === Logikmodul - Siemens LOGO!
-Wie schon erwähnt ist das Herzstück der Steuerung die Siemens LOGO! da sie als Modbus Client die Steuerung von dem Raspberry und dem Relay Modul übernimmt. Sie wird dabei mit der Software "LOGO! Soft Comfort" programmiert. In userem Fall haben wir als Sprache den Funktionsplan (FUP) verwendet, weiters können die Schlatprogramme aber auch mit dem Kontaktplan (KOP) erstellt werden. 
+Wie schon erwähnt ist das Herzstück der Steuerung die Siemens LOGO! da sie als Modbus Client die Steuerung von dem Raspberry und dem Relay Modul übernimmt. Sie wird dabei mit der Software "LOGO! Soft Comfort" programmiert. In unserem Fall haben wir als Sprache den Funktionsplan (FUP) verwendet, weiters können die Schlatprogramme aber auch mit dem Kontaktplan (KOP) erstellt werden. 
 
 #htl3r.short[fub] ist eine grafische Programmiersprache, die logische Funktionsblöcken funktioniert und so einfach noch am einfachsten für das ungeschulte Auge ist.
 
@@ -65,7 +65,7 @@ Wie schon erwähnt ist das Herzstück der Steuerung die Siemens LOGO! da sie als
 )
 
 === Relay Modul
-Um die Blöcke der Eisenbahnstrecke anzusteueren wurde drei Relay Modul mit Modbus funktion verwendet. Dabei Handelt es sich um das Modbus POE ETH Relay (D) der des Unternehmens Waveshare. Es verfügt über 8 Relais Ausgänge, einem RS485 Interface und 8 Digitalen Eingängen. Die drei Module sollten dabei die dezentrale Steuerung darstellen, die nurnoch mithilfe eines Ethernetkabels an den "Hauptstandort" angebungen ist.
+Um die Blöcke der Eisenbahnstrecke anzusteuern wurde drei Relay Modul mit Modbus Funktion verwendet. Dabei handelt es sich um das Modbus POE ETH Relay (D) der des Unternehmens Waveshare. Es verfügt über 8 Relais Ausgänge, einem RS485 Interface und 8 digitalen Eingängen. Die drei Module sollten dabei die dezentrale Steuerung darstellen, die nur noch mithilfe eines Ethernetkabels an den "Hauptstandort" angebunden ist.
 
 #figure(
     image("../assets/ot-topologie/komponenten/waveshare.jpg"),
@@ -74,7 +74,7 @@ Um die Blöcke der Eisenbahnstrecke anzusteueren wurde drei Relay Modul mit Modb
 
 === Reflex Lichtschranken
 Die Erkennung des Blockübertritts geschieht mithilfe von Reflex-Lichtschranken, an beiden Seiten der Isolierung um die Richtung der Modelleisenbahn zu erkennen. Die Reflex-Lichtschranken hängen dabei am Input der Relay Module und über diese werden die Signale an die Siemens LOGO! weitergeleitet. \
-Genutzt werden dabei die "ZIMO SN1D Reflex-Lichtschranke", diese erfornern keine weitere manipulation der Gleise oder des Zugs.
+Genutzt werden dabei die "ZIMO SN1D Reflex-Lichtschranke", diese erfordern keine weitere Manipulation der Gleise oder des Zugs.
 
 #htl3r.fspace(
   figure(image("../assets/ot-topologie/hersteller-zimo-stein-stationaer-einrichtungs-modul-zimo-sn1d-reflex-lichtschranke.png"), caption: "Bauteile Reflex-Lichtschranke"),
