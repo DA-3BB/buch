@@ -26,8 +26,22 @@
   print-ref: true,
   generative-ai-clause: none,
   abbreviation: yaml("abbr.yml"),
-  bibliography: bibliography("refs.yml", full: true, title: [Literaturverzeichnis], style: "harvard-cite-them-right"),
+  bibliography: bibliography(
+    "refs.yml",
+    full: true,
+    title: [Literaturverzeichnis],
+    style: "harvard-cite-them-right",
+  ),
 )
 
-#include "chapter/fortisiem.typ"
 #include "chapter/ot-topologie.typ"
+
+#include "chapter/fortigate.typ"
+
+#include "chapter/fortisiem.typ"
+
+#include "chapter/modbus.typ"
+
+// TODO add my second name on everything !
+// TODO parse correct order (just testing)
+#include "chapter/port-scan.typ"

@@ -142,12 +142,6 @@ crc:
   long:
     singular: Cyclic Redundancy Check
 
-psm:
-  short:
-    singular: PSM
-  long:
-    singular: Python Submodule (for OpenPLC)
-
 dmz:
   short:
     singular: DMZ
@@ -162,18 +156,6 @@ scada:
   long:
     singular: Supervisory Control and Data Acquisition
 
-uart:
-  short:
-    singular: UART
-  long:
-    singular: Universal Asynchronous Receiver Transmitter
-
-ics:
-  short:
-    singular: ICS
-  long:
-    singular: Industrial Control System
-
 gui:
   short:
     singular: GUI
@@ -187,18 +169,34 @@ ids:
     singular: Intrusion Detection System
   description: Ein System, welches ein Netzwerk überwacht und Angriffe auf dieses erkennt.
 
-mes:
+siem:
   short:
-    singular: MES
+    singular: SIEM
+    plural: SIEMs
   long:
-    singular: Manufacturing Execution System
+    singular: Security Information and Event Management
+  description: Ein Zusammenschluss des Security Information Management (SIM) und des Security Event Management (SEM). Es dient der Netzwerküberwachung.
 
-vdom:
+snmp:
   short:
-    singular: VDOM
-    plural: VDOMs
+    singular: SNMP
   long:
-    singular: Virtual Domain
+    singular: Simple Network Management Protocol
+  description: Ein Internet-Standard für das Sammeln von Informationen zu Geräten in einem Netzwerk
+
+wmi:
+  short:
+    singular: WMI
+  long:
+    singular: Windows Management Instrumentation
+  description: Eine Erweiterung der Windows-Treiber, um extern auf Informationen zuzugreifen
+
+pam:
+  short:
+    singular: PAM
+  long:
+    singular: Performance and Availability Management
+  description: Bietet Einblicke in den Zustand von Geräten und Applikationen in einem Netzwerk durch das FortiSIEM
 
 gpio:
   short:
@@ -226,4 +224,4 @@ pwm:
   short:
     singular: PWM
   long:
-    singular: Pulsweitenmodulation 
+    singular: Pulsweitenmodulation
