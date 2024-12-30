@@ -221,3 +221,9 @@ snmp:
     singular: SNMP
   long:
     singular: Simple Network Management Protocol
+
+pwm:
+  short:
+    singular: PWM
+  long:
+    singular: Pulsweitenmodulation 
