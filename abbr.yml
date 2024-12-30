@@ -197,3 +197,31 @@ pam:
   long:
     singular: Performance and Availability Management
   description: Bietet Einblicke in den Zustand von Geräten und Applikationen in einem Netzwerk durch das FortiSIEM
+
+gpio:
+  short:
+    singular: GPIO
+    plural: GPIOs
+  long:
+    singular: General Purpose Input/Output,
+  description: Ein Kontaktstifft der als Eingabe oder Ausgabekontakt am Raspberry Pi vorhanden ist.
+
+fub:
+  short:
+    singular: FUB
+  long: 
+    singular: Funktionsplan
+  description: Eine grafische Programmiersprache der Siemens LOGO!, die mit logische Funktionsblöcken funktioniert.
+
+
+snmp:
+  short:
+    singular: SNMP
+  long:
+    singular: Simple Network Management Protocol
+
+pwm:
+  short:
+    singular: PWM
+  long:
+    singular: Pulsweitenmodulation

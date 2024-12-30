@@ -34,6 +34,8 @@
   ),
 )
 
+#include "chapter/ot-topologie.typ"
+
 #include "chapter/fortigate.typ"
 
 #include "chapter/fortisiem.typ"
@@ -43,4 +45,3 @@
 // TODO add my second name on everything !
 // TODO parse correct order (just testing)
 #include "chapter/port-scan.typ"
-
