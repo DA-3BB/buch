@@ -1,3 +1,6 @@
+#import "@local/htl3r-da:0.1.0" as htl3r
+#htl3r.author("Magdalena Feldhofer")
+
 = Zertifizierungsprüfungen 
 Um das Ziel der Zertifizierungsprüfung positiv abschließen zu können, wurde der Weg des FAQ-Lernens gewählt. 
 

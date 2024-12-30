@@ -33,9 +33,12 @@
     style: "harvard-cite-them-right",
   ),
 )
+
 #include "chapter/fortigate.typ"
+
 #include "chapter/fortisiem.typ"
 
+#include "chapter/modbus.typ"
 
 // TODO add my second name on everything !
 // TODO parse correct order (just testing)
