@@ -69,3 +69,6 @@ Elasticsearch arbeitet mit Nodes. Jede Node kann einen bestimmten Zustand annehm
   skips: ((52,0), (75,0), (95,0), (108,0), (113,0), (135,0)),
   text: read("../assets/fortisiem/elasticsearch_script1.sh")
 )
+
+
+test
