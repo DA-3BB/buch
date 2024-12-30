@@ -54,11 +54,8 @@ Wie schon erwähnt ist das Herzstück der Steuerung die Siemens LOGO! da sie als
 
 
 === Raspberry PI
-#htl3r.todo("Input einholen")
-- Servo Head
-- Verkabelung
-- Python programmiert
-- etc. 
+Wie oben erwähnt hängen die Servomotoren an dem Raspberry PI, welcher als Modbus Server die Weichensteuerung übernimmt. Nachdem der Raspberry PI nur eine limitierte anzahl an #htl3r.short[pwm] Outputpins hat und die Servos jittern würden haben wir uns für den "16 Kanal Servo Driver uHAT (I2C) für Raspberry Pi" entschieden. Dieser löst beide Probleme, wendoch gegen das jittern ein Widerstand am Servo Driver HAT abgezwickt werden musste, damit die Stromversorgung extern und nicht am Raspbery PI hängt. \
+Zum Modbus Server wurde der Raspberry PI mithilfe eines Python Programms und der Libary "pyModbusTCP", genaueres dazu im Kapitel X.X.X. 
 #figure(
     image("../assets/ot-topologie/komponenten/raspberry-pi.png", width: 50%),
     caption: "Raspberry PI 3B"
