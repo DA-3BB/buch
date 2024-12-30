@@ -26,7 +26,12 @@
   print-ref: true,
   generative-ai-clause: none,
   abbreviation: yaml("abbr.yml"),
-  bibliography: bibliography("refs.yml", full: true, title: [Literaturverzeichnis], style: "harvard-cite-them-right"),
+  bibliography: bibliography(
+    "refs.yml",
+    full: true,
+    title: [Literaturverzeichnis],
+    style: "harvard-cite-them-right",
+  ),
 )
 #include "chapter/fortigate.typ"
 #include "chapter/fortisiem.typ"
