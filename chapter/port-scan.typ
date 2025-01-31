@@ -3,20 +3,14 @@
 
 = Port-Scanning
 == Theoretische Grundlagen
-Port-Scanning ist eine Methode, um herauszufinden, welche Ports in einem Netzwerk oder auf 
-einem Host offen sind und Daten empfangen könnten. Sie wird verwendet, um Schwachstellen zu 
-entdecken und zu analysieren - nicht nur als Schutzmaßnahme durch Administratoren, sondern 
-auch als potenzieller Angriffsvektor für Kriminelle. Außerdem kann man Konfigurationen simpel 
-prüfen und testen, ob gewünschte Ports auch offen sind. 
+Port-Scanning ist eine Methode, um herauszufinden, welche Ports in einem Netzwerk oder auf einem Host offen sind und Daten empfangen könnten. Es wird verwendet, um Schwachstellen zu entdecken und zu analysieren - nicht nur als Schutzmaßnahme durch Administratoren, sondern auch als potenzieller Angriffsvektor für Kriminelle. 
 
-Die grundlegende Funktionsweise eines Port-Scans besteht darin, Pakete an Ports zu versenden 
-und so herauszufinden, in welchem Status sich diese befinden. Es gibt drei Arten der Antwort:
+Die grundlegende Funktionsweise eines Port-Scans besteht darin, Pakete an Ports zu versenden und so herauszufinden, in welchem Status sich diese befinden. Es gibt drei Arten der Antwort:
 - *Open* - Der Port nimmt Verbindungen an.
 - *Closed* - Der Port ist erreichbar, nimmt aber keine Verbindungen an. 
 - *Filtered* - Der Port reagiert nicht oder wird durch z.B. eine Firewall blockiert. 
 
-Es gibt unterschiedlichste Arten von Scans und Tests, von denen die wichtigsten in der folgenden 
-Tabelle zusammengefasst sind:
+Es gibt unterschiedlichste Arten von Scans und Tests, von denen die wichtigsten in der folgenden Tabelle zusammengefasst sind.
 
 #figure(
     table(
@@ -26,7 +20,7 @@ Tabelle zusammengefasst sind:
         ),
         [TCP-Connect-Scan], [Vollständige TCP-Verbindung mittels Three-Way-Handshake \ Sendet TCP-SYN-Pakete \ Ende via RST oder FIN \ Erzeugt viele Logs (leicht erkennbar)], [Scan],
         [TCP-SYN-Scan], [Half-Open-Scan, die Verbindung wird nicht abgeschlossen \ Sendet Pakete mit SYN-Flag (Verbindungsversuch vortäuschen) \ Kann für DoS verwendet werden (SYN-Floods)], [Scan],
-        [TCP-FIN/XMAS/NULL Scan], [Verbindungsloser Scan, Stealth-Scan \ kann von Firewalls unentdeckt bleiben], [Scan],
+        [TCP-FIN/XMAS/NULL Scan], [Verbindungsloser Scan	Stealth-Scan], [Scan],
         [Ping-Sweep], [Testet, welche Hosts erreichbar sind	\ Nutzt ICMP Echo Requests], [Test],
         [Banner Grabbing], [Informationen über das Gerät sammeln (z.B. Dienste, Softwareversion, ...) \ Liest Banner der offenen Ports aus], [Test]
     ),
@@ -36,15 +30,7 @@ Tabelle zusammengefasst sind:
 #pagebreak()
 
 ===	Rechtliches
-Der legale bzw. illegale Einsatz 
-von Port-Scans ist Gegenstand zahlreicher Diskussionen. Vereinfacht 
-dargestellt können sie in eigenen Systemen ohne rechtliche Probleme 
-eingesetzt werden. Beim Einsatz in Fremdsystemen, insbesondere zur 
-Vorbereitung eines Expolits, macht man sich strafbar. Die große Anzahl
-an Verbindungsanfragen kann bei leistungsschwächeren Geräten zu 
-Fehlfunktionen, Funktionseinschränkungen bis hin zur Überlastung 
-führen, was auch ohne Absicht zum Angriff als Sabotage 
-gesehen werden kann und rechtliche Konsequenzen mit sich ziehen könnte.
+Bei Port-Scans gibt es diverse Streitigkeiten, ob sie legal oder rechtswidrig sind. In seinen eigenen Systemen kann es problemlos genutzt werden, um diverse Sicherheitschecks durchzuführen. Sollte man den Port-Scan verwenden, um z.B. einen Exploit-Versuch zu starten, so macht man sich strafbar. Schwächere Geräte können durch die vielen Verbindungsanfragen auch abstürzen oder in ihrer Verfügbarkeit leiden, was auch ohne Absicht zum Angriff als Sabotage gesehen werden kann und rechtliche Konsequenzen mit sich ziehen könnte.
 
 Mögliche treffende Paragrafen aus dem Strafgesetzbuch #footnote[Siehe https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=10002296] sind
 - § 5 - Vorsatz bzw. § 15 - Versuch 
