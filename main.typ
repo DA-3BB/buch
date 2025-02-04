@@ -34,7 +34,7 @@
   ),
 )
 
-#include "chapter/ot-topologie.typ"
+#include "chapter/topologie.typ"
 
 #include "chapter/fortigate.typ"
 
