@@ -9,7 +9,7 @@
 Um die Operational Technology möglichst Praxisnah darzustellen wurde ein Modelleisenbahnnetz entwickelt. Dabei ist sowohl ein Gleisplan mit Elementen wie Wendeschleifen und Weichen geplant, als auch die Steuerung mit praxisrelevanten Komponenten und dem Protokoll Modbus entwickelt worden. 
 
 #figure(
-    image("../assets/ot-topologie/3BB_Gleisplan.png", width: 80%),
+    image("../assets/topologie/ot-topologie/3BB_Gleisplan.jpg", width: 80%),
     caption: "Gleisplan"
 )
 
@@ -18,7 +18,7 @@ Um einer normalen Eisenbahnstrecke recht zu werden ist die Eisenbahn in isoliert
 #htl3r.todo("Kapitelnummer hinzufügen")
 
 #figure(
-    image("../assets/ot-topologie/3BB_Gleisbloecke.png", width: 90%),
+    image("../assets/topologie/ot-topologie/3BB_Gleisbloecke.png", width: 90%),
     caption: "Gleisplan in Blöcke unterteilt" 
 )
 
@@ -28,7 +28,7 @@ Für die Blöcke wird als gleichwertiges Gerät ein Relay Modul verwendet. Beide
 Weiters erfasst die Steuerung Reflex-Lichtschranken, um den Übergang der Eisenbahn von einem Block in den anderen zu erkennen.
 
 #figure(
-    image("../assets/ot-topologie/3BB_Netzplan_v1_0.png"),
+    image("../assets/topologie/ot-topologie/3BB_Netzplan_v1_0.png"),
     caption: "OT Netzplan - Physischer Aufbau der OT"
 )
 
@@ -43,29 +43,34 @@ Wie schon erwähnt ist das Herzstück der Steuerung die Siemens LOGO! da sie als
 
 #htl3r.short[fub] ist eine grafische Programmiersprache, die logische Funktionsblöcken funktioniert und so einfach noch am einfachsten für das ungeschulte Auge ist.
 
-#htl3r.fspace(
-    figure(
-        image("../assets/ot-topologie/komponenten/siemens-logo.png"),
-        caption: "Siemens LOGO! - Logikmodul"),
-    figure(
-        image("../assets/ot-topologie/logo-soft-comfort_programmauschnitt.png"),
-        caption: "Auschnitt eines Programms geschrieben mit Funktionsplan")
-)
-
-
 === Raspberry PI
 Wie oben erwähnt hängen die Servomotoren an dem Raspberry PI, welcher als Modbus Server die Weichensteuerung übernimmt. Nachdem der Raspberry PI nur eine limitierte anzahl an #htl3r.short[pwm] Outputpins hat und die Servos jittern würden haben wir uns für den "16 Kanal Servo Driver uHAT (I2C) für Raspberry Pi" entschieden. Dieser löst beide Probleme, wendoch gegen das jittern ein Widerstand am Servo Driver HAT abgezwickt werden musste, damit die Stromversorgung extern und nicht am Raspbery PI hängt. \
 Zum Modbus Server wurde der Raspberry PI mithilfe eines Python Programms und der Libary "pyModbusTCP", genaueres dazu im Kapitel X.X.X. 
+
 #figure(
-    image("../assets/ot-topologie/komponenten/raspberry-pi.png", width: 50%),
+    image("../assets/topologie/ot-topologie/komponenten/raspberry-pi_grafik.png", width: 50%),
     caption: "Raspberry PI 3B"
+)
+
+#htl3r.fspace(
+    figure(
+        image("../assets/topologie/ot-topologie/komponenten/siemens-logo-grafik.png"),
+        caption: "Siemens LOGO! - Logikmodul"),
+    figure(
+        image("../assets/topologie/ot-topologie/komponenten/siemens-logo.jpg"),
+        caption: "Auschnitt eines Programms geschrieben mit Funktionsplan")
+)
+
+#figure(
+    image("../assets/topologie/ot-topologie/logo-soft-comfort_programmauschnitt.png"),
+    caption: "Auschnitt eines Programms geschrieben mit Funktionsplan")
 )
 
 === Relay Modul
 Um die Blöcke der Eisenbahnstrecke anzusteuern wurde drei Relay Modul mit Modbus Funktion verwendet. Dabei handelt es sich um das Modbus POE ETH Relay (D) der des Unternehmens Waveshare. Es verfügt über 8 Relais Ausgänge, einem RS485 Interface und 8 digitalen Eingängen. Die drei Module sollten dabei die dezentrale Steuerung darstellen, die nur noch mithilfe eines Ethernetkabels an den "Hauptstandort" angebunden ist.
 
 #figure(
-    image("../assets/ot-topologie/komponenten/waveshare.jpg"),
+    image("../assets/topologie/ot-topologie/komponenten/waveshare.jpg", width: 50%),
     caption: "Waveshare Modbus POE ETH Relay (D) - Relay Modul"
 )
 
@@ -74,15 +79,15 @@ Die Erkennung des Blockübertritts geschieht mithilfe von Reflex-Lichtschranken,
 Genutzt werden dabei die "ZIMO SN1D Reflex-Lichtschranke", diese erfordern keine weitere Manipulation der Gleise oder des Zugs.
 
 #htl3r.fspace(
-  figure(image("../assets/ot-topologie/hersteller-zimo-stein-stationaer-einrichtungs-modul-zimo-sn1d-reflex-lichtschranke.png"), caption: "Bauteile Reflex-Lichtschranke"),
-  figure(image("../assets/ot-topologie/hersteller-zimo-stein-stationaer-einrichtungs-modul-zimo-sn1d-reflex-lichtschranke~4.png"), caption: "Installationsweise Reflexlichtschranke"),
+  figure(image("../assets/topologie/ot-topologie/hersteller-zimo-stein-stationaer-einrichtungs-modul-zimo-sn1d-reflex-lichtschranke.png"), caption: "Bauteile Reflex-Lichtschranke"),
+  figure(image("../assets/topologie/ot-topologie/hersteller-zimo-stein-stationaer-einrichtungs-modul-zimo-sn1d-reflex-lichtschranke~4.png"), caption: "Installationsweise Reflexlichtschranke"),
 )
 
 
 === Switch
 In der #htl3r.short[ot]-Topologie wird zum Verbinden der Geräte ein Hirschmann RS20 Railswitch verwendet. Außerdem werden #htl3r.short[snmp] Daten an die IT Überwachung des Netzwerks weitergeben. Genaueres dazu im Kapitel x.x.x
 #figure(
-    image("../assets/ot-topologie/komponenten/hirschmann-rs20.jpg", width: 50%),
+    image("../assets/topologie/ot-topologie/komponenten/hirschmann-rs20.jpg", width: 50%),
     caption: "Hirschmann RS20 - Switch"
 )
 
