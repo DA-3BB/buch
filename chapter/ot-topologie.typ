@@ -149,7 +149,7 @@ In der #htl3r.short[ot]-Topologie wird zum Verbinden der Geräte ein Hirschmann 
 )
 
 === Firewall
-Um die IT-Welt mit der #htl3r.short[ot]-Welt zu verknüpfen wird eine Firewall, genauer gesagt eine FortiGate 60E benutzt. Diese ist mit den FortiGates der Standorte Eisenstadt und Wien mittels #htl3r.short[sd-wan]. Genauers dazu im Kaptiel X.X.
+Um die IT-Welt mit der #htl3r.short[ot]-Welt zu verknüpfen wird eine Firewall, genauer gesagt eine FortiGate 60E benutzt. Diese ist mit den FortiGates der Standorte Eisenstadt und Wien mittels mittels #htl3r.short[ipsec] #htl3r.short[vpn] Verbindungen verknüpft. Genauers dazu im Kaptiel X.X.
 
 #figure(
     image("../assets/topologie/ot-topologie/komponenten/fortigate-60e-grafik.png", width: 60%),

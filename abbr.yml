@@ -239,3 +239,15 @@ sd-wan:
     singular: SD-WAN
   long:
     singular: Software-Defined Wide Area Network
+
+vpn:
+  short:
+    singular: VPN
+  long:
+    singular: Virtual Private Network
+
+ipsec:
+  short:
+    singular: IPsec
+  long:
+    singular: Internet Protocol Security
