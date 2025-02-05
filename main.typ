@@ -26,7 +26,7 @@
   print-ref: true,
   generative-ai-clause: none,
   abbreviation: yaml("abbr.yml"),
-  bibliography: bibliography(
+  bibliography-content: bibliography(
     "refs.yml",
     full: true,
     title: [Literaturverzeichnis],
