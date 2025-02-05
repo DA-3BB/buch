@@ -225,3 +225,17 @@ pwm:
     singular: PWM
   long:
     singular: Pulsweitenmodulation
+
+rtu:
+  short:
+    singular: RTU
+  long:
+    singular: Remote Terminal Unit
+    plural: Remote Terminal Units
+  description: Ein steuertechnisches Element, das Daten einholt, und zur Zentrale weiterleitet.
+
+sd-wan:
+  short:
+    singular: SD-WAN
+  long:
+    singular: Software-Defined Wide Area Network
