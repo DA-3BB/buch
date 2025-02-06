@@ -1,4 +1,4 @@
-#import "@local/htl3r-da:0.1.0" as htl3r
+#import "@preview/htl3r-da:0.1.0" as htl3r
 
 #show: htl3r.diplomarbeit.with(
   title: "3BB",
@@ -26,7 +26,7 @@
   print-ref: true,
   generative-ai-clause: none,
   abbreviation: yaml("abbr.yml"),
-  bibliography: bibliography("refs.yml", full: true, title: [Literaturverzeichnis], style: "harvard-cite-them-right"),
+  bibliography-content: bibliography("refs.yml", title: [Literaturverzeichnis])
 )
 
 #include "chapter/fortisiem.typ"
