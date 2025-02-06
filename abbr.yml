@@ -101,6 +101,7 @@ ad:
     singular: AD
   long:
     singular: Active Directory
+  description: Ein Verzeichnisdienst von Microsoft
 
 addc:
   short:
@@ -108,6 +109,7 @@ addc:
     plural: ADDCs
   long:
     singular: Active Directory Domain Controller
+  description: Beinhaltet die Datenbank einer Active Directory Infrastruktur.
 
 i2c:
   short:
@@ -159,15 +161,13 @@ scada:
 gui:
   short:
     singular: GUI
+    plural: GUIs
   long:
     singular: Graphical User Interface
+    plural: Graphical User Interfaces
+  description: grafische Oberfläche für Benutzer
 
-ids:
-  short:
-    singular: IDS
-  long:
-    singular: Intrusion Detection System
-  description: Ein System, welches ein Netzwerk überwacht und Angriffe auf dieses erkennt.
+# ----- FortiSIEM
 
 siem:
   short:
@@ -197,3 +197,39 @@ pam:
   long:
     singular: Performance and Availability Management
   description: Bietet Einblicke in den Zustand von Geräten und Applikationen in einem Netzwerk durch das FortiSIEM
+
+cmdb:
+  short:
+    singular: CMDB
+    plural: CMDBs
+  long:
+    singular: Confiugration and Management Database
+  description: Nutzt eine Postgres Datenbank um FortiSIEM-Konfigurationen wie Geräteinformationen, Zugansdaten, Regeln und Reports zu speichern.
+
+gdpr:
+  short:
+    singular: GDPR
+  long:
+    singular: General Data Protection Regulation
+  description: Name der Datenschutzgrundverordnung auf Englisch
+
+dsgvo:
+  short:
+    singular: DSGVO
+  long:
+    singular: Datenschutzgrundverordnung
+  description: Bezeichnet die Verordnung der Europäischen Union 2016/679 für EU-weite Regeln der Verarbeitung von persönlichen Daten.
+
+ldap:
+  short:
+    singular: LDAP
+  long:
+    singular: Lightweight Directory Access Protocol
+  description: Ein Protokoll, dass der Abfrage und Änderung von Active Directory Informationen dient.
+
+radius:
+  short:
+    singular: RADIUS
+  long:
+    singular: Remote Authentication Dial-In User Service
+  description: Protokoll zur Authentifizierung, Autorisierung, und Accounting von Benutzern in einem Netzwerk.
