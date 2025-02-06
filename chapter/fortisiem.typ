@@ -10,19 +10,19 @@ Des Weiteren kann das FortiSIEM Basismetriken durch das #htl3r.short[pam] abrufe
 == Zertifizierung
 Als Training für die Zeritifizierungsprüfung wurden die Labor-Übungen vom FortiSIEM Kurs durchgeführt. Diese wurden in elf Kapitel unterteilt, die an die Kapitel aus dem Online-Kurs angelehnt sind:
 \
-#emph("
-1. FortiSIEM Introduction
-2. SIEM and PAM Concepts
-3. Discovery
-4. FortiSIEM Analytics
-5. " + htl3r.short[cmdb] + " Lookups and Filters
-6. Group By and Data Aggregation
-7. Rules
-8. Incidents and Notificaiton Policies
-9. Reports
-10. Business Services
-11. Troubleshooting
-")
+
+1. #emph("FortiSIEM Introduction")
+2. #emph(htl3r.short[siem] + " and " + htl3r.short[pam] + " Concepts")
+3. #emph("Discovery")
+4. #emph("FortiSIEM Analytics")
+5. #emph(htl3r.short[cmdb] + " Lookups and Filters")
+6. #emph("Group By and Data Aggregation")
+7. #emph("Rules")
+8. #emph("Incidents and Notificaiton Policies")
+9. #emph("Reports")
+10. #emph("Business Services")
+11. #emph("Troubleshooting")
+
 \
 
 === Grundkonfiguration des FortiSIEMs
@@ -44,7 +44,7 @@ Beispielsweise kann eine zertifizierte FortiGate-Mitarbeiterin nur die Daten von
 
 // hier PRAXIS
 
-Die Benutzer können durch einen externen #htl3r.short[ldap] und #htl3r.short[radius] Server authentifiziert werden.
+Die Benutzer können neben lokal angelegten Accounts in der #htl3r.short[cmdb] durch einen externen #htl3r.short[ldap] und #htl3r.short[radius] Server authentifiziert werden. Im Falle der Topologie wurde durch #htl3r.short[ldap] auf die errichtete #htl3r.short[ad]-Infrastruktur zugegriffen. Für die genaue Abbildung der Benutzer und Gruppen im #htl3r.long[ad] siehe @ad-infra.
 
 == Supervisor-Node <fsm-supervisor>
 In der Event Database speichert das FortiSIEM alle Events und Logs. Hier dient die Supervisor-Node als zentraler Knotenpunkt, der von den anderen Collector- oder Worker-Nodes die Daten erhält und aggregiert. Für die Event Database des FortiSIEM können unterschiedliche Datenbanken gewählt werden. Fortinet bietet hier folgende Optionen an:
@@ -111,5 +111,3 @@ Elasticsearch arbeitet mit Nodes. Jede Node kann einen bestimmten Zustand annehm
   skips: ((52,0), (75,0), (95,0), (108,0), (113,0), (135,0)),
   text: read("../assets/fortisiem/elasticsearch_script1.sh")
 )
-
-==
