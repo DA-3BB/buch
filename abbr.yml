@@ -101,7 +101,7 @@ ad:
     singular: AD
   long:
     singular: Active Directory
-  description: Ein Verzeichnisdienst von Microsoft
+  description: Ein Verzeichnisdienst von Microsoft.
 
 addc:
   short:
@@ -165,7 +165,14 @@ gui:
   long:
     singular: Graphical User Interface
     plural: Graphical User Interfaces
-  description: grafische Oberfläche für Benutzer
+  description: grafische Oberfläche für Benutzer.
+
+ssh:
+  short:
+    singular: SSH
+  long:
+    singular: Secure Shell
+  description: Ein Protokoll, dass verschlüsselte Verbindungen ermöglicht.
 
 # ----- FortiSIEM
 
@@ -204,7 +211,7 @@ cmdb:
     plural: CMDBs
   long:
     singular: Confiugration and Management Database
-  description: Nutzt eine Postgres Datenbank um FortiSIEM-Konfigurationen wie Geräteinformationen, Zugansdaten, Regeln und Reports zu speichern.
+  description: Nutzt eine Postgres Datenbank um FortiSIEM-Konfigurationen wie Geräteinformationen, Zugangsdaten, Regeln und Reports zu speichern.
 
 gdpr:
   short:
