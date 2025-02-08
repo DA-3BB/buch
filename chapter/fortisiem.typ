@@ -59,6 +59,18 @@ Die Events können beim Abrufen nach unterschiedlichen Attributen gefiltert werd
 
 // Auszug aus dem Analytics Dashboard
 
+=== Regeln und #emph("Incidents")
+
+Regeln sind im FortiSIEM essentiell für das Generieren von #emph("Incidents") im System. Das Sammeln und Aggregieren von Daten ist nur die halbe Miete, denn diese menschlich zu Interpretieren und daraufhin in der aktiven Netzwerkkonfiguration zu implementieren ist bei einer gigantischen Menge von Daten unvorstellbar. Regeln erlauben es, sogenannte #emph("Patterns") mithilfe von Abfragen zu erstellen, um basierend auf den abgefragten Daten Konditionen festzulegen. Falls alle Konditionen einer Regeln erfüllt werden, wird ein #emph("Incident") generiert.
+
+Mithilfe der #htl3r.long[pam] Daten können #emph("Performance Rules") aufgestellt werden. Diese können beispielsweise bei Erreichung eines bestimmten Speicherlimits oder bei Überschreitung der #htl3r.short[cpu]-Auslastung ein #emph("Incident") generieren. Im #emph("Analytics Tab") können auch direkt beim Erstellen von Abfragen Regeln konfiguriert werden. FortiSIEM ist auch mit MITREs #htl3r.short[attck]-Datenbank kompatibel, um Regeln mit den neusten globalen Sicherheitslücken zu verbinden.
+
+// Auszug aus Regel-Config
+
+#emph("Incidents") geben Systemadministratoren einen Überblick über die derzeitigen Schwachstellen in einem Netzwerk. Anhand den Daten generiert das FortiSIEM ein #emph("Incident")-Dashboard. Über #emph("Notification Policies") lassen sich automatisierte E-Mails oder #htl3r.short[sms] verschicken, die mit vordefinierten E-Mail-Templates ausgestattet sind und individuelle Nachrichten beinhalten können.
+
+Für die Überwachung von systemkritischen Appilkationen stellt das FortiSIEM sogenannte #emph("Business Services") bereit. Dadurch können spezielle #emph("Incidents") für Applikationen wie Oracle und SQL-Datenbanken oder Microsoft-Exchange-Server generiert werden. Diese Daten können in individuellen #emph("Business Service Dashboards") sichtbar gestaltet werden.
+
 == Supervisor-Node <fsm-supervisor>
 In der Event Database speichert das FortiSIEM alle Events und Logs. Hier dient die Supervisor-Node als zentraler Knotenpunkt, der von den anderen Collector- oder Worker-Nodes die Daten erhält und aggregiert. Für die Event Database des FortiSIEM können unterschiedliche Datenbanken gewählt werden. Fortinet bietet hier folgende Optionen an:
 
