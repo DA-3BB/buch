@@ -1,66 +1,18 @@
-yaml:
+sms:
   short:
-    singular: YAML
+    singular: SMS
   long:
-    singular: YAML Ain't Markup Language
-  description: >
-    Eine menschlichlesbare strukturierte Textdatei, welche Daten beinhaltet.
-    Wird oft zur konfiguration eingesetzt.
+    singular: Short Message Service
+  description: Ein Standard zur Übertragung von Text im Mobilfunk.
 
-iac:
+cli:
   short:
-    singular: IaC
+    singular: CLI
+    plural: CLIs
   long:
-    singular: Infrastructure as Code
-  description: >
-    Die Abbildung der Physischen und Virtuellen Infrastruktur als Datenstruktur
-    oder auch Code.
-
-dvs:
-  short:
-    singular: DVS
-    plural: DVSs
-  long:
-    singular: Distributed Virtual Switch
-  description: >
-    Ein virtueller Switch welcher in einer vSphere-Umgebung mehreren Hosts
-    zugewiesen sein kann. Dies ermöglicht es VMs auf mehrere Hosts zu verteilen und sie dennoch in dasselbe Netzwerk zu hängen, dieser virtuelle
-    Switch dient zur verwaltung der Uplinks auf den jeweiligen Hosts.
-
-dpg:
-  short:
-    singular: DPG
-    plural: DPGs
-  long:
-    singular: Distributed Port Group
-  description: >
-    Ein virtuelles Netzwerksegment welches einem DVS zugewiesen werden kann.
-    Dieses Netzwerksegment wird den VMs, welche über mehrere Hosts verteilt sein können, zugewiesen um somit ein LAN über mehrere Hosts zu schaffen.
-
-dhcp:
-  short:
-    singular: DHCP
-  long:
-    singular: Dynamic Host Configuration Protocol
-  description: >
-    Ein Protokoll welches oft benutzt wird um dynamisch IP-Adressen über das
-    Netzwerk zu verteilen.
-
-uuid:
-  short:
-    singular: UUID
-    plural: UUIDs
-  long:
-    singular: Universally Unique Identifier
-    plural: Universally Unique Identifiers
-  description: Eine Identifikationsnummer, welche Global nur ein einziges mal existiert.
-
-api:
-  short:
-    singular: API
-  long:
-    singular: Application Programing Interface
-  description: Eine Schnittstelle die eine Kommunikation zwischen Software ermöglicht.
+    singular: Command Line Interface
+    plural: Command Line Interfaces
+  description: Die Schnittstelle zwischen Computer und Benutzer basierend auf Textzeilen.
 
 vm:
   short:
@@ -96,6 +48,23 @@ vlan:
   long:
     singular: Virtual Local Area Network
 
+cpu:
+  short:
+    singular: CPU
+    plural: CPUs
+  long:
+    singular: Central Processing Unit
+    long: Central Processing Units
+  description: Ein elektronischer Chip, der in einem Computer Befehle verarbeitet.
+
+io:
+  short:
+    singular: I/O
+    plural: I/Os
+  long:
+    singular: Input/Output
+  description: Bezeichnet in der Informatik die Ein- und Ausgabe von Daten.
+
 ad:
   short:
     singular: AD
@@ -111,25 +80,6 @@ addc:
     singular: Active Directory Domain Controller
   description: Beinhaltet die Datenbank einer Active Directory Infrastruktur.
 
-i2c:
-  short:
-    singular: I²C
-  long:
-    singular: Inter-Integrated Circuit
-  description: Ein Zweidraht-Datenbus mit Master-Slave-Konzept.
-
-io:
-  short:
-    singular: IO
-  long:
-    singular: Input/Output
-
-gau:
-  short:
-    singular: GAU
-  long:
-    singular: Größter Anzunehmender Unfall
-
 sps:
   short:
     singular: SPS
@@ -137,20 +87,6 @@ sps:
   long:
     singular: Speicherprogrammierbare Steuerung
     plural: Speicherprogrammierbare Steuerungen
-
-crc:
-  short:
-    singular: CRC
-  long:
-    singular: Cyclic Redundancy Check
-
-dmz:
-  short:
-    singular: DMZ
-  long:
-    singular: Demilitarisierte Zone
-  description: >
-    Ein eigenes Netzwerk für Dienste, die aus dem Internet zugänglich sind und vom internen Netz abgetrennt sind, um die Sicherheit zu erhöhen. Die Trennung der Netze erfolgt durch zwei Firewalls.
 
 scada:
   short:
@@ -240,3 +176,10 @@ radius:
   long:
     singular: Remote Authentication Dial-In User Service
   description: Protokoll zur Authentifizierung, Autorisierung, und Accounting von Benutzern in einem Netzwerk.
+
+attck:
+  short:
+    singular: ATT&CK
+  long:
+    singular: Adversarial Tactics, Techniques, and Common Knowledge
+  description: Eine von MITRE Coprotation betriebene Datenbank zu Sicherheitslücken.
