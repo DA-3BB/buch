@@ -7,7 +7,7 @@ Für die Implementierung eines #htl3r.shortpl[siem] in die Topologie wird ein Fo
 Des Weiteren kann das FortiSIEM Basismetriken durch das #htl3r.short[pam] abrufen. Dies beinhaltet Daten wie den Zustand einer Applikation, Ressourcenverbrauch eines Geräts und vieles mehr. Dadurch können Anomalien in den Daten erkannt werden und Warnungen im FortiSIEM auslösen.
 \
 
-== Zertifizierung
+== Zertifizierung <fortisiem-cert>
 Als Training für die Zeritifizierungsprüfung wurden die Labor-Übungen vom FortiSIEM Kurs durchgeführt. Diese wurden in elf Kapitel unterteilt, die an die Kapitel aus dem Online-Kurs angelehnt sind:
 \
 
@@ -25,7 +25,8 @@ Als Training für die Zeritifizierungsprüfung wurden die Labor-Übungen vom For
 
 \
 
-=== Grundkonfiguration des FortiSIEMs
+=== Grundkonfiguration des FortiSIEMs <fortisiem-cert-conf>
+
 Für den Betrieb eines FortiSIEMs sind Grundkonfigrationen notwendig. Damit das SIEM Benachrichtigungen wie Alerts und Reports verschicken kann, muss ein E-Mail-Gateway eingerichtet werden. Auch #htl3r.short[snmp]-Traps können über eine E-Mail Benachrichtigungen auslösen.
 
 /*
@@ -38,19 +39,25 @@ Für den Betrieb eines FortiSIEMs sind Grundkonfigrationen notwendig. Damit das 
 )
 */
 
-Benutzer und Rollen sind ein wichtiger Bestandteil in der Konfiguration des FortiSIEMs. Dadurch können spezifische Bereiche des FortiSIEMs begrenzt werden. Darunter fallen neben Zugriff auf bestimmte Daten auch Informationen von #htl3r.short[cmdb]-Reports, Begrenzung des #htl3r.short[gui]-Zugriffs und die Verzerrung von Rohdaten in der Datenbank. Letzteres ist für eine #htl3r.short[dsgvo]-konforme Speicherung von Daten notwendig.
+Benutzer und Rollen sind ein wichtiger Bestandteil in der Konfiguration des FortiSIEMs. Dadurch können spezifische Bereiche des FortiSIEMs begrenzt werden. Darunter fallen neben Zugriff auf bestimmte Daten auch Informationen von #htl3r.short[cmdb]-Reports, Begrenzung des #htl3r.short[gui]-Zugriffs und die Verhinderung von verzerrten Rohdaten in der Datenbank. Letzteres ist für eine #htl3r.short[dsgvo]-konforme Speicherung von Daten notwendig.
 
 Beispielsweise kann eine zertifizierte FortiGate-Mitarbeiterin nur die Daten von Firewalls abrufen, oder die Administratorinnen und Administratoren einer #htl3r.short[ad]-Infrastruktur nur Daten von Windows-Servern einsehen.
 
-// hier PRAXIS
-
 Die Benutzer können neben lokal angelegten Accounts in der #htl3r.short[cmdb] durch einen externen #htl3r.short[ldap] und #htl3r.short[radius] Server authentifiziert werden. Im Falle der Topologie wurde durch #htl3r.short[ldap] auf die errichtete #htl3r.short[ad]-Infrastruktur zugegriffen. Für die genaue Abbildung der Benutzer und Gruppen im #htl3r.long[ad] siehe @ad-infra.
 
-=== Geräte ins FortiSIEM einbinden
+=== Geräte überwachen
 
 Im FortiSIEM gibt es zwei Möglichkeiten Daten von Geräten im Netzwerk zu erhalten. Entweder sucht das FortiSIEM durch die #emph("Discovery") Funktion nach eingetragenen Geräten, oder die Geräte schicken durch FortiSIEM-Agents selber Daten an das #htl3r.short[siem]. Fortinet stellt für diverse Geräte (z.B. Windows und Linux Server) unterschiedliche #emph("Agents") bereit, um Logs und Events zu erhalten.
 
 Für den #emph("Discovery") Prozess sind IP-Adressen der Geräte sowie Zugangsdaten notwendig. Die Zugangsdaten werden in primär und sekundär unterteilt. Primär wird #htl3r.short[snmp] als Zugang verwendet. Zusätzlich werden sekundäre Optionen wie Telnet, #htl3r.short[ssh], #htl3r.short[wmi], #htl3r.short[ldap], oder Cisco- und Fortinet-Zugangsdaten angeboten.
+
+=== Abfragen der Daten
+
+Nachdem das FortiSIEM Logs und Events gespeichert hat, können diese im #emph("Analytics") Dashboard abgefragt werden. Das #htl3r.short[siem] unterscheidet basierend auf den Anforderungen des Nutzers zwischen #emph("Real-time") und #emph("Historical Search"). In der #emph("Real-time") Ansicht werden alle Logs und Events in Echtzeit bis zu einem bestimmten Zeitpunkt angezeigt. Im Gegensatz dazu können im #emph("Historical Search") alle zugänglichen Daten in einem bestimmten Zeitraum (relativ oder absolut) abgerufen werden.
+
+Die Events können beim Abrufen nach unterschiedlichen Attributen gefiltert werden. Dabei können Informationen wie Hostname und IP-Adresse direkt aus der #htl3r.long[cmdb] entnommen werden. Die Filter sind miteinander über AND und OR sowie Klammern verknüpfbar, um komplexere Abfragen zu ermöglichen. Die Abfragen können gespeichert und anschließend beliebig oft erneut ausgeführt werden.
+
+// Auszug aus dem Analytics Dashboard
 
 == Supervisor-Node <fsm-supervisor>
 In der Event Database speichert das FortiSIEM alle Events und Logs. Hier dient die Supervisor-Node als zentraler Knotenpunkt, der von den anderen Collector- oder Worker-Nodes die Daten erhält und aggregiert. Für die Event Database des FortiSIEM können unterschiedliche Datenbanken gewählt werden. Fortinet bietet hier folgende Optionen an:
@@ -63,15 +70,15 @@ In der Event Database speichert das FortiSIEM alle Events und Logs. Hier dient d
 // Auf die Datenbanken eingehen??
 
 Die Installationsanforderungen für die Supervisor-Node des FortiSIEM (Version 7.2.4) belaufen sich auf:
-- 12 vCPUs
+- 12 virtuelle #htl3r.shortpl[cpu]
 - 24 GB RAM
 - OS Drive: 25GB
 - OPT Drive: 100GB
-- CMDB Drive: 60GB
+- #htl3r.short[cmdb] Drive: 60GB
 - SVN Drive: 60GB
 - Event Database: Elasticsearch
 
-Elasticsearch bietet im Gegensatz zu anderen Optionen bessere Performance und Skalierbarkeit. In der Topologie wird nur eine Elasticsearch-Data-Node für das FortiSIEM verwendet. Die gesamte Konfiguration wird im @elastic-config im Detail aufgelistet.
+Elasticsearch bietet im Gegensatz zu anderen Optionen bessere Performance und Skalierbarkeit @elastic-vs-sql. In der Topologie wird nur eine Elasticsearch-Data-Node für das FortiSIEM verwendet. Die gesamte Konfiguration wird im @elastic-config im Detail aufgelistet.
 
 === Elasticsearch-Konfiguration <elastic-config>
 Für das Elasticsearch wurde ein Ubuntu-Server verwendet. Hierbei wird nicht der gesamte Elastic Stack, sondern nur Elasticsearch selbst installiert. Zur besseren Übersicht von Elasticsearch wurde noch Kibana für einen direkten Zugriff über ein #htl3r.short[gui] konfiguriert.
@@ -107,7 +114,7 @@ Damit das Elasticsearch die volle Performance des Servers ausnutzen kann, muss d
   text: read("../assets/fortisiem/elasticsearch_script1.sh")
 )
 
-Elasticsearch arbeitet mit Nodes. Jede Node kann einen bestimmten Zustand annehmen (Hot, Warm, oder Cold). Der Zustand definiert, welchen Anteil an Daten die einzelnen Nodes erhalten. Hot-Nodes benötigen schnellere #htl3r.short[io] und mehr Prozessorleistung, da sie den Schriebprozess der aktuellsten Daten übernehmen und diese langsam an Warm- und Cold-Nodes weitergeben. Weil die Datenmengen von Logs und Events in der Topologie kein großes Ausmaß besitzen, ist das Elasticsearch nur mit einer Hot-Node konfiguriert.
+Elasticsearch arbeitet mit Nodes. Jede Node kann einen bestimmten Zustand annehmen (Hot, Warm, oder Cold). Der Zustand definiert, welchen Anteil an Daten die einzelnen Nodes erhalten. Hot-Nodes benötigen schnellere #htl3r.short[io] und mehr Prozessorleistung, da sie den Schreibprozess der aktuellsten Daten übernehmen und diese langsam an Warm- und Cold-Nodes weitergeben. Weil die Datenmengen von Logs und Events in der Topologie kein großes Ausmaß besitzen, ist das Elasticsearch nur mit einer Hot-Node konfiguriert.
 
 #htl3r.code-file(
   caption: "Elasticsearch-Konfiguration",
