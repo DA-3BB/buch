@@ -48,7 +48,7 @@ Der Switch braucht dabei als einziges Gerät 24V, der Raspberry PI 5.5V und alle
 === #htl3r.long[sps] (SPS)
 Wie schon erwähnt ist das Herzstück der Steuerung die #htl3r.long[sps] beziehungsweise die Siemens LOGO! da sie als Modbus Client - genaueres dazu im Kapitel X.X Modbus - die Steuerung vom Raspberry und dem Relais Modulen übernimmt. Sie wird dabei mit der Software "LOGO! Soft Comfort" in der Version 8.4 programmiert. Um so ein Schaltprogramm zu schreiben wird allerdings ein externe Gerät mit der Software benötigt. Sobalt es auf die #htl3r.short[sps] gespielt wird, kann man es dann aber von dort, über den kleinen Display, starten und stoppen.
 \ \
-Zum programmieren selbst habeen wir als Sprache den #htl3r.long[fub] (FUP) verwendet, weiters können die Schaltpläne aber auch mit dem Kontaktplan (KOP) erstellt werden. \
+Zum programmieren selbst wurde in diesem Projekt die Sprache #htl3r.long[fub] (FUP) verwendet, weiters können die Schaltpläne aber auch mit dem Kontaktplan (KOP) erstellt werden. \
 #htl3r.short[fub] ist eine grafische Programmiersprache, die mithilfe von logischen Funktionsblöcken funktioniert. Diese Blöcke sind einerseits logische Gatter wie 'AND', 'XOR', aber verschiedene andere Bausteine wie Timern oder Counter. Der Vorteil von #htl3r.short[fub], ist, dass sie Sprache einerseit leicht zu lernen ist und noch am einfachsten für das ungeschulte Auge zu verstehen ist. Allerdings kann bei größeren Projekten die Übersicht leicht verloren werden und, Elemente wie Funktionen oder Bedinugen sind nicht vorhanden.
 
 #htl3r.fspace(
@@ -95,7 +95,7 @@ Dabei wird man weitergeleitet zum Konnektivitätstest, bei dem die 'richtige' #h
     caption: "Test der Konnektivität zwischen PC und SPS"
 )\
 
-Nach einer Erfogreichen Konnektivität wird nicht nur in dem Diagram Editor das Programm angezeigt, es wird auch in der Network View die #htl3r.short[sps] abgebildet. Auf dieser können nun Einstellungen wie die IP-Adresse oder aber auch das Busprotokoll Modbus aktiviert werden. Weiters ist zu erkennen, dass die #htl3r.short[sps] vier weitere Verbindungen hat zusätzlich zu der zum lokalen PC hat. Diese weisen darauf hin, dass wir in unserem Programm auf externe Inputs beziehungsweise Outputs verweisen. In unserem Fall ist das der Raspberry PI und die drei Waveshare Module. 
+Nach einer Erfogreichen Konnektivität wird nicht nur in dem Diagram Editor das Programm angezeigt, es wird auch in der Network View die #htl3r.short[sps] abgebildet. Auf dieser können nun Einstellungen wie die IP-Adresse oder aber auch das Busprotokoll Modbus aktiviert werden. Weiters ist zu erkennen, dass die #htl3r.short[sps] vier weitere Verbindungen, zusätzlich zu der zum lokalen PC hat. Diese weisen darauf hin, dass im Programm auf externe Inputs beziehungsweise Outputs verweisen wird. Im Falle des Projekts ist das der Raspberry PI und die drei Waveshare Module. 
 
 #figure(
     image("../assets/topologie/ot-topologie/Logo!soft-comfort_network-view.png", width: 70%),
@@ -103,7 +103,7 @@ Nach einer Erfogreichen Konnektivität wird nicht nur in dem Diagram Editor das 
 )\
 
 === Raspberry PI
-Wie oben erwähnt hängen die Servomotoren an dem Raspberry PI, welcher als Modbus Server die Weichensteuerung übernimmt. Nachdem der Raspberry PI nur eine limitierte anzahl an #htl3r.short[pwm] Outputpins hat und die Servos jittern würden haben wir uns für den "16 Kanal Servo Driver uHAT (I2C) für Raspberry Pi" entschieden. Dieser löst beide Probleme, wendoch gegen das jittern ein Widerstand am Servo Driver HAT abgezwickt werden musste, damit die Stromversorgung extern und nicht am Raspbery PI hängt. \
+Wie oben erwähnt hängen die Servomotoren an dem Raspberry PI, welcher als Modbus Server die Weichensteuerung übernimmt. Nachdem der Raspberry PI nur eine limitierte Anzahl an #htl3r.short[pwm] Outputpins hat und die Servos jittern würden haben wurde ein "16 Kanal Servo Driver uHAT (I2C) für Raspberry Pi" verwendet. Dieser löst beide Probleme, wendoch gegen das jittern ein Widerstand am Servo Driver HAT abgezwickt werden musste, damit die Stromversorgung extern und nicht am Raspbery PI hängt. \
 Zum Modbus Server wurde der Raspberry PI mithilfe eines Python Programms und der Libary "pyModbusTCP", genaueres dazu im Kapitel X.X.X. 
 
 #figure(
