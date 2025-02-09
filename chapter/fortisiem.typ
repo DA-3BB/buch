@@ -1,13 +1,13 @@
 #import "@preview/htl3r-da:0.1.0" as htl3r
 #htl3r.author("Albin Gashi")
 
-= FortiSIEM <foritsiem>
+= FortiSIEM <fsm>
 Für die Implementierung eines #htl3r.shortpl[siem] in die Topologie wird ein FortiSIEM der Firma Fortinet verwendet. Es kann agent-based oder agentless Logs und Events von Geräten abrufen. In den meisten Fällen wird Syslog oder #htl3r.short[snmp] zur Kommunikation der Geräte mit dem #htl3r.short[siem] verwendet. Es gibt aber auch Ausnahmen, wie im Falle von Windows. Windows Server können entweder mittels #htl3r.short[wmi] oder dem FortiSIEM Windows Agent Daten an das #htl3r.short[siem] übermitteln. Der Vorteil an den Agents liegt darin, dass Logs direkt am Gerät geparsed und verschickt werden können, statt mehrere Logs in einem bestimmten Intervall durch das FortiSIEM abzurufen.
 \
 Des Weiteren kann das FortiSIEM Basismetriken durch das #htl3r.short[pam] abrufen. Dies beinhaltet Daten wie den Zustand einer Applikation, Ressourcenverbrauch eines Geräts und vieles mehr. Dadurch können Anomalien in den Daten erkannt werden und Warnungen im FortiSIEM auslösen.
 \
 
-== Zertifizierung <fortisiem-cert>
+== Zertifizierung <fsm-cert>
 Als Training für die Zeritifizierungsprüfung wurden die Labor-Übungen vom FortiSIEM Kurs durchgeführt. Diese wurden in elf Kapitel unterteilt, die an die Kapitel aus dem Online-Kurs angelehnt sind:
 
 1. #emph("FortiSIEM Introduction")
@@ -22,7 +22,7 @@ Als Training für die Zeritifizierungsprüfung wurden die Labor-Übungen vom For
 10. #emph("Business Services")
 11. #emph("Troubleshooting")
 
-=== Grundkonfiguration des FortiSIEMs <fortisiem-cert-conf>
+=== Grundkonfiguration des FortiSIEMs <fsm-cert-conf>
 
 Für den Betrieb eines FortiSIEMs sind Grundkonfigrationen notwendig. Damit das SIEM Benachrichtigungen wie Alerts und Reports verschicken kann, muss ein E-Mail-Gateway eingerichtet werden. Auch #htl3r.short[snmp]-Traps können über eine E-Mail Benachrichtigungen auslösen.
 
@@ -42,13 +42,13 @@ Beispielsweise kann eine zertifizierte FortiGate-Mitarbeiterin nur die Daten von
 
 Die Benutzer können neben lokal angelegten Accounts in der #htl3r.short[cmdb] durch einen externen #htl3r.short[ldap] und #htl3r.short[radius] Server authentifiziert werden. Im Falle der Topologie wurde durch #htl3r.short[ldap] auf die errichtete #htl3r.short[ad]-Infrastruktur zugegriffen. Für die genaue Abbildung der Benutzer und Gruppen im #htl3r.long[ad] siehe @ad-infra.
 
-=== Geräte überwachen
+=== Geräte überwachen <fsm-cert-agents>
 
 Im FortiSIEM gibt es zwei Möglichkeiten Daten von Geräten im Netzwerk zu erhalten. Entweder sucht das FortiSIEM durch die #emph("Discovery") Funktion nach eingetragenen Geräten, oder die Geräte schicken durch FortiSIEM-Agents selber Daten an das #htl3r.short[siem]. Fortinet stellt für diverse Geräte (z.B. Windows und Linux Server) unterschiedliche #emph("Agents") bereit, um Logs und Events zu erhalten.
 
 Für den #emph("Discovery") Prozess sind IP-Adressen der Geräte sowie Zugangsdaten notwendig. Die Zugangsdaten werden in primär und sekundär unterteilt. Primär wird #htl3r.short[snmp] als Zugang verwendet. Zusätzlich werden sekundäre Optionen wie Telnet, #htl3r.short[ssh], #htl3r.short[wmi], #htl3r.short[ldap], oder Cisco- und Fortinet-Zugangsdaten angeboten.
 
-=== Abfragen der Daten
+=== Abfragen der Daten <fsm-cert-querying>
 
 Nachdem das FortiSIEM Logs und Events gespeichert hat, können diese im #emph("Analytics") Dashboard abgefragt werden. Das #htl3r.short[siem] unterscheidet basierend auf den Anforderungen des Nutzers zwischen #emph("Real-time") und #emph("Historical Search"). In der #emph("Real-time") Ansicht werden alle Logs und Events in Echtzeit bis zu einem bestimmten Zeitpunkt angezeigt. Im Gegensatz dazu können im #emph("Historical Search") alle zugänglichen Daten in einem bestimmten Zeitraum (relativ oder absolut) abgerufen werden.
 
@@ -68,7 +68,7 @@ Mithilfe der #htl3r.long[pam] Daten können #emph("Performance Rules") aufgestel
 
 Für die Überwachung von systemkritischen Appilkationen stellt das FortiSIEM sogenannte #emph("Business Services") bereit. Dadurch können spezielle #emph("Incidents") für Applikationen wie Oracle und SQL-Datenbanken oder Microsoft-Exchange-Server generiert werden. Diese Daten können in individuellen #emph("Business Service Dashboards") sichtbar gestaltet werden.
 
-=== Troubleshooting
+=== Troubleshooting <fsm-cert-troubleshooting>
 
 FortiSIEM Version 7.2.4 basiert auf Rocky Linux Version 8.10. Troubleshooting erfolgt dadurch hauptsächlich am #htl3r.long[cli]. Die zentrale Log-Datei des FortiSIEM-Backends befindet sich in `/opt/phoenix/log/phoenix.log`.
 
@@ -106,7 +106,7 @@ Systeminformationen des #htl3r.shortpl[siem] können mit dem Bash-Script `/opt/p
   skips: ((0, 0), (16, 0), (25, 0), (43, 0)),
   text: read("../assets/fortisiem/FSM-phshowVersion")
 )
-== Implementierung in die Topologie
+== Implementierung in die Topologie <fsm-topo>
 
 In der Topolgie bestehen zwei #htl3r.long[ad] Standorte, die über einen VPN zwischen zwei FortiGates miteinander verbunden sind. Wien bildet dabei den Hauptstandort und Eisenstadt einen Zweig im Unternehmen. Mehr zur #htl3r.long[ad] Infrastruktur wird in @ad-infra erläutert. Das FortiSIEM wird zentral von einer Supervisor-Node gesteuert, die am Hauptstandort Wien lokalisiert ist. Dieser Standort besitzt zusätzlich eine Worker- und Collector-Node. Die Worker-Node dient zum Load-Balancing beim Sammeln und Abfragen der Daten mit der Supervisor-Node. Auf der Site Eisenstadt befindet sich eine Collector-Node, um die Geräte dieses Standortes zu überwachen und der Worker-Node am Standort Wien weiterzuleiten. Die Daten werden in einem Elasticsearch gespeichert, mehr dazu im @elastic-config. Das gesamte Deployment wird als FortiSIEM-Cluster bezeichnet.
 
@@ -119,6 +119,7 @@ In der Topolgie bestehen zwei #htl3r.long[ad] Standorte, die über einen VPN zwi
 )
 
 === Supervisor-Node <fsm-supervisor>
+
 In der Event Database speichert das FortiSIEM alle Events und Logs. Hier dient die Supervisor-Node als zentraler Knotenpunkt, der von den anderen Collector- oder Worker-Nodes die Daten erhält und aggregiert. Für die Event Database des FortiSIEM können unterschiedliche Datenbanken gewählt werden. Fortinet bietet hier folgende Optionen an:
 
 - #emph("ClickHouse")
@@ -137,7 +138,29 @@ Die Installationsanforderungen für die Supervisor-Node des FortiSIEM (Version 7
 - SVN Drive: 60GB
 - Event Database: Elasticsearch
 
+// Lizensierung
+
 Elasticsearch bietet im Gegensatz zu anderen Optionen bessere Performance und Skalierbarkeit @elastic-vs-sql. In der Topologie wird nur eine Elasticsearch-Data-Node für das FortiSIEM verwendet. Die gesamte Konfiguration wird im @elastic-config im Detail aufgelistet.
+
+=== Worker-Node <fsm-worker>
+
+Gemeinsam mit der Supervisor-Node verarbeitet die Worker-Node Daten des #htl3r.shortpl[siem]. Zu den Aufgaben gehören das indexieren, speichern, suchen, korrelieren, und erweitern von Daten, die von den Collector-Nodes erhalten werden. Zusätzlich wird eine Baseline im Netzwerk ermittelt, um Anomalien zu erkennen.
+
+Die Installationsanforderungen für die Worker-Node des FortiSIEM (Version 7.2.4) belaufen sich auf:
+- 8 virtuelle #htl3r.shortpl[cpu]
+- 16 GB RAM
+- OS Drive: 25GB
+- OPT Drive: 100GB
+
+=== Collector-Node <fsm-collector>
+
+Die Namensgebung dieser Komponente entspricht dessen Aufgabe: das Sammeln von Daten. Dies ist ein wichtiger Bestandteil in der Nutzung von Agents, denn jedes Gerät, dass ein Agent installiert hat, muss einer Collector-Node zugeordnet werden. Die Agent-Templates, welches die zu sammelnden Daten der Geräte bestimmt, werden an den Collector-Nodes gespeichert und an die installierten Agents weitergegeben. Dies wird besonders für geografisch entfernte Standorte implementiert, um das Limit der Bandbreite auf Weitverkehrsnetzen zu umgehen.
+
+Die Installationsanforderungen für die Worker-Node des FortiSIEM (Version 7.2.4) belaufen sich auf:
+- 4 virtuelle #htl3r.shortpl[cpu]
+- 4 GB RAM
+- OS Drive: 25GB
+- OPT Drive: 100GB
 
 === Elasticsearch-Konfiguration <elastic-config>
 Für das Elasticsearch wurde ein Ubuntu-Server verwendet. Hierbei wird nicht der gesamte Elastic Stack, sondern nur Elasticsearch selbst installiert. Zur besseren Übersicht von Elasticsearch wurde noch Kibana für einen direkten Zugriff über ein #htl3r.short[gui] konfiguriert.
