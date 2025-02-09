@@ -202,7 +202,7 @@ vdom:
 
 pdu:
   short:
-    singular: pdu
+    singular: PDU
   long:
     singular: Protocol Data Unit
 
@@ -219,3 +219,25 @@ rtu:
     singular: Remote Terminal Unit
     plural: Remote Terminal Units
   description: Ein steuertechnisches Element, das Daten einholt, und zur Zentrale weiterleitet.
+
+ascii:
+  short:
+    singular: ASCII
+  long:
+    singular: American Standard Code for Information Interchange
+  description:  7-Bit Zeichenkodierung.
+
+lrc:
+  short:
+    singular: LRC
+  long: 
+    singular: Längenparitätsprüfung
+  description: Zur Fehlererkännung von 1-Bit Fehlern werden Prüfbit (Paritätsbits) an die Daten angehängt.
+
+crlf:
+  short:
+    singular: CRLF
+  long: 
+    singular: Carriage Return und Line Feed
+  description: Zeichen für einen Zeilenumbruch, CR = Carriage Return and LF = Line Feed
+
