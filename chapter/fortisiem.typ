@@ -3,9 +3,9 @@
 
 = FortiSIEM <fsm>
 Für die Implementierung eines #htl3r.shortpl[siem] in die Topologie wird ein FortiSIEM der Firma Fortinet verwendet. Es kann agent-based oder agentless Logs und Events von Geräten abrufen. In den meisten Fällen wird Syslog oder #htl3r.short[snmp] zur Kommunikation der Geräte mit dem #htl3r.short[siem] verwendet. Es gibt aber auch Ausnahmen, wie im Falle von Windows. Windows Server können entweder mittels #htl3r.short[wmi] oder dem FortiSIEM Windows Agent Daten an das #htl3r.short[siem] übermitteln. Der Vorteil an den Agents liegt darin, dass Logs direkt am Gerät geparsed und verschickt werden können, statt mehrere Logs in einem bestimmten Intervall durch das FortiSIEM abzurufen.
-\
+
 Des Weiteren kann das FortiSIEM Basismetriken durch das #htl3r.short[pam] abrufen. Dies beinhaltet Daten wie den Zustand einer Applikation, Ressourcenverbrauch eines Geräts und vieles mehr. Dadurch können Anomalien in den Daten erkannt werden und Warnungen im FortiSIEM auslösen.
-\
+
 
 == Zertifizierung <fsm-cert>
 Als Training für die Zeritifizierungsprüfung wurden die Labor-Übungen vom FortiSIEM Kurs durchgeführt. Diese wurden in elf Kapitel unterteilt, die an die Kapitel aus dem Online-Kurs angelehnt sind:
@@ -54,7 +54,13 @@ Nachdem das FortiSIEM Logs und Events gespeichert hat, können diese im #emph("A
 
 Die Events können beim Abrufen nach unterschiedlichen Attributen gefiltert werden. Dabei können Informationen wie Hostname und IP-Adresse direkt aus der #htl3r.long[cmdb] entnommen werden. Die Filter sind miteinander über AND und OR sowie Klammern verknüpfbar, um komplexere Abfragen zu ermöglichen. Die Abfragen können gespeichert und anschließend beliebig oft erneut ausgeführt werden.
 
-// Auszug aus dem Analytics Dashboard
+#htl3r.fspace(
+  total-width: 95%,
+  figure(
+    image("../assets/fortisiem/fsm-analytics.png"),
+    caption: [Auszug aus den FortiSIEM-Analytics]
+  )
+)
 
 === Regeln und #emph("Incidents")
 
@@ -67,6 +73,14 @@ Mithilfe der #htl3r.long[pam] Daten können #emph("Performance Rules") aufgestel
 #emph("Incidents") geben Systemadministratoren einen Überblick über die derzeitigen Schwachstellen in einem Netzwerk. Anhand den Daten generiert das FortiSIEM ein #emph("Incident")-Dashboard. Über #emph("Notification Policies") lassen sich automatisierte E-Mails oder #htl3r.short[sms] verschicken, die mit vordefinierten E-Mail-Templates ausgestattet sind und individuelle Nachrichten beinhalten können.
 
 Für die Überwachung von systemkritischen Appilkationen stellt das FortiSIEM sogenannte #emph("Business Services") bereit. Dadurch können spezielle #emph("Incidents") für Applikationen wie Oracle und SQL-Datenbanken oder Microsoft-Exchange-Server generiert werden. Diese Daten können in individuellen #emph("Business Service Dashboards") sichtbar gestaltet werden.
+
+#htl3r.fspace(
+  total-width: 95%,
+  figure(
+    image("../assets/fortisiem/fsm-dashboard.png"),
+    caption: [Auszug aus dem FortiSIEM-Dashboard]
+  )
+)
 
 === Troubleshooting <fsm-cert-troubleshooting>
 
@@ -138,9 +152,9 @@ Die Installationsanforderungen für die Supervisor-Node des FortiSIEM (Version 7
 - SVN Drive: 60GB
 - Event Database: Elasticsearch
 
-// Lizensierung
-
 Elasticsearch bietet im Gegensatz zu anderen Optionen bessere Performance und Skalierbarkeit @elastic-vs-sql. In der Topologie wird nur eine Elasticsearch-Data-Node für das FortiSIEM verwendet. Die gesamte Konfiguration wird im @elastic-config im Detail aufgelistet.
+
+Die Lizensierung muss nur für die Supervisor-Node durchgeführt werden. Alle weiteren Worker- und Collector-Nodes sowie Agents werden mit der Verknüpfung des Supervisors aktiviert. Das FortiSIEM generiert bei jedem neuen Deployment eine zufällig generierte Hardware-ID. Diese Hardware-ID muss im `support.fortinet.com` Portal eingetragen und die Lizenz anschließend heruntergeladen werden.
 
 === Worker-Node <fsm-worker>
 
@@ -152,6 +166,14 @@ Die Installationsanforderungen für die Worker-Node des FortiSIEM (Version 7.2.4
 - OS Drive: 25GB
 - OPT Drive: 100GB
 
+#htl3r.fspace(
+  total-width: 95%,
+  figure(
+    image("../assets/fortisiem/fsm-wk.png"),
+    caption: [Status der Supervisor- und Worker-Nodes im FortiSIEM]
+  )
+)
+
 === Collector-Node <fsm-collector>
 
 Die Namensgebung dieser Komponente entspricht dessen Aufgabe: das Sammeln von Daten. Dies ist ein wichtiger Bestandteil in der Nutzung von Agents, denn jedes Gerät, dass ein Agent installiert hat, muss einer Collector-Node zugeordnet werden. Die Agent-Templates, welches die zu sammelnden Daten der Geräte bestimmt, werden an den Collector-Nodes gespeichert und an die installierten Agents weitergegeben. Dies wird besonders für geografisch entfernte Standorte implementiert, um das Limit der Bandbreite auf Weitverkehrsnetzen zu umgehen.
@@ -161,6 +183,14 @@ Die Installationsanforderungen für die Worker-Node des FortiSIEM (Version 7.2.4
 - 4 GB RAM
 - OS Drive: 25GB
 - OPT Drive: 100GB
+
+#htl3r.fspace(
+  total-width: 95%,
+  figure(
+    image("../assets/fortisiem/fsm-cl.png"),
+    caption: [Status der Collector-Nodes im FortiSIEM]
+  )
+)
 
 === Elasticsearch-Konfiguration <elastic-config>
 Für das Elasticsearch wurde ein Ubuntu-Server verwendet. Hierbei wird nicht der gesamte Elastic Stack, sondern nur Elasticsearch selbst installiert. Zur besseren Übersicht von Elasticsearch wurde noch Kibana für einen direkten Zugriff über ein #htl3r.short[gui] konfiguriert.
@@ -205,4 +235,18 @@ Elasticsearch arbeitet mit Nodes. Jede Node kann einen bestimmten Zustand annehm
   ranges: ((53, 53), (76, 76), (96, 96), (109, 109), (114, 114), (136, 139)),
   skips: ((52,0), (75,0), (95,0), (108,0), (113,0), (135,0)),
   text: read("../assets/fortisiem/elasticsearch_script1.sh")
+)
+
+=== Konfiguration der Agents
+
+Um die Domain Controller der #htl3r.short[ad]-Infrastruktur zu überwachen, werden auf jedem Server die Windows-Agents von Fortinet installiert. Die Installationsdatei kann man sich bei der `support.fortinet.com` Website herunterladen.
+
+Die Dateien werden auf einem #htl3r.short[ftp]-Server bereitgestellt und von den Windows-Servern heruntergeladen. Daraufhin kann der Installationsvorgang gestartet werden.
+
+#htl3r.fspace(
+  total-width: 50%,
+  figure(
+    image("../assets/fortisiem/fsm-windows-agent.png"),
+    caption: [Installationsmenü des Windows-Agents]
+  )
 )
