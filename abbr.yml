@@ -26,7 +26,8 @@ it:
   short:
     singular: IT
   long:
-    singular: Informational Technology
+    singular: Informationstechnik
+  description: Beschreibt die Technik der elektronischen Datenverarbeitung.
 
 ot:
   short:
@@ -65,21 +66,6 @@ io:
     singular: Input/Output
   description: Bezeichnet in der Informatik die Ein- und Ausgabe von Daten.
 
-ad:
-  short:
-    singular: AD
-  long:
-    singular: Active Directory
-  description: Ein Verzeichnisdienst von Microsoft.
-
-addc:
-  short:
-    singular: ADDC
-    plural: ADDCs
-  long:
-    singular: Active Directory Domain Controller
-  description: Beinhaltet die Datenbank einer Active Directory Infrastruktur.
-
 sps:
   short:
     singular: SPS
@@ -109,6 +95,53 @@ ssh:
   long:
     singular: Secure Shell
   description: Ein Protokoll, dass verschlüsselte Verbindungen ermöglicht.
+
+https:
+  short:
+    singular: HTTPS
+  long:
+    singular: Hypertext Transfer Protocol Secure
+  description: Der Protokollstandard für das Laden von Webseiten (verschlüsselt).
+
+http:
+  short:
+    singular: HTTP
+  long:
+    singular: Hypertext Transfer Protocol
+  description: Der Protokollstandard für das Laden von Webseiten (unverschlüsselt).
+
+# ----- Active Directory
+
+ad:
+  short:
+    singular: AD
+  long:
+    singular: Active Directory
+  description: Ein Verzeichnisdienst von Microsoft.
+
+addc:
+  short:
+    singular: ADDC
+    plural: ADDCs
+  long:
+    singular: Active Directory Domain Controller
+  description: Beinhaltet die Datenbank einer Active Directory Infrastruktur.
+
+ldap:
+  short:
+    singular: LDAP
+  long:
+    singular: Lightweight Directory Access Protocol
+  description: Ein Protokoll, dass der Abfrage und Änderung von Active Directory Informationen dient.
+
+ou:
+  short:
+    singular: OU
+    plural: OUs
+  long:
+    singular: Organizational Unit
+    plural: Organizational Units
+  description:
 
 # ----- FortiSIEM
 
@@ -162,13 +195,6 @@ dsgvo:
   long:
     singular: Datenschutzgrundverordnung
   description: Bezeichnet die Verordnung der Europäischen Union 2016/679 für EU-weite Regeln der Verarbeitung von persönlichen Daten.
-
-ldap:
-  short:
-    singular: LDAP
-  long:
-    singular: Lightweight Directory Access Protocol
-  description: Ein Protokoll, dass der Abfrage und Änderung von Active Directory Informationen dient.
 
 radius:
   short:

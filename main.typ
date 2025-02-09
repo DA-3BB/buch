@@ -29,8 +29,8 @@
   bibliography-content: bibliography("refs.yml", title: [Literaturverzeichnis])
 )
 
+#include "chapter/active_directory.typ"
+
 #include "chapter/fortisiem.typ"
 
 #include "chapter/fortianalyzer.typ"
-
-#include "chapter/active_directory.typ"
