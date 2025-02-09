@@ -203,8 +203,10 @@ vdom:
 pdu:
   short:
     singular: PDU
+    plural: PDUs
   long:
     singular: Protocol Data Unit
+    plural: Protocol Data Units
 
 adu:
   short:
@@ -241,3 +243,14 @@ crlf:
     singular: Carriage Return und Line Feed
   description: Zeichen für einen Zeilenumbruch, CR = Carriage Return and LF = Line Feed
 
+mbap:
+  short:
+    singular: MBAP
+  long:
+    singular: Modbus Application Protocol
+
+tls:
+  short:
+    singular: tls
+  long:
+    singular: Transport Layer Security
