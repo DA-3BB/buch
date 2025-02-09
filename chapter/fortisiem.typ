@@ -9,7 +9,6 @@ Des Weiteren kann das FortiSIEM Basismetriken durch das #htl3r.short[pam] abrufe
 
 == Zertifizierung <fortisiem-cert>
 Als Training für die Zeritifizierungsprüfung wurden die Labor-Übungen vom FortiSIEM Kurs durchgeführt. Diese wurden in elf Kapitel unterteilt, die an die Kapitel aus dem Online-Kurs angelehnt sind:
-\
 
 1. #emph("FortiSIEM Introduction")
 2. #emph(htl3r.short[siem] + " and " + htl3r.short[pam] + " Concepts")
@@ -22,8 +21,6 @@ Als Training für die Zeritifizierungsprüfung wurden die Labor-Übungen vom For
 9. #emph("Reports")
 10. #emph("Business Services")
 11. #emph("Troubleshooting")
-
-\
 
 === Grundkonfiguration des FortiSIEMs <fortisiem-cert-conf>
 
@@ -70,6 +67,45 @@ Mithilfe der #htl3r.long[pam] Daten können #emph("Performance Rules") aufgestel
 #emph("Incidents") geben Systemadministratoren einen Überblick über die derzeitigen Schwachstellen in einem Netzwerk. Anhand den Daten generiert das FortiSIEM ein #emph("Incident")-Dashboard. Über #emph("Notification Policies") lassen sich automatisierte E-Mails oder #htl3r.short[sms] verschicken, die mit vordefinierten E-Mail-Templates ausgestattet sind und individuelle Nachrichten beinhalten können.
 
 Für die Überwachung von systemkritischen Appilkationen stellt das FortiSIEM sogenannte #emph("Business Services") bereit. Dadurch können spezielle #emph("Incidents") für Applikationen wie Oracle und SQL-Datenbanken oder Microsoft-Exchange-Server generiert werden. Diese Daten können in individuellen #emph("Business Service Dashboards") sichtbar gestaltet werden.
+
+=== Troubleshooting
+
+FortiSIEM Version 7.2.4 basiert auf Rocky Linux Version 8.10. Troubleshooting erfolgt dadurch hauptsächlich am #htl3r.long[cli]. Die zentrale Log-Datei des FortiSIEM-Backends befindet sich in `/opt/phoenix/log/phoenix.log`.
+
+#htl3r.code-file(
+  caption: "Auszug aus der Datei phoenix.log",
+  filename: [fortisiem/FSM-phoenix.log],
+  lang: "log",
+  ranges: ((2, 4),),
+  skips: ((5, 0),),
+  text: read("../assets/fortisiem/FSM-phoenix.log")
+)
+
+Das #htl3r.short[siem] arbeitet mit mehreren Prozessen, die Funktionen wie #emph("Parsing"), #emph("Discovering") und #emph("Reporting") bereitstellen. Im Notfall können bestimmte Prozesse durch Fehler abgeschalten werden. Um sich die Prozesse und deren Auslastung anzusehen, kann in der #htl3r.short[cli] mit dem Shortcut `phstatus` ein Python-Script ausgeführt werden. Prozesse können mit `phtools --stop <process name>` gestoppt und `phtools --start <process name>` gestartet werden.
+
+#htl3r.code-file(
+  caption: "Ausgabe des Befehls phstatus",
+  filename: [fortisiem/FSM-phstatus],
+  lang: "",
+  ranges: ((0, 20),),
+  skips: ((21, 0),),
+  text: read("../assets/fortisiem/FSM-phstatus")
+)
+
+Mit `/opt/phoenix/bin/checkWMIMonitorability` kann das Abfragen von Metriken auf Windows-Servern geprüft werden. Für die Überprüfung der #htl3r.short[wmi]-Zugangsdaten kann `/opt/phoenix/bin/wmic` verwendet werden.
+
+// Auszug aus checkWMIMonitorability
+
+Systeminformationen des #htl3r.shortpl[siem] können mit dem Bash-Script `/opt/phoenix/bin/phshowVersion.sh` angezeigt werden. Neben Version des FortiSIEMs und Lizenz zeigt es Netzwerkinformationen, Speicherverbrauch und Informationen zu #emph("Worker-") sowie #emph("Collector-Nodes") an.
+
+#htl3r.code-file(
+  caption: "Ausgabe des Scripts phshowVersion.sh",
+  filename: [fortisiem/FSM-phshowVersion],
+  lang: "",
+  ranges: ((3, 15), (20, 24), (39, 42)),
+  skips: ((0, 0), (16, 0), (25, 0), (43, 0)),
+  text: read("../assets/fortisiem/FSM-phshowVersion")
+)
 
 == Supervisor-Node <fsm-supervisor>
 In der Event Database speichert das FortiSIEM alle Events und Logs. Hier dient die Supervisor-Node als zentraler Knotenpunkt, der von den anderen Collector- oder Worker-Nodes die Daten erhält und aggregiert. Für die Event Database des FortiSIEM können unterschiedliche Datenbanken gewählt werden. Fortinet bietet hier folgende Optionen an:
