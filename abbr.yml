@@ -133,8 +133,8 @@ sps:
     singular: SPS
     plural: SPSen
   long:
-    singular: Speicherprogrammierbare Steuerung
-    plural: Speicherprogrammierbare Steuerungen
+    singular: speicherprogrammierbare Steuerung
+    plural: speicherprogrammierbare Steuerungen
 
 crc:
   short:
