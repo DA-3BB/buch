@@ -250,3 +250,7 @@ Die Dateien werden auf einem #htl3r.short[ftp]-Server bereitgestellt und von den
     caption: [Installationsmenü des Windows-Agents]
   )
 )
+
+#emph("Installation der Linux-Agents folgt!")
+
+=== Auswirkungen der Implementierung
