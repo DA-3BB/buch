@@ -31,4 +31,6 @@
 
 #include "chapter/fortisiem.typ"
 
+#include "chapter/fortianalyzer.typ"
+
 #include "chapter/active_directory.typ"
