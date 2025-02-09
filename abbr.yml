@@ -183,3 +183,23 @@ attck:
   long:
     singular: Adversarial Tactics, Techniques, and Common Knowledge
   description: Eine von MITRE Coprotation betriebene Datenbank zu Sicherheitslücken.
+
+# ----- FORTIANALYZER
+
+soc:
+  short:
+    singular: SOC
+    plural: SOCs
+  long:
+    singular: Security Operations Center
+    plural: Security Operations Centers
+  description: Eine IT-Organisation, die sich mit aktuellen Netzwerkgefahren befasst.
+
+adom:
+  short:
+    singular: ADOM
+    plural: ADOMs
+  long:
+    singular: Administrative Domain
+    plural: Administrative Domains
+  description: Begrenzt den administrativen Zugriff auf bestimmte Komponente.
