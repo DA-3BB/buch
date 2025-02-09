@@ -199,3 +199,23 @@ vdom:
     plural: VDOMs
   long:
     singular: Virtual Domain
+
+pdu:
+  short:
+    singular: pdu
+  long:
+    singular: Protocol Data Unit
+
+adu:
+  short:
+    singular: ADU
+  long:
+    singular: Application Data Unit
+
+rtu:
+  short:
+    singular: RTU
+  long:
+    singular: Remote Terminal Unit
+    plural: Remote Terminal Units
+  description: Ein steuertechnisches Element, das Daten einholt, und zur Zentrale weiterleitet.
