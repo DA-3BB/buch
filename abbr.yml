@@ -127,6 +127,13 @@ addc:
     singular: Active Directory Domain Controller
   description: Beinhaltet die Datenbank einer Active Directory Infrastruktur.
 
+adds:
+  short:
+    singular: ADDS
+  long:
+    singular: Active Directory Domain Services
+  description: Kernkomponente des Microsoft-Verzeichnisdienstes.
+
 ldap:
   short:
     singular: LDAP
@@ -142,6 +149,27 @@ ou:
     singular: Organizational Unit
     plural: Organizational Units
   description:
+
+ftp:
+  short:
+    singular: FTP
+  long:
+    singular: File Transfer Protocol
+  description: Ein Netzwerkprotokoll um Dateien zu speichern, verwalten und herunterzuladen.
+
+dhcp:
+  short:
+    singular: DHCP
+  long:
+    singular: Dynamic Host Configuration Protocol
+  description: Ein Netzwerkprotokoll für die zentrale Zuweisung von IP-Adressen an Geräte.
+
+agdlp:
+  short:
+    singular: AGDLP
+  long:
+    singular: Account, Global, Domain Local, Permission
+  description: Beschreibt die offizielle Empfehlung von Microsoft für Rechteverwaltung.
 
 # ----- FortiSIEM
 

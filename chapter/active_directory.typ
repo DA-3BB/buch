@@ -85,3 +85,87 @@ Die Benutzer und Gruppen sollen so realitätsnah wie möglich ein Unternehmen wi
     caption: [Die Benutzer der Domäne 3bb-testlab.at]
   )
 )
+
+Um die Rechteverwaltung zu vereinfachen wurde das #htl3r.short[agdlp]-Prinzip angewendet. Dadurch befinden sich die globalen Gruppen in Domain-Local Gruppen, die den Zugriff auf Ressourcen bestimmen. Die User befinden sich in den globalen Gruppen. Für jede Berechtigung (z.b. Lesen oder Schreiben) wird eine eigene Domain-Local Gruppe angelegt.
+
+#htl3r.fspace(
+  total-width: 100%,
+  figure(
+    table(
+      columns: (10em, auto, 8em),
+      align: (left, left, center),
+      table.header[*Ordner*][*Domain-Local Gruppe*][*Rechte*],
+      [Management], [DL-Management-R], [Lesen],
+      [], [DL-Management-W], [Schreiben],
+      [], [DL-Finance-R], [Lesen],
+      [], [DL-IT-R], [Lesen],
+      [], [DL-IT-W], [Schreiben],
+
+
+      [Finance], [DL-Finance-R], [Lesen],
+      [], [DL-Finance-W], [Schreiben],
+      [], [DL-Management-R], [Lesen],
+      [], [DL-Marketing-R], [Lesen],
+      [], [DL-IT-R], [Lesen],
+      [], [DL-IT-W], [Schreiben],
+
+      [Office], [DL-Office-R], [Lesen],
+      [], [DL-Office-W], [Schreiben],
+      [], [DL-Management-R], [Lesen],
+      [], [DL-Marketing-R], [Lesen],
+      [], [DL-IT-R], [Lesen],
+      [], [DL-IT-W], [Schreiben],
+
+      [Marketing], [DL-Marketing-R], [Lesen],
+      [], [DL-Marketing-W], [Schreiben],
+      [], [DL-Management-R], [Lesen],
+      [], [DL-IT-R], [Lesen],
+      [], [DL-IT-W], [Schreiben],
+
+      [IT], [DL-IT-R], [Lesen],
+      [], [DL-IT-W], [Schreiben],
+      [], [DL-SOC-R], [Lesen],
+      [], [DL-SOC-W], [Schreiben],
+
+
+      [SOC], [DL-SOC-R], [Lesen],
+      [], [DL-SOC-W], [Schreiben],
+    ),
+    caption: [Einschränkung der Zugriffsrechte nach dem #htl3r.short[agdlp]-Prinzip]
+  )
+)
+
+== Konfiguration <ad-conf>
+
+Die Konfiguration der Domain Controller wurde mittels Powershell-Scripts durchgeführt. Die Scripts wurden über einen #htl3r.short[ftp]-Server zentral verwaltet und von den Domain Controllern heruntergeladen und ausgeführt.
+
+#htl3r.code-file(
+  caption: "Grundkonfiguration eines Domain Controllers",
+  filename: [active-directory/WIEN-3BB-DC1.ps1],
+  lang: "PowerShell",
+  ranges: ((8, 17),),
+  skips: ((7,0),(18,0)),
+  text: read("../assets/active-directory/wien-3bb-dc1.ps1")
+)
+
+Nach dem Neustart wird die #htl3r.short[adds]-Rolle für die Domain #emph("wien.3bb-testlab.at") installiert und der Server als Domain Controller hochgestuft. Anschließend werden die Standorte Wien und Eisenstadt eingerichtet und mit einem Site-Link verbunden.
+
+#htl3r.code-file(
+  caption: "Installieren der " + htl3r.short[adds] + "-Rolle",
+  filename: [active-directory/WIEN-3BB-DC1.ps1],
+  lang: "PowerShell",
+  ranges: ((23, 24), (30, 36)),
+  skips: ((22,0), (25,0), (29, 0), (37, 0)),
+  text: read("../assets/active-directory/wien-3bb-dc1.ps1")
+)
+
+Am Standort Wien wird ein redundanter #htl3r.short[dhcp]-Server betrieben. Die beiden Domain Controllern teilen sich einen gemeinsamen Adressbereich mittels #htl3r.short[dhcp]-Failover auf.
+
+#htl3r.code-file(
+  caption: "Einrichten eines " + htl3r.short[dhcp] + "-Failovers",
+  filename: [active-directory/WIEN-3BB-DC1.ps1],
+  lang: "PowerShell",
+  ranges: ((98, 104), ),
+  skips: ((97, 0), (105, 0)),
+  text: read("../assets/active-directory/wien-3bb-dc1.ps1")
+)
