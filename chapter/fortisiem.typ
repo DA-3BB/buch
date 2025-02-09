@@ -106,8 +106,19 @@ Systeminformationen des #htl3r.shortpl[siem] können mit dem Bash-Script `/opt/p
   skips: ((0, 0), (16, 0), (25, 0), (43, 0)),
   text: read("../assets/fortisiem/FSM-phshowVersion")
 )
+== Implementierung in die Topologie
 
-== Supervisor-Node <fsm-supervisor>
+In der Topolgie bestehen zwei #htl3r.long[ad] Standorte, die über einen VPN zwischen zwei FortiGates miteinander verbunden sind. Wien bildet dabei den Hauptstandort und Eisenstadt einen Zweig im Unternehmen. Mehr zur #htl3r.long[ad] Infrastruktur wird in @ad-infra erläutert. Das FortiSIEM wird zentral von einer Supervisor-Node gesteuert, die am Hauptstandort Wien lokalisiert ist. Dieser Standort besitzt zusätzlich eine Worker- und Collector-Node. Die Worker-Node dient zum Load-Balancing beim Sammeln und Abfragen der Daten mit der Supervisor-Node. Auf der Site Eisenstadt befindet sich eine Collector-Node, um die Geräte dieses Standortes zu überwachen und der Worker-Node am Standort Wien weiterzuleiten. Die Daten werden in einem Elasticsearch gespeichert, mehr dazu im @elastic-config. Das gesamte Deployment wird als FortiSIEM-Cluster bezeichnet.
+
+#htl3r.fspace(
+  total-width: 95%,
+  figure(
+    image("../assets/fortisiem/fortisiem-topology.png"),
+    caption: [logische Topolgie des FortiSIEM-Clusters]
+  )
+)
+
+=== Supervisor-Node <fsm-supervisor>
 In der Event Database speichert das FortiSIEM alle Events und Logs. Hier dient die Supervisor-Node als zentraler Knotenpunkt, der von den anderen Collector- oder Worker-Nodes die Daten erhält und aggregiert. Für die Event Database des FortiSIEM können unterschiedliche Datenbanken gewählt werden. Fortinet bietet hier folgende Optionen an:
 
 - #emph("ClickHouse")
