@@ -71,8 +71,8 @@ sps:
     singular: SPS
     plural: SPSen
   long:
-    singular: Speicherprogrammierbare Steuerung
-    plural: Speicherprogrammierbare Steuerungen
+    singular: speicherprogrammierbare Steuerung
+    plural: speicherprogrammierbare Steuerungen
 
 scada:
   short:
@@ -257,3 +257,106 @@ adom:
     singular: Administrative Domain
     plural: Administrative Domains
   description: Begrenzt den administrativen Zugriff auf bestimmte Komponente.
+
+# ----- OT
+
+gpio:
+  short:
+    singular: GPIO
+    plural: GPIOs
+  long:
+    singular: General Purpose Input/Output,
+  description: Ein Kontaktstifft der als Eingabe oder Ausgabekontakt am Raspberry Pi vorhanden ist.
+
+fub:
+  short:
+    singular: FUB
+  long: 
+    singular: Funktionsplan
+  description: Eine grafische Programmiersprache der Siemens LOGO!, die mit logische Funktionsblöcken funktioniert.
+
+
+snmp:
+  short:
+    singular: SNMP
+  long:
+    singular: Simple Network Management Protocol
+
+pwm:
+  short:
+    singular: PWM
+  long:
+    singular: Pulsweitenmodulation
+
+pdu:
+  short:
+    singular: PDU
+    plural: PDUs
+  long:
+    singular: Protocol Data Unit
+    plural: Protocol Data Units
+
+adu:
+  short:
+    singular: ADU
+  long:
+    singular: Application Data Unit
+
+rtu:
+  short:
+    singular: RTU
+  long:
+    singular: Remote Terminal Unit
+    plural: Remote Terminal Units
+  description: Ein steuertechnisches Element, das Daten einholt, und zur Zentrale weiterleitet.
+
+sd-wan:
+  short:
+    singular: SD-WAN
+  long:
+    singular: Software-Defined Wide Area Network
+
+vpn:
+  short:
+    singular: VPN
+  long:
+    singular: Virtual Private Network
+
+ipsec:
+  short:
+    singular: IPsec
+  long:
+    singular: Internet Protocol Security
+
+ascii:
+  short:
+    singular: ASCII
+  long:
+    singular: American Standard Code for Information Interchange
+  description:  7-Bit Zeichenkodierung.
+
+lrc:
+  short:
+    singular: LRC
+  long: 
+    singular: Längenparitätsprüfung
+  description: Zur Fehlererkännung von 1-Bit Fehlern werden Prüfbit (Paritätsbits) an die Daten angehängt.
+
+crlf:
+  short:
+    singular: CRLF
+  long: 
+    singular: Carriage Return und Line Feed
+  description: Zeichen für einen Zeilenumbruch, CR = Carriage Return and LF = Line Feed
+
+mbap:
+  short:
+    singular: MBAP
+  long:
+    singular: Modbus Application Protocol
+
+tls:
+  short:
+    singular: tls
+  long:
+    singular: Transport Layer Security
