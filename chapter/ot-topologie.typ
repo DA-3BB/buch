@@ -98,11 +98,17 @@ Dabei wird man zum Konnektivitätstest weitergeleitet, bei dem die IP-Adresse de
 
 Nach einer erfogreichen Konnektivität wird nicht nur in dem Diagram Editor das Programm angezeigt, es wird auch in der Network View die #htl3r.short[sps] abgebildet. Auf dieser können nun Einstellungen wie die IP-Adresse oder aber auch das Busprotokoll Modbus aktiviert werden. Weiters ist zu erkennen, dass die #htl3r.short[sps], zusätzlich zu der zum PC, vier weitere Verbindungen hat. Diese zeigen auf, dass im Programm auf externe Inputs beziehungsweise Outputs verwiesen wird. Im Falle des Projekts ist das der Raspberry PI und die drei Waveshare Module. 
 
-#figure(
-    image("../assets/topologie/ot-topologie/Logo!soft-comfort_network-view.png", width: 70%),
-    caption: "Network view"
-)\
 
+#figure(
+    image("../assets/topologie/ot-topologie/Logo!soft-comfort_network-view.png", width: 80%),
+    caption: "Network view"
+)
+#figure(
+    image("../assets/topologie/ot-topologie/Logo!soft-comfort_modbus-device.png",width: 85%),
+    caption: "Verbindungen zu einem Modbus Device"
+)
+
+#pagebreak()
 === Raspberry PI
 Wie in @piverkabelung erwähnt, hängen die Servomotoren an dem Raspberry PI, welcher als Modbus Server die Weichensteuerung übernimmt. Nachdem der Raspberry PI nur eine limitierte Anzahl an #htl3r.short[pwm] Outputpins hat und die Servos jittern würden, wurde ein "16 Kanal Servo Driver uHAT (I2C) für Raspberry Pi" verwendet. Dieser löst beide Probleme, wenndoch gegen das Jittern ein Widerstand am Servo Driver HAT abgezwickt werden musste, damit die Stromversorgung extern und nicht am Raspbery PI hängt. \
 Zum Modbus Server wurde der Raspberry PI mithilfe eines Python Programms und der Libary "pyModbusTCP", genaueres dazu ist im Abschnitt X.X. zu finden.
@@ -111,8 +117,6 @@ Zum Modbus Server wurde der Raspberry PI mithilfe eines Python Programms und der
     image("../assets/topologie/ot-topologie/komponenten/raspberry-pi_grafik.png", width: 40%),
     caption: "Raspberry PI 3B"
 )
-
-#pagebreak()
 
 === Relais Modul
 Um die Blöcke der Eisenbahnstrecke anzusteuern, wurden drei Relais Modul mit Modbus Funktion verwendet. Dabei handelt es sich um das Modbus POE ETH Relay (B) des Unternehmens Waveshare. Es verfügt über 8 Relais Ausgänge, einem RS485 Interface und 8 digitalen Eingängen. Die drei Module sollten dabei die dezentrale Steuerung darstellen, die nur noch mithilfe eines Ethernetkabels an den Hauptstandort, die Zentrale, angebunden ist.
