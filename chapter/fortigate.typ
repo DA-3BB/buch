@@ -1,3 +1,6 @@
+#import "@local/htl3r-da:0.1.0" as htl3r
+#htl3r.author("Magdalena Feldhofer")
+
 = Zertifizierungsprüfungen 
 Um das Ziel der Zertifizierungsprüfung erreichen zu können, wurde der Weg des FAQ#footnote("selbstgeschriebene Frage-Antwort-Paare, um die Inhalte der Zertifizierungsunterlagen zu lernen")-Lernens gewählt. Die Zertifizierungsprüfung umfassen die wichtigsten Funktionen der Produkte FortiGate und FortiManager der Firma Fortinet.
 

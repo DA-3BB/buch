@@ -1,0 +1,52 @@
+[root@WIEN-3BB-FSM-SV ~]# /opt/phoenix/bin/phshowVersion.sh
+
+=FortiSIEM Version Info=
+FortiSIEM Role:         Supervisor
+Hostname:               WIEN-3BB-FSM-SV
+Binary Version:         7.2.4.0268
+Data Version:           7.2.4.0268
+Databse Schema Version: 7.2.4
+Build Date:             Thu Oct 31 23:34:56 UTC 2024
+
+Support License:
+License Type:           [ZENSIERT]
+License Serial:         [ZENSIERT]
+License UUID:           [ZENSIERT]
+System UUID:            [ZENSIERT]
+=Disk Summary=
+Data Name       Disk Location                            Disk Mount           Disk Used       Disk Avail      Disk Size       Pct Used
+/opt/phoenix/bin/phshowVersion.sh: line 107: [: -lt: unary operator expected
+/opt/phoenix/bin/phshowVersion.sh: line 109: [: -lt: unary operator expected
+EventDB:
+No Archive Configured
+CMDB:           /dev/sdd1                                /cmdb                813M            60G             60G             2
+SVN:            /dev/sdc1                                /svn                 461M            60G             60G             1
+Root:           /dev/mapper/rl-root                      /                    13G             9.5G            22G             57
+
+=Networking Summary=
+IPv4 Info:
+Intf-IP[ifcfg-eth0]:    10.3.18.15
+NetMask[ifcfg-eth0]:    255.255.255.0
+Gateway[ifcfg-eth0]:    10.3.18.254
+
+IPv6 Info:
+No IPv6 Configured
+
+DNS-1:                  1.1.1.1
+DNS-2:                  8.8.8.8
+
+
+=FortiSIEM Worker's Summary=
+Worker Addresses
+================
+10.3.18.17
+
+
+ReportServer Address
+====================
+
+
+=FortiSIEM Collector Summary List=
+Ip                Name                                  CollectorId                 Version                     Health                    Status                    OrgID                     Organization
+==                ====                                  ===========                 =======                     ======                    ======                    =====                     ============
+10.40.21.76       WIEN-3BB-FSM-CL                       10000                       7.2.4.0268                  Normal                    up                        1                         Super
