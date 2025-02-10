@@ -9,7 +9,7 @@
     (name: "Albin Gashi", supervisor: "Christian Schöndorfer", role: "Projektleiter"),
     (name: "Magdalena Feldhofer", supervisor: "Christian Schöndorfer", role: "Stv. Projektleiter"),
     (name: "Marlene Reder", supervisor: "Richard Drechsler", role: "Mitarbeiter"),
-    (name: "Esther Mayer", supervisor: "Richard Drechsler", role: "Mitarbeiter"),
+    (name: "Esther Lina Mayer", supervisor: "Richard Drechsler", role: "Mitarbeiter"),
   ),
   supervisor-incl-ac-degree: (
     "Prof, Dipl.-Ing. Christian Schöndorfer",
@@ -34,4 +34,18 @@
   ),
 )
 
+
 #include "chapter/modbus.typ"
+
+#include "chapter/ot-topologie.typ"
+
+#include "chapter/fortigate.typ"
+
+#include "chapter/fortisiem.typ"
+
+#include "chapter/modbus.typ"
+
+// TODO add my second name on everything !
+// TODO parse correct order (just testing)
+#include "chapter/port-scan.typ"
+
