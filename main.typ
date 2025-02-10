@@ -26,13 +26,16 @@
   print-ref: true,
   generative-ai-clause: none,
   abbreviation: yaml("abbr.yml"),
-  bibliography: bibliography(
+  bibliography-content: bibliography(
     "refs.yml",
     full: true,
     title: [Literaturverzeichnis],
     style: "harvard-cite-them-right",
   ),
 )
+
+
+#include "chapter/modbus.typ"
 
 #include "chapter/ot-topologie.typ"
 
@@ -45,3 +48,4 @@
 // TODO add my second name on everything !
 // TODO parse correct order (just testing)
 #include "chapter/port-scan.typ"
+
