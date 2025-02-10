@@ -133,8 +133,8 @@ sps:
     singular: SPS
     plural: SPSen
   long:
-    singular: Speicherprogrammierbare Steuerung
-    plural: Speicherprogrammierbare Steuerungen
+    singular: speicherprogrammierbare Steuerung
+    plural: speicherprogrammierbare Steuerungen
 
 crc:
   short:
@@ -224,7 +224,7 @@ pwm:
   short:
     singular: PWM
   long:
-      singular: Pulsweitenmodulation
+    singular: Pulsweitenmodulation
 
 pdu:
   short:
@@ -247,6 +247,24 @@ rtu:
     singular: Remote Terminal Unit
     plural: Remote Terminal Units
   description: Ein steuertechnisches Element, das Daten einholt, und zur Zentrale weiterleitet.
+
+sd-wan:
+  short:
+    singular: SD-WAN
+  long:
+    singular: Software-Defined Wide Area Network
+
+vpn:
+  short:
+    singular: VPN
+  long:
+    singular: Virtual Private Network
+
+ipsec:
+  short:
+    singular: IPsec
+  long:
+    singular: Internet Protocol Security
 
 ascii:
   short:
@@ -280,3 +298,4 @@ tls:
     singular: tls
   long:
     singular: Transport Layer Security
+
