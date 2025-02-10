@@ -28,5 +28,6 @@
   abbreviation: yaml("abbr.yml"),
   bibliography-content: bibliography("refs.yml", title: [Literaturverzeichnis])
 )
-
+#include "chapter/einleitung.typ"
+#include "chapter/fortigate.typ"
 #include "chapter/fortisiem.typ"
