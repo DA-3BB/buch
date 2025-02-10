@@ -218,7 +218,7 @@ Bei Modbus #htl3r.short[rtu] besteht die #htl3r.short[adu] zusätzlich zur #htl3
 )
  
 ====	Adressfeld
-Im Adressfeld steht immer die Adress des Servers, die bei jedem Busteilnehmer eindeutig sein muss. Dabei stehen 8 Bit - also der Bereich von 0 bis 255 - zur Verfügung, wobei 0 die Broadcast Adresse ist und 248-255 reserviert sind. Empfohlen ist aber nur die Verwendung von bis zu 32 Geräten. Das ergibt sich aus der möglichen Leistung der RS485-Treiberbausteine. Diese liefern nur genug Strom für 31 andere Geräte (das sendende Gerät hört auch mit - daher 32). Für mehr als 32 Teilnehmer würde man zusätzliche Leitungstreiber bzw. Repeater benötigen.
+Im Adressfeld steht immer die Adress des Servers, die bei jedem Busteilnehmer eindeutig sein muss. Dabei stehen 8 Bit - also der Bereich von 0 bis 255 - zur Verfügung, wobei 0 die Broadcast Adresse ist und die Adressen von 248 bis 255 sind laut Standart reserviert. Empfohlen ist aber nur die Verwendung von bis zu 32 Geräten. Das ergibt sich aus der möglichen Leistung der RS485-Treiberbausteine. Diese liefern nur genug Strom für 31 andere Geräte (das sendende Gerät hört auch mit - daher 32). Für mehr als 32 Teilnehmer würde man zusätzliche Leitungstreiber bzw. Repeater benötigen.
 
 ===	Kommunikationsbeispiel
 + *Clientanfrage an Server*
