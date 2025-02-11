@@ -38,7 +38,7 @@ Weiters erfasst die Steuerung Reflex-Lichtschranken, um den Übergang der Eisenb
 
 === Stromversorgung
 Bei der Stromversorgung wurde darauf geachtet, dass keine 230V Geräte im Einsatz sind, um die Sicherheit beim Arbeiten und im späteren Verlauf, wenn Schüler*innen die Steuerung als Laborübung nutzen, zu gewährleisten.
-\ #pagebreak()
+\
 Der Switch braucht dabei als einziges Gerät 24V, der Raspberry PI 5.5V und alle anderen Komponenten - #htl3r.short[sps], Relais Module, Reflex-Lichtschranken - werden mit dem 12V Netzteil betrieben.
 
 #figure(
@@ -108,7 +108,6 @@ Nach einer erfogreichen Konnektivität wird nicht nur in dem Diagram Editor das 
     caption: "Verbindungen zu einem Modbus Device"
 )
 
-#pagebreak()
 === Raspberry PI
 Wie in @piverkabelung erwähnt, hängen die Servomotoren an dem Raspberry PI, welcher als Modbus Server die Weichensteuerung übernimmt. Nachdem der Raspberry PI nur eine limitierte Anzahl an #htl3r.short[pwm] Outputpins hat und die Servos jittern würden, wurde ein "16 Kanal Servo Driver uHAT (I2C) für Raspberry Pi" verwendet. Dieser löst beide Probleme, wenndoch gegen das Jittern ein Widerstand am Servo Driver HAT abgezwickt werden musste, damit die Stromversorgung extern und nicht am Raspbery PI hängt. \
 Zum Modbus Server wurde der Raspberry PI mithilfe eines Python Programms und der Libary "pyModbusTCP", genaueres dazu ist im Abschnitt X.X. zu finden.
