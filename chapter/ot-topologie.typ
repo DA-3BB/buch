@@ -131,10 +131,10 @@ Das besondere an dem Waveshare Relais ist, dass es - wie der Name schon sagt - �
 Um die Grundkonfiguration der Waveshare Relais vorzunehmen, kann die Software 'VirCom' eingesetzt werden. Diese findet alle Waveshare Module, die im Netzwerk hängen, ohne die IP-Adresse oder sonstige Informationen zu haben. Sobald die IP-Adresse der Geräte bekannt ist, können alle anderen Einstellungen auch mit dieser über einen Webbrowser getätigt werden.
 \ \
 Um die Relais bestmöglich nach Anwendungsfall einzusetzten sollten sich zuerste die Control Modes angeschaut werden. Dabei ist zu beachten, dass beim linkage Modus die Relais nicht seperat angesprochen werden können.
-- 0x0000 normaler Modus: Relais werden direkt mit Befehlen angesprochen
-- 0x0001 linkage Modus: Relais status ist mit den Inputs verknüft
-- _0x0002 toggle Modus: a pulse in the input channel toggles the relay state once_
-- _0x0003 edge Modus: an edge change in the input channel toggles the relay state once_
+- 0x0000 normaler Modus: Relais werden direkt mit Befehlen angesprochen.
+- 0x0001 linkage Modus: Relaisstatus entspricht dem Status des jeweiligen Inputs.
+- 0x0002 toggle Modus: Relaisstatus wird bei einem Impuls am jeweiligen Input umgeschalten.
+- 0x0003 edge Modus: Relaistatus wird bei einem Flankenwechsel am jeweiligen Inputs umgeschalten.
 
 === Reflex-Lichtschranken
 Um den Blockübertritt zu erkennen, werden Reflex-Lichtschranken an beiden Seiten der Isolierung eingesetzt, um die Richtung der Modelleisenbahn zu erkennen. Die Reflex-Lichtschranken hängen dabei am Input der Relais Module und die #htl3r.short[sps] kann sie über diese abfragen. \
