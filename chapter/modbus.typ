@@ -93,7 +93,6 @@ Funktionscodes werden benötigt, um auf die gewünschte Funktion zu verweisen un
 
 Beispiel: Wenn die logische Adresse 40001 bei 0 liegt, hat die Adresse 40009 einen Offset von 8. Bei einem Offset von 9 liegt die Startadresse dementsprechend bei 1. Der Offset ist somit der Abstand zur Startposition. 
 
-#pagebreak()
 
 Die wichtigsten Funktionscodes lauten wie folgt:
 #figure(
@@ -175,7 +174,6 @@ Die Fehlercodes wurden im  @fehlercode erklärt.
   caption: "Modbus: Server Anfrageverarbeitung"
 )
 
-#pagebreak()
 ==	Modbus #htl3r.long[rtu]
 Bei Modbus #htl3r.short[rtu] werden die Signale über eine serielle Schnittstelle asynchron, im Binärformat übertragen. Asynchron bedeutet dabei, dass es keine eigene Taktleitung gibt, sondern, dass die Datenübertragung mit einem Start- und Endsignal synchronisiert wird. 
 
@@ -192,7 +190,6 @@ Die RS232 Schnittstelle ist die älterste, aber auch die am weitesten verbreitet
   image("../assets/modbus/RS232-verkabelung.png"),
   caption: "RS232 Verkabelung",
 )
-#pagebreak()
 ==== RS422 <rs422>
 Die Schnittstelle RS422 erlaubt im Gegensatz zum Vorgänger RS232 eine *Point-to-Multipoint* Verbinung mit einem Sender und bis zu 32 Empfängern. Die Schnittstelle ist dabei weiterhin *Vollduplex* und die Leitung kann nun bis zu 500ft beziehungsweise cirka *45m* lang sein. Außerdem ist sie weniger störempfindlich, da durch die Doppelleitung sowohl für den Sender als auch für den Empfänger eine *differenzielle Signalübertragung* ermöglicht. Das heißt, das Singal wird in eine positive und eine negative Spannung aufgeteilt (4V = +2V - (-2V)), bei der die Differenz entscheidend ist, damit im Falle einer Störspannung, diese sich von selbst aufhebt ((+2V + 1V) - (-2V + 1V) = 4V). Außerdem sind die Adernpaare verdrillt (*Twisted-Pair*), was zusätzlich zur Störunempfindlichkeit beiträgt.
 
