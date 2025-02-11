@@ -54,12 +54,24 @@ Action: Allow \*/
     caption: "Provisorisches Bild einer Policy Konfiguration, wird noch ausgebessert"
 )\
 
-Ebenso könnte man Security Profiles auf diese Policy anwenden, darunter Web Filtering, IPS und Application Control. \
+Ebenso könnte man Security Profiles auf diese Policy anwenden. Security Profiles sind erweitenderne Funktionen um das Netzwerk bestmöglich abzusichern, die folgenden sind die relevantesten:
+- AntiVirus: siehe #ref(<antivirus>)
+- Web Filter: siehe @webfiltering
+- Application Control: @IPS_App-control
+- IPS: siehe @IPS_App-control
+- SSL Inspection: @SSL-Inspection
 
 
- Wenn man Policies erstellt, muss man darauf achten, dass man sie richtig reiht. Wenn man zwei Policies hat, wobei die eine spezifische Situationen abdeckt und die zweite nur generelle, sollte die spezifischere an erste Stelle in der Reihung kommen, da es sonst sein kann, dass sie nie angewandt wird, weil die generische ebenfalls zutrifft. 
+
+Wenn man Policies erstellt, muss man darauf achten, dass man sie richtig reiht. Wenn man zwei Policies hat, wobei die eine spezifische Situationen abdeckt und die zweite nur generelle, sollte die spezifischere an erste Stelle in der Reihung kommen, da es sonst sein kann, dass sie nie angewandt wird, weil die generische ebenfalls zutrifft. 
  
 Zusätzlich wird in diesem Kapitel "Network Address Translation" (NAT) erklärt. NAT ist hauptsächlich dafür da, um private IP-Adressen auf öffentliche zu übersetzen. Da es nicht unendlich viele öffentlichen IP-Adressen gibt, ist dieses Verfahren hilfreich, um diese zu sparen, da mit Hilfe von "Port Address Translation" (PAT) mehrere Adressen auf eine öffentliche zugewiesen werden und dann auch wieder auf die privaten zurück übersetzt. 
+
+// VIPs??
+
+* Inspection Modes *
+- *Flow-based:* Analysiert den Traffic in Real-time und benötigt weniger Ressourcen als Proxy-based Inspection. Der Fokus liegt auf Performance.
+- *Proxy-based:* Speichert den Traffic temporär ab und analysiert ihn in der gesamten länge. Benötigt mehr Ressourcen bietet allerdings mehr Sicherheit. Manche Security Profiles wie Data-leak-prevention sind nur in diesem Modus verfügbar.
 
 === Routing
 Routing ist dafür zuständig, ein Paket von einem Netzwerk an ein anderes weiterzuleiten. Die Schwierigkeit besteht darin, zu wissen, welcher Port mit dem richtigen Netz verbunden ist. Um das Problem zu lösen gibt es Routing Tabellen, in welchen steht, welches Netzwerk über welches Interface erreichbar ist bzw. wohin das Paket gesendet werden muss. \
@@ -110,14 +122,25 @@ Für Active Directory Umgebungen gibt es zwei Methoden des Signle-Sign-On Prozes
     - *Agentless:* es wird kein zusätzlicher agent benötigt, FortiGate übernimmt das Abfragen der DCs auf Login-Events mittles LDAP. Es entsteht ein höherer Ressourcenaufwand für die FortiGate und es sind weniger Funktionen verfügbar.
 // womöglich AD Access Mode erklären (standard & Advanced)
 
-=== Certificate Operations
+=== Certificate Operations <SSL-Inspection>
 // Seite 160
+Zertifikate werden einerseits natürlich für User-Authentifizierung verwendet, allerdings auch für Traffic-Inspizierungen. Diese sind Datenverkehr über die FortiGate als auch zu und von ihr, wenn ein Benutzer eine Website über HTTPS aufruft, überprüft die Firewall mithilfe von Zertifikaten, dass die Website vertrauenswürdig ist. \  Revocation- und Validation-Checks stellen sicher, dass das Zertifikat nicht von der Zertifikatsstelle zurückgezogen wurde oder das Gültigkeitsdatum abgelaufen ist.
 
-=== Antivirus
+* SSL Inspection *
+Es gibt zwei Arten der Inspizierung, eine entschlüsselt den Datenverkehr und eine nicht:
+- *Certificate-Inspection:* Entschlüsselt keinen Traffic sondern analysiert nur den FQDN der Website, somit kann man in den Policies nur Web-Filtering von den sonst möglichen Security Profiles anwenden
+- *Full-Inspection:*
+// Seite 166
+
+
+
+// maybe seite 164
+
+=== Antivirus <antivirus>
 // Seite 194
 
-=== Web Filtering
-=== Intrusion Prevention and Application Control
+=== Web Filtering <webfiltering>
+=== Intrusion Prevention and Application Control <IPS_App-control>
 === SSL VPN
 
 
