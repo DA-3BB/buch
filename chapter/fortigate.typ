@@ -1,4 +1,4 @@
-#import "@local/htl3r-da:0.1.0" as htl3r
+#import "@local/htl3r-da:1.0.0" as htl3r
 #htl3r.author("Magdalena Feldhofer")
 
 = Zertifizierungsprüfungen 
@@ -27,10 +27,31 @@ Mit dem Drücken einer Taste auf der Tastatur wird die richtige Antwort sichtbar
     caption: "Beispiel einer offenen Karteikarte"
 )
 
+#pagebreak()
+
 == FortiGate Administrator 7.4
 In den folgenden Abschnitten werden die einzelnen Kapitel des Zertifikatskurses zusammengefasst.
 === System and Network Settings
-Im ersten Kapitel des Kurses lernt man die Grundlagen über die FortiGate, also die Next-Generation Firewall (NGFW) von Fortinet. Man erfährt, wie man sich das erste Mal mit der FortiGate verbinden kann, die Interfaces konfiguriert und DHCP- und VLAN-Einstellungen tätigt. Ebenfalls welche Möglichkeiten der Administration zur Verfügung stehen bzw. die Einschränkung dieser, wie zum Beispiel "trusted Hosts".\ 
+Im ersten Kapitel des Kurses lernt man die Grundlagen über die FortiGate, also die Next-Generation Firewall (NGFW) von Fortinet. Man erfährt, wie man sich das erste Mal mit der FortiGate verbinden kann, die Interfaces konfiguriert und DHCP- und VLAN-Einstellungen tätigt. \ 
+Im folgenden Bild erkennt man die physischen Ports eins bis drei, welche mit Aliasen versehen sind (bsp.: Port3 --> Inet), für die leichtere Lesbarkeit der Konfiguration. Jedes der angezeigten Interfaces hat eine IP-Adresse zugewiesen, sei es via DHCP oder statisch. Dieser Unterschied kann aus der Grafik allerdings nicht entnommen werden, dafür ist ein tieferer Einblick notwendig. In der letzten Spalte sieht man die Protokolle "Ping", "HTTPS", "SSH" und "HTTP", diese Protokolle sind für den administrativen Zugriff auf die FortiGate, auf diesen Interfaces erlaubt.  
+#figure(
+    image("../assets/fortigate/interface-overview.png", width: 100%),
+    caption: "Konfigurationsübersicht der Interfaces"
+)
+Die selbe Konfiguration kann mit den folgenden CLI-Befehlen erreicht werden:\
+#htl3r.code-file(
+  caption: "Auszug aus der Datei phoenix.log",
+  filename: ["../assets/fortigate/int_conf_example.conf"],
+  lang: "log",
+  ranges: ((2, 4),),
+  skips: ((5, 0),),
+  text: read("../assets/fortigate/int_conf_example.conf")
+)
+
+
+
+
+Ebenfalls welche Möglichkeiten der Administration zur Verfügung stehen bzw. die Einschränkung dieser, wie zum Beispiel "trusted Hosts".\ 
 Es gibt auch eine Funktion, um eine Firewall-Instanz in mehrere aufzuteilen: Die einzelnen Virtual-Domains (VDOMs) können (per-default) nicht untereinander kommunizieren und sind dementsprechend gut wenn man mehrere Kunden getrennt verwalten möchte (MSSP).
 // backups und updates? oder useless weil eh klar
 
@@ -54,12 +75,15 @@ Action: Allow \*/
     caption: "Provisorisches Bild einer Policy Konfiguration, wird noch ausgebessert"
 )\
 
+
+
+// Achtung leere Referenzen bzw fehlende referenzen
 Ebenso könnte man Security Profiles auf diese Policy anwenden. Security Profiles sind erweitenderne Funktionen um das Netzwerk bestmöglich abzusichern, die folgenden sind die relevantesten:
-- *AntiVirus:* Pakete werden mit einer Datenbank an Viren und Malware verglichen und anhand des Resultats verworfen oder erlaubt. Weiteres dazu siehe #ref(<antivirus>)
-- *Web Filter:* Schränkt Web-Site Zugriff anhand von Kategorien ein. Näheres dazu siehe @webfiltering
-- *Application Control:* Der Traffic wird auf Applikations-Signaturen untersucht. Mehr dazu siehe @IPS_App-control
-- *IPS:* Analysiert den Traffic anhand von Sessions und vergleicht die Erkenntnisse mit Signaturen aus der IPS-Datenbank. Genaueres siehe @IPS_App-control
-- *SSL Inspection:* Web-Traffic wird auf Angriffe untersucht. Weiteres dazu siehe @SSL-Inspection
+- *AntiVirus:* Pakete werden mit einer Datenbank an Viren und Malware verglichen und anhand des Resultats verworfen oder erlaubt. Weiteres dazu siehe /*#ref(<antivirus>)*/ Kapitel Antivirus
+- *Web Filter:* Schränkt Web-Site Zugriff anhand von Kategorien ein. Näheres dazu siehe 
+- *Application Control:* Der Traffic wird auf Applikations-Signaturen untersucht. Mehr dazu siehe
+- *IPS:* Analysiert den Traffic anhand von Sessions und vergleicht die Erkenntnisse mit Signaturen aus der IPS-Datenbank. Genaueres siehe 
+- *SSL Inspection:* Web-Traffic wird auf Angriffe untersucht. Weiteres dazu siehe 
 
 
 Wenn man Policies erstellt, muss man darauf achten, dass man sie richtig reiht. Wenn man zwei Policies hat, wobei die eine spezifische Situationen abdeckt und die zweite nur generelle, sollte die spezifischere an erste Stelle in der Reihung kommen, da es sonst sein kann, dass sie nie angewandt wird, weil die generische ebenfalls zutrifft. 
@@ -144,7 +168,7 @@ Die Antivirus-Engine verwendet eine Antivirus-Datenbank mit welcher die Pakete v
     - *legacy-scanning:*
 - *Proxy-based-Inspection:*
 
-=== Web Filtering <webfiltering>
+=== Web Filtering #heading("Web Filtering")
 === Intrusion Prevention and Application Control <IPS_App-control>
 === SSL VPN
 
