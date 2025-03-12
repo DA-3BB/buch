@@ -1,13 +1,13 @@
 #import "@local/htl3r-da:0.1.0" as htl3r
 #htl3r.author("Esther Lina Mayer")
 
-= Replay
-== Theoretische Grundlagen
+== Replay
+=== Theoretische Grundlagen
 Bei einem Replay-Angriff werden gültige Daten abgefangen und vom Angreifer erneut übertragen - diese Art von Angriffen richtet sich somit gegen die Integrität der gesendeten Daten.
 
 Das Prinzip hinter Replay-Angriffen ist sehr simpel, da ein Angreifer die gültigen Daten nicht entschlüsseln muss. Weiters haben sie kaum Anforderungen - der Angreiffer muss nur in der Lage sein, die Pakete zu erfassen, sie zu speichern und erneut abzusenden.
 
-== Analyse des Traffics mithilfe von Wireshark
+=== Analyse des Traffics mithilfe von Wireshark
 Für die Durchführung eines Replay-Angriffs muss man valide Daten aus dem Netzwerk mitlesen, aus ihnen die entscheidenden Pakete herausfiltern und diese erneut senden. Dazu wird das Tool "Wireshark" - ein Sniffer#footnote[Eine detaillierte Erklärung zu Sniffern findet man unter: https://www.geeksforgeeks.org/introduction-to-sniffers/] zur Analyse des Netzwerktraffics - verwendet.
 
 Es wird eine neue Aufzeichnung des Traffics gestartet, in welcher gültige Daten abgefangen werden. Für die folgende Demonstration wurde die _Weiche 4_ gewählt.
@@ -66,7 +66,7 @@ Man kann erkennen, dass die Weiche 4 von der Position 1 in die Position 0 gewech
 
 #pagebreak()
 
-=== Auslesen des Befehls zum Ändern der Position der Weiche
+==== Auslesen des Befehls zum Ändern der Position der Weiche
 Das Paket, das den gesuchten Befehl enthält, ist das folgende:
 
 #figure(
@@ -82,7 +82,7 @@ Dieser Befehl bearbeitet den Merker 4 (`v3`) und setzt den Wert auf `00`. Nun is
 
 #pagebreak()
 
-== Durchführung des Replay-Angriffs
+=== Durchführung des Replay-Angriffs
 Der zuvor ausgelesene Befehl soll nun erneut abgesendet werden. Hierfür wird das Tool `curl` verwendet.
 
 `curl -X POST "http://10.100.0.1/AJAX" -d "SETVARS:_local_=v3,M..1:4-1,00"`
@@ -125,10 +125,10 @@ Wichtig zu betrachten sind hier die drei Kommandos, die mithilfe der Option `-d`
 
 #pagebreak()
 
-=== Erfolgsbedingungen des Replay-Angriffs
+==== Erfolgsbedingungen des Replay-Angriffs
 Bei einem Replay-Angriff werden die abgefangenen Befehle nicht bearbeitet - das wären dann Code-Injections. Daher kann der Angreifer nur Schaden anrichten, wenn der Nutzer bereits die Weichen erneut umgeschalten hat. In diesem Fall wurde der Befehl zum Ändern der Weiche 4 auf Position `00` abgefangen. Sendet man diesen Befehl erneut ab, während die Weiche 4 ihre Position noch nicht erneut geändert hat, so hat der Angriff keine Auswirkung. Natürlich kann der Angreifer weitere Pakete abfangen und dies so umgehen. Für dieses Beispiel wurde jedoch die Weiche 4 vom Nutzer auf Position `01` geändert.
 
-=== Senden des abgefangenen Befehls
+==== Senden des abgefangenen Befehls
 Der Angreifer versendet nun den Befehl an die SPS.
 
 ```
@@ -141,10 +141,10 @@ Die Auswirkungen des Befehls finden sich im folgenden Abschnitt.
 
 #pagebreak()
 
-== Ergebnisse des Replay-Angriffs
+=== Ergebnisse des Replay-Angriffs
 Es gibt mehrere Wege, um zu prüfen, ob der Angriff erfolgreich war. Diese sind in diesem Abschnitt genauer beschrieben.
 
-=== Prüfen des Erfolgs mithilfe von curl
+==== Prüfen des Erfolgs mithilfe von curl
 Mithilfe des Tools curl, welches auch für den Replay-Angriff verwendet wurde, kann man - der Nutzer aber auch der Angreifer - auslesen, in welcher Position die Weiche 4 ist.
 
 ```
@@ -155,7 +155,7 @@ Mithilfe des Tools curl, welches auch für den Replay-Angriff verwendet wurde, k
 
 Aus dem Feld `v='00'` ist der Wert der Position der Weiche auslesbar. Vor dem Angriff war dieser auf `01` - nach dem Angriff ist er auf `00`.
 
-=== Vergleich der physischen Position der Weiche
+==== Vergleich der physischen Position der Weiche
 Als weitere Überprüfung kann man die pysische Position der Weiche vergleichen. In den nachfolgenden Bildern sieht man die Position der Weiche 4 vor (links) und nach (rechts) dem Angriff. Man erkennt, dass der Servo beziehungsweise die Gleise der Weiche ihre Position bewegt haben.
 
 #figure(
@@ -171,14 +171,14 @@ Als weitere Überprüfung kann man die pysische Position der Weiche vergleichen.
 
 #pagebreak()
 
-=== Log-Messages des Raspberry Pi
+==== Log-Messages des Raspberry Pi
 Im Skript am Raspberry Pi (siehe Kapitel Weichensteuerung) ist ein Feature eingebaut, welches bei Änderung der Weichen eine Log-Nachricht sendet. Im Laufe des Angriffes kam die folgende Nachricht.
 
 `11/10/24 05:07:06 - INFO : servo Weiche4 switched to min` #footnote[Die Zeiten des Raspberry Pi sind nicht synchronisiert.]
 
 Das bedeutet, dass der Raspberry Pi den Befehl von der SPS zum Ändern der Position der Weiche 4 erhalten hat.
 
-== Fazit
+=== Fazit
 Aus dem durchgeführten Angriff ist ersichtlich, dass man für einen Replay-Angriff auf die SPS nicht einfach nur Pakete abfangen und erneut aussenden kann. Man benötigt eine Art der Authentifizierung - also eine valide Session - um Befehle absenden zu können.
 
 Sollte ein Angreifer jedoch in der Lage sein, die Session-Cookies eines autorisierten Nutzers abfangen zu können, kann er ohne Probleme beliebige Befehle absenden. Dies kann mithilfe von zum Beispiel Malware geschehen oder sogar via Brute-Force.

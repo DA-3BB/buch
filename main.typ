@@ -1,4 +1,4 @@
-#import "@preview/htl3r-da:0.1.0" as htl3r
+#import "@local/htl3r-da:0.1.0" as htl3r
 
 #show: htl3r.diplomarbeit.with(
   title: "3BB",
@@ -26,14 +26,29 @@
   print-ref: true,
   generative-ai-clause: none,
   abbreviation: yaml("abbr.yml"),
-  bibliography-content: bibliography("refs.yml", title: [Literaturverzeichnis])
+  bibliography-content: bibliography(
+    "refs.yml",
+    full: true,
+    title: [Literaturverzeichnis],
+    style: "harvard-cite-them-right",
+  ),
 )
-
 
 #include "chapter/weichensteuerung.typ"
 
+#include "chapter/angriffe_intro.typ"
+
+#pagebreak()
 #include "chapter/port-scan.typ"
 
+// man in the middle 
+
+#pagebreak()
 #include "chapter/dos.typ"
 
+// fuzzing
+
+#pagebreak()
 #include "chapter/replay.typ"
+
+// code injections

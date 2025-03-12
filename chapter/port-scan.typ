@@ -1,8 +1,8 @@
 #import "@local/htl3r-da:0.1.0" as htl3r
 #htl3r.author("Esther Lina Mayer")
 
-= Port-Scanning
-== Theoretische Grundlagen
+== Port-Scanning
+=== Theoretische Grundlagen
 Port-Scanning ist eine Methode, um herauszufinden, welche Ports in einem Netzwerk oder auf einem Host offen sind und Daten empfangen könnten. Sie wird verwendet, um Schwachstellen zu entdecken und zu analysieren - nicht nur als Schutzmaßnahme durch Administratoren, sondern auch als potenzieller Angriffsvektor. Außerdem kann man Konfigurationen simpel prüfen und testen, ob gewünschte Ports auch offen sind.
 
 Die grundlegende Funktionsweise eines Port-Scans besteht darin, Pakete an Ports zu versenden und so herauszufinden, in welchem Status sich diese befinden. Es gibt drei Arten der Antwort:
@@ -30,7 +30,7 @@ Tabelle zusammengefasst sind:
     caption: [Beschreibung diverser Scan-Arten bzw. Tests]
 )
 
-===	Rechtliches
+====	Rechtliches
 Der legale bzw. illegale Einsatz von Port-Scans ist Gegenstand zahlreicher Diskussionen. Vereinfacht dargestellt können sie in eigenen Systemen ohne rechtliche Probleme eingesetzt werden. Beim Einsatz in Fremdsystemen, insbesondere zur Vorbereitung eines Expolits, macht man sich strafbar. Die große Anzahl an Verbindungsanfragen kann bei leistungsschwächeren Geräten zu Fehlfunktionen, Funktionseinschränkungen bis hin zur Überlastung führen, was auch ohne Absicht zum Angriff als Sabotage gesehen werden kann und rechtliche Konsequenzen mit sich ziehen könnte.
 
 Mögliche treffende Paragrafen aus dem Strafgesetzbuch #footnote[Siehe https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=10002296] sind
@@ -40,14 +40,14 @@ Mögliche treffende Paragrafen aus dem Strafgesetzbuch #footnote[Siehe https://w
 
 #pagebreak()
 
-== Vorbereitung der Port-Scans
+=== Vorbereitung der Port-Scans
 Im folgenden Abschnitt werden die Komponenten sowie Tools und deren installation für das nachfolgende Netzwerk genauer beschrieben.
 
 Die Scans werden primär auf die Siemens LOGO SPS  mit der IP-Adresse 10.100.0.1 sowie dem Raspberry Pi mit der Adresse 10.100.0.2 ausgeführt. Das Gerät, welches die Port-Scans durchführt, ist das ein Notebook mit dem Betriebssystem Windows 10 „MGMT-PC MAY“ mit der IP-Adresse 10.100.0.100.
 
 Bevor die Scans durchgeführt werden, müssen die beiden verwendeten Tools - nmap und unicornscan - aufgesetzt werden.
 
-===	Installation von nmap
+====	Installation von nmap
 Nmap kann auf einem Linux-Rechner (Ubuntu/Debian) mit dem Befehl `sudo apt-get install nmap` installiert werden. Da der Port-Scan jedoch von einem Windows-Gerät ausgeführt wird, muss man entweder eine VM aufsetzen oder das Tool über die Website herunterladen. In diesem Fall wird - der Einfachheit halber - Letzteres gewählt.
 
 Der Download-Link lautet: #link("https://nmap.org/download.html#windows")
@@ -65,7 +65,7 @@ Available nsock engines: iocp poll select
 
 #pagebreak()
 
-=== Installation von unicornscan
+==== Installation von unicornscan
 Zur Verwendung des Tools unicornscan, wurde auf Kali-Linux installiert. Um diese aufzusetzen, wurde WSL (Windows Subsystem for Linux) verwendet.  Als erster Schritt werden mögliche Distributionen gelistet, die WSL als VMs installieren kann. Der Befehl hierfür lautet:
 
 ```
@@ -124,7 +124,7 @@ report bugs to osace-users@lists.sourceforge.net
 
 #pagebreak()
 
-===	Host-Discovery
+====	Host-Discovery
 Host-Discovery bezeichnet den Prozess, Informationen über die Geräte in einem Netzwerk zu sammeln. In diesem Fall wird es verwendet, um die IP-Adressen des Raspberry Pi sowie der SPS herauszufinden und zu testen, ob diese online sind. Hierfür wird nmap - mit der Option -sn - verwendet, welche einen Ping-Scan durchführt, ohne die Ports zu scannen.
 
 ```
@@ -167,14 +167,14 @@ Anmerkung: Falls etwaige Firewall-Settings keine ICMP-Echo-Requests
 zulassen, kann es sein, dass sie bei diesem Befehl nicht auftauchen.
 Für den Rahmen der Diplomarbeit kann dies jedoch ignoriert werden.
 
-== Erwartete Scanergebnisse
+=== Erwartete Scanergebnisse
 Da keine Angriffe auf ein fremdes Netz durchgeführt werden, besteht die Möglichkeit, konfigurierte Parameter („Referenzwerte“) vom Raspberry Pi sowie der SPS zu ermitteln.
 
 Für die SPS kann man die LOGO!Soft Comfort 8.4 verwenden und in den Einstellungen bestimmte Parameter auslesen - wie im folgenden Unterkapitel beschrieben, aus welchen dann die offenen Ports ermittelt werden können. Beim Raspberry Pi werden die offenen Ports mit einem Befehl ausgelesen.
 
 #pagebreak()
 
-===	Siemens LOGO SPS
+====	Siemens LOGO SPS
 In der LOGO!Soft Comfort findet man unter den Online-Einstellungen der SPS im Reiter „Einstellungen für Zugriffskontrolle“ folgende Übersichtstabelle:
 
 #figure(
@@ -204,7 +204,7 @@ Anmerkung: Für Modbus wird die Port-Range 502 bis 510 angenommen, da bei Aktivi
 #pagebreak()
 
 
-===	Raspberry Pi
+====	Raspberry Pi
 Für den Raspberry Pi kann man einen Befehl zum Auflisten der Ports verwenden.#footnote[Die IPv6-Dienste werden nicht behandelt.] Der Befehl lautet wie folgt:
 
 ```
@@ -238,10 +238,10 @@ Durch diesen Befehl kann nun ermittelt werden, welche Ports offen sind.
 
 #pagebreak()
 
-== Durchführung der Port-Scans
+=== Durchführung der Port-Scans
 Nachdem nun die „Referenzwerte“ ermittelt wurden, werden - mit den beiden gewählten Tools - nun Port-Scans auf den Raspberry Pi und die SPS durchgeführt.
 
-=== Nmap
+==== Nmap
 Für nmap werden die folgenden beiden Optionen verwendet.
 
 ```
@@ -316,7 +316,7 @@ Nmap done: 1 IP address (1 host up) scanned in 1.71 seconds
 
 #pagebreak()
 
-===	Unicornscan
+====	Unicornscan
 Nun werden analoge Befehle mit unicornscan ausgeführt, um zu vergleichen, ob beide Tools zu denselben Outputs kommen. Das Kommando selbst lautet
 
 `unicornscan -msf -p1-65535 [IP-Adresse]`
@@ -346,12 +346,12 @@ TCP open                     fcp[  510]         from 10.100.0.1  ttl 254
 TCP open            pcsync-https[ 8443]         from 10.100.0.1  ttl 254
 ```
 
-==	Ergebnisse der Port-Scans
+===	Ergebnisse der Port-Scans
 Im folgenden Abschnitt werden die Ergebnisse von nmap und unicornscan mit den erwarteten Werten in einer Tabelle verglichen.
 
 #pagebreak()
 
-===	Raspberry Pi
+====	Raspberry Pi
 Nach den erfolgreichen Scans lässt sich nun die folgende Tabelle aufstellen.
 
 #figure(
@@ -372,7 +372,7 @@ Die Ports 22 (SSH), 502 (Modbus) und 5900 (VNC) sind alle wie erwartet offen. De
 
 #pagebreak()
 
-===	Siemens LOGO SPS
+====	Siemens LOGO SPS
 Die erwarteten Werte sowie die Ergebnisse von nmap und unicornscan befinden sich in der folgenden Tabelle.
 
 #figure(

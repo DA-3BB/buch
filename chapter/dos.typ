@@ -1,17 +1,17 @@
 #import "@local/htl3r-da:0.1.0" as htl3r
 #htl3r.author("Esther Lina Mayer")
 
-= Denial of Service
-== Theoretische Grundlagen
+== Denial of Service
+=== Theoretische Grundlagen
 Ein Denial of Service-Angriff (DoS-Angriff) ist eine Attacke auf die Verfügbarkeit eines Services auf einem Gerät. Hierbei möchte ein Angreifer die
 normale Funktionalität eines Services unterbrechen beziehungsweise behindern, indem er die Dienste auf dem Computer mit Anfragen überlädt. Ein DoS wird von einem Gerät aus gestartet - werden mehrere verwendet (z.B. aus einem Botnet), dann spricht man von einem Distributed Denial of Service-Angriff (DDoS-Angriff).
 
 DoS-Angriffe sind effektiv - auch gegen starke Ziele. Sie können einfach und ohne großen Aufwand ausgeführt werden. Angreifer überfluten ihr Ziel mit Massen an Paketen, die die Kapazität des Geräts überfordern, welches so neuen Nutzern den Zugang zu Services verweigern und bestehende Verbindungen verlangsamt.
 
-== Slowloris
+=== Slowloris
 Slowloris ist ein Tool, welches speziell für Angriffe auf Webserver geschrieben wurde. Es öffnet eine Vielzahl an HTTP(S)-Verbindungen und versucht, diese so lange wie möglich offen zu halten. Ein großer Vorteil des Tools ist es, dass es kaum Netzwerkressourcen benötigt.
 
-=== Testen der Anfälligkeit auf Slowloris
+==== Testen der Anfälligkeit auf Slowloris
 Das Tool nmap, welches für die Port-Scans im Kapitel "Port-Scanning" bereits installiert wurde, besitzt ein eingebautes Script#footnote("https://nmap.org/nsedoc/scripts/http-slowloris.html"), welches die Anfälligkeit eines Servers auf einen möglichen Slowloris-Angriff testet.
 
 Hierfür kann die Option `--script http-slowloris` verwendet werden, um das Skript auszuführen. Weiters empfiehlt nmap die Verwendung von `--max-parallelism 400`, um die Aggressivität des Skriptes zu erhöhen. Diese Option legt die maximale Anzahl an zeitgleichen Verbindungen fest. Der gesamte Befehl lautet:
@@ -46,7 +46,7 @@ Nmap done: 1 IP address (1 host up) scanned in 1836.76 seconds
 
 Ab Zeile 9 findet sich das Ergebnis des Scans: "`Probably vulnerable`". Die SPS ist also anfällig für einen DoS-Angriff.
 
-=== Vorbereitung von Slowloris
+==== Vorbereitung von Slowloris
 Slowloris wird in einer Virtuellen Maschine am Management-PC installiert. Das Betriebssystem der VM kann beliebig gewählt werden. Im folgenden wird die Kali-Linux-VM (Version 2024.3) verwendet, welche im Kapitel Port-Scanning für unicornscan aufgesetzt wurde. Hierfür werden die folgenden Befehle ausgeführt.
 
 ```
@@ -57,7 +57,7 @@ sudo apt-get install libio-socket-ssl-perl
 
 #pagebreak()
 
-=== Durchführung von Slowloris
+==== Durchführung von Slowloris
 Das Skript kann mit dem folgenden Befehl ausgeführt werden.
 
 `perl slowloris.pl -dns 10.100.0.1`
@@ -97,7 +97,7 @@ Der Code ist aus Gründen der Übersichtlichkeit gekürzt#footnote("Dazwischen s
 
 #pagebreak()
 
-=== Stabilitätstests während Slowloris
+==== Stabilitätstests während Slowloris
 Die Erwartung an den DoS-Angriff ist es, dass ein User, welcher das Bahnnetzwerk über den Webserver der SPS steuern möchte, keinen Zugriff auf diesen hat. Während der Ausführung des Slowloris-Skripts wurde laufend ein Tests des Webservers und der Kommunikation mit dem Raspberry Pi durchgeführt.
 
 Zur Demonstration der Funktionalität ist im folgenden ein Ablauf der Kommunikation dokumentiert. Dieser wurde mehrfach durchgeführt.
@@ -122,13 +122,13 @@ Anmerkung: Eine genaue Beschreibung, was die Log-Messages bedeuten, befindet sic
 
 #pagebreak()
 
-=== Ergebnis von Slowloris
+==== Ergebnis von Slowloris
 Laut der Analyse durch das Skript von nmap ist die SPS anfällig auf einen Slowloris-DoS-Angriff. Nach rund 50.000 Paketen, welche durch Slowloris abgesendet wurden, gab es jedoch keine (erkennbare) Einschränkung des Webservers der SPS.
 
-== Python-Skript - Denial of Service-Angriff
+=== Python-Skript - Denial of Service-Angriff
 Da der Angriff mit Slowloris fehlgeschlagen ist, musste eine alternative Möglichkeit für einen Angriff ausgesucht werden, um eine "zweite Meinung" einzubringen. Hierfür wurde ein selbst geschriebenes Python-Skript erstellt, welches Verbindungen mit dem Webserver der SPS aufbaut.
 
-=== Vorbereitung des Angriffs mit Python
+==== Vorbereitung des Angriffs mit Python
 Das Skript `dos.py` ist im folgenden Abschnitt genauer beschrieben. Die Methoden des Python-Skripts sind einzeln genauer erklärt.
 
 #pagebreak()
@@ -169,7 +169,7 @@ Die letzte Methode des Skripts führt den Angriff auf den Server durch. Je grö�
 
 #pagebreak()
 
-=== Angriff mithilfe Python-Skript
+==== Angriff mithilfe Python-Skript
 Das Skript wird ebenfalls von der Kali-Linux-VM (siehe Kapitel Port-Scanning) ausgeführt.
 
 ```
@@ -187,7 +187,7 @@ Finished DoS attack at 2025-01-22 16:53:50.205103
 
 Aus der Ausgabe ist ersichtlich, dass der Server aus 1000 aufgebauten Verbindungen 674-mal nicht erreichbar war - ersichtlich in Zeile 9.
 
-=== Ergebnisse des Python-Skripts
+==== Ergebnisse des Python-Skripts
 Im Gegensatz zu den Tests während dem Slowloris-Angriff ist das Python-Skript erfolgreich gewesen. Im Laufe der Tests wurde die Verbindung auf den Webserver der SPS abgebrochen.
 
 Erwähnenswert ist, dass die Anzahl der Verbindungen drastisch erhöht werden musste, um einen Effekt zu erzielen. Beim erfolgreichen Versuch wurden die Verbindungen auf 100.000 hochgestuft.
@@ -199,7 +199,7 @@ Erwähnenswert ist, dass die Anzahl der Verbindungen drastisch erhöht werden mu
 
 #pagebreak()
 
-== Fazit
+=== Fazit
 Ein DoS-Angriff stellt also eine Gefahr für die SPS und damit das gesamte Bahnnetzwerk dar, da der User nicht auf Weichen und Blockschaltung zugreifen kann. Weiters kann man nicht sicher sein, was mit dem Programm oder gespeicherten Variablen während einer Überlastung auf der SPS passiert.
 
 Erwähnenswert ist, dass der Webserver der SPS eine enorme Masse an Verbindungen ohne Probleme verarbeiten konnte.
