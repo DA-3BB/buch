@@ -1,10 +1,10 @@
 #import "@local/htl3r-da:1.0.0" as htl3r
 #htl3r.author("Magdalena Feldhofer")
 
-= Zertifizierungsprüfungen 
-Um das Ziel der Zertifizierungsprüfung erreichen zu können, wurde der Weg des FAQ#footnote("selbstgeschriebene Frage-Antwort-Paare, um die Inhalte der Zertifizierungsunterlagen zu lernen")-Lernens gewählt. Die Zertifizierungsprüfung umfassen die wichtigsten Funktionen der Produkte FortiGate und FortiManager der Firma Fortinet.
+= FCP - Network Security 
+Die Zertifizierungsprüfungen des Fortinet Certified Professional (FCP) umfassen die wichtigsten Funktionen der Produkte der Firma Fortinet. Das Zertifikat "FCP - Network Security" besteht aus mehreren Modulen: einem Pflichtmodul, dem FortiGate Administrator und einem optionalen, in meinem Fall, dem FortiManager Administrator. Um das Ziel der Zertifizierungsprüfungen erreichen zu können, wurde der Weg des FAQ#footnote("selbstgeschriebene Frage-Antwort-Paare, um die Inhalte der Zertifizierungsunterlagen zu lernen")-Lernens gewählt. 
 
-== Vorbereitung für die Zertifizierungsprüfungen
+== Vorbereitung für den FCP
 Von Fortinet wurde dem Team das Training für die Zertifizierung auf der eigenen Fortinet-Lernplattform www.training.fortinet.com freigeschaltet. Dieses beinhaltet Videos, welche die einzelnen Kapitel genau erklären. Da das Lernen nur anhand von Videos nicht ausreichend ist, wurden anhand der schriftlichen Version der Videos Frage-Antwort-Paare in Excel verfasst. Insgesamt wurden für die Zertifizierung "FortiGate Administrator 7.4" 1255-Fragen verfasst und für "FortiManager Administrator 7.4" 475-Fragen. \
 #figure(
     image("../assets/fortigate/FAQ_snippet_Excel-3.png", width: 100%),
@@ -30,28 +30,31 @@ Mit dem Drücken einer Taste auf der Tastatur wird die richtige Antwort sichtbar
 #pagebreak()
 
 == FortiGate Administrator 7.4
-In den folgenden Abschnitten werden die einzelnen Kapitel des Zertifikatskurses zusammengefasst.
+In den folgenden Abschnitten werden die Kapitel des Zertifikatskurses zusammengefasst.
 === System and Network Settings
 Im ersten Kapitel des Kurses lernt man die Grundlagen über die FortiGate, also die Next-Generation Firewall (NGFW) von Fortinet. Man erfährt, wie man sich das erste Mal mit der FortiGate verbinden kann, die Interfaces konfiguriert und DHCP- und VLAN-Einstellungen tätigt. \ 
-Im folgenden Bild erkennt man die physischen Ports eins bis drei, welche mit Aliasen versehen sind (bsp.: Port3 --> Inet), für die leichtere Lesbarkeit der Konfiguration. Jedes der angezeigten Interfaces hat eine IP-Adresse zugewiesen, sei es via DHCP oder statisch. Dieser Unterschied kann aus der Grafik allerdings nicht entnommen werden, dafür ist ein tieferer Einblick notwendig. In der letzten Spalte sieht man die Protokolle "Ping", "HTTPS", "SSH" und "HTTP", diese Protokolle sind für den administrativen Zugriff auf die FortiGate, auf diesen Interfaces erlaubt.  
+Im folgenden Bild erkennt man die physischen Ports eins bis drei, welche mit Aliassen versehen sind (bsp.: Port3 --> Inet), für die leichtere Lesbarkeit der Konfiguration. Jedes der angezeigten Interfaces hat eine IP-Adresse zugewiesen, sei es via DHCP oder statisch. Dieser Unterschied kann aus der Grafik allerdings nicht entnommen werden, dafür ist ein tieferer Einblick notwendig. In der letzten Spalte sieht man die Protokolle "Ping", "HTTPS", "SSH" und "HTTP", diese Protokolle sind für den administrativen Zugriff auf die FortiGate, auf diesen Interfaces erlaubt.  
 #figure(
     image("../assets/fortigate/interface-overview.png", width: 100%),
     caption: "Konfigurationsübersicht der Interfaces"
 )
 Die selbe Konfiguration kann mit den folgenden CLI-Befehlen erreicht werden:\
 #htl3r.code-file(
-  caption: "Auszug aus der Datei phoenix.log",
-  filename: ["../assets/fortigate/int_conf_example.conf"],
-  lang: "log",
-  ranges: ((2, 4),),
-  skips: ((5, 0),),
-  text: read("../assets/fortigate/int_conf_example.conf")
+  caption: "Interface-Konfiguration-Beispiel",
+  filename: ["fortigate/interface-configuration.conf"],
+  lang: "",
+  //ranges: ((0, 0),),
+  //skips: ((0, 0),),
+  text: read("../assets/fortigate/interface-configuration.conf")
 )
 
+Das Kapitel umfasst ebenfalls, welche Möglichkeiten der Administration zur Verfügung stehen bzw. die Einschränkung dieser, wie zum Beispiel "trusted Hosts".Hiermit wird der Zugriff auf bestimmte Administrator-Konten nur von definierten IP-Adressen zugelassen, im folgenden Beispiel ist es der host "172.16.1.4".
 
+#figure(
+    image("../assets/fortigate/trusted-hosts.png", width: 100%),
+    caption: "Beispielkonfiguration eines trusted hosts"
+)
 
-
-Ebenfalls welche Möglichkeiten der Administration zur Verfügung stehen bzw. die Einschränkung dieser, wie zum Beispiel "trusted Hosts".\ 
 Es gibt auch eine Funktion, um eine Firewall-Instanz in mehrere aufzuteilen: Die einzelnen Virtual-Domains (VDOMs) können (per-default) nicht untereinander kommunizieren und sind dementsprechend gut wenn man mehrere Kunden getrennt verwalten möchte (MSSP).
 // backups und updates? oder useless weil eh klar
 
@@ -61,14 +64,6 @@ Dieser Teil beschäftigt sich hauptsächlich mit Firewall Policies, diese sind R
 Als Beispiel: Wenn man den Zugriff für das lokale LAN ins Internet erlauben möchte, würde man folgende Werte setzen:
 
 // Netzplan!!!!!!!!!!!!!!!!!!
-
-/*In-going Int: LAN \
-Out-going Int: DMZ \
-Src: LAN1-Adressen \
-Dest: FTP-Server-IP \
-Service: FTP \
-Schedule: Always \
-Action: Allow \*/
 
 #figure(
     image("../assets/fortigate/provisiorisches_Policy_Bild.png", width: 60%),
