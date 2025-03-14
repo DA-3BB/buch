@@ -2,7 +2,7 @@
 #htl3r.author("Marlene Reder")
 
 == Operational Technology Topologie <piverkabelung>
-Um die Operational Technology möglichst praxisnah darzustellen, wurde ein Modelleisenbahnnetz entwickelt. Dabei ist sowohl ein Gleisplan mit Elementen wie Wendeschleifen und Weichen geplant, als auch die Steuerung mit praxisrelevanten Komponenten und dem Protokoll Modbus entwickelt worden. 
+Um die Operational Technology möglichst praxisnah darzustellen, wurde ein Modelleisenbahnnetz entwickelt. Dabei ist sowohl ein Gleisplan mit Elementen wie Wendeschleifen und Weichen geplant, als auch die Steuerung mit praxisrelevanten Komponenten und dem Protokoll Modbus entwickelt worden.
 
 #figure(
     image("../assets/topologie/ot-topologie/3BB_Gleisplan.jpg", width: 74%),
@@ -14,12 +14,12 @@ Um einer normalen Eisenbahnstrecke gerecht zu werden, ist die Eisenbahn in isoli
 
 #figure(
     image("../assets/topologie/ot-topologie/3BB_Gleisbloecke.png", width: 75%),
-    caption: "Gleisplan in Blöcke unterteilt" 
+    caption: "Gleisplan in Blöcke unterteilt"
 )
 
 
 Diese Blöcke, aber auch die Weichen, werden durch ein zentrales Steuergerät, genauer gesagt durch eine #htl3r.long[sps] (#htl3r.short[sps]), der 'Siemens LOGO!' gesteuert. Dieses sendet Modbus TCP/IP Frames zu sogenannten #htl3r.long[rtu] um Daten wie die aktuelle Weichenstellung einzuholen.\ \
-Dies wurde realisiert, indem es einen OT-Netzwerkschrank gibt, der die Zentrale abbildet. In diesem befindet sich einerseits die Stromversorgung, die #htl3r.short[sps], ein OT-Switch, andererseits auch ein Microcontroller, genauer gesagt ein Raspberry PI, der als #htl3r.short[rtu] für die Weichen dient. 
+Dies wurde realisiert, indem es einen OT-Netzwerkschrank gibt, der die Zentrale abbildet. In diesem befindet sich einerseits die Stromversorgung, die #htl3r.short[sps], ein OT-Switch, andererseits auch ein Microcontroller, genauer gesagt ein Raspberry PI, der als #htl3r.short[rtu] für die Weichen dient.
 
 #figure(
     image("../assets/topologie/ot-topologie/ot-steuerzentrale.jpg", width: 45%),
@@ -54,7 +54,7 @@ Zum Programmieren selbst wurde in diesem Projekt die Sprache #htl3r.long[fub] (F
 
 #htl3r.fspace(
     figure(
-        image("../assets/topologie/ot-topologie/komponenten/siemens-logo.jpg.", width: 80%),
+        image("../assets/topologie/ot-topologie/komponenten/siemens-logo.jpg", width: 80%),
         caption: "SPS - Siemens LOGO!"),
     figure(
         image("../assets/topologie/ot-topologie/logo-soft-comfort_programmauschnitt.png", width: 85%),
@@ -96,7 +96,7 @@ Dabei wird man zum Konnektivitätstest weitergeleitet, bei dem die IP-Adresse de
     caption: "Test der Konnektivität zwischen PC und SPS"
 )\
 
-Nach einer erfogreichen Konnektivität wird nicht nur in dem Diagram Editor das Programm angezeigt, es wird auch in der Network View die #htl3r.short[sps] abgebildet. Auf dieser können nun Einstellungen wie die IP-Adresse oder aber auch das Busprotokoll Modbus aktiviert werden. Weiters ist zu erkennen, dass die #htl3r.short[sps], zusätzlich zu der zum PC, vier weitere Verbindungen hat. Diese zeigen auf, dass im Programm auf externe Inputs beziehungsweise Outputs verwiesen wird. Im Falle des Projekts ist das der Raspberry PI und die drei Waveshare Module. 
+Nach einer erfogreichen Konnektivität wird nicht nur in dem Diagram Editor das Programm angezeigt, es wird auch in der Network View die #htl3r.short[sps] abgebildet. Auf dieser können nun Einstellungen wie die IP-Adresse oder aber auch das Busprotokoll Modbus aktiviert werden. Weiters ist zu erkennen, dass die #htl3r.short[sps], zusätzlich zu der zum PC, vier weitere Verbindungen hat. Diese zeigen auf, dass im Programm auf externe Inputs beziehungsweise Outputs verwiesen wird. Im Falle des Projekts ist das der Raspberry PI und die drei Waveshare Module.
 
 
 #figure(
