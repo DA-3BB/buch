@@ -2,7 +2,7 @@
 #htl3r.author("Albin Gashi")
 #import "@preview/treet:0.1.1": *
 
-= #htl3r.long[ad] Infrastruktur <ad-infra>
+= Active Directory Infrastruktur <ad-infra>
 
 Für die Implementierung der #htl3r.short[it]-Infrastruktur wurde eine #htl3r.long[ad] Domäne umgesetzt. Diese besteht aus zwei Standorten namens #emph("Wien") und #emph("Eisenstadt"). Beide Standorte werden durch zwei unterschiedliche Child-Domains betrieben (wien.3bb-testlab.at und eisenstadt.3bb-testlab.at). Der Standort Wien simuliert die Zentrale eines Unternehmens, auf dieser auch diverse Security-Geräte angesiedelt sind, die in @fsm und @faz näher erläutert werden. Zwei Domain-Controller bilden den Standort Wien mit einem Jump-Server ab. Der Standort Eisenstadt besitzt nur einen Domain-Controller und erhält ein RDS-Gateway. Die beiden Standorte sind durch einen Site-Link zur notwendigen #htl3r.short[ldap]-Replikation verbunden.
 
@@ -10,7 +10,7 @@ Für die Implementierung der #htl3r.short[it]-Infrastruktur wurde eine #htl3r.lo
   total-width: 95%,
   figure(
     image("../assets/active-directory/ad-topology.png"),
-    caption: [logische Topologie der #htl3r.short[ad]-Infrastruktur]
+    caption: [logische Topologie der AD-Infrastruktur]
   )
 )
 
@@ -48,7 +48,7 @@ Ein Unternehmen schafft auch Abteilungen, die mittels #htl3r.shortpl[ou] realisi
             - Protected Users
       ])
     ]))),
-    caption: [Die #htl3r.short[ou]-Struktur von 3bb-testlab.at]
+    caption: [Die OU-Struktur von 3bb-testlab.at]
   )
 )
 
@@ -131,7 +131,7 @@ Um die Rechteverwaltung zu vereinfachen wurde das #htl3r.short[agdlp]-Prinzip an
       [SOC], [DL-SOC-R], [Lesen],
       [], [DL-SOC-W], [Schreiben],
     ),
-    caption: [Einschränkung der Zugriffsrechte nach dem #htl3r.short[agdlp]-Prinzip]
+    caption: [Einschränkung der Zugriffsrechte nach dem AGDLP-Prinzip]
   )
 )
 
@@ -151,7 +151,7 @@ Die Konfiguration der Domain Controller wurde mittels Powershell-Scripts durchge
 Nach dem Neustart wird die #htl3r.short[adds]-Rolle für die Domain #emph("wien.3bb-testlab.at") installiert und der Server als Domain Controller hochgestuft. Anschließend werden die Standorte Wien und Eisenstadt eingerichtet und mit einem Site-Link verbunden.
 
 #htl3r.code-file(
-  caption: "Installieren der " + htl3r.short[adds] + "-Rolle",
+  caption: "Installieren der ADDS-Rolle",
   filename: [active-directory/WIEN-3BB-DC1.ps1],
   lang: "PowerShell",
   ranges: ((23, 24), (30, 36)),
@@ -162,7 +162,7 @@ Nach dem Neustart wird die #htl3r.short[adds]-Rolle für die Domain #emph("wien.
 Am Standort Wien wird ein redundanter #htl3r.short[dhcp]-Server betrieben. Die beiden Domain Controllern teilen sich einen gemeinsamen Adressbereich mittels #htl3r.short[dhcp]-Failover auf.
 
 #htl3r.code-file(
-  caption: "Einrichten eines " + htl3r.short[dhcp] + "-Failovers",
+  caption: "Einrichten eines DHCP-Failovers",
   filename: [active-directory/WIEN-3BB-DC1.ps1],
   lang: "PowerShell",
   ranges: ((98, 104), ),
