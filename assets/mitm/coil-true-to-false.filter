@@ -1,0 +1,6 @@
+if (ip.proto == TCP && tcp.dst == 502) {
+    if (search(DATA.data, "\xff\x00")) {
+        msg( "Found \xff\x00");
+        replace( "\xff\x00", "\x00\x00" );
+    }
+}

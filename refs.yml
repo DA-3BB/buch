@@ -18,6 +18,8 @@ ci-docs:
     date: 2024-12-14
   date: 2024
 
+# ----- OT
+
 serielleschnittstellen:
   author: Dwyer Instruments, LLC
   title: RS485, RS422 and RS232
@@ -31,6 +33,13 @@ asciialt:
   type: Web
   url: https://www.kepware-opcserver.de/was-ist-modbus/
   date: 2025-3-16
+
+arp-spoofing:
+  author: IONOS Redaktion
+  title: ARP-Spoofing – Schwachstelle in der Netzwerksicherheit
+  type: Web
+  url: https://www.ionos.de/digitalguide/server/sicherheit/arp-spoofing-angriffe-aus-dem-internen-netzwerk/
+  date: 2025-3-15
 
 # ----- FORTISIEM
 
