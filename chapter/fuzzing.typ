@@ -2,91 +2,45 @@
 #htl3r.author("Marlene Reder")
 
 == Fuzzing
-=== Theoretische Grundlagen
-#htl3r.info("WAS IST FUZZING")
+Fuzzing konmmt aus der automatisierten Softwaretestung uns soll dabei zufällige Bentzereingaben in großen Mengen simulieren um so Schwachstellen aus zu entdecken. Fuzzing kann allerdings auch als Angriff genutzt werden vorallem, wenn der Quellcode unbekannt ist. Dabei kann fuzzing sowohl ein Denail of Service als auch eine Injection als ziehl haben.
+https://elsefix.com/de/tech/ann/what-is-fuzzing-in-cybersecurity.html
 
-=== Vorrausetztungen für den Angirff
-Kali VM
-Wireshark 
-python
-Terminal
-zugang zum netzwerk
-
-=== Script mit Credits
-We funktioniert script / kommentare hinzufügen
-
-```py
-from boofuzz import *
-import socket
-
-HOST = "10.100.0.11"
-PORT = 502
-SLEEP = 0
-RECV_TIMEOUT = 2
-
-target = Target(connection=TCPSocketConnection(host=HOST, port=PORT))
+=== Vorrausetztungen für den Angriff
+Um mit dem Angriff Fuzzing ausführen zu können wird ein Gerät innerhalb des Netzwerks benötigt, dass ein Python Script mit der Libary _boofuzz_ und _argparse_ ausführen kann und Wireshark installiert hat.
 
 
-def checkAliveAndRestart(target, fuzz_data_logger, session, sock, *args, **kwargs):
-    SOCKET = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    IS_CONNECTED = SOCKET.connect_ex((HOST, PORT))
-    SOCKET.close()
-    # Connection Lost
-    if IS_CONNECTED != 0:
-        fuzz_data_logger.log_error(description="Crash Detected: " + fuzz_data_logger.most_recent_test_id)
-        import os
-        os._exit(1)
-        """
-        May be restart process after crash ?
-        """
+=== Fuzzing Script
+Der erste Teil des Fuzzing Scripts erstellt eine Methode die die Modbuspakete für das Fuzzing selbst erstellt und das Fuzzing ausführt. Dabei wird angegeben welche Werte "fuzzable" sind, also welche Werte durch zufällige andere ersetzt werden sollen. In diesem Falls ist das die Transaction ID, die Länge und die Adresse des Coils.
 
+#htl3r.code-file(caption: "Fuzzing Script: Methode FuzzWriteCoil", lang: "python", text: read("../assets/fuzzing/Fuzzing.py"), ranges: ((1, 15),)) 
 
-SESSION = Session(target=target, post_test_case_callbacks=[checkAliveAndRestart],
-                  restart_callbacks=[checkAliveAndRestart])
+Um allerdings das Fuzzing ausführen zu können muss eine Session übergeben werden. Dieses wird im main erstellt, indem das Angriffsziel mithilfe von argparse vom User abgefragt wird. Wenn der User kein Ziel spezifizert wird die IP-Adresse 10.100.0.11 als Angriffziel angenommen.
 
+ #htl3r.code-file(caption: "Fuzzing Script: argparse um Angriffsziel abzufragen ", lang: "python", text: read("../assets/fuzzing/Fuzzing.py"), ranges: ((18,21),))
+ 
+Nachdem das Ziel bekannt ist wird nun ein Target also ein Ziel für den Aufbau einer TCP Session mit IP-Adresse und Port definiert. Und danach wird mit diesem Target eine Session aufgebaut, die der vorher erstellten Methode übergeben werden kann.
 
-#Fuzz Read Coil function of Modbus Protocol
-def FuzzReadCoilMemory():
-    s_initialize("modbus_read_coil")
-    s_word(0x0001, name='Transaction ID', fuzzable=True, endian=BIG_ENDIAN)
-    s_word(0x0000, name='Protocol ID', fuzzable=False, endian=BIG_ENDIAN)
-    s_word(0x0006, name='Length', fuzzable=True, endian=BIG_ENDIAN)
-    s_byte(0x01, name='Unit Identifier', fuzzable=False, endian=BIG_ENDIAN)
-
-    s_byte(0x01, name='Function Code for Read Coil Memory', fuzzable=False, endian=BIG_ENDIAN)
-    s_word(0x0000, name='Start Address', fuzzable=True, endian=BIG_ENDIAN)
-    s_word(0x0001, name='Amount of Coils to Read', fuzzable=True, endian=BIG_ENDIAN)
-
-    SESSION.connect(s_get("modbus_read_coil"))
-    SESSION.fuzz()
-
-
-if __name__ == "__main__":
-    FuzzReadCoilMemory()
-```
+ #htl3r.code-file(caption: "Fuzzing Script: Target und Session definition", lang: "python", text: read("../assets/fuzzing/Fuzzing.py"), ranges: ((18,18),(23,26)), skips: ((19,0),))
 
 === Umsetztung - Fuzzing
-erreichbarkeit testen von beiden geräten ???? \
-
+Um das Skript aufzurufen und somit das Fuzzing zu starten wird folgender befehl eingegeben.
 ```
-befhele ausführen script
+python3 Fuzzing.py
 ```
-
+Dieser startet das Fuzzing unverzüglich wie auf der Kommandozeile sichtbar wird.
 #figure(
   image("../assets/fuzzing/fuzzing-powershell.png"),
-  caption: "Hallo"
+  caption: "Terminalausgabe beim Starten des Fuzzing Scripts"
 )
 
+Ein Feature von boofuzz ist es dabei auch einen Webserver local am Port 26000 zu Starten welcher Auskünfte über den aktuellen Fuzzing zustand gibt.
 #figure(
   image("../assets/fuzzing/fuzzing-web.png"),
-  caption: "Hallo"
+  caption: "Fuzzing im Browser"
 )
 
-
-fuzzing analyste Wireshark \
-bild Wireshark
-
-
-=== Fazit ???
-
-=== Quellen --> irgendwo anders hin???
+Wenn dieser Angriff durch den Wireshark betrachtet wird, ist zu sehen, dass immer wieder TCP Session mit dem Ziel 10.100.0.11 aufgebaut werden, ein Modbuspaket gesendet wird und die Session sich wieder abgebaut wird. Und das wird so schnell gemacht, das die Antwort nochnichteinmal angezeigt wird.
+#figure(
+  image("../assets/fuzzing/wireshark-fuzzing.png"),
+  caption: "Fuzzing im Browser"
+)
