@@ -18,6 +18,20 @@ ci-docs:
     date: 2024-12-14
   date: 2024
 
+serielleschnittstellen:
+  author: Dwyer Instruments, LLC
+  title: RS485, RS422 and RS232
+  type: Web
+  url: https://www.dwyeromega.com/en-us/resources/rs422-rs485-rs232
+  date: 2025
+
+asciialt:
+  author: Inray Industriesoftware GmbH
+  title: Was ist Modbus?
+  type: Web
+  url: https://www.kepware-opcserver.de/was-ist-modbus/
+  date: 2025-3-16
+
 # ----- FORTISIEM
 
 fortisiem:
