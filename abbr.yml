@@ -1,66 +1,18 @@
-yaml:
+sms:
   short:
-    singular: YAML
+    singular: SMS
   long:
-    singular: YAML Ain't Markup Language
-  description: >
-    Eine menschlichlesbare strukturierte Textdatei, welche Daten beinhaltet.
-    Wird oft zur konfiguration eingesetzt.
+    singular: Short Message Service
+  description: Ein Standard zur Übertragung von Text im Mobilfunk.
 
-iac:
+cli:
   short:
-    singular: IaC
+    singular: CLI
+    plural: CLIs
   long:
-    singular: Infrastructure as Code
-  description: >
-    Die Abbildung der Physischen und Virtuellen Infrastruktur als Datenstruktur
-    oder auch Code.
-
-dvs:
-  short:
-    singular: DVS
-    plural: DVSs
-  long:
-    singular: Distributed Virtual Switch
-  description: >
-    Ein virtueller Switch welcher in einer vSphere-Umgebung mehreren Hosts
-    zugewiesen sein kann. Dies ermöglicht es VMs auf mehrere Hosts zu verteilen und sie dennoch in dasselbe Netzwerk zu hängen, dieser virtuelle
-    Switch dient zur verwaltung der Uplinks auf den jeweiligen Hosts.
-
-dpg:
-  short:
-    singular: DPG
-    plural: DPGs
-  long:
-    singular: Distributed Port Group
-  description: >
-    Ein virtuelles Netzwerksegment welches einem DVS zugewiesen werden kann.
-    Dieses Netzwerksegment wird den VMs, welche über mehrere Hosts verteilt sein können, zugewiesen um somit ein LAN über mehrere Hosts zu schaffen.
-
-dhcp:
-  short:
-    singular: DHCP
-  long:
-    singular: Dynamic Host Configuration Protocol
-  description: >
-    Ein Protokoll welches oft benutzt wird um dynamisch IP-Adressen über das
-    Netzwerk zu verteilen.
-
-uuid:
-  short:
-    singular: UUID
-    plural: UUIDs
-  long:
-    singular: Universally Unique Identifier
-    plural: Universally Unique Identifiers
-  description: Eine Identifikationsnummer, welche Global nur ein einziges mal existiert.
-
-api:
-  short:
-    singular: API
-  long:
-    singular: Application Programing Interface
-  description: Eine Schnittstelle die eine Kommunikation zwischen Software ermöglicht.
+    singular: Command Line Interface
+    plural: Command Line Interfaces
+  description: Die Schnittstelle zwischen Computer und Benutzer basierend auf Textzeilen.
 
 vm:
   short:
@@ -74,7 +26,8 @@ it:
   short:
     singular: IT
   long:
-    singular: Informational Technology
+    singular: Informationstechnik
+  description: Beschreibt die Technik der elektronischen Datenverarbeitung.
 
 ot:
   short:
@@ -96,37 +49,22 @@ vlan:
   long:
     singular: Virtual Local Area Network
 
-ad:
+cpu:
   short:
-    singular: AD
+    singular: CPU
+    plural: CPUs
   long:
-    singular: Active Directory
-
-addc:
-  short:
-    singular: ADDC
-    plural: ADDCs
-  long:
-    singular: Active Directory Domain Controller
-
-i2c:
-  short:
-    singular: I²C
-  long:
-    singular: Inter-Integrated Circuit
-  description: Ein Zweidraht-Datenbus mit Master-Slave-Konzept.
+    singular: Central Processing Unit
+    long: Central Processing Units
+  description: Ein elektronischer Chip, der in einem Computer Befehle verarbeitet.
 
 io:
   short:
-    singular: IO
+    singular: I/O
+    plural: I/Os
   long:
     singular: Input/Output
-
-gau:
-  short:
-    singular: GAU
-  long:
-    singular: Größter Anzunehmender Unfall
+  description: Bezeichnet in der Informatik die Ein- und Ausgabe von Daten.
 
 sps:
   short:
@@ -136,19 +74,12 @@ sps:
     singular: Speicherprogrammierbare Steuerung
     plural: Speicherprogrammierbare Steuerungen
 
+
 crc:
   short:
     singular: CRC
   long:
     singular: Cyclic Redundancy Check
-
-dmz:
-  short:
-    singular: DMZ
-  long:
-    singular: Demilitarisierte Zone
-  description: >
-    Ein eigenes Netzwerk für Dienste, die aus dem Internet zugänglich sind und vom internen Netz abgetrennt sind, um die Sicherheit zu erhöhen. Die Trennung der Netze erfolgt durch zwei Firewalls.
 
 scada:
   short:
@@ -159,15 +90,104 @@ scada:
 gui:
   short:
     singular: GUI
+    plural: GUIs
   long:
     singular: Graphical User Interface
+    plural: Graphical User Interfaces
+  description: grafische Oberfläche für Benutzer.
 
-ids:
+ssh:
   short:
-    singular: IDS
+    singular: SSH
   long:
-    singular: Intrusion Detection System
-  description: Ein System, welches ein Netzwerk überwacht und Angriffe auf dieses erkennt.
+    singular: Secure Shell
+  description: Ein Protokoll, dass verschlüsselte Verbindungen ermöglicht.
+
+https:
+  short:
+    singular: HTTPS
+  long:
+    singular: Hypertext Transfer Protocol Secure
+  description: Der Protokollstandard für das Laden von Webseiten (verschlüsselt).
+
+http:
+  short:
+    singular: HTTP
+  long:
+    singular: Hypertext Transfer Protocol
+  description: Der Protokollstandard für das Laden von Webseiten (unverschlüsselt).
+
+# ----- INTRO
+
+ucs:
+  short:
+    singular: UCS
+  long:
+    singular: Unified Computing System
+  description: Ein Datenzentren-Server von Cisco für die Virtualisierung von Betriebssystemen.
+
+# ----- Active Directory
+
+ad:
+  short:
+    singular: AD
+  long:
+    singular: Active Directory
+  description: Ein Verzeichnisdienst von Microsoft.
+
+addc:
+  short:
+    singular: ADDC
+    plural: ADDCs
+  long:
+    singular: Active Directory Domain Controller
+  description: Beinhaltet die Datenbank einer Active Directory Infrastruktur.
+
+adds:
+  short:
+    singular: ADDS
+  long:
+    singular: Active Directory Domain Services
+  description: Kernkomponente des Microsoft-Verzeichnisdienstes.
+
+ldap:
+  short:
+    singular: LDAP
+  long:
+    singular: Lightweight Directory Access Protocol
+  description: Ein Protokoll, dass der Abfrage und Änderung von Active Directory Informationen dient.
+
+ou:
+  short:
+    singular: OU
+    plural: OUs
+  long:
+    singular: Organizational Unit
+    plural: Organizational Units
+  description:
+
+ftp:
+  short:
+    singular: FTP
+  long:
+    singular: File Transfer Protocol
+  description: Ein Netzwerkprotokoll um Dateien zu speichern, verwalten und herunterzuladen.
+
+dhcp:
+  short:
+    singular: DHCP
+  long:
+    singular: Dynamic Host Configuration Protocol
+  description: Ein Netzwerkprotokoll für die zentrale Zuweisung von IP-Adressen an Geräte.
+
+agdlp:
+  short:
+    singular: AGDLP
+  long:
+    singular: Account, Global, Domain Local, Permission
+  description: Beschreibt die offizielle Empfehlung von Microsoft für Rechteverwaltung.
+
+# ----- FortiSIEM
 
 siem:
   short:
@@ -198,6 +218,64 @@ pam:
     singular: Performance and Availability Management
   description: Bietet Einblicke in den Zustand von Geräten und Applikationen in einem Netzwerk durch das FortiSIEM
 
+cmdb:
+  short:
+    singular: CMDB
+    plural: CMDBs
+  long:
+    singular: Confiugration and Management Database
+  description: Nutzt eine Postgres Datenbank um FortiSIEM-Konfigurationen wie Geräteinformationen, Zugangsdaten, Regeln und Reports zu speichern.
+
+gdpr:
+  short:
+    singular: GDPR
+  long:
+    singular: General Data Protection Regulation
+  description: Name der Datenschutzgrundverordnung auf Englisch
+
+dsgvo:
+  short:
+    singular: DSGVO
+  long:
+    singular: Datenschutzgrundverordnung
+  description: Bezeichnet die Verordnung der Europäischen Union 2016/679 für EU-weite Regeln der Verarbeitung von persönlichen Daten.
+
+radius:
+  short:
+    singular: RADIUS
+  long:
+    singular: Remote Authentication Dial-In User Service
+  description: Protokoll zur Authentifizierung, Autorisierung, und Accounting von Benutzern in einem Netzwerk.
+
+attck:
+  short:
+    singular: ATT&CK
+  long:
+    singular: Adversarial Tactics, Techniques, and Common Knowledge
+  description: Eine von MITRE Coprotation betriebene Datenbank zu Sicherheitslücken.
+
+# ----- FORTIANALYZER
+
+soc:
+  short:
+    singular: SOC
+    plural: SOCs
+  long:
+    singular: Security Operations Center
+    plural: Security Operations Centers
+  description: Eine IT-Organisation, die sich mit aktuellen Netzwerkgefahren befasst.
+
+adom:
+  short:
+    singular: ADOM
+    plural: ADOMs
+  long:
+    singular: Administrative Domain
+    plural: Administrative Domains
+  description: Begrenzt den administrativen Zugriff auf bestimmte Komponente.
+
+# ----- OT
+
 gpio:
   short:
     singular: GPIO
@@ -209,7 +287,7 @@ gpio:
 fub:
   short:
     singular: FUB
-  long: 
+  long:
     singular: Funktionsplan
   description: Eine grafische Programmiersprache der Siemens LOGO!, die mit logische Funktionsblöcken funktioniert.
 
@@ -276,14 +354,14 @@ ascii:
 lrc:
   short:
     singular: LRC
-  long: 
+  long:
     singular: Längenparitätsprüfung
   description: Zur Fehlererkännung von 1-Bit Fehlern werden Prüfbit (Paritätsbits) an die Daten angehängt.
 
 crlf:
   short:
     singular: CRLF
-  long: 
+  long:
     singular: Carriage Return und Line Feed
   description: Zeichen für einen Zeilenumbruch, CR = Carriage Return and LF = Line Feed
 
@@ -298,4 +376,3 @@ tls:
     singular: tls
   long:
     singular: Transport Layer Security
-
