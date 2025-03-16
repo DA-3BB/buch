@@ -199,3 +199,10 @@ vdom:
     plural: VDOMs
   long:
     singular: Virtual Domain
+
+udf:
+  short:
+    singular: UDF
+    plural: UDFs
+  long:
+    singular: User-Definied-Funktion
