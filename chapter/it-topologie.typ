@@ -15,6 +15,11 @@ Die physische 60E FortiGate wird mittels LAN-Kabel mit dem Switch der OT verbund
   caption: "Gesamttopologie"
 )
 
+#figure(
+  image("../assets/topologie/3BB_FCP_Topologie.jpg"),
+  caption: "IT-Topologie"
+)
+
 Um die Standorte Wien, Eisenstadt und das Zugnetzwerk zu verbinden, sind drei Firewalls im einsatz. Die eine Physische 60E und zwei virtuelle FortiGates in der Version 7.6. Alle drei haben ein Interface in einem Vlan, in welchem nur sie kommunizieren können, es simuliert das Internet. Dadurch, dass man Daten zwischen Standorten nicht unverschlüsselt übertragen möchte, werden IPSec VPN Tunnel zwischen den Standorten gespannt mit dem Full-Mesh Modell (jede Firewall ist mit jeder anderen verbunden).
 
 
