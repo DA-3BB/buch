@@ -1,3 +1,5 @@
+# sind die zwei noch fenrir?
+
 hc-auto-prov:
   type: Article
   author:
@@ -17,3 +19,70 @@ ci-docs:
     value: https://cloudinit.readthedocs.io/en/latest/index.html
     date: 2024-12-14
   date: 2024
+
+# quellen esther start
+
+nmap-manual:
+  type: misc
+  title: Nmap Reference Guide
+  author: Nmap 
+  url:
+    value: https://nmap.org/book/man.html
+    date: 2024-11-16
+  date: 2024
+
+unicornscan:
+  type: misc
+  title: Unicornscan Tool Documentation
+  author: Kali-Linux
+  url:
+    value: https://www.kali.org/tools/unicornscan/#tool-documentation
+    date: 2024-11-16
+  date: 2024
+
+strafgesetzbuch:
+  type: misc
+  title: "Bundesrecht konsolidiert: Gesamte Rechtsvorschrift für Strafgesetzbuch, Fassung vom 16.03.2025"
+  author: Bundesrechtsinformationssystem
+  url:
+    value: https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=10002296
+    date: 2024-12-13
+  date: 2024
+  
+replay:
+  type: misc
+  title: What Is a Replay Attack?
+  author: Chainlink Education Hub
+  url:
+    value: https://chain.link/education-hub/replay-attack
+    date: 2025-03-05
+  date: 2025
+  
+dos-guidance:
+  type: misc
+  title: Denial of Service (DoS) guidance
+  author: National Cyber Security Centre UK
+  url:
+    value: https://www.ncsc.gov.uk/collection/denial-service-dos-guidance-collection
+    date: 2025-01-24
+  date: 2025
+
+dos-slowloris:
+  type: misc
+  title: Slowloris DDoS attack
+  author: Cloudflare
+  url:
+    value: https://www.cloudflare.com/learning/ddos/ddos-attack-tools/slowloris/
+    date: 2024-12-30
+  date: 2024
+
+nmap-slowloris:
+  type: misc
+  title: Script http-slowloris
+  author: Nmap
+  url:
+    value: https://nmap.org/nsedoc/scripts/http-slowloris.html
+    date: 2025-01-04
+  date: 2025
+  
+# quellen esther ende
