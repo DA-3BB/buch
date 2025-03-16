@@ -1,4 +1,4 @@
-#import "@local/htl3r-da:0.1.0" as htl3r
+#import "@local/htl3r-da:1.0.0" as htl3r
 #htl3r.author("Esther Lina Mayer")
 
 = Denial of Service
@@ -334,4 +334,3 @@ https://www.cloudflare.com/learning/ddos/ddos-attack-tools/slowloris/
 https://nmap.org/nsedoc/scripts/http-slowloris.html
 
 */
-

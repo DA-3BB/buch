@@ -1,0 +1,3 @@
+[root@WIEN-3BB-FSM-SV ~]# tail -n 20 /opt/phoenix/log/phoenix.log
+2025-02-08T22:34:51.557903+01:00 WIEN-3BB-FSM-SV phMonitorSupervisor[3698548]: [PH_BASE_PROC_SYS_PROC_INFO_GET_FAILURE]:[eventSeverity]=PHL_WARNING,[procName]=phMonitorSupervisor,[fileName]=phSystemProcessInfo.cpp,[lineNumber]=447,[phLogDetail]=Failed to get system process information(/opt/phoenix/log/Node.js-charting.pid)
+2025-02-08T22:34:52.097787+01:00 WIEN-3BB-FSM-SV phRuleWorker[3699553]: [PH_GENERIC_INFO]:[eventSeverity]=PHL_INFO,[procName]=phRuleWorker,[fileName]=phRuleWorker.cpp,[lineNumber]=299,[phLogDetail]=packer thread 45056 no more task, totalInserts=0, totalPackSize=0

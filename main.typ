@@ -26,24 +26,4 @@
   print-ref: true,
   generative-ai-clause: none,
   abbreviation: yaml("abbr.yml"),
-  /*bibliography-content: bibliography(
-    "refs.yml",
-    full: true,
-    title: [Literaturverzeichnis],
-    style: "harvard-cite-them-right",
-  ),*/
 )
-
-#include "chapter/einleitung.typ"
-
-#include "chapter/it-topologie.typ"
-
-#include "chapter/ot-topologie.typ"
-
-#include "chapter/modbus.typ"
-
-#include "chapter/fortigate.typ"
-
-//#include "chapter/fortisiem.typ"
-
-#include "chapter/port-scan.typ"

@@ -74,7 +74,6 @@ sps:
     singular: Speicherprogrammierbare Steuerung
     plural: Speicherprogrammierbare Steuerungen
 
-
 crc:
   short:
     singular: CRC
@@ -157,6 +156,20 @@ ldap:
     singular: Lightweight Directory Access Protocol
   description: Ein Protokoll, dass der Abfrage und Änderung von Active Directory Informationen dient.
 
+dns:
+  short:
+    singular: DNS
+  long:
+    singular: Domain Name System
+  description: Bietet den Zugang zu IP-Adressen via Domänennamen.
+
+ntp:
+  short:
+    singular: NTP
+  long:
+    singular: Network Time Protocol
+  description: Dient der Zeitsynchronisation von Computern mit der globalen Uhrzeit.
+
 ou:
   short:
     singular: OU
@@ -186,6 +199,15 @@ agdlp:
   long:
     singular: Account, Global, Domain Local, Permission
   description: Beschreibt die offizielle Empfehlung von Microsoft für Rechteverwaltung.
+
+gpo:
+  short:
+    singular: GPO
+    plural: GPOs
+  long:
+    singular: Group Policy Object
+    plural: Group Policy Objects
+  description: Dient der Konfiguration von Windows-Computer und Accounts.
 
 # ----- FortiSIEM
 
@@ -252,7 +274,14 @@ attck:
     singular: ATT&CK
   long:
     singular: Adversarial Tactics, Techniques, and Common Knowledge
-  description: Eine von MITRE Coprotation betriebene Datenbank zu Sicherheitslücken.
+  description: Eine von MITRE Coprotation betriebene Datenbank für Sicherheitslücken.
+
+gpg:
+  short:
+    singular: GPG
+  long:
+    singular: GNU Privacy Guard
+  description: Eine hybride Verschlüsselungs-Software vom GNU Project.
 
 # ----- FORTIANALYZER
 
@@ -274,6 +303,13 @@ adom:
     plural: Administrative Domains
   description: Begrenzt den administrativen Zugriff auf bestimmte Komponente.
 
+capwap:
+  short:
+    singular: CAPWAP
+  long:
+    singular: Control And Provisioning of Wireless Access Points
+  description: Ein Protokollstandard für die zentrale Verwaltung von Access Points.
+
 # ----- OT
 
 gpio:
@@ -290,13 +326,6 @@ fub:
   long:
     singular: Funktionsplan
   description: Eine grafische Programmiersprache der Siemens LOGO!, die mit logische Funktionsblöcken funktioniert.
-
-
-snmp:
-  short:
-    singular: SNMP
-  long:
-    singular: Simple Network Management Protocol
 
 pwm:
   short:
@@ -349,7 +378,7 @@ ascii:
     singular: ASCII
   long:
     singular: American Standard Code for Information Interchange
-  description:  7-Bit Zeichenkodierung.
+  description: 7-Bit Zeichenkodierung.
 
 lrc:
   short:
@@ -376,3 +405,10 @@ tls:
     singular: tls
   long:
     singular: Transport Layer Security
+
+udf:
+  short:
+    singular: UDF
+    plural: UDFs
+  long:
+    singular: User-Definied-Funktion

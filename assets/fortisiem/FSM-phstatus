@@ -1,0 +1,43 @@
+Every 1.0s: /opt/phoenix/bin/phstatus.py                                                                                                                                               WIEN-3BB-FSM-SV: Sat Feb  8 22:33:43 2025
+
+System uptime:  22:33:44 up 44 days,  5:51,  2 users,  load average: 1.00, 1.00, 1.10
+Tasks: 32 total, 0 running, 32 sleeping, 0 stopped, 0 zombie
+Cpu(s): 12 cores, 17.7%us, 0.5%sy, 0.0%ni, 81.6%id, 0.0%wa, 0.2%hi, 0.1%si, 0.0%st
+Mem: 24394644k total, 16558924k used, 1828992k free, 11496k buffers
+Swap: 26058744k total, 0k used, 26058744k free, 7563756k cached
+
+
+PROCESS                  UPTIME         CPU%           VIRT_MEM       RES_MEM
+
+phParser                 05:52:09       0              2975m          1157m
+phQueryMaster            05:52:09       0              1211m          132m
+phRuleMaster             05:52:09       0              1897m          1113m
+phRuleWorker             05:52:09       0              1670m          243m
+phQueryWorker            05:52:09       0              1635m          177m
+phDataManager            05:52:09       0              3079m          2123m
+phDiscover               05:52:09       1              688m           81m
+phReportWorker           05:52:09       0              1788m          148m
+phReportMaster           05:52:09       0              838m           97m
+phIpIdentityWorker       05:52:09       0              1235m          100m
+phIpIdentityMaster       05:52:09       0              630m           62m
+phAgentManager           05:52:09       0              1747m          87m
+phCheckpoint             05:52:09       0              359m           51m
+phPerfMonitor            05:52:09       3              936m           97m
+phDataPurger             05:52:09       0              730m           84m
+phEventForwarder         05:52:09       0              648m           50m
+phMonitor                05:52:13       0              1500m          144m
+Apache                   44-05:51:25    0              317m           18m
+Rsyslogd                 44-05:50:25    0              192m           6272k
+Node.js-charting         44-05:50:24    0              10938m         85m
+Node.js-pm2              44-05:50:07    0              941m           73m
+Node.js-exporter         44-05:50:18    0              10919m         61m
+Node.js-jsreport         44-05:50:24    0              1374m          129m
+phFortiInsightAI         44-05:02:44    0              12219m         359m
+phAnomalyWorker          44-05:01:42    0              1609m          200m
+AppSvr                   44-05:50:04    15             13257m         4918m
+DBSvr                    44-05:51:25    0              823m           105m
+JavaQueryServer          05:52:13       0              12952m         1148m
+phAnomalyMaster          44-05:01:43    0              1598m          191m
+phGenerativeAI           44-05:01:44    0              715m           111m
+SVNLite                  44-05:51:25    0              10186m         510m
+Redis                    44-05:50:08    0              246m           71m
