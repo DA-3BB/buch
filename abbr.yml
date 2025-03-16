@@ -116,6 +116,15 @@ http:
     singular: Hypertext Transfer Protocol
   description: Der Protokollstandard für das Laden von Webseiten (unverschlüsselt).
 
+# ----- INTRO
+
+ucs:
+  short:
+    singular: UCS
+  long:
+    singular: Unified Computing System
+  description: Ein Datenzentren-Server von Cisco für die Virtualisierung von Betriebssystemen.
+
 # ----- Active Directory
 
 ad:
@@ -199,7 +208,6 @@ gpo:
     singular: Group Policy Object
     plural: Group Policy Objects
   description: Dient der Konfiguration von Windows-Computer und Accounts.
-
 
 # ----- FortiSIEM
 

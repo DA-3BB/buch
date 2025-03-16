@@ -1,6 +1,5 @@
 #import "@local/htl3r-da:0.1.0" as htl3r
 
-
 #show: htl3r.diplomarbeit.with(
   title: "3BB",
   subtitle: "Sicherheit im Bahnnetz",
@@ -27,10 +26,4 @@
   print-ref: true,
   generative-ai-clause: none,
   abbreviation: yaml("abbr.yml"),
-  bibliography-content: bibliography(
-    "refs.yml",
-    full: true,
-    title: [Literaturverzeichnis],
-    style: "harvard-cite-them-right",
-  ),
 )

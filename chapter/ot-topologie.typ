@@ -2,7 +2,7 @@
 #htl3r.author("Marlene Reder")
 
 == Operational Technology Topologie <piverkabelung>
-Um die Operational Technology möglichst praxisnah darzustellen, wurde ein Modelleisenbahnnetz entwickelt. Dabei ist sowohl ein Gleisplan mit Elementen wie Wendeschleifen und Weichen geplant, als auch die Steuerung mit praxisrelevanten Komponenten und dem Protokoll Modbus entwickelt worden. 
+Um die Operational Technology möglichst praxisnah darzustellen, wurde ein Modelleisenbahnnetz entwickelt. Dabei ist sowohl ein Gleisplan mit Elementen wie Wendeschleifen und Weichen geplant, als auch die Steuerung mit praxisrelevanten Komponenten und dem Protokoll Modbus entwickelt worden.
 
 #figure(
     image("../assets/topologie/ot-topologie/3BB_Gleisplan.jpg", width: 74%),
@@ -14,12 +14,12 @@ Um einer normalen Eisenbahnstrecke gerecht zu werden, ist die Eisenbahn in isoli
 
 #figure(
     image("../assets/topologie/ot-topologie/3BB_Gleisbloecke.png", width: 75%),
-    caption: "Gleisplan in Blöcke unterteilt" 
+    caption: "Gleisplan in Blöcke unterteilt"
 )
 
 
 Diese Blöcke, aber auch die Weichen, werden durch ein zentrales Steuergerät, genauer gesagt durch eine #htl3r.long[sps] (#htl3r.short[sps]), der 'Siemens LOGO!' gesteuert. Dieses sendet Modbus TCP/IP Frames zu sogenannten #htl3r.long[rtu] um Daten wie die aktuelle Weichenstellung einzuholen.\ \
-Dies wurde realisiert, indem es einen OT-Netzwerkschrank gibt, der die Zentrale abbildet. In diesem befindet sich einerseits die Stromversorgung, die #htl3r.short[sps], ein OT-Switch, andererseits auch ein Microcontroller, genauer gesagt ein Raspberry PI, der als #htl3r.short[rtu] für die Weichen dient. 
+Dies wurde realisiert, indem es einen OT-Netzwerkschrank gibt, der die Zentrale abbildet. In diesem befindet sich einerseits die Stromversorgung, die #htl3r.short[sps], ein OT-Switch, andererseits auch ein Microcontroller, genauer gesagt ein Raspberry PI, der als #htl3r.short[rtu] für die Weichen dient.
 
 #figure(
     image("../assets/topologie/ot-topologie/ot-steuerzentrale.jpg", width: 45%),
@@ -38,7 +38,7 @@ Weiters erfasst die Steuerung Reflex-Lichtschranken, um den Übergang der Eisenb
 
 === Stromversorgung
 Bei der Stromversorgung wurde darauf geachtet, dass keine 230V Geräte im Einsatz sind, um die Sicherheit beim Arbeiten und im späteren Verlauf, wenn Schüler*innen die Steuerung als Laborübung nutzen, zu gewährleisten.
-\ #pagebreak()
+\
 Der Switch braucht dabei als einziges Gerät 24V, der Raspberry PI 5.5V und alle anderen Komponenten - #htl3r.short[sps], Relais Module, Reflex-Lichtschranken - werden mit dem 12V Netzteil betrieben.
 
 #figure(
@@ -54,7 +54,7 @@ Zum Programmieren selbst wurde in diesem Projekt die Sprache #htl3r.long[fub] (F
 
 #htl3r.fspace(
     figure(
-        image("../assets/topologie/ot-topologie/komponenten/siemens-logo.jpg.", width: 80%),
+        image("../assets/topologie/ot-topologie/komponenten/siemens-logo.jpg", width: 80%),
         caption: "SPS - Siemens LOGO!"),
     figure(
         image("../assets/topologie/ot-topologie/logo-soft-comfort_programmauschnitt.png", width: 85%),
@@ -96,7 +96,7 @@ Dabei wird man zum Konnektivitätstest weitergeleitet, bei dem die IP-Adresse de
     caption: "Test der Konnektivität zwischen PC und SPS"
 )\
 
-Nach einer erfogreichen Konnektivität wird nicht nur in dem Diagram Editor das Programm angezeigt, es wird auch in der Network View die #htl3r.short[sps] abgebildet. Auf dieser können nun Einstellungen wie die IP-Adresse oder aber auch das Busprotokoll Modbus aktiviert werden. Weiters ist zu erkennen, dass die #htl3r.short[sps], zusätzlich zu der zum PC, vier weitere Verbindungen hat. Diese zeigen auf, dass im Programm auf externe Inputs beziehungsweise Outputs verwiesen wird. Im Falle des Projekts ist das der Raspberry PI und die drei Waveshare Module. 
+Nach einer erfogreichen Konnektivität wird nicht nur in dem Diagram Editor das Programm angezeigt, es wird auch in der Network View die #htl3r.short[sps] abgebildet. Auf dieser können nun Einstellungen wie die IP-Adresse oder aber auch das Busprotokoll Modbus aktiviert werden. Weiters ist zu erkennen, dass die #htl3r.short[sps], zusätzlich zu der zum PC, vier weitere Verbindungen hat. Diese zeigen auf, dass im Programm auf externe Inputs beziehungsweise Outputs verwiesen wird. Im Falle des Projekts ist das der Raspberry PI und die drei Waveshare Module.
 
 
 #figure(
@@ -108,7 +108,6 @@ Nach einer erfogreichen Konnektivität wird nicht nur in dem Diagram Editor das 
     caption: "Verbindungen zu einem Modbus Device"
 )
 
-#pagebreak()
 === Raspberry PI
 Wie in @piverkabelung erwähnt, hängen die Servomotoren an dem Raspberry PI, welcher als Modbus Server die Weichensteuerung übernimmt. Nachdem der Raspberry PI nur eine limitierte Anzahl an #htl3r.short[pwm] Outputpins hat und die Servos jittern würden, wurde ein "16 Kanal Servo Driver uHAT (I2C) für Raspberry Pi" verwendet. Dieser löst beide Probleme, wenndoch gegen das Jittern ein Widerstand am Servo Driver HAT abgezwickt werden musste, damit die Stromversorgung extern und nicht am Raspbery PI hängt. \
 Zum Modbus Server wurde der Raspberry PI mithilfe eines Python Programms und der Libary "pyModbusTCP", genaueres dazu ist im Abschnitt X.X. zu finden.
@@ -131,10 +130,10 @@ Das besondere an dem Waveshare Relais ist, dass es - wie der Name schon sagt - �
 Um die Grundkonfiguration der Waveshare Relais vorzunehmen, kann die Software 'VirCom' eingesetzt werden. Diese findet alle Waveshare Module, die im Netzwerk hängen, ohne die IP-Adresse oder sonstige Informationen zu haben. Sobald die IP-Adresse der Geräte bekannt ist, können alle anderen Einstellungen auch mit dieser über einen Webbrowser getätigt werden.
 \ \
 Um die Relais bestmöglich nach Anwendungsfall einzusetzten sollten sich zuerste die Control Modes angeschaut werden. Dabei ist zu beachten, dass beim linkage Modus die Relais nicht seperat angesprochen werden können.
-- 0x0000 normaler Modus: Relais werden direkt mit Befehlen angesprochen
-- 0x0001 linkage Modus: Relais status ist mit den Inputs verknüft
-- _0x0002 toggle Modus: a pulse in the input channel toggles the relay state once_
-- _0x0003 edge Modus: an edge change in the input channel toggles the relay state once_
+- 0x0000 normaler Modus: Relais werden direkt mit Befehlen angesprochen.
+- 0x0001 linkage Modus: Relaisstatus entspricht dem Status des jeweiligen Inputs.
+- 0x0002 toggle Modus: Relaisstatus wird bei einem Impuls am jeweiligen Input umgeschalten.
+- 0x0003 edge Modus: Relaistatus wird bei einem Flankenwechsel am jeweiligen Inputs umgeschalten.
 
 === Reflex-Lichtschranken
 Um den Blockübertritt zu erkennen, werden Reflex-Lichtschranken an beiden Seiten der Isolierung eingesetzt, um die Richtung der Modelleisenbahn zu erkennen. Die Reflex-Lichtschranken hängen dabei am Input der Relais Module und die #htl3r.short[sps] kann sie über diese abfragen. \
