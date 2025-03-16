@@ -1,0 +1,67 @@
+{
+  "mutex": {
+    "version": "0.0.1",
+    "rootPath": "/opt/3bb/modbus/"
+  },
+  "server": {
+    "host": "0.0.0.0",
+    "port": 502,
+    "logging": {
+      "fileName": "3bb_server.log",
+      "level": "info",
+      "when": "m",
+      "interval": 60,
+      "backupCount": 3
+    }
+  },
+  "client": {
+    "server": "localhost",
+    "port": 502
+  },
+  "trackSwitches": {
+    "1": {
+      "name": "Weiche1",
+      "gpio": {
+        "pin": 14,
+        "maxPw": 1.2,
+        "minPw": 1.3
+      },
+      "modBus": {
+        "holdingCoil": 0
+      }
+    },
+    "2": {
+      "name": "Weiche2",
+      "gpio": {
+        "pin": 15,
+        "maxPw": 1.15,
+        "minPw": 1.25
+      },
+      "modBus": {
+        "holdingCoil": 1
+      }
+    },
+    "3": {
+      "name": "Weiche3",
+      "gpio": {
+        "pin": 13,
+        "maxPw": 1.21,
+        "minPw": 1.32
+      },
+      "modBus": {
+        "holdingCoil": 2
+      }
+    },
+    "4": {
+      "name": "Weiche4",
+      "gpio": {
+        "pin": 12,
+        "maxPw": 1.25,
+        "minPw": 1.4
+      },
+      "modBus": {
+        "holdingCoil": 3
+      }
+    }
+  }
+}

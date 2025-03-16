@@ -1,0 +1,14 @@
+config system interface
+    edit "port1"
+        set alias "WIEN-3BB-SOC"
+        set ip 10.3.18.20 255.255.255.0
+        set allowaccess https ssh
+        set type physical
+    next
+    edit "port3"
+        set alias "REMOTE-ACCESS"
+        set ip 10.40.21.100 255.255.255.0
+        set allowaccess ping https ssh http
+        set type physical
+    next
+end

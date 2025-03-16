@@ -14,13 +14,13 @@ Von Fortinet wurde dem Team das Training für die Zertifizierung auf der Fortine
     image("../assets/fortigate/FAQ_snippet_Excel-3.png", width: 100%),
     caption: "Ausschnitt der Excel-Tabelle mit den FAQs"
 )\
-Mithilfe von "Anki", einer bekannten App um FAQs zu lernen, wurden die Frage-Antwort-Paare importiert und jeden Tag 20 neue gelernt, sowie die bereits beantworteten Fragen, welche - je nach Schwierigkeitsgrad - früher oder später wiederholt werden sollten. \ 
+Mithilfe von "Anki", einer bekannten App um FAQs zu lernen, wurden die Frage-Antwort-Paare importiert und jeden Tag 20 neue gelernt, sowie die bereits beantworteten Fragen, welche - je nach Schwierigkeitsgrad - früher oder später wiederholt werden sollten. \
 Ergänzend wurden sogenannte "Labs" durchgeführt, hierfür stellt die Trainingsplattform von Fortinet eine virtuelle Umgebung zur Verfügung, sowie eine Schritt-für-Schritt Anleitung, welche Tasks wie erledigt werden sollen. \
 Um die Inhalte des Kurses auch praktisch und intuitiv zu lernen, wurde eine Topologie aufgebaut, in der die wichtigsten Themen implementiert wurden.
 
 
 === Training mit FAQs
-Jeden Tag wurde eine Anzahl von 20 neuen FAQs gelernt. Man bekommt jeweils eine Frage angezeigt, bei welcher die Antwort noch nicht sichtbar ist. Somit muss man sich zuerst seine eigene Antwort denken, bevor man die korrekte sieht. 
+Jeden Tag wurde eine Anzahl von 20 neuen FAQs gelernt. Man bekommt jeweils eine Frage angezeigt, bei welcher die Antwort noch nicht sichtbar ist. Somit muss man sich zuerst seine eigene Antwort denken, bevor man die korrekte sieht.
 #figure(
     image("../assets/fortigate/anki_screenshot_example_faq_closed.png", width: 50%),
     caption: "Beispiel einer verdeckten Karteikarte"
@@ -35,9 +35,11 @@ Mit dem Drücken einer Taste auf der Tastatur wird die richtige Antwort sichtbar
 
 == FortiGate Administrator 7.4
 In den folgenden Abschnitten werden die Kapitel des Zertifikatskurses zusammengefasst.
+
 === System und Netzwerk Einstellungen
 Im ersten Kapitel des Kurses lernt man die Grundlagen über die FortiGate, die Next-Generation Firewall (NGFW) von Fortinet. Man erfährt, wie man sich das erste Mal mit der FortiGate verbinden kann, die Interfaces konfiguriert und DHCP- und VLAN-Einstellungen tätigt. \ 
 Im folgenden Bild erkennt man die physischen Ports eins bis drei, welche mit Aliassen versehen sind (bsp.: Port3 --> Inet), für die leichtere Lesbarkeit der Konfiguration. Jedes der angezeigten Interfaces hat eine IP-Adresse zugewiesen, sei es via DHCP oder statisch. Dieser Unterschied kann aus der Grafik allerdings nicht entnommen werden, dafür ist ein tieferer Einblick notwendig. In der letzten Spalte sieht man die Protokolle "Ping", "HTTPS", "SSH" und "HTTP", diese Protokolle sind für den administrativen Zugriff auf die FortiGate, auf diesen Interfaces erlaubt.  
+
 #figure(
     image("../assets/fortigate/interface-overview.png", width: 100%),
     caption: "Konfigurationsübersicht der Interfaces"
@@ -74,13 +76,13 @@ Wenn man den Zugriff für das LAN ins Internet erlauben möchte, wobei nur Adres
     caption: "Beispielhafte Policy Konfiguration"
 )
 Die selbe Konfiguration ist auch über die CLI möglich:
+
 #htl3r.code-file(
   caption: "Firewall-Policy Konfigurationsbeispiel",
   filename: ["fortigate/firewall-policy.conf"],
   lang: "",
   text: read("../assets/fortigate/firewall_policy.conf")
 )
-
 
 "Network Address Translation" (NAT) ist hauptsächlich dafür zuständig, private IP-Adressen auf öffentliche zu übersetzen, hierbei meist die Quell-Adresse. Da es nicht unendlich viele öffentlichen IP-Adressen gibt, ist dieses Verfahren hilfreich, um diese zu sparen, da mit Hilfe von "Port Address Translation" (PAT) mehrere Adressen auf eine öffentliche zugewiesen werden und dann auch wieder auf die privaten zurück zu übersetzen. NAT übersetzt Adressen entweder anhand der outgoing-IP-Adresse des Interfaces oder anhand eines Pools. Das folgende Bild zeigt die NAT-Konfigurationsoptionen, welche pro Firewall-Policy zur Verfügung stehen:
 #figure(
@@ -114,14 +116,16 @@ Zu den häufigsten Anwendungsfällen zählt ein Admin-Zugriff von Extern: Ein Ad
 
 === Routing
 Routing ist dafür zuständig, ein Paket von einem Netzwerk an ein anderes weiterzuleiten. Die Schwierigkeit besteht darin, zu wissen, welcher Port mit dem richtigen Netz verbunden ist. Um das Problem zu lösen gibt es Routing Tabellen, in welchen steht, welches Netzwerk über welches Interface erreichbar ist bzw. wohin das Paket gesendet werden muss. \
-Bei der FortiGate gibt es zwei Routing-Tabellen: Die Routing Information Database (RIB) und die Forwarding Information Database (FIB). In der RIB stehen nur aktive Routen während die FIB die Routing Tabelle aus der Sicht des Kernels darstellt.\ 
+Bei der FortiGate gibt es zwei Routing-Tabellen: Die Routing Information Database (RIB) und die Forwarding Information Database (FIB). In der RIB stehen nur aktive Routen während die FIB die Routing Tabelle aus der Sicht des Kernels darstellt.\
 
 *Equal-Cost-Multipath (ECMP):* Routen des selben Protokolls mit selber Ziel-Adresse, Distance, Metrik und Priority. Alle ECMP Routen stehen in der RIB und es wird automatisch geloadbalanced.
-\ 
+\
 
 Nachdem es mehrere Routen zum selben Ziel geben kann, werden Parameter benötigt, mit denen die beste Route bestimmt wird. Die beste Route ist somit abhängig von den folgenden Werten:
 - Distance: Erster relevante Parameter bei gleichen Routen, welche von unterschiedlichen Protokollen gelernt wurden. Je niedriger dieser Wert desto besser, mit Ciscos Administrativer Distanz vergleichbar, bsp: OSPF: 110, RIP: 120.
+
 - Metric: Relevant bei gleichen Routen welche von dem selben Protokoll gelernt wurden. Abhängig vom verwendeten Protokoll sieht die Metric und die Metric-berechnung unterschiedlich aus. Bei OSPF wären es die Kosten und bei RIP der Hopcount.\  
+
 - Priority: entscheidend bei statische Routen mit der selben Distance.
 
 Reverse Path Forwarding (RPF) ist ein Mechanismus um IP-Spoofing zu verhindern. Hierfür wird die Source-IP auf eine Retour-Route geprüft mittels einer von zwei Optionen:
@@ -138,21 +142,25 @@ Die generelle Funktion wird wie folgt pro Interface angewandt, während die Art 
 
 
 === Firewall Authentication
-Bei der FortiGate werden nicht nur Geräte und IP-Adressen authentifiziert sondern auch Benutzer und Gruppen, dies wird durch das Zuordnen von Benutzern zu Firewall Policy Sources ermöglicht. In einer Policy wählt man zusätzlich zu Quell-Adresse User-Objekte aus, erst wenn beide Parameter übereinstimmen wird die Policy angewandt.  \ 
+Bei der FortiGate werden nicht nur Geräte und IP-Adressen authentifiziert sondern auch Benutzer und Gruppen, dies wird durch das Zuordnen von Benutzern zu Firewall Policy Sources ermöglicht. In einer Policy wählt man zusätzlich zu Quell-Adresse User-Objekte aus, erst wenn beide Parameter übereinstimmen wird die Policy angewandt.  \
 Es gibt zwei Methoden um Benutzer zu authentifizieren:
 - *Active:* Benutzer bekommen einen login prompt angezeigt, unterscheidung in:
     - *local password authentification:* Zugangsdaten werden direkt auf der Firewall gespeichert. Diese Methode wird nicht für Unternehmen mit mehr als einer Firewall empfohlen.
     - *Server-bases password authentification:* auch "remote password authentification" genannt, hier werden Zugangsdaten auf POP3, RADIUS, LDAP oder TACACS+ Servern gespeichert.
     - *two-factor authentification:* Nur als Erweiterung zu den oben genannten Methoden verfügbar. Erweiternd zu traditionellem Username und Passwort wird ein Token oder Zertifikat benötigt. \
 - *Passive:* Zugangsberechtigung wird passiv durch Single-Sign-On (SSO) determiniert, User bekommt Authentifizierung nicht mit, unterstützt werden FSSO, RSSO und NTLM. \
+
 Bei aktiver Authentifizierung müssen die Protokolle DNS, HTTP, HTTPS, FTP und Telnet in einer "generellen" Policy erlaubt werden, um das Anzeigen eines Prompts überhaupt möglich zu machen. 
+
 
 Erwähnenswert ist ebenso, dass nur weil Authentifizierung in einer Policy aktiviert wird, der User nicht automatisch einen Prompt angezeigt bekommt. Es gibt drei Optionen das zu versichern:
 - Authentifizierung in jeder Policy aktivieren.
 - Über die CLI Authentifizierung erzwingen.
 - Captive Portal auf dem Source-Port zu aktivieren.
 
+
 Folgende Bilder zeigen die Erstellung eines lokalen Benutzers auf der FortiGate:\ 
+
 #pagebreak()
 
 1. Art des Kontos bestimmen:
@@ -183,7 +191,9 @@ Single-Sign-On (SSO) ist ein Prozess bei welchem die Identität der Benutzer nur
 
 Für Active Directory Umgebungen gibt es zwei Methoden des Signle-Sign-On Prozesses:
 - *DC-agent Mode:* die meist empfohlene Variante, benötigt einen DC-agent auf jedem Domain Controller und einen oder mehrere collector-agents auf Windows Servern. Der Benutzer meldet sich am Domain-Controller an, der DC-agent sieht das Event und leitet es an den collector-agent weiter, welcher es an die FortiGate weiterleitet.
+
 - *Polling Mode: * 
+
     - *Collector agent-based:* ein collector-agent muss auf jedem Windows Sever installiert werden, es wird jedoch kein DC-agent benötigt. Alle paar Sekunden ruft der agent den DC auf User Events ab und leitet diese an die FortiGate weiter. Es gibt drei Optionen des abrufen eines Domain-Controllers:
         - WMI: eine Windows API mit welcher der collector-agent Queries an den DC schickt. Dadurch, dass der collector-agent nicht nach logon-Events suchen muss, wird die Netzwerkauslastung verringert.
         - WinSecLog: ruft die Security-Logs des DCs ab, muss diese aber nach den Anmelde-Logs durchsuchen, was Zeit kostet.
@@ -220,13 +230,17 @@ Es sind default Profile vorhanden, das Sperrsymbol zeigt, dass diese Profile nic
     caption: "Default SLL-Profile"
 )
 
+
 Beim Konfigurieren der  SSL-Optionen kann man wählen welche Richtung inspiziert wird (Ingoing/Outgoing). "Multiple Clients Connecting to Multiple Servers" ist Outgoing und ist gedacht um den Webtraffic der eigenen Mitarbeiter einzuschränken. 
+
  #figure(
     image("../assets/fortigate/SSL-inspection_options.png", width: 80%),
     caption: "SSL-Profile Optionen"
 )
 
+
 Die Konfiguration des Profiles reicht allerdings noch nicht aus, um den Traffic zu filtern. Dafür muss das Profile in einer Firewall Policy angewandt werden und mit einem anderen Security Profile eingesetzt werden, da SSL-Inspection noch nicht das Abfangen bzw Inspizieren der Daten auslöst. 
+
 Zusätzlich dazu, wenn man im Profile "Deep Inspection" auswählt muss man darauf achten, dass in der Firewall Policy der Mode Proxy-based-Inspection ist.
 
 
@@ -236,6 +250,7 @@ Zusätzlich dazu, wenn man im Profile "Deep Inspection" auswählt muss man darau
 
 /*  die folgenden sind die relevantesten:
 - AntiVirus: Pakete werden mit einer Datenbank an Viren und Malware verglichen und anhand des Resultats verworfen oder erlaubt. Weiteres dazu siehe  Kapitel Antivirus
+
 - Web Filter: Schränkt Web-Site Zugriff anhand von Kategorien ein. Näheres dazu siehe 
 - Application Control: Der Traffic wird auf Applikations-Signaturen untersucht. Mehr dazu siehe
 - IPS: Analysiert den Traffic anhand von Sessions und vergleicht die Erkenntnisse mit Signaturen aus der IPS-Datenbank. Genaueres siehe 
@@ -244,6 +259,7 @@ Zusätzlich dazu, wenn man im Profile "Deep Inspection" auswählt muss man darau
 Security Profiles sind erweiternde Funktionen, welche das Netzwerk bestmöglich gegen Angriffe schützen, sie werden pro Firewall Policy konfiguriert. 
 
 Inspection Modes 
+
 - Flow-based: Analysiert den Traffic in Real-time und benötigt weniger Ressourcen als Proxy-based Inspection. Der Fokus liegt auf Performance.
 - Proxy-based: Speichert den Traffic temporär ab und analysiert ihn in der gesamten länge. Benötigt mehr Ressourcen bietet allerdings mehr Sicherheit. Manche Security Profiles wie Data-leak-prevention sind nur in diesem Modus verfügbar.
 ==== Antivirus <antivirus>

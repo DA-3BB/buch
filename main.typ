@@ -1,4 +1,5 @@
-#import "@local/htl3r-da:1.0.0" as htl3r
+#import "@local/htl3r-da:0.1.0" as htl3r
+
 
 #show: htl3r.diplomarbeit.with(
   title: "3BB",
@@ -25,22 +26,11 @@
   date: datetime.today(),
   print-ref: true,
   generative-ai-clause: none,
-  abbreviation: yaml("abbr.yml")
-  //bibliography-content: bibliography("refs.yml", title: [Literaturverzeichnis])
+  abbreviation: yaml("abbr.yml"),
+  bibliography-content: bibliography(
+    "refs.yml",
+    full: true,
+    title: [Literaturverzeichnis],
+    style: "harvard-cite-them-right",
+  ),
 )
-
-#include "chapter/einleitung.typ"
-
-#include "chapter/topologie.typ"
-
-#include "chapter/ot-topologie.typ"
-
-#include "chapter/modbus.typ"
-
-#include "chapter/port-scan.typ"
-
-#include "chapter/dos.typ"
-
-#include "chapter/fortigate.typ"
-
-#include "chapter/fortisiem.typ"
