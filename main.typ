@@ -1,4 +1,4 @@
-#import "@local/htl3r-da:0.1.0" as htl3r
+#import "@local/htl3r-da:1.0.0" as htl3r
 
 #show: htl3r.diplomarbeit.with(
   title: "3BB",
@@ -34,19 +34,19 @@
   ),
 )
 
-#include "chapter/topologie.typ"
+//#include "chapter/topologie.typ"
 
-#include "chapter/modbus.typ"
+//#include "chapter/modbus.typ"
 
 #include "chapter/ot-topologie.typ"
 
-#include "chapter/fortigate.typ"
+//#include "chapter/fortigate.typ"
 
-#include "chapter/fortisiem.typ"
+//#include "chapter/fortisiem.typ"
 
-#include "chapter/modbus.typ"
+//#include "chapter/modbus.typ"
 
 // TODO add my second name on everything !
 // TODO parse correct order (just testing)
-#include "chapter/port-scan.typ"
+//#include "chapter/port-scan.typ"
 
