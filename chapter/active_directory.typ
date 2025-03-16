@@ -4,16 +4,15 @@
 
 = Active Directory Infrastruktur <ad-infra>
 
-Für die Implementierung der #htl3r.short[it]-Infrastruktur wurde eine #htl3r.long[ad] Domäne umgesetzt. Diese besteht aus zwei Standorten namens #emph("Wien") und #emph("Eisenstadt"). Beide Standorte werden durch zwei unterschiedliche Child-Domains betrieben (wien.3bb-testlab.at und eisenstadt.3bb-testlab.at). Der Standort Wien simuliert die Zentrale eines Unternehmens, auf dieser auch diverse Security-Geräte angesiedelt sind, die in @fsm und @faz näher erläutert werden. Zwei Domain-Controller bilden den Standort Wien mit einem Jump-Server ab. Der Standort Eisenstadt besitzt nur einen Domain-Controller und erhält ein RDS-Gateway. Die beiden Standorte sind durch einen Site-Link zur notwendigen #htl3r.short[ldap]-Replikation verbunden.
+Für die Implementierung der #htl3r.short[it]-Infrastruktur wurde eine #htl3r.long[ad] Domäne umgesetzt. Diese besteht aus zwei Standorten namens #emph("Wien") und #emph("Eisenstadt"). Beide Standorte werden durch zwei unterschiedliche Child-Domains betrieben (`wien.3bb-testlab.at` und `eisenstadt.3bb-testlab.at`). Der Standort Wien simuliert die Zentrale eines Unternehmens, auf dieser auch diverse Security-Geräte angesiedelt sind, die in @fsm und @faz näher erläutert werden. Die beiden Standorte bilden sich durch jeweils zwei Domain Controller und einem Jump-Server ab. Die beiden Standorte sind durch einen Site-Link zur notwendigen #htl3r.short[ldap]-Replikation verbunden.
 
 #htl3r.fspace(
   total-width: 95%,
   figure(
-    image("../assets/active-directory/ad-topology.png"),
+    image("../assets/active-directory/ad-topo.png"),
     caption: [logische Topologie der AD-Infrastruktur]
   )
 )
-
 
 Ein Unternehmen schafft auch Abteilungen, die mittels #htl3r.shortpl[ou] realisiert wurden. Dabei wird auch zwischen den Servern und Computern im #htl3r.long[ad] unterschieden. Die Abteilungen #htl3r.short[it] und #htl3r.short[soc] sind auf dem Standort Eisenstadt nicht zu finden.
 
@@ -170,3 +169,5 @@ Am Standort Wien wird ein redundanter #htl3r.short[dhcp]-Server betrieben. Die b
   skips: ((97, 0), (105, 0)),
   text: read("../assets/active-directory/wien-3bb-dc1.ps1")
 )
+
+Um die beiden Domain Controller besser zu administrieren wurde ein Jump-Server eingerichtet. Dieser erhält durch Windows Remote Management Zugriffsberechtigungen auf die beiden Domain Controller.
