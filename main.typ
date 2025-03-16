@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 #import "@local/htl3r-da:0.1.0" as htl3r
-=======
-#import "@local/htl3r-da:1.0.0" as htl3r
->>>>>>> FEL_FortiGate
+
 
 #show: htl3r.diplomarbeit.with(
   title: "3BB",
@@ -29,7 +26,6 @@
   date: datetime.today(),
   print-ref: true,
   generative-ai-clause: none,
-<<<<<<< HEAD
   abbreviation: yaml("abbr.yml"),
   bibliography-content: bibliography(
     "refs.yml",
@@ -38,24 +34,3 @@
     style: "harvard-cite-them-right",
   ),
 )
-=======
-  abbreviation: yaml("abbr.yml")
-  //bibliography-content: bibliography("refs.yml", title: [Literaturverzeichnis])
-)
-
-#include "chapter/einleitung.typ"
-
-#include "chapter/topologie.typ"
-
-#include "chapter/ot-topologie.typ"
-
-#include "chapter/modbus.typ"
-
-#include "chapter/port-scan.typ"
-
-#include "chapter/dos.typ"
-
-#include "chapter/fortigate.typ"
-
-#include "chapter/fortisiem.typ"
->>>>>>> FEL_FortiGate
