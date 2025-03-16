@@ -37,14 +37,8 @@ Der Standort Wien ist in vier #htl3r.shortpl[vlan] mikrosegmentiert. Zwischen de
 
 Der #htl3r.short[ftp]-Server wurde in die Topologie implementiert, um das Speichern von Konfigurationen zu erleichtern. Komponenten wie Windows oder Linux-Server können so ihre Powershell-Scripts herunterladen und ausführen. Das erleichtert die Provisionierung, falls Komponenten einen Ausfall erleiden. Manche Geräte von Fortinet, wie z.B. der FortiAnalyzer, können ihre Konfigurationen auch automatisch auf einen FTP-Server hochladen. Für das FortiSIEM wurden die Windows- und Linux-Agents abgelegt, um diese auf die einzelnen Komponenten zu verteilen.
 
-== FortiGate
 #htl3r.author("Magdalena Feldhofer")
-
+=== FortiGate
 Die physische 60E FortiGate wird mittels LAN-Kabel mit dem Switch der OT verbunden, als auch mit dem Switch der UCS. Die UCS ist ein Unified Computing System von Cisco, auf dem System laufen eine vielzahl an Virtuellen Maschinen (VMs), welche gemeinsam die IT-Seite des Netzwerkes bilden. Auf der UCS sind die VMs in unterschiedliche Vlans aufgeteilt und sehen sich so untereinander nur eingeschränkt. \
-
-#figure(
-  image("../assets/topologie/3BB_Topologie_Gesamt.jpg"),
-  caption: "Gesamttopologie"
-)
 
 Um die Standorte Wien, Eisenstadt und das Zugnetzwerk zu verbinden, sind drei Firewalls im einsatz. Die eine Physische 60E und zwei virtuelle FortiGates in der Version 7.6. Alle drei haben ein Interface in einem Vlan, in welchem nur sie kommunizieren können, es simuliert das Internet. Dadurch, dass man Daten zwischen Standorten nicht unverschlüsselt übertragen möchte, werden IPSec VPN Tunnel zwischen den Standorten gespannt mit dem Full-Mesh Modell (jede Firewall ist mit jeder anderen verbunden).
