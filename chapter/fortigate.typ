@@ -94,17 +94,7 @@ Die selbe Konfiguration ist auch über die CLI möglich:
   text: read("../assets/fortigate/firewall_policy_nat.conf")
 )
 
-Security Profiles sind erweiternde Funktionen um das Netzwerk bestmöglich abzusichern, sie werden pro Firewall Policy konfiguriert. Mehr dazu #ref(<sec_prof>)
-
-/*  die folgenden sind die relevantesten:
-- AntiVirus: Pakete werden mit einer Datenbank an Viren und Malware verglichen und anhand des Resultats verworfen oder erlaubt. Weiteres dazu siehe  Kapitel Antivirus
-- Web Filter: Schränkt Web-Site Zugriff anhand von Kategorien ein. Näheres dazu siehe 
-- Application Control: Der Traffic wird auf Applikations-Signaturen untersucht. Mehr dazu siehe
-- IPS: Analysiert den Traffic anhand von Sessions und vergleicht die Erkenntnisse mit Signaturen aus der IPS-Datenbank. Genaueres siehe 
-- SSL Inspection: Web-Traffic wird auf Angriffe untersucht. Weiteres dazu siehe 
-*/
-
-Wenn man Policies erstellt, muss man auf die richtige Reihenfolge achten. Wenn man zwei Policies hat, wobei die eine spezifische Situationen abdeckt und die zweite nur generelle, sollte die spezifischere an erste Stelle in der Reihung kommen, da es sonst sein kann, dass sie nie angewandt wird, weil die generische zuerst zutrifft. 
+Wenn man Policies erstellt, muss man auf die richtige Reihenfolge achten. Wenn man zwei Policies hat, wobei die eine spezifische Situationen abdeckt und die zweite nur generelle Situation, sollte die spezifischere an erste Stelle in der Reihung kommen, da es sonst sein kann, dass sie nie angewandt wird, weil die generische zuerst zutrifft. \ Angenommen wir haben einen Webserver auf den alle innerhalb des Netzwerkes zugreifen können, ausgenommen von einem User. Dann müsste man zuerst die Policy zum Blockieren dieses Users erstellen und in der Reihenfolge danach die Full-Access Policy. Wenn die Full-Access Policy zuerst wäre, könnte der User auch zugreifen.
  
 
 Virtual IPs (VIPs) sind eine eher untypische Art von NAT, da die Ziel-Adresse übersetzt wird. Die Konfiguration einer VIP reicht allerdings noch nicht um sie anzuwenden, dafür muss sie mit einer Firewall-Policy erlaubt werden. \ 
@@ -132,13 +122,19 @@ Bei der FortiGate gibt es zwei Routing-Tabellen: Die Routing Information Databas
 Nachdem es mehrere Routen zum selben Ziel geben kann, werden Parameter benötigt, mit denen die beste Route bestimmt wird. Die beste Route ist somit abhängig von den folgenden Werten:
 - Distance: Erster relevante Parameter bei gleichen Routen, welche von unterschiedlichen Protokollen gelernt wurden. Je niedriger dieser Wert desto besser, mit Ciscos Administrativer Distanz vergleichbar, bsp: OSPF: 110, RIP: 120.
 - Metric: Relevant bei gleichen Routen welche von dem selben Protokoll gelernt wurden. Abhängig vom verwendeten Protokoll sieht die Metric und die Metric-berechnung unterschiedlich aus. Bei OSPF wären es die Kosten und bei RIP der Hopcount.\  
-- Priority: entscheidend bei statische Routen mit der selben Distance
+- Priority: entscheidend bei statische Routen mit der selben Distance.
 
 Reverse Path Forwarding (RPF) ist ein Mechanismus um IP-Spoofing zu verhindern. Hierfür wird die Source-IP auf eine Retour-Route geprüft mittels einer von zwei Optionen:
 - *Feasible Path:* Die Retour-Route muss nicht die beste Route sein.
 - *Strict:* Die Retour-Route muss die beste Route sein.
+Die generelle Funktion wird wie folgt pro Interface angewandt, während die Art des RPF systemweit gilt. Je nachdem ob man Feasible Path oder Strict RPF möchte setzt man den Befehl "set strict-src-check" auf enabled oder disabled:
 
-
+#htl3r.code-file(
+  caption: "RPF Konfigurationsbeispiel",
+  filename: ["fortigate/RPF.conf"],
+  lang: "",
+  text: read("../assets/fortigate/rpf.conf")
+)
 
 
 === Firewall Authentication
@@ -148,7 +144,7 @@ Es gibt zwei Methoden um Benutzer zu authentifizieren:
     - *local password authentification:* Zugangsdaten werden direkt auf der Firewall gespeichert. Diese Methode wird nicht für Unternehmen mit mehr als einer Firewall empfohlen.
     - *Server-bases password authentification:* auch "remote password authentification" genannt, hier werden Zugangsdaten auf POP3, RADIUS, LDAP oder TACACS+ Servern gespeichert.
     - *two-factor authentification:* Nur als Erweiterung zu den oben genannten Methoden verfügbar. Erweiternd zu traditionellem Username und Passwort wird ein Token oder Zertifikat benötigt. \
-- *Passive:* Zugabgsberechtigung wird passiv durch Single-Sign-On (SSO) determiniert, User bekommt Authentifizierung nicht mit, unterstützt werden FSSO, RSSO und NTLM. \
+- *Passive:* Zugangsberechtigung wird passiv durch Single-Sign-On (SSO) determiniert, User bekommt Authentifizierung nicht mit, unterstützt werden FSSO, RSSO und NTLM. \
 Bei aktiver Authentifizierung müssen die Protokolle DNS, HTTP, HTTPS, FTP und Telnet in einer "generellen" Policy erlaubt werden, um das Anzeigen eines Prompts überhaupt möglich zu machen. 
 
 Erwähnenswert ist ebenso, dass nur weil Authentifizierung in einer Policy aktiviert wird, der User nicht automatisch einen Prompt angezeigt bekommt. Es gibt drei Optionen das zu versichern:
@@ -156,37 +152,96 @@ Erwähnenswert ist ebenso, dass nur weil Authentifizierung in einer Policy aktiv
 - Über die CLI Authentifizierung erzwingen.
 - Captive Portal auf dem Source-Port zu aktivieren.
 
+Folgende Bilder zeigen die Erstellung eines lokalen Benutzers auf der FortiGate:\ 
+#pagebreak()
+
+1. Art des Kontos bestimmen:
+#figure(
+    image("../assets/fortigate/user-create1.png", width: 30%),
+    caption: "Benutzer erstellen Schritt 1"
+)
+2. Benutzername und Passwort setzen:
+#figure(
+    image("../assets/fortigate/user-create2.png", width: 50%),
+    caption: "Benutzer erstellen Schritt 2"
+)
+3. Falls gewollt Zwei-Faktor Authentifizierung aktivieren:
+#figure(
+    image("../assets/fortigate/user-create3.png", width: 50%),
+    caption: "Benutzer erstellen Schritt 3"
+)
+4. Benutzerkonto aktivieren und wenn gewollt zu Gruppen hinzufügen:
+#figure(
+    image("../assets/fortigate/user-create4.png", width: 50%),
+    caption: "Benutzer erstellen Schritt 4"
+)
+
 
 
 === Fortinet Single Sign-On (FSSO)
 Single-Sign-On (SSO) ist ein Prozess bei welchem die Identität der Benutzer nur einmal bestätigt werden muss und alle anderen Anwendungen sich die Informationen im Hintergrund von einem SSO Agent organisieren, ohne dass der Benutzer es mitbekommt. Meistens wird SSO in Zusammenhang mit Active Directory oder Novell eDirectory eingesetzt.
 
 Für Active Directory Umgebungen gibt es zwei Methoden des Signle-Sign-On Prozesses:
-- *DC agent Mode:* die meistempfohlene Variante, benötigt einen DC-agent auf jedem Domain Controller und einen oder mehrere collector-agents auf Windows Servern. Der Benutzer meldet sich am Domain-Controller an, der DC-agent sieht das Event und leitet es an den collector-agent weiter, welcher es an die FortiGate weiterleitet.
+- *DC-agent Mode:* die meist empfohlene Variante, benötigt einen DC-agent auf jedem Domain Controller und einen oder mehrere collector-agents auf Windows Servern. Der Benutzer meldet sich am Domain-Controller an, der DC-agent sieht das Event und leitet es an den collector-agent weiter, welcher es an die FortiGate weiterleitet.
 - *Polling Mode: * 
     - *Collector agent-based:* ein collector-agent muss auf jedem Windows Sever installiert werden, es wird jedoch kein DC-agent benötigt. Alle paar Sekunden ruft der agent den DC auf User Events ab und leitet diese an die FortiGate weiter. Es gibt drei Optionen des abrufen eines Domain-Controllers:
         - WMI: eine Windows API mit welcher der collector-agent Queries an den DC schickt. Dadurch, dass der collector-agent nicht nach logon-Events suchen muss, wird die Netzwerkauslastung verringert.
         - WinSecLog: ruft die Security-Logs des DCs ab, muss diese aber nach den Anmelde-Logs durchsuchen, was Zeit kostet.
         - NetAPI: ruft temporäre Sessions ab, welche geöffnet werden, wenn sich ein User an-/abmeldet. Schneller als die anderen Optionen, es kann allerdings passieren, dass Login-Events verpasst werden.
     - *Agentless:* es wird kein zusätzlicher agent benötigt, FortiGate übernimmt das Abfragen der DCs auf Login-Events mittles LDAP. Es entsteht ein höherer Ressourcenaufwand für die FortiGate und es sind weniger Funktionen verfügbar.
-// womöglich AD Access Mode erklären (standard & Advanced)
 
+Beispiel: DC-agent mode, nachdem die DC-agents und collector-agent in der Domäne installiert wurden, wird auf der FortiGate folgendes entweder über die GUI oder CLI Konfiguriert:
+#figure(
+    image("../assets/fortigate/collector-agent-config.png", width: 80%),
+    caption: "Collector-agent Einbindung"
+)
+
+#htl3r.code-file(
+  caption: "Einbindung des collector-agents",
+  filename: ["fortigate/collector-agent.conf"],
+  lang: "",
+  text: read("../assets/fortigate/collector_agent.conf")
+)
 
 === Certificate Operations <SSL-Inspection>
-// Seite 160
 Zertifikate werden einerseits natürlich für User-Authentifizierung verwendet, allerdings auch für Traffic-Inspizierungen. Diese sind Datenverkehr über die FortiGate als auch zu und von ihr, wenn ein Benutzer eine Website über HTTPS aufruft, überprüft die Firewall mithilfe von Zertifikaten, dass die Website vertrauenswürdig ist. \  Revocation- und Validation-Checks stellen sicher, dass das Zertifikat nicht von der Zertifikatsstelle zurückgezogen wurde oder das Gültigkeitsdatum abgelaufen ist.
 
-* SSL Inspection *
+SSL Inspection 
 Es gibt zwei Arten der Inspizierung, eine entschlüsselt den Datenverkehr und eine nicht:
-- *Certificate-Inspection:* Entschlüsselt keinen Traffic sondern analysiert nur den FQDN der Website, somit kann man in den Policies nur Web-Filtering und Application Control von den vielzahl der sonst möglichen Security Profiles anwenden.
-- *Full-Inspection:* Hierbei agiert die FortiGate als eine Art Man-in-the-Middle proxy. Es werden von der FortiGate zwei Sessions aufgebaut: eine zum Client und eine zu dem vom Client gewünschten Web-Server. Client und Server sind allerdings aus ihrer Sicht direkt verbunden. Somit wird nicht wirklich eine Verschlüsselung geknackt sondern einfach nur entschlüsselt. Der Sinn hinter dieser Art von Inspection ist es Angriffe zu erkennen, welche sonst versteckt wären. 
+- Certificate-Inspection: Entschlüsselt keinen Traffic sondern analysiert nur den FQDN der Website, somit kann man in den Policies nur Web-Filtering und Application Control von den vielzahl der sonst möglichen Security Profiles anwenden.
+- Full-Inspection: Hierbei agiert die FortiGate als eine Art Man-in-the-Middle proxy. Es werden von der FortiGate zwei Sessions aufgebaut: eine zum Client und eine zu dem vom Client gewünschten Web-Server. Client und Server sind allerdings aus ihrer Sicht direkt verbunden. Somit wird nicht wirklich eine Verschlüsselung geknackt sondern einfach nur entschlüsselt. Der Sinn hinter dieser Art von Inspection ist es Angriffe zu erkennen, welche sonst versteckt wären. 
 
-Bei der Full-SSL-Inspection kann es allerdings zu *Certificate Warnungen* kommen. Diese werden am Client angezeigt, wenn das FortiGate-eigene-Zertifikat nicht am Client hinterlegt ist.
+Bei der Full-SSL-Inspection kann es allerdings zu Zertifikat-Warnungen kommen. Diese werden am Client angezeigt, wenn das FortiGate-eigene-Zertifikat nicht am Client hinterlegt ist, oder die FortiGate kein Zertifikat der CA ausgestellt bekommen hat.
+
+Es sind default Profile vorhanden, das Sperrsymbol zeigt, dass diese Profile nicht bearbeitet werden können. Zusätzlich zu dem anpassbaren "custom-deep-inspection profile" können auch eigene Profile erstellt werden.
+
+ #figure(
+    image("../assets/fortigate/ssl-inspection-profiles.png", width: 80%),
+    caption: "Default SLL-Profile"
+)
+
+Beim Konfigurieren der  SSL-Optionen kann man wählen welche Richtung inspiziert wird (Ingoing/Outgoing). "Multiple Clients Connecting to Multiple Servers" ist Outgoing und ist gedacht um den Webtraffic der eigenen Mitarbeiter einzuschränken. 
+ #figure(
+    image("../assets/fortigate/SSL-inspection_options.png", width: 80%),
+    caption: "SSL-Profile Optionen"
+)
+
+Die Konfiguration des Profiles reicht allerdings noch nicht aus, um den Traffic zu filtern. Dafür muss das Profile in einer Firewall Policy angewandt werden und mit einem anderen Security Profile eingesetzt werden, da SSL-Inspection noch nicht das Abfangen bzw Inspizieren der Daten auslöst. 
+Zusätzlich dazu, wenn man im Profile "Deep Inspection" auswählt muss man darauf achten, dass in der Firewall Policy der Mode Proxy-based-Inspection ist.
 
 
 // maybe seite 164
 
 === Security Profiles <sec_prof>
+
+/*  die folgenden sind die relevantesten:
+- AntiVirus: Pakete werden mit einer Datenbank an Viren und Malware verglichen und anhand des Resultats verworfen oder erlaubt. Weiteres dazu siehe  Kapitel Antivirus
+- Web Filter: Schränkt Web-Site Zugriff anhand von Kategorien ein. Näheres dazu siehe 
+- Application Control: Der Traffic wird auf Applikations-Signaturen untersucht. Mehr dazu siehe
+- IPS: Analysiert den Traffic anhand von Sessions und vergleicht die Erkenntnisse mit Signaturen aus der IPS-Datenbank. Genaueres siehe 
+- SSL Inspection: Web-Traffic wird auf Angriffe untersucht. Weiteres dazu siehe 
+*/
+Security Profiles sind erweiternde Funktionen, welche das Netzwerk bestmöglich gegen Angriffe schützen, sie werden pro Firewall Policy konfiguriert. 
 
 Inspection Modes 
 - Flow-based: Analysiert den Traffic in Real-time und benötigt weniger Ressourcen als Proxy-based Inspection. Der Fokus liegt auf Performance.
