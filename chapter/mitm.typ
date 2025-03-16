@@ -50,32 +50,26 @@ Wireshark wird hierbei zusätzlich verwendet, um den Traffic beim Angriff genaue
 === Umsetzung - Man in the Middle-Angriff <umsetztung-mitm>
 Bevor der Angriff gestartet wird, wird geschaut ob sich die zu angreifenden Ziele im Netzwerk befinden. Dabei wird in der Kali-Linux-VM folgender Befehl ausgeführt:
 
-#htl3r.code(caption: [Scan nach Hosts im LAN])[
-  ```bash
+```bash
   ettercap -T -s 'lq'
-  ```
-]
+```
 
 #htl3r.info("output screenshot wird noch ergänzt")
 
 Nun, da die bekannten IP Adressen beim Scan aufgelistet wurden, kann mit dem MITM-Angriff und somit dem ARP Spoofing begonnen werden. Dabei werden im ersten Schritt die Pakete noch nicht modifiziert sonder nur zum mitlesen abgefangen und weitergeleitet.
 
-#htl3r.code(caption: [Befehl für MITM durch ARP Spoofing])[
-  ```bash
+```bash
   ettercap -T -M arp //10.100.0.1/ //10.100.0.11/
-  ```
-]
+ ```
 
 #figure(
   image("../assets/mitm/arp-posioning-not-corr-without-filter.png"),
   caption: "MITM: ARP Spoofing"
 )
 
-#htl3r.code(caption: [Befehl MITM durch ARP Spoofing mit Filter])[
-  ```bash
+```bash
   ettercap -T -F coil-true-to-false.ef -M arp //10.100.0.1/ //10.100.0.11/
-  ```
-]
+```
 
 Das ARP Spoofing kann auch mittels Wireshark angeschaut werden. Die @arp1 zeigt den ersten Teil des ARP Spoofing. Dabei schickt das Kali-Linux Gerät, in diesem Fall die _VMware..._, ARP-Request zu den IP-Adressen aus dem Ettercap Befehl.  Die Geräte, genauer gesagt die SPS und die RTU, die die IP-Adressen 10.100.0.1 und 10.100.0.11 besitzen antworten.
 
@@ -100,14 +94,13 @@ image("../assets/mitm/wireshark_mitm.png"),
 
 Um den Datenstrom nun nicht nur mitlesen zu können, sondern ihn auch zu verändern, wird ein Filter erstellt. Dieser beeinhaltet eine Abfrage nach einem Modbus Paket, welches einen Coil auf _TRUE_ setzt und ändert den Inhalt, sodass der Coil _FALSE_ bleibt.
 
-#htl3r.code-file(lang: "c", text: read("../assets/mitm/coil-true-to-false.filter"), caption: "Filter für eine Coiländerung ")
+#htl3r.code-file(lang: "c", text: read("../assets/mitm/coil-true-to-false.filter"), caption: "Filter für eine Coiländerung")
 
 Damit der Filter bei Ettercap angegeben werden kann, muss er noch in eine Binärdatei umgewandelt werden. Dies wird mit dem Tool Etterfilter erreicht,indem die vorher erstellte Filterdatei und ein Ausgabefile angegeben werden.
 
-#htl3r.code(caption: [Befehl Etterfilter generieren])[
-  ```bash
+```bash
   etterfilter /usr/share/ettercap/3bb/coil-true-false.filter -o coil-true-to-false.ef
-  ```
+ ```
 ]
 
 #figure(
@@ -117,11 +110,9 @@ Damit der Filter bei Ettercap angegeben werden kann, muss er noch in eine Binär
 
 Nun kann der MITM-Angriff erneut mit dem Filter ausgeführt werden.
 
-#htl3r.code(caption: [Befehl für MITM durch ARP Spoofing mit einem Filter])[
-  ```bash
+```bash
   ettercap -T -F coil-true-false.filter -M arp //10.100.0.1/ //10.100.0.11/
-  ```
-]
+```
 
 #figure(
   image("../assets/mitm/arp-posioning-not-corr.png"),
