@@ -185,6 +185,16 @@ agdlp:
     singular: Account, Global, Domain Local, Permission
   description: Beschreibt die offizielle Empfehlung von Microsoft für Rechteverwaltung.
 
+gpo:
+  short:
+    singular: GPO
+    plural: GPOs
+  long:
+    singular: Group Policy Object
+    plural: Group Policy Objects
+  description: Dient der Konfiguration von Windows-Computer und Accounts.
+
+
 # ----- FortiSIEM
 
 siem:
@@ -250,7 +260,14 @@ attck:
     singular: ATT&CK
   long:
     singular: Adversarial Tactics, Techniques, and Common Knowledge
-  description: Eine von MITRE Coprotation betriebene Datenbank zu Sicherheitslücken.
+  description: Eine von MITRE Coprotation betriebene Datenbank für Sicherheitslücken.
+
+gpg:
+  short:
+    singular: GPG
+  long:
+    singular: GNU Privacy Guard
+  description: Eine hybride Verschlüsselungs-Software vom GNU Project.
 
 # ----- FORTIANALYZER
 
