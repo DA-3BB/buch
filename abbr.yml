@@ -289,6 +289,13 @@ adom:
     plural: Administrative Domains
   description: Begrenzt den administrativen Zugriff auf bestimmte Komponente.
 
+capwap:
+  short:
+    singular: CAPWAP
+  long:
+    singular: Control And Provisioning of Wireless Access Points
+  description: Ein Protokollstandard für die zentrale Verwaltung von Access Points.
+
 # ----- OT
 
 gpio:
