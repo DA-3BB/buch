@@ -31,3 +31,22 @@ asciialt:
   type: Web
   url: https://www.kepware-opcserver.de/was-ist-modbus/
   date: 2025-3-16
+
+# ----- FORTISIEM
+
+fortisiem:
+  type: Book
+  author: Fortinet, Inc.
+  title: FortiSIEM Study Guide for FortiSIEM 6.3
+  date: 2021
+
+elastic-vs-sql:
+  type: thesis
+  author:
+    given-name: Björn
+    name: Lisper
+  title: A COMPARISON OF SEARCHING DATA WITH, AND WITHOUT ELASTICSEARCH IN A SQL DATABASE
+  url:
+    value: https://www.diva-portal.org/smash/get/diva2:1769002/FULLTEXT01.pdf
+    date: 2024-12-28
+  date: 2023-05-25
