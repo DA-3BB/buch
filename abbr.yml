@@ -74,7 +74,6 @@ sps:
     singular: speicherprogrammierbare Steuerung
     plural: speicherprogrammierbare Steuerungen
 
-
 crc:
   short:
     singular: CRC
@@ -282,13 +281,6 @@ fub:
     singular: Funktionsplan
   description: Eine grafische Programmiersprache der Siemens LOGO!, die mit logische Funktionsblöcken funktioniert.
 
-
-snmp:
-  short:
-    singular: SNMP
-  long:
-    singular: Simple Network Management Protocol
-
 pwm:
   short:
     singular: PWM
@@ -340,7 +332,7 @@ ascii:
     singular: ASCII
   long:
     singular: American Standard Code for Information Interchange
-  description:  7-Bit Zeichenkodierung.
+  description: 7-Bit Zeichenkodierung.
 
 lrc:
   short:
@@ -367,3 +359,10 @@ tls:
     singular: tls
   long:
     singular: Transport Layer Security
+
+udf:
+  short:
+    singular: UDF
+    plural: UDFs
+  long:
+    singular: User-Definied-Funktion
