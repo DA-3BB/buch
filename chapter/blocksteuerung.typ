@@ -1,4 +1,4 @@
-#import "@local/htl3r-da:1.0.0" as htl3r
+#import "@local/htl3r-da:0.1.0" as htl3r
 #htl3r.author("Marlene Reder")
 
 = Blocksteuerung
@@ -13,14 +13,14 @@ Bevor die Steuerung selbst erklärt werden kann, ist wichtig zu wissen, dass Mod
   caption: "Gleisplan mit Blöcken"
 )
 
-Bei der Grenze zwischen zwei Gleisabschnitten sind Reflex-Lichtschranken eingebaut, mithilfe dessen erkannt werden kann, dass ein Zug in einen Block einfährt beziehungsweise einen Gleisabschnitt verlässt.  
+Bei der Grenze zwischen zwei Gleisabschnitten sind Reflex-Lichtschranken eingebaut, mithilfe dessen erkannt werden kann, dass ein Zug in einen Block einfährt beziehungsweise einen Gleisabschnitt verlässt.
 
 #figure(
   image("../assets/blocksteuerung/3BB_Netzplanabschnit.png"),
   caption: "Aufbau Blockübergang"
 )
 
-Auch die Reflex-Lichtschranken sind beschriftet mit BX.Y, um einen Überblick zu behalten. Dabei steht X für den Block in dem die Lichtschranke liegt und Y ist die Nummerierung der Reflex-Lichtschranken in einem Block. 
+Auch die Reflex-Lichtschranken sind beschriftet mit BX.Y, um einen Überblick zu behalten. Dabei steht X für den Block in dem die Lichtschranke liegt und Y ist die Nummerierung der Reflex-Lichtschranken in einem Block.
 
 #figure(
   image("../assets/blocksteuerung/3BB_Gleisplan_blocke-reflex.png"),
@@ -44,7 +44,7 @@ Für die Blocksteuerung werden folgende Komponenten benötigt:
     caption: [Komponenten aus Betrachtungssicht der Blocksteuerung]
 )
 
-Die Relaismodule werden verwendet, um den Input der Reflex-Lichtschranken aufzuzeichnen und die Blöcke anzusteuern. Da es sich um eine Modbuskommunikation zwischen den Relaismodulen und der #htl3r.short[sps] handelt, werden die Ausgänge, die zu den Gleisabschnitten gehen auch als Coils und die Eingänge der Reflex-Lichtschranken als Discrete Inputs bezeichnet. 
+Die Relaismodule werden verwendet, um den Input der Reflex-Lichtschranken aufzuzeichnen und die Blöcke anzusteuern. Da es sich um eine Modbuskommunikation zwischen den Relaismodulen und der #htl3r.short[sps] handelt, werden die Ausgänge, die zu den Gleisabschnitten gehen auch als Coils und die Eingänge der Reflex-Lichtschranken als Discrete Inputs bezeichnet.
 
 #figure(
   image("../assets/blocksteuerung/3BB_relais-modul.png", width: 75%),
@@ -55,7 +55,7 @@ Die Relaismodule werden verwendet, um den Input der Reflex-Lichtschranken aufzuz
 
 Die Siemens LOGO! #htl3r.short[sps] ist dabei der Kopf der Steuerung, das heißt auf der #htl3r.short[sps] läuft das Programm, das die einzelnen Blöcke ansteuert. Um zu wissen, welche Blöcke angeschaltet werden sollen, holt sich die #htl3r.short[sps] als Modbus-Client von den RTUs die Zustände der Reflex-Lichtschranken und entscheidet infolgedessen, welche Blöcke angesteuert werden sollen und schickt diese Enscheidung wieder zurück an die RTUs.
 
-Im Programm der Siemens LOGO! #htl3r.short[sps] werden die Eingänge und Ausgänge Variable Memorys (VMs) zugeordnet. Die VM sind eindeutig durch eine Zahl X.Y. In diesem Fall ist X das Relaismodul und gleichzeitg der Unterschied zwischen Coils und Discrete Inputs. Y steht für den Platz am Relais Modul. 
+Im Programm der Siemens LOGO! #htl3r.short[sps] werden die Eingänge und Ausgänge Variable Memorys (VMs) zugeordnet. Die VM sind eindeutig durch eine Zahl X.Y. In diesem Fall ist X das Relaismodul und gleichzeitg der Unterschied zwischen Coils und Discrete Inputs. Y steht für den Platz am Relais Modul.
 
 #figure(
   table(
@@ -68,7 +68,7 @@ Im Programm der Siemens LOGO! #htl3r.short[sps] werden die Eingänge und Ausgän
   caption: "Zuordnung Relais Module zum Variable Memory Speicher"
 )
 
-Ein Überblick über alle Ein- und Ausgänge von den Bauteilen, selbst bis hin zur #htl3r.short[sps] wird in den folgenden zwei Tabellen dargestellt. 
+Ein Überblick über alle Ein- und Ausgänge von den Bauteilen, selbst bis hin zur #htl3r.short[sps] wird in den folgenden zwei Tabellen dargestellt.
 
 #figure(
   table(
@@ -119,7 +119,7 @@ Ein Überblick über alle Ein- und Ausgänge von den Bauteilen, selbst bis hin z
 )
 
 == Programm Begrifflichkeiten
-Das Programm, um die Gleisabschnitte zu schalten, ist mit der Software LOGO!Soft Comforte geschreiben, welche als Programiersprache einen Funktionsplan (FUP) verwendet. FUP ist eine grafische Programmiersprache und verwendet Bausteine aus der booleschen Algebra, um ein Programm zu schreiben. 
+Das Programm, um die Gleisabschnitte zu schalten, ist mit der Software LOGO!Soft Comforte geschreiben, welche als Programiersprache einen Funktionsplan (FUP) verwendet. FUP ist eine grafische Programmiersprache und verwendet Bausteine aus der booleschen Algebra, um ein Programm zu schreiben.
 
 Um bei größeren Programmen einen Überblick zu behalten, können mehrere Bausteine zu einem größeren zusammengefasst werden. Dieser größere Baustein wird als #htl3r.long[udf] oder auch #htl3r.short[udf] bezeichnet.
 
@@ -195,9 +195,9 @@ Die #htl3r.short[udf] ist dabei eine AND-Verknüfung von der aktuellen Weichenst
   caption: "#htl3r.short[udf] Weichenstellung"
 )
 === Überschreiben der Weichenstellung
-Beim Fahren über die Weiche in die gegengesetzte Richtung entsteht das Problem, dass die Weiche in die richtige Richtig gestellt sein muss, damit der Zug die Weiche nicht aufschneidet. Um diese Problem zu bewältigen muss der Weichenzustand überschrieben werden, sobald der Zug über diese drüber fährt, gleichzeitg soll aber der Weichenzustand immer noch manuel eingestellt werden können. 
+Beim Fahren über die Weiche in die gegengesetzte Richtung entsteht das Problem, dass die Weiche in die richtige Richtig gestellt sein muss, damit der Zug die Weiche nicht aufschneidet. Um diese Problem zu bewältigen muss der Weichenzustand überschrieben werden, sobald der Zug über diese drüber fährt, gleichzeitg soll aber der Weichenzustand immer noch manuel eingestellt werden können.
 
-In @weichensteuerung ist zu sehen, dass bei der Weichensteuerung zwischen dem Userinput I1 und dem Output zur Weiche NQ1 eine #htl3r.short[udf] hängt, welche das zweitweilige Überschreiben der Weichenstellung ermöglicht. In @weichensteuerung ist außerdem zu sehen, dass derzeit der User die Weiche kontrolliert, da auf den Eingängen _Low_ und _High_ kein Signal hängt. 
+In @weichensteuerung ist zu sehen, dass bei der Weichensteuerung zwischen dem Userinput I1 und dem Output zur Weiche NQ1 eine #htl3r.short[udf] hängt, welche das zweitweilige Überschreiben der Weichenstellung ermöglicht. In @weichensteuerung ist außerdem zu sehen, dass derzeit der User die Weiche kontrolliert, da auf den Eingängen _Low_ und _High_ kein Signal hängt.
 
 #figure(
   image("../assets/blocksteuerung/ueberweiche2.png", width: 85%),
@@ -220,7 +220,7 @@ Die #htl3r.short[udf] "OWeiche" oder auch "Overwrite Weiche" schaut für den low
 
 
 === Funktion, um Inputs zu deaktiveren
-Die Verarbeitung von zwei aneinanderfolgenden Inputs wird durch die #htl3r.short[udf] "Anfang" siehe @anfang verhindert. Allerdins muss auch geschaut werden, dass der richtige Input verarbeitet wird. Der "richtige" Input ist dabei, der der die Blockausfahrt angibt, da nur diese relevant sind. Das passiert indem sobald ein Gleisabschnitt in eine Richtung freigeschalten ist, die Reflex-Lichtschranke zur Blockeinfahrt deaktivert wird. 
+Die Verarbeitung von zwei aneinanderfolgenden Inputs wird durch die #htl3r.short[udf] "Anfang" siehe @anfang verhindert. Allerdins muss auch geschaut werden, dass der richtige Input verarbeitet wird. Der "richtige" Input ist dabei, der der die Blockausfahrt angibt, da nur diese relevant sind. Das passiert indem sobald ein Gleisabschnitt in eine Richtung freigeschalten ist, die Reflex-Lichtschranke zur Blockeinfahrt deaktivert wird.
 
 #figure(
   image("../assets/blocksteuerung/reflex-aus.png", width: 70%),

@@ -29,42 +29,4 @@
   bibliography-content: bibliography("refs.yml", title: [Literaturverzeichnis])
 )
 
-#include "chapter/einleitung.typ"
-
-#pagebreak()
-
-#include "chapter/it-topologie.typ"
-
-#include "chapter/ot-topologie.typ"
-
-#include "chapter/modbus.typ"
-
-#include "chapter/blocksteuerung.typ"
-
-#include "chapter/weichensteuerung.typ"
-
-// Angriffe
-
-#include "chapter/angriffe_intro.typ"
-
-#include "chapter/replay.typ"
-
-#include "chapter/fuzzing.typ"
-
-#include "chapter/injection.typ"
-
-#include "chapter/mitm.typ"
-
-#include "chapter/dos.typ"
-
-#include "chapter/port-scan.typ"
-
-// FCP
-
-#include "chapter/fortigate.typ"
-
-#include "chapter/fortimanager.typ"
-
-#include "chapter/fortianalyzer.typ"
-
-#include "chapter/fortisiem.typ"
+// Da rein mit eurem Stuss

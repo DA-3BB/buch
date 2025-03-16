@@ -1,4 +1,4 @@
-#import "@local/htl3r-da:1.0.0" as htl3r
+#import "@local/htl3r-da:0.1.0" as htl3r
 #import "@preview/codly:1.2.0": *
 #import "@preview/codly-languages:0.1.1": *
 #show: codly-init.with()
@@ -86,6 +86,8 @@ Für die Überwachung von systemkritischen Appilkationen stellt das FortiSIEM so
   )
 )
 
+#pagebreak()
+
 === Troubleshooting <fsm-cert-troubleshooting>
 
 FortiSIEM Version 7.2.4 basiert auf Rocky Linux Version 8.10. Troubleshooting erfolgt dadurch hauptsächlich am #htl3r.long[cli]. Die zentrale Log-Datei des FortiSIEM-Backends befindet sich in `/opt/phoenix/log/phoenix.log`. Im folgenden Abbild sind zwei Logs zu erkennen: `phMonitorSupervisor` mit der Einstufung `PHL_WARNING` und `phRuleWorker` mit der Einstufung `PHL_INFO`. Ersteres meldet einen Fehler im Bezug auf den Systemprozess `Node.js-charting.pid`, dass auf einen Fehler der FortiSIEM-Web-Dashboards schließen lässt.
@@ -139,6 +141,9 @@ Systeminformationen des #htl3r.shortpl[siem] können mit dem Bash-Script `/opt/p
   text: read("../assets/fortisiem/FSM-phshowVersion")
 )
 */
+
+#pagebreak()
+
 == Implementierung in die Topologie <fsm-topo>
 
 In der Topolgie bestehen zwei #htl3r.long[ad] Standorte, die über einen VPN zwischen zwei FortiGates miteinander verbunden sind. Wien bildet dabei den Hauptstandort und Eisenstadt einen Zweig im Unternehmen. Mehr zur #htl3r.long[ad] Infrastruktur wird in @ad-infra erläutert. Das FortiSIEM wird zentral von einer Supervisor-Node gesteuert, die am Hauptstandort Wien lokalisiert ist. Dieser Standort besitzt zusätzlich eine Worker- und Collector-Node. Die Worker-Node dient zum Load-Balancing beim Sammeln und Abfragen der Daten mit der Supervisor-Node. Auf der Site Eisenstadt befindet sich eine Collector-Node, um die Geräte dieses Standortes zu überwachen und der Worker-Node am Standort Wien weiterzuleiten. Die Daten werden in einem Elasticsearch gespeichert, mehr dazu im @elastic-config. Das gesamte Deployment wird als FortiSIEM-Cluster bezeichnet.
@@ -178,7 +183,7 @@ Die Lizensierung muss nur für die Supervisor-Node durchgeführt werden. Alle we
 === Worker-Node <fsm-worker>
 
 Gemeinsam mit der Supervisor-Node verarbeitet die Worker-Node Daten des #htl3r.shortpl[siem]. Zu den Aufgaben gehören das indexieren, speichern, suchen, korrelieren, und erweitern von Daten, die von den Collector-Nodes erhalten werden. Zusätzlich wird eine Baseline im Netzwerk ermittelt, um Anomalien zu erkennen.
-
+\ \
 Die Installationsanforderungen für die Worker-Node des FortiSIEM (Version 7.2.4) belaufen sich auf:
 - 8 virtuelle #htl3r.shortpl[cpu]
 - 16 GB RAM

@@ -1,8 +1,8 @@
-#import "@local/htl3r-da:1.0.0" as htl3r
+#import "@local/htl3r-da:0.1.0" as htl3r
 #htl3r.author("Marlene Reder")
 
 == OT Topologie <piverkabelung>
-Um die Operational Technology möglichst praxisnah darzustellen, wurde ein Modelleisenbahnnetz entwickelt. Dabei ist sowohl ein Gleisplan mit Elementen wie Wendeschleifen und Weichen geplant, als auch die Steuerung mit praxisrelevanten Komponenten und dem Protokoll Modbus entwickelt worden. 
+Um die Operational Technology möglichst praxisnah darzustellen, wurde ein Modelleisenbahnnetz entwickelt. Dabei ist sowohl ein Gleisplan mit Elementen wie Wendeschleifen und Weichen geplant, als auch die Steuerung mit praxisrelevanten Komponenten und dem Protokoll Modbus entwickelt worden.
 
 #figure(
     image("../assets/topologie/ot-topologie/3BB_Gleisplan.jpg", width: 74%),
@@ -19,7 +19,7 @@ Um einer normalen Eisenbahnstrecke gerecht zu werden, ist die Eisenbahn in isoli
 )
 
 Diese Blöcke, aber auch die Weichen, werden durch ein zentrales Steuergerät, genauer gesagt durch eine #htl3r.long[sps] (#htl3r.short[sps]), der 'Siemens LOGO!' gesteuert. Dieses sendet Modbus TCP/IP Frames zu sogenannten #htl3r.long[rtu] um Daten wie die aktuelle Weichenstellung einzuholen.\ \
-Um die Komponenten in der Nähe der Modelleisenbahnanlage zu plazieren, wurde eine OT-Netzwerkschrank gebaut, der die Zentrale abbildet. In diesem befindet sich einerseits die Stromversorgung, die #htl3r.short[sps], ein OT-Switch, andererseits auch ein Microcontroller, genauer gesagt ein Raspberry PI, der als #htl3r.short[rtu] für die Weichen dient. 
+Um die Komponenten in der Nähe der Modelleisenbahnanlage zu plazieren, wurde eine OT-Netzwerkschrank gebaut, der die Zentrale abbildet. In diesem befindet sich einerseits die Stromversorgung, die #htl3r.short[sps], ein OT-Switch, andererseits auch ein Microcontroller, genauer gesagt ein Raspberry PI, der als #htl3r.short[rtu] für die Weichen dient.
 
 #figure(
     image("../assets/topologie/ot-topologie/ot-steuerzentrale.jpg", width: 45%),
@@ -54,7 +54,7 @@ Zum Programmieren selbst wurde in diesem Projekt die Sprache "#htl3r.long[fub]""
 
 #htl3r.fspace(
     figure(
-        image("../assets/topologie/ot-topologie/komponenten/siemens-logo.jpg.", width: 50%),
+        image("../assets/topologie/ot-topologie/komponenten/siemens-logo.jpg", width: 50%),
         caption: "SPS - Siemens LOGO!")
 )
 
@@ -65,7 +65,7 @@ Die Oberfläche von 'LOGO!Soft Comfort' ist in zwei große Bereiche eingeteilt, 
     caption: "LOGO!Soft Comfort - Übersicht Diagram Mode"
 )
 
-Um die Steuerung zu testen - ohne dieses immer auf die #htl3r.short[sps] laden zu müssen - befindet sich hier auch die Option für den Simulationsmodus. In diesem können die unterschiedlichen Inputs an- und ausgeschalten werden, um verfolgen zu können, was dies in der Steuerung bewirkt. In der @simulationsmodus sieht man, dass der Input I1 im Simulationsmodus aktivert worden ist. Die Auswrikungen können dabei durch die nun rot eingefärbte Verbindung beobachtet werden. 
+Um die Steuerung zu testen - ohne dieses immer auf die #htl3r.short[sps] laden zu müssen - befindet sich hier auch die Option für den Simulationsmodus. In diesem können die unterschiedlichen Inputs an- und ausgeschalten werden, um verfolgen zu können, was dies in der Steuerung bewirkt. In der @simulationsmodus sieht man, dass der Input I1 im Simulationsmodus aktivert worden ist. Die Auswrikungen können dabei durch die nun rot eingefärbte Verbindung beobachtet werden.
 
 #figure(
     image("../assets/topologie/ot-topologie/Logo!soft-comfort_simulation-mode.png", width: 80%),
@@ -93,7 +93,7 @@ Allerdings bevor das Programm angezeigt wird, wird man zu einem Konnektivitätst
     caption: "Test der Konnektivität zwischen PC und SPS"
 )\
 
-Nach einer erfogreichen Konnektivität wird nicht nur in dem Diagram Editor das Programm angezeigt, es wird auch in der Network View die #htl3r.short[sps] abgebildet. Auf dieser können nun Einstellungen wie die IP-Adresse oder aber auch das Busprotokoll Modbus aktiviert werden. Weiters ist zu erkennen, dass die #htl3r.short[sps], zusätzlich zu der zum PC, vier weitere Verbindungen hat. Diese zeigen auf, dass im Programm auf externe Inputs beziehungsweise Outputs verwiesen wird. Im Falle des Projekts ist das der Raspberry PI und die drei Relais Module. 
+Nach einer erfogreichen Konnektivität wird nicht nur in dem Diagram Editor das Programm angezeigt, es wird auch in der Network View die #htl3r.short[sps] abgebildet. Auf dieser können nun Einstellungen wie die IP-Adresse oder aber auch das Busprotokoll Modbus aktiviert werden. Weiters ist zu erkennen, dass die #htl3r.short[sps], zusätzlich zu der zum PC, vier weitere Verbindungen hat. Diese zeigen auf, dass im Programm auf externe Inputs beziehungsweise Outputs verwiesen wird. Im Falle des Projekts ist das der Raspberry PI und die drei Relais Module.
 
 
 #figure(

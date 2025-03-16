@@ -1,4 +1,4 @@
-#import "@preview/htl3r-da:1.0.0" as htl3r
+#import "@local/htl3r-da:0.1.0" as htl3r
 #htl3r.author("Marlene Reder")
 
 == Modbus Injektion
@@ -12,12 +12,12 @@ Zusätzlich ist die Unit ID für die Modbuskommunikation zum Herrausfinden. Das 
 Weiters ist das Framework ModBusSploit herunterzuladen. Dieses ist unter diesem Link aufzufinden: "https://github.com/C4l1b4n/ModBusSploit". Das Framework arbeitet mit Modulen, welche Angriffsvektoren auf das Protokoll Modbus TCP aufzeigen. Dabei wird nur das Modul _writeSingleCoil_ verwendet, allerdings gibt es eine weitere Anzahl von Modulen mit Diverse Injektionen sowie Denail of Service Angriffen.
 
 === Umsetztung - Code Injektion
-Um das Framework zu starten, wird die Datei _start.py_ ausgeführt. 
+Um das Framework zu starten, wird die Datei _start.py_ ausgeführt.
 ```
 python3 ModBusSploit-main/start.py
 ```
 #figure(
-  image("../assets/Injektion/modbussploit-start.png"),
+  image("../assets/injection/modbussploit-start.png"),
   caption: "ModBusSploit gestartet"
 )
 
@@ -37,13 +37,13 @@ Um schlussendlich den Angriff selbst ausführen zu können:
 exploit
 ```
 #figure(
-  image("../assets/Injektion/modbussploit-angirff.png"),
+  image("../assets/injection/modbussploit-angirff.png"),
   caption: "Injektion Angriff ausgeführt"
 )
 
 Der Verlauf kann nun auch im Wireshark betrachtet werden. Dabei ist zu sehen, dass das Angreifergerät mit der IP-Adresse 10.100.0.99 zuerst eine TCP Session mit der RTU aufbaut. Danach kann beobachtet werden, dass das maliziöse Modbuspacket verschickt wird und schlussendlich die Verbindung wieder aufgelöst wird. Somit ist der Angirff in kürzerster Zeit erfolgt und die Angreifer*in nun wieder passiv geworden.
 
 #figure(
-  image("../assets/Injektion/wireshark-komplette-Injektion.png"),
+  image("../assets/injection/wireshark-komplette-injection.png"),
   caption: "Injektion Angriff im Wireshark"
 )

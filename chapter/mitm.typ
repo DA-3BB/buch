@@ -1,4 +1,4 @@
-#import "@preview/htl3r-da:1.0.0" as htl3r
+#import "@local/htl3r-da:0.1.0" as htl3r
 #htl3r.author("Marlene Reder")
 
 == Man in the Middle Angriff
@@ -13,7 +13,7 @@ Um den Man in the Middle Angriff durchführen zu können, wird zuallererst Zugan
 Weiters wird auf dem Angreifergerät eine Kali-Linux Distribution in einer VM oder als Hostbetriebssystem benötigty, da für den Angriff die vorinstallierten Tools Ettercap, Etterfilter und Wireshark verwendet werden. \
 
 ==== Ettercap
-Ettercap ist ein Multifunktionstool, mit dessen Hilfe Man in the Middle-Angriffe durchgeführt werden können, um Sniffing, Filtering und Einspeisung von malizösen Daten zu erreichen. Ettercap wird im @umsetztung-mitm mit folgenden Optionen verwendet. \  
+Ettercap ist ein Multifunktionstool, mit dessen Hilfe Man in the Middle-Angriffe durchgeführt werden können, um Sniffing, Filtering und Einspeisung von malizösen Daten zu erreichen. Ettercap wird im @umsetztung-mitm mit folgenden Optionen verwendet. \
 
 #figure(
   table(
@@ -31,10 +31,10 @@ Ettercap ist ein Multifunktionstool, mit dessen Hilfe Man in the Middle-Angriffe
 Weiters können mithilfe von Schrägstrichen die Ziele nach MAC-Adresse, IP-Adresse und Port angegeben werden.
 ```
 /MAC/IPs/PORT
-``` 
+```
 Ein Beispiel für eine spezifische IP-Adresse und ohne spezifischen Port und ohne spezifischer MAC-Adresse ist:
 ```
-//10.100.0.1/ 
+//10.100.0.1/
 ```
 Ein Beispiel für einen spezifischen Port ohne spezifische MAC und IP-Adresse ist:
 ```
@@ -45,7 +45,7 @@ Ein Beispiel für einen spezifischen Port ohne spezifische MAC und IP-Adresse is
 Etterfilter ist eine erweiterte Funktion von Ettercap mihilfe dessen Filter für Ettercap compiled werden können. Hierbei werden folgende Optionen -o verwendet, um die Ausgabedatei zu spezifizieren.
 
 ==== Wireshark
-Wireshark wird hierbei zusätzlich verwendet, um den Traffic beim Angriff genauer zu inspizieren und mitzuverfolgen. 
+Wireshark wird hierbei zusätzlich verwendet, um den Traffic beim Angriff genauer zu inspizieren und mitzuverfolgen.
 
 === Umsetzung - Man in the Middle-Angriff <umsetztung-mitm>
 Bevor der Angriff gestartet wird, wird geschaut ob sich die zu angreifenden Ziele im Netzwerk befinden. Dabei wird in der Kali-Linux-VM folgender Befehl ausgeführt:
@@ -54,7 +54,7 @@ Bevor der Angriff gestartet wird, wird geschaut ob sich die zu angreifenden Ziel
   ettercap -T -s 'lq'
 ```
 
-#htl3r.info("output screenshot wird noch ergänzt")
+*output screenshot wird noch ergänzt*
 
 Nun, da die bekannten IP Adressen beim Scan aufgelistet wurden, kann mit dem MITM-Angriff und somit dem ARP Spoofing begonnen werden. Dabei werden im ersten Schritt die Pakete noch nicht modifiziert sonder nur zum mitlesen abgefangen und weitergeleitet.
 
@@ -78,7 +78,7 @@ image("../assets/mitm/wireshark-arp-spoofing_teil1.png"),
   caption: "ARP Request Posioning"
 ) <arp1>
 
-Im nächsten Schritt sendet die Kali-Linux-VM ARP Antworten an das jeweilige andere Gerät, um vorzutäuschen, dass die IP-Adresse beim Angreifer*in terminiert. 
+Im nächsten Schritt sendet die Kali-Linux-VM ARP Antworten an das jeweilige andere Gerät, um vorzutäuschen, dass die IP-Adresse beim Angreifer*in terminiert.
 
 #figure(
 image("../assets/mitm/wireshark-arp-spoofing_teil2.png"),
