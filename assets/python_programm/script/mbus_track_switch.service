@@ -1,0 +1,13 @@
+[Unit]
+Description=3BB track switch service
+After=syslog.target network.target
+AssertPathExists=/tmp
+
+[Service]
+Type=simple
+
+ExecStart=/usr/local/bin/3bb-start-raspberry-modbusserver-for-trackswitching.sh &
+
+
+[Install]
+WantedBy=multi-user.target

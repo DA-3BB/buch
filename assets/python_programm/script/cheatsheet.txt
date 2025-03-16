@@ -1,0 +1,4 @@
+how to kill process 
+
+netstat -tlpn
+kill PID
