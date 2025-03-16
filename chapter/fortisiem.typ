@@ -146,7 +146,7 @@ In der Topolgie bestehen zwei #htl3r.long[ad] Standorte, die über einen VPN zwi
 #htl3r.fspace(
   total-width: 95%,
   figure(
-    image("../assets/fortisiem/fortisiem-topology.png"),
+    image("../assets/fortisiem/fsm-topo.png"),
     caption: [logische Topolgie des FortiSIEM-Clusters]
   )
 )
@@ -318,3 +318,5 @@ Anschließend kann das Bash-Script mit folgenden Parametern ausgeführt werden, 
 ```
 
 Nach der Installation ist der Agent im Ordner `/opt/fortinet/fortisiem/linux-agent` zu finden und über dem Systemd-Service `fortisiem-linux-agent` abrufbar.
+
+== Abbildung der OT im FortiSIEM
