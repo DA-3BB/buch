@@ -15,6 +15,11 @@ Für die IT-Topologie wurde ein #htl3r.long[ad] mit zwei Standorten konfiguriert
   )
 )
 
+#figure(
+  image("../assets/topologie/3BB_FCP_Topologie.jpg"),
+  caption: "IT-Topologie"
+)
+
 Der Standort Wien ist in vier #htl3r.shortpl[vlan] mikrosegmentiert. Zwischen den einzelnen #htl3r.short[vlan] routet die FortiGate mittels Inter-#htl3r.short[vlan]-Routing die Subnetze. Dabei wird auch der Traffic auf das nötigste limitiert, um das Angriffspotenzial einzuschränken. Der Standort Eisenstadt trennt nur zwischen Mitarbeiter-PCs und restlichen Servern. Hier übernimmt ebenfalls die FortiGate die Kommunikation zwischen den #htl3r.shortpl[vlan]. Die #htl3r.shortpl[vlan] werden virtuell am vSphere mittels Distributed Portgroups konfiguriert.
 
 #htl3r.fspace(
@@ -40,5 +45,10 @@ Der #htl3r.short[ftp]-Server wurde in die Topologie implementiert, um das Speich
 #htl3r.author("Magdalena Feldhofer")
 === FortiGate
 Die physische 60E FortiGate wird mittels LAN-Kabel mit dem Switch der OT verbunden, als auch mit dem Switch der UCS. Die UCS ist ein Unified Computing System von Cisco, auf dem System laufen eine vielzahl an Virtuellen Maschinen (VMs), welche gemeinsam die IT-Seite des Netzwerkes bilden. Auf der UCS sind die VMs in unterschiedliche Vlans aufgeteilt und sehen sich so untereinander nur eingeschränkt. \
+
+#figure(
+  image("../assets/topologie/3BB_FCP_Topologie.jpg"),
+  caption: "IT-Topologie"
+)
 
 Um die Standorte Wien, Eisenstadt und das Zugnetzwerk zu verbinden, sind drei Firewalls im einsatz. Die eine Physische 60E und zwei virtuelle FortiGates in der Version 7.6. Alle drei haben ein Interface in einem Vlan, in welchem nur sie kommunizieren können, es simuliert das Internet. Dadurch, dass man Daten zwischen Standorten nicht unverschlüsselt übertragen möchte, werden IPSec VPN Tunnel zwischen den Standorten gespannt mit dem Full-Mesh Modell (jede Firewall ist mit jeder anderen verbunden).
