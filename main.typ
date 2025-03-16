@@ -26,12 +26,12 @@
   print-ref: true,
   generative-ai-clause: none,
   abbreviation: yaml("abbr.yml"),
-  bibliography-content: bibliography(
+  /*bibliography-content: bibliography(
     "refs.yml",
     full: true,
     title: [Literaturverzeichnis],
     style: "harvard-cite-them-right",
-  ),
+  ),*/
 )
 
 #include "chapter/einleitung.typ"
