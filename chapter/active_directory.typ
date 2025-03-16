@@ -1,4 +1,4 @@
-#import "@preview/htl3r-da:0.1.0" as htl3r
+#import "@local/htl3r-da:0.1.0" as htl3r
 #htl3r.author("Albin Gashi")
 #import "@preview/treet:0.1.1": *
 
@@ -137,7 +137,8 @@ Um die Rechteverwaltung zu vereinfachen wurde das #htl3r.short[agdlp]-Prinzip an
 
 == Konfiguration <ad-conf>
 
-Die Konfiguration der Domain Controller wurde mittels Powershell-Scripts durchgeführt. Die Scripts wurden über einen #htl3r.short[ftp]-Server zentral verwaltet und von den Domain Controllern heruntergeladen und ausgeführt.
+Die Konfiguration der Domain Controller wurde mittels Powershell-Scripts durchgeführt. Im folgenden Scripts ist die Grundkonfiguration eines Windows Servers zu sehen. Neben dem Hostname und der IP-Adresse für das Interface werden auch #htl3r.short[dns]- und #htl3r.short[ntp]-Server gesetzt. Der DNS-Server ist für deen Fall des Domain Controllers auf sich selber gesetzt, um die Funktionsfähigkeit des #htl3r.long[ad] zu garantieren. Dieser Abschnitt ist zu Beginn jedes Powershell-Scripts zu finden.
+// Die Scripts wurden über einen #htl3r.short[ftp]-Server zentral verwaltet und am Domain Controller heruntergeladen und ausgeführt.
 
 #htl3r.code-file(
   caption: "Grundkonfiguration eines Domain Controllers",
@@ -159,7 +160,7 @@ Nach dem Neustart wird die #htl3r.short[adds]-Rolle für die Domain #emph("wien.
   text: read("../assets/active-directory/wien-3bb-dc1.ps1")
 )
 
-Am Standort Wien wird ein redundanter #htl3r.short[dhcp]-Server betrieben. Die beiden Domain Controllern teilen sich einen gemeinsamen Adressbereich mittels #htl3r.short[dhcp]-Failover auf.
+Am Standort Wien wird ein redundanter #htl3r.short[dhcp]-Server betrieben. Die beiden Domain Controller teilen sich einen gemeinsamen Adressbereich mittels #htl3r.short[dhcp]-Failover auf. Hiefür werden neben der #htl3r.short[dhcp] Rolle im #htl3r.long[ad] die Adressbereiche mit ihren zugehörigen Default-Gateways und DNS-Servern konfiguriert. Zum Schluss wird der zweite Domain Controller als Partner-Server für den #htl3r.short[dhcp]-Failover angegeben.
 
 #htl3r.code-file(
   caption: "Einrichten eines DHCP-Failovers",

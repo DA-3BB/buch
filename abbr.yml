@@ -141,6 +141,20 @@ ldap:
     singular: Lightweight Directory Access Protocol
   description: Ein Protokoll, dass der Abfrage und Änderung von Active Directory Informationen dient.
 
+dns:
+  short:
+    singular: DNS
+  long:
+    singular: Domain Name System
+  description: Bietet den Zugang zu IP-Adressen via Domänennamen.
+
+ntp:
+  short:
+    singular: NTP
+  long:
+    singular: Network Time Protocol
+  description: Dient der Zeitsynchronisation von Computern mit der globalen Uhrzeit.
+
 ou:
   short:
     singular: OU
@@ -271,7 +285,7 @@ gpio:
 fub:
   short:
     singular: FUB
-  long: 
+  long:
     singular: Funktionsplan
   description: Eine grafische Programmiersprache der Siemens LOGO!, die mit logische Funktionsblöcken funktioniert.
 
@@ -338,14 +352,14 @@ ascii:
 lrc:
   short:
     singular: LRC
-  long: 
+  long:
     singular: Längenparitätsprüfung
   description: Zur Fehlererkännung von 1-Bit Fehlern werden Prüfbit (Paritätsbits) an die Daten angehängt.
 
 crlf:
   short:
     singular: CRLF
-  long: 
+  long:
     singular: Carriage Return und Line Feed
   description: Zeichen für einen Zeilenumbruch, CR = Carriage Return and LF = Line Feed
 
