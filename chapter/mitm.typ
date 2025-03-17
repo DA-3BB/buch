@@ -1,4 +1,6 @@
 #import "@preview/htl3r-da:1.0.0" as htl3r
+#import "@preview/wordometer:0.1.4": total-words, word-count
+#show: word-count
 #htl3r.author("Marlene Reder")
 
 == Man in the Middle Angriff
@@ -101,7 +103,6 @@ Damit der Filter bei Ettercap angegeben werden kann, muss er noch in eine Binär
 ```bash
   etterfilter /usr/share/ettercap/3bb/coil-true-false.filter -o coil-true-to-false.ef
  ```
-]
 
 #figure(
   image("../assets/mitm/terminal-create-filter.png"),
@@ -126,7 +127,4 @@ Im Wireshark kann nun beobachtet werden, dass alle Modbuspakete mit einem _Write
   caption: "MITM durch ARP Spoofing mit einem Filter"
 )
 
-=== Quellen --> irgendwo anders hin???
-https://www.geeksforgeeks.org/ettercap-sniffing-and-spoofing/ \
-https://charlesreid1.com/wiki/Ettercap \
-PDF
+#total-words 
