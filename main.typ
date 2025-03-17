@@ -47,17 +47,23 @@
 
 #include "chapter/angriffe_intro.typ"
 
-#include "chapter/replay.typ"
+#pagebreak()
+#include "chapter/port-scan.typ"
 
-#include "chapter/fuzzing.typ"
-
-#include "chapter/injection.typ"
-
+#pagebreak()
 #include "chapter/mitm.typ"
 
+#pagebreak()
 #include "chapter/dos.typ"
 
-#include "chapter/port-scan.typ"
+#pagebreak()
+#include "chapter/fuzzing.typ"
+
+#pagebreak()
+#include "chapter/replay.typ"
+
+#pagebreak()
+#include "chapter/injection.typ"
 
 // FCP
 
@@ -68,6 +74,3 @@
 #include "chapter/fortianalyzer.typ"
 
 #include "chapter/fortisiem.typ"
-
-= Angriffe auf die OT Infrastrutur
-#include "chapter/mitm.typ"
