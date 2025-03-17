@@ -37,11 +37,7 @@ Um schlussendlich den Angriff selbst ausführen zu können:
 exploit
 ```
 #figure(
-<<<<<<< HEAD
   image("../assets/injection/modbussploit-angirff.png"),
-=======
-  image("../assets/Injection/modbussploit-angirff.png"),
->>>>>>> origin/RED_Code-Injection
   caption: "Injektion Angriff ausgeführt"
 )
 

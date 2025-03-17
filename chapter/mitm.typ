@@ -100,8 +100,7 @@ Damit der Filter bei Ettercap angegeben werden kann, muss er noch in eine Binär
 
 ```bash
   etterfilter /usr/share/ettercap/3bb/coil-true-false.filter -o coil-true-to-false.ef
- ```
-]
+```
 
 #figure(
   image("../assets/mitm/terminal-create-filter.png"),
