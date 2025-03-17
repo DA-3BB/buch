@@ -254,7 +254,7 @@ Die Antivirus-Engine verwendet eine Antivirus-Datenbank mit welcher die Pakete v
     - legacy-scanning:
 - Proxy-based-Inspection:
 
-=== Web Filtering #heading("Web Filtering")
+=== Web Filtering
 === Intrusion Prevention and Application Control <IPS_App-control>
 
 
