@@ -68,6 +68,3 @@
 #include "chapter/fortianalyzer.typ"
 
 #include "chapter/fortisiem.typ"
-
-= Angriffe auf die OT Infrastrutur
-#include "chapter/mitm.typ"
