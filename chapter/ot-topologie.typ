@@ -27,7 +27,7 @@ Um die Komponenten in der Nähe der Modelleisenbahnanlage zu plazieren, wurde ei
 )
 
 #figure(
-    image("../assets/topologie/ot-topologie/3BB_Netzplan_v1_0.png"),
+    image("../assets/topologie/ot-topologie/3BB_Netzplan_v2_1.png"),
     caption: "OT Netzplan - Physischer Aufbau der OT"
 )
 
