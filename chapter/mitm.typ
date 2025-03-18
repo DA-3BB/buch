@@ -124,8 +124,3 @@ Im Wireshark kann nun beobachtet werden, dass alle Modbuspakete mit einem _Write
   image("../assets/mitm/mitm-coil-false.png"),
   caption: "MITM durch ARP Spoofing mit einem Filter"
 )
-
-=== Quellen --> irgendwo anders hin???
-https://www.geeksforgeeks.org/ettercap-sniffing-and-spoofing/ \
-https://charlesreid1.com/wiki/Ettercap \
-PDF
