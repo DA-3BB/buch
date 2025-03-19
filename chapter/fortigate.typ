@@ -225,7 +225,7 @@ Es gibt zwei Modi:
 - Flow-based-Inspection: Dieser Modus ist ein Hybrid aus zwei anderen Modi:
     - Default-scanning: Macht es möglich verschachtelte Ordner zu inspizieren, ohne das ganze Container-file im Buffer zu speichern.
     - Legacy-scanning: Speichert den ganzen Container und inspiziert ihn anschließend.
-    Anhand des folgenden Bildes lässt sich das System am besten erklären. Alle Pakete, bis auf das letzte, werden and die Antivirus-Engine geschickt und zusätzlich auch an den Client. Das letzte Paket wird nur an die Engine geschickt, dort werden die Pakete zusammengefügt und es wird eine Signatur generiert, wenn diese in der AV-Datenbank befindet, ist es ein Virus. Falls ein Virus erkannt wird, wird das letzte Paket nicht an den Client weitergeleitet. Auch wenn der Großteil des Viruses schon am Client angekommen ist, ist es ungefährlich, da der Virus alle Pakete benötigt. Wenn die Pakete als ungefährlich eingestuft werden, wird das letzte Paket auch an den Client weitergeleitet.
+    Anhand des folgenden Bildes lässt sich das System am besten erklären. Alle Pakete, bis auf das letzte, werden an die Antivirus-Engine geschickt und zusätzlich auch an den Client. Das letzte Paket wird nur an die Engine geschickt, dort werden die Pakete zusammengefügt und es wird eine Signatur generiert, wenn diese in der AV-Datenbank befindet, ist es ein Virus. Falls ein Virus erkannt wird, wird das letzte Paket nicht an den Client weitergeleitet. Auch wenn der Großteil des Viruses schon am Client angekommen ist, ist es ungefährlich, da der Virus alle Pakete benötigt. Wenn die Pakete als ungefährlich eingestuft werden, wird das letzte Paket auch an den Client weitergeleitet.
     #figure(
         image("../assets/fortigate/AV_flow.jpg", width: 100%),
         caption: "AV flow-based-inspection Visualisierung Quelle: https://community.fortinet.com/t5/Support-Forum/What-flow-based-inspection-do-with-packets/m-p/70425"
@@ -237,9 +237,18 @@ Es gibt zwei Modi:
 - Proxy-based-Inspection:
     #figure(
         image("../assets/fortigate/AV_proxy.jpg", width: 100%),
-        caption: "AV proxy-based-inspection Visualisierung Quelle: https://networkinterview.com/fortigate-utm-unified-threat-management/
-"
+        caption: "AV proxy-based-inspection Visualisierung Quelle: https://networkinterview.com/fortigate-utm-unified-threat-management/"
     )
+    Alle Pakete werden nur an die Antivirus-Engine geschickt und nicht an den Client. In der Engine werden die Pakete zusammengefügt und es wird eine Signatur generiert, wenn diese in der AV-Datenbank befindet, ist es ein Virus. Falls ein Virus erkannt wird, werden keine Daten an den Client weitergeleitet. Wenn die Pakete als ungefährlich eingestuft werden, werden alle Pakete an den Client weitergeleitet.
+    \
+    Da während des Scannings noch keine Daten am Client ankamen, kann es zu timeouts kommen. Um diese zu vermeiden kann man "Client comforting" aktivieren, hierbei werden ganz langsam Pakete weitergeleitet, um ein Session-timeout zu vermeiden.
+
+Falls ein Virus erkannt wird, wird dem Client eine Block-Webpage angezeigt.
+
+// Hier fehlt block page image
+// image von profile config + config file
+
+   // Seite 197
 
 === Web Filtering
 === Intrusion Prevention and Application Control <IPS_App-control>
