@@ -18,7 +18,13 @@ Um alle möglichen Gedanken und Arbeitsschritte niederschreiben und auf Git vere
 
 # Typst-Setup (Windows)
 
-## Vorlage einbinden
+## Vorlage einbinden ( - neu)
+1. von github mit diesem Link (https://github.com/HTL3R-Typst/htl3r-da) das Zip herunterladen
+2. das Zip entpacken
+3. Ordnerstruktur %appdata%/typst/packages/preview/htl3r-da/1.0.0 erstellen
+4. entpackter Ordner in “1.0.0” verschieben
+5. 
+## Vorlage einbinden ( - alt)
 1. von github mit diesem Link (https://github.com/HTL3R-Typst/htl3r-da) das Zip herunterladen
 2. das Zip entpacken
 3. Ordnerstruktur %appdata%/typst/packages/local/htl3r-da/0.1.0 erstellen
