@@ -1,4 +1,4 @@
-#import "@local/htl3r-da:1.0.0" as htl3r
+#import "@preview/htl3r-da:1.0.0" as htl3r
 #htl3r.author("Magdalena Feldhofer")
 
 #import "@preview/wordometer:0.1.4": word-count, total-words
@@ -151,28 +151,28 @@ Erwähnenswert ist ebenso, dass nur weil Authentifizierung in einer Policy aktiv
 - Authentifizierung in jeder Policy aktivieren.
 - Über die CLI Authentifizierung erzwingen.
 - Captive Portal auf dem Source-Port zu aktivieren.
-
-Folgende Bilder zeigen die Erstellung eines lokalen Benutzers auf der FortiGate:\ 
 #pagebreak()
+Folgende Bilder zeigen die Erstellung eines lokalen Benutzers auf der FortiGate:\ 
+
 
 1. Art des Kontos bestimmen:
 #figure(
-    image("../assets/fortigate/user-create1.png", width: 30%),
+    image("../assets/fortigate/user-create1.png", width: 40%),
     caption: "Benutzer erstellen Schritt 1"
 )
 2. Benutzername und Passwort setzen:
 #figure(
-    image("../assets/fortigate/user-create2.png", width: 50%),
+    image("../assets/fortigate/user-create2.png", width: 70%),
     caption: "Benutzer erstellen Schritt 2"
 )
 3. Falls gewollt Zwei-Faktor Authentifizierung aktivieren:
 #figure(
-    image("../assets/fortigate/user-create3.png", width: 50%),
+    image("../assets/fortigate/user-create3.png", width: 80%),
     caption: "Benutzer erstellen Schritt 3"
 )
 4. Benutzerkonto aktivieren und wenn gewollt zu Gruppen hinzufügen:
 #figure(
-    image("../assets/fortigate/user-create4.png", width: 50%),
+    image("../assets/fortigate/user-create4.png", width: 80%),
     caption: "Benutzer erstellen Schritt 4"
 )
 
@@ -181,8 +181,8 @@ Folgende Bilder zeigen die Erstellung eines lokalen Benutzers auf der FortiGate:
 === Fortinet Single Sign-On (FSSO)
 Single-Sign-On (SSO) ist ein Prozess bei welchem die Identität der Benutzer nur einmal bestätigt werden muss und alle anderen Anwendungen sich die Informationen im Hintergrund von einem SSO Agent organisieren, ohne dass der Benutzer es mitbekommt. Meistens wird SSO in Zusammenhang mit Active Directory oder Novell eDirectory eingesetzt.
 
-Für Active Directory Umgebungen gibt es zwei Methoden des Signle-Sign-On Prozesses:
-- *DC-agent Mode:* die meist empfohlene Variante, benötigt einen DC-agent auf jedem Domain Controller und einen oder mehrere collector-agents auf Windows Servern. Der Benutzer meldet sich am Domain-Controller an, der DC-agent sieht das Event und leitet es an den collector-agent weiter, welcher es an die FortiGate weiterleitet.
+Für Active Directory Umgebungen gibt es zwei Methoden des Single-Sign-On Prozesses:
+- *DC-agent Mode:* die empfohlene Variante, benötigt einen DC-agent auf jedem Domain Controller und einen oder mehrere collector-agents auf Windows-Servern. Der Benutzer meldet sich am Domain-Controller an, der DC-agent sieht das Event und leitet es an den collector-agent weiter, welcher es an die FortiGate weiterleitet.
 - *Polling Mode: * 
     - *Collector agent-based:* ein collector-agent muss auf jedem Windows Sever installiert werden, es wird jedoch kein DC-agent benötigt. Alle paar Sekunden ruft der agent den DC auf User Events ab und leitet diese an die FortiGate weiter. Es gibt drei Optionen des abrufen eines Domain-Controllers:
         - WMI: eine Windows API mit welcher der collector-agent Queries an den DC schickt. Dadurch, dass der collector-agent nicht nach logon-Events suchen muss, wird die Netzwerkauslastung verringert.
@@ -203,10 +203,55 @@ Beispiel: DC-agent mode, nachdem die DC-agents und collector-agent in der Domän
   text: read("../assets/fortigate/collector_agent.conf")
 )
 
-=== Certificate Operations <SSL-Inspection>
-Zertifikate werden einerseits natürlich für User-Authentifizierung verwendet, allerdings auch für Traffic-Inspizierungen. Diese sind Datenverkehr über die FortiGate als auch zu und von ihr, wenn ein Benutzer eine Website über HTTPS aufruft, überprüft die Firewall mithilfe von Zertifikaten, dass die Website vertrauenswürdig ist. \  Revocation- und Validation-Checks stellen sicher, dass das Zertifikat nicht von der Zertifikatsstelle zurückgezogen wurde oder das Gültigkeitsdatum abgelaufen ist.
 
-SSL Inspection 
+// maybe seite 164
+
+=== Security Profiles <sec_prof>
+Security Profiles sind erweiternde Funktionen, welche das Netzwerk bestmöglich gegen Angriffe schützen, sie werden pro Firewall Policy konfiguriert. 
+
+==== Inspection Modes 
+Auf jeder Firewall Policy kann der Modus ausgewählt werden, mit welchem die zutreffenden Daten inspiziert werden, sie unterscheiden sich hauptsächlich in Sicherheit und Performance.
+
+- Flow-based: Analysiert den Traffic in Real-time und benötigt weniger Ressourcen als Proxy-based Inspection. Der Fokus liegt auf Performance.
+- Proxy-based: Speichert den Traffic temporär ab und analysiert ihn in der gesamten länge. Benötigt mehr Ressourcen bietet allerdings mehr Sicherheit. Manche Security Profiles wie Data-leak-prevention (DLP) sind nur in diesem Modus verfügbar.
+
+Beide Modi sind für die meisten Security Profiles verfügbar, es gibt Ausnahmen wie zum Beispiel DLP, welches nur im proxy-mode verfügbar ist. \ 
+Achtung: Der Modus des Security Profiles muss mit dem Modus der Firewall-Policy übereinstimmen! Wenn zum Beispiel bei einem Antivirus Profil der Modus Proxy-based-Inspection ist, muss die Firewall-Policy ebenfalls diesen Modus haben.
+
+==== Antivirus <antivirus>
+// Seite 194
+Eines der Security Profiles ist Antivirus (AV). Es gibt eine Antivirus-Engine welche verwendet wird, um anhand einer Antivirus-Datenbank, Viren und Malware zu erkennen. Für das Paket wird anhand gewisser Parameter eine Signatur erstellt, welche mit den Einträgen der AV-Datenbank verglichen wird. In der Datenbank stehen eine Vielzahl an Signaturen welche aus bereits bekannten Angriffen generiert wurden. \ 
+Es gibt zwei Modi:
+- Flow-based-Inspection: Dieser Modus ist ein Hybrid aus zwei anderen Modi:
+    - Default-scanning: Macht es möglich verschachtelte Ordner zu inspizieren, ohne das ganze Container-file im Buffer zu speichern.
+    - Legacy-scanning: Speichert den ganzen Container und inspiziert ihn anschließend.
+    Anhand des folgenden Bildes lässt sich das System am besten erklären. Alle Pakete, bis auf das letzte, werden and die Antivirus-Engine geschickt und zusätzlich auch an den Client. Das letzte Paket wird nur an die Engine geschickt, dort werden die Pakete zusammengefügt und es wird eine Signatur generiert, wenn diese in der AV-Datenbank befindet, ist es ein Virus. Falls ein Virus erkannt wird, wird das letzte Paket nicht an den Client weitergeleitet. Auch wenn der Großteil des Viruses schon am Client angekommen ist, ist es ungefährlich, da der Virus alle Pakete benötigt. Wenn die Pakete als ungefährlich eingestuft werden, wird das letzte Paket auch an den Client weitergeleitet.
+    #figure(
+        image("../assets/fortigate/AV_flow.jpg", width: 100%),
+        caption: "AV flow-based-inspection Visualisierung Quelle: https://community.fortinet.com/t5/Support-Forum/What-flow-based-inspection-do-with-packets/m-p/70425"
+    )
+
+    Normalerweise wäre Flow-based-Inspection weniger Ressourcenintensiv, da aber die Pakete sowohl an die Engine als auch Client geschickt werden, wird mehr CPU-Aufwand benötigt.
+
+    
+- Proxy-based-Inspection:
+    #figure(
+        image("../assets/fortigate/AV_proxy.jpg", width: 100%),
+        caption: "AV proxy-based-inspection Visualisierung Quelle: https://networkinterview.com/fortigate-utm-unified-threat-management/
+"
+    )
+
+=== Web Filtering
+=== Intrusion Prevention and Application Control <IPS_App-control>
+
+
+// till here
+
+
+=== Certificate Operations <SSL-Inspection>
+Zertifikate werden einerseits natürlich für User-Authentifizierung verwendet, allerdings auch für Traffic-Inspizierungen. Wenn ein Benutzer eine Website über HTTPS aufruft, überprüft die Firewall mithilfe von Zertifikaten, dass die Website vertrauenswürdig ist. \  Revocation- und Validation-Checks stellen sicher, dass das Zertifikat nicht von der Zertifikatsstelle zurückgezogen wurde oder das Gültigkeitsdatum abgelaufen ist.
+
+=== SSL Inspection 
 Es gibt zwei Arten der Inspizierung, eine entschlüsselt den Datenverkehr und eine nicht:
 - Certificate-Inspection: Entschlüsselt keinen Traffic sondern analysiert nur den FQDN der Website, somit kann man in den Policies nur Web-Filtering und Application Control von den vielzahl der sonst möglichen Security Profiles anwenden.
 - Full-Inspection: Hierbei agiert die FortiGate als eine Art Man-in-the-Middle proxy. Es werden von der FortiGate zwei Sessions aufgebaut: eine zum Client und eine zu dem vom Client gewünschten Web-Server. Client und Server sind allerdings aus ihrer Sicht direkt verbunden. Somit wird nicht wirklich eine Verschlüsselung geknackt sondern einfach nur entschlüsselt. Der Sinn hinter dieser Art von Inspection ist es Angriffe zu erkennen, welche sonst versteckt wären. 
@@ -228,38 +273,6 @@ Beim Konfigurieren der  SSL-Optionen kann man wählen welche Richtung inspiziert
 
 Die Konfiguration des Profiles reicht allerdings noch nicht aus, um den Traffic zu filtern. Dafür muss das Profile in einer Firewall Policy angewandt werden und mit einem anderen Security Profile eingesetzt werden, da SSL-Inspection noch nicht das Abfangen bzw Inspizieren der Daten auslöst. 
 Zusätzlich dazu, wenn man im Profile "Deep Inspection" auswählt muss man darauf achten, dass in der Firewall Policy der Mode Proxy-based-Inspection ist.
-
-
-// maybe seite 164
-
-=== Security Profiles <sec_prof>
-
-/*  die folgenden sind die relevantesten:
-- AntiVirus: Pakete werden mit einer Datenbank an Viren und Malware verglichen und anhand des Resultats verworfen oder erlaubt. Weiteres dazu siehe  Kapitel Antivirus
-- Web Filter: Schränkt Web-Site Zugriff anhand von Kategorien ein. Näheres dazu siehe 
-- Application Control: Der Traffic wird auf Applikations-Signaturen untersucht. Mehr dazu siehe
-- IPS: Analysiert den Traffic anhand von Sessions und vergleicht die Erkenntnisse mit Signaturen aus der IPS-Datenbank. Genaueres siehe 
-- SSL Inspection: Web-Traffic wird auf Angriffe untersucht. Weiteres dazu siehe 
-*/
-Security Profiles sind erweiternde Funktionen, welche das Netzwerk bestmöglich gegen Angriffe schützen, sie werden pro Firewall Policy konfiguriert. 
-
-Inspection Modes 
-- Flow-based: Analysiert den Traffic in Real-time und benötigt weniger Ressourcen als Proxy-based Inspection. Der Fokus liegt auf Performance.
-- Proxy-based: Speichert den Traffic temporär ab und analysiert ihn in der gesamten länge. Benötigt mehr Ressourcen bietet allerdings mehr Sicherheit. Manche Security Profiles wie Data-leak-prevention sind nur in diesem Modus verfügbar.
-==== Antivirus <antivirus>
-// Seite 194
-Die Antivirus-Engine verwendet eine Antivirus-Datenbank mit welcher die Pakete verglichen werden, um Viren und Malware zu erkennen. Es gibt wieder zwei Modi:
-- Flow-based-Inspection: Dieser Modus ist ein Hybrid aus zwei anderen Modi:
-    - default-scanning:
-    - legacy-scanning:
-- Proxy-based-Inspection:
-
-=== Web Filtering
-=== Intrusion Prevention and Application Control <IPS_App-control>
-
-
-// till here
-
 
 
 === IPsec VPN
