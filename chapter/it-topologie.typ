@@ -1,4 +1,4 @@
-#import "@local/htl3r-da:0.1.0" as htl3r
+#import "@preview/htl3r-da:1.0.0" as htl3r
 #htl3r.author("Albin Gashi")
 
 == IT-Topologie
@@ -35,7 +35,7 @@ Der Standort Wien ist in vier #htl3r.shortpl[vlan] mikrosegmentiert. Zwischen de
 
 Der #htl3r.short[ftp]-Server wurde in die Topologie implementiert, um das Speichern von Konfigurationen zu erleichtern. Komponenten wie Windows oder Linux-Server können so ihre Powershell-Scripts herunterladen und ausführen. Das erleichtert die Provisionierung, falls Komponenten einen Ausfall erleiden. Manche Geräte von Fortinet, wie z.B. der FortiAnalyzer, können ihre Konfigurationen auch automatisch auf einen FTP-Server hochladen. Für das FortiSIEM wurden die Windows- und Linux-Agents abgelegt, um diese auf die einzelnen Komponenten zu verteilen.
 
-#import "@local/htl3r-da:0.1.0" as htl3r
+#import "@preview/htl3r-da:1.0.0" as htl3r
 #htl3r.author("Albin Gashi")
 #import "@preview/treet:0.1.1": *
 

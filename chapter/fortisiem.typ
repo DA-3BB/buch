@@ -1,4 +1,4 @@
-#import "@local/htl3r-da:0.1.0" as htl3r
+#import "@preview/htl3r-da:1.0.0" as htl3r
 #import "@preview/codly:1.2.0": *
 #import "@preview/codly-languages:0.1.1": *
 #show: codly-init.with()

@@ -1,4 +1,4 @@
-#import "@local/htl3r-da:0.1.0" as htl3r
+#import "@preview/htl3r-da:1.0.0" as htl3r
 
 #show: htl3r.diplomarbeit.with(
   title: "3BB",
@@ -47,17 +47,23 @@
 
 #include "chapter/angriffe_intro.typ"
 
-#include "chapter/replay.typ"
+#pagebreak()
+#include "chapter/port-scan.typ"
 
-#include "chapter/fuzzing.typ"
-
-#include "chapter/injection.typ"
-
+#pagebreak()
 #include "chapter/mitm.typ"
 
+#pagebreak()
 #include "chapter/dos.typ"
 
-#include "chapter/port-scan.typ"
+#pagebreak()
+#include "chapter/fuzzing.typ"
+
+#pagebreak()
+#include "chapter/replay.typ"
+
+#pagebreak()
+#include "chapter/injection.typ"
 
 // FCP
 
