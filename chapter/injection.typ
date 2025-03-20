@@ -16,7 +16,7 @@ Um das Framework zu starten, wird die Datei _start.py_ ausgeführt.
 ```
 python3 ModBusSploit-main/start.py
 ```
-#figure(
+#htl3r.fspace(
   image("../assets/injection/modbussploit-start.png"),
   caption: "ModBusSploit gestartet"
 )
@@ -36,14 +36,14 @@ Um schlussendlich den Angriff selbst ausführen zu können:
 ```
 exploit
 ```
-#figure(
+#htl3r.fspace(
   image("../assets/injection/modbussploit-angirff.png"),
   caption: "Injektion Angriff ausgeführt"
 )
 
 Der Verlauf kann nun auch im Wireshark betrachtet werden. Dabei ist zu sehen, dass das Angreifergerät mit der IP-Adresse 10.100.0.99 zuerst eine #htl3r.short[tcp] Session mit der #htl3r.short[rtu] aufbaut. Danach kann beobachtet werden, dass das maliziöse Modbuspacket verschickt wird und schlussendlich die Verbindung wieder aufgelöst wird. Somit ist der Angirff in kürzerster Zeit erfolgt und die Angreifer*in nun wieder passiv geworden.
 
-#figure(
+#htl3r.fspace(
   image("../assets/injection/wireshark-komplette-injection.png"),
   caption: "Injektion Angriff im Wireshark"
 )
