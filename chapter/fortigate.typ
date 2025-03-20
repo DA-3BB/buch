@@ -8,34 +8,38 @@ Die Zertifizierungsprüfungen des #htl3r.full[fcp]  umfassen die wichtigsten Fun
 
 == Vorbereitung für den FCP
 Von Fortinet wurde dem Team das Training für die Zertifizierung auf der Fortinet-Lernplattform `www.training.fortinet.com` freigeschaltet. Dieses beinhaltet Videos, welche die einzelnen Kapitel genau erklären. Da das Lernen nur anhand von Videos nicht ausreichend ist, wurden anhand der schriftlichen Version der Videos Frage-Antwort-Paare in Excel verfasst. Insgesamt wurden für die Zertifizierung "FortiGate Administrator 7.4" 1255-Fragen verfasst und für "FortiManager Administrator 7.4" 475-Fragen. \
+/*
 #htl3r.fspace(
     figure(
         image("../assets/fortigate/FAQ_snippet_Excel-3.png", width: 100%),
         caption: "Ausschnitt der Excel-Tabelle mit den FAQs"
     )
 )\
+*/
 Mithilfe von "Anki", einer bekannten App um FAQs zu lernen, wurden die Frage-Antwort-Paare importiert und jeden Tag 20 neue gelernt, sowie die bereits beantworteten Fragen, welche - je nach Schwierigkeitsgrad - früher oder später wiederholt werden sollten. \
->>>>>>> origin/FEL_FortiGate
 Ergänzend wurden sogenannte "Labs" durchgeführt, hierfür stellt die Trainingsplattform von Fortinet eine virtuelle Umgebung zur Verfügung, sowie eine Schritt-für-Schritt Anleitung, welche Tasks wie erledigt werden sollen. \
 Um die Inhalte des Kurses auch praktisch und intuitiv zu lernen, wurde eine Topologie aufgebaut, in der die wichtigsten Themen implementiert wurden.
 
 
 === Training mit FAQs
 Jeden Tag wurde eine Anzahl von 20 neuen FAQs gelernt. Man bekommt jeweils eine Frage angezeigt, bei welcher die Antwort noch nicht sichtbar ist. Somit muss man sich zuerst seine eigene Antwort denken, bevor man die korrekte sieht.
+/*
 #htl3r.fspace(
     figure(
         image("../assets/fortigate/anki_screenshot_example_faq_closed.png", width: 50%),
         caption: "Beispiel einer verdeckten Karteikarte"
     )
 )
+*/
 Mit dem Drücken einer Taste auf der Tastatur wird die richtige Antwort sichtbar und man hat vier Auswahlmöglichkeiten, um sein eigenes Wissenslevel einzuschätzen: "Again", "Hard", "Good" und "Easy". Je nachdem wie oft man diese Frage schon beantwortet hat, sieht man neben jeder Möglichkeit eine Zeitangabe in Minuten/Tagen/Monaten, wann man diese Frage wieder beantworten muss. Wenn man also eine Frage schon mehrmals beantwortet hat und gerade wieder, würde man die Option "Good" oder "Easy" wählen, neben welcher "1.1 Mo" steht, diese Frage muss man in 1.1 Monaten wieder beantworten, bis dahin erscheint diese Frage nicht mehr. Somit werden jeden Tag zwischen 50 und 150 Fragen wiederholt, sowie 20 neue gelernt, für jede Zertifizierung einzeln. \ \
+/*
 #htl3r.fspace(
     figure(
         image("../assets/fortigate/anki_screenshot_example_faq_open.png", width: 70%),
         caption: "Beispiel einer offenen Karteikarte"
     )
 )
-
+*/
 
 == FortiGate Administrator 7.4
 In den folgenden Abschnitten werden die Kapitel des Zertifikatskurses zusammengefasst.
@@ -51,7 +55,6 @@ Im folgenden Bild erkennt man die physischen Ports eins bis drei, welche mit Ali
 )
 
 Die selbe Konfiguration kann mit den folgenden #htl3r.short[cli]-Befehlen erreicht werden:\
->>>>>>> origin/FEL_FortiGate
 #htl3r.code-file(
   caption: "Interface-Konfiguration-Beispiel",
   filename: ["fortigate/interface-configuration.conf"],
@@ -91,7 +94,6 @@ Wenn man den Zugriff für das #htl3r.short[lan] ins Internet erlauben möchte, w
 )
 
 Die selbe Konfiguration ist auch über die #htl3r.short[cli] möglich:
->>>>>>> origin/FEL_FortiGate
 #htl3r.code-file(
   caption: "Firewall-Policy Konfigurationsbeispiel",
   filename: ["fortigate/firewall-policy.conf"],
@@ -118,7 +120,6 @@ Wenn man Policies erstellt, muss man auf die richtige Reihenfolge achten. Wenn m
 
 #htl3r.full[vip] sind eine eher untypische Art von #htl3r.short[nat], da die Ziel-Adresse übersetzt wird. Die Konfiguration einer VIP reicht allerdings noch nicht um sie anzuwenden, dafür muss sie mit einer Firewall-Policy erlaubt werden. \
 Zu den häufigsten Anwendungsfällen zählt ein Admin-Zugriff von Extern: Ein Administrator verbindet sich von außerhalb des Netzwerks auf eine interne Ressource, um die Ressource aber nicht nach außen sichtbar zu machen, wird sie hinter einer #htl3r.long[vip] sozusagen versteckt. Ein weiterer Anwendungsbereich sind Server welche nach Außen unter einer öffentlichen IP-Adresse sichtbar sind, während sie intern eine private verwenden. Die folgende Grafik zeigt eine #htl3r.short[vip] für einen Web-Server:
->>>>>>> origin/FEL_FortiGate
 
 #htl3r.fspace(
     figure(
@@ -145,7 +146,6 @@ Nachdem es mehrere Routen zum selben Ziel geben kann, werden Parameter benötigt
 - Distance: Erster relevante Parameter bei gleichen Routen, welche von unterschiedlichen Protokollen gelernt wurden. Je niedriger dieser Wert desto besser, mit Ciscos Administrativer Distanz vergleichbar, bsp: #htl3r.short[ospf]: 110, #htl3r.short[rip]: 120.
 - Metric: Relevant bei gleichen Routen welche von dem selben Protokoll gelernt wurden. Abhängig vom verwendeten Protokoll sieht die Metric und die Metric-berechnung unterschiedlich aus. Bei #htl3r.full[ospf] wären es die Kosten und bei #htl3r.full[rip] der Hopcount.\
 - Priority: Entscheidend bei statische Routen mit der selben Distance.
->>>>>>> origin/FEL_FortiGate
 
 #htl3r.full[rpf] ist ein Mechanismus um IP-Spoofing zu verhindern. Hierfür wird die Source-IP auf eine Retour-Route geprüft mittels einer von zwei Optionen:
 - Feasible Path: Die Retour-Route muss nicht die beste Route sein.
@@ -221,7 +221,6 @@ Für Active Directory Umgebungen gibt es zwei Methoden des #htl3r.long[sso] Proz
     - Collector agent-based: ein collector-agent muss auf jedem Windows Sever installiert werden, es wird jedoch kein  #htl3r.short[dc]-agent benötigt. Alle paar Sekunden ruft der agent den  #htl3r.long[dc] auf User Events ab und leitet diese an die FortiGate weiter. Es gibt drei Optionen des abrufen eines  #htl3r.short[dc]:
         - #htl3r.short[wmi]:  #htl3r.long[wmi] eine Windows API mit welcher der collector-agent Queries an den  #htl3r.short[dc] schickt. Dadurch, dass der collector-agent nicht nach logon-Events suchen muss, wird die Netzwerkauslastung verringert.
         - WinSecLog: ruft die Security-Logs des  #htl3r.short[dc]s ab, muss diese aber nach den Anmelde-Logs durchsuchen, was Zeit kostet.
->>>>>>> origin/FEL_FortiGate
         - NetAPI: ruft temporäre Sessions ab, welche geöffnet werden, wenn sich ein User an-/abmeldet. Schneller als die anderen Optionen, es kann allerdings passieren, dass Login-Events verpasst werden.
     - Agentless: es wird kein zusätzlicher agent benötigt, FortiGate übernimmt das Abfragen der  #htl3r.short[dc]s auf Login-Events mittles  #htl3r.short[ldap]. Es entsteht ein höherer Ressourcenaufwand für die FortiGate und es sind weniger Funktionen verfügbar.
 
@@ -301,7 +300,6 @@ Falls ein Virus erkannt wird, wird dem Client eine Block-Webpage angezeigt.
 Zertifikate werden einerseits natürlich für User-Authentifizierung verwendet, allerdings auch für Traffic-Inspizierungen. Wenn ein Benutzer eine Website über HTTPS aufruft, überprüft die Firewall mithilfe von Zertifikaten, dass die Website vertrauenswürdig ist. \  Revocation- und Validation-Checks stellen sicher, dass das Zertifikat nicht von der Zertifikatsstelle zurückgezogen wurde oder das Gültigkeitsdatum abgelaufen ist.
 
 === SSL Inspection
->>>>>>> origin/FEL_FortiGate
 Es gibt zwei Arten der Inspizierung, eine entschlüsselt den Datenverkehr und eine nicht:
 - Certificate-Inspection: Entschlüsselt keinen Traffic sondern analysiert nur den FQDN der Website, somit kann man in den Policies nur Web-Filtering und Application Control von den vielzahl der sonst möglichen Security Profiles anwenden.
 - Full-Inspection: Hierbei agiert die FortiGate als eine Art Man-in-the-Middle proxy. Es werden von der FortiGate zwei Sessions aufgebaut: eine zum Client und eine zu dem vom Client gewünschten Web-Server. Client und Server sind allerdings aus ihrer Sicht direkt verbunden. Somit wird nicht wirklich eine Verschlüsselung geknackt sondern einfach nur entschlüsselt. Der Sinn hinter dieser Art von Inspection ist es Angriffe zu erkennen, welche sonst versteckt wären.
