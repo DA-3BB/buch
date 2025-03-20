@@ -12,15 +12,15 @@ Um mit dem Angriff Fuzzing ausführen zu können, wird ein Gerät innerhalb des 
 === Fuzzing Script
 Der erste Teil des Fuzzing Scripts erstellt eine Methode, die die Modbuspakete für das Fuzzing selbst erstellt und das Fuzzing ausführt. Dabei wird angegeben, welche Werte "fuzzable" sind, also welche Werte durch zufällige andere Werte ersetzt werden sollen. In diesem Fall ist dies die Transaction ID, die Länge und die Adresse des Coils.
 
-#htl3r.code-file(caption: "Fuzzing Script: Methode FuzzWriteCoil", lang: "python", text: read("../assets/fuzzing/Fuzzing.py"), ranges: ((1, 15),))
+#htl3r.code-file(caption: "Fuzzing Script: Methode FuzzWriteCoil", lang: "python", text: read("../assets/fuzzing/Fuzzing.py"), ranges: ((1, 18),))
 
 Um allerdings das Fuzzing ausführen zu können, muss eine Session übergeben werden. Dieses wird im main erstellt, indem das Angriffsziel mithilfe von argparse vom User abgefragt wird. Wenn der User kein Ziel spezifizert, wird die IP-Adresse 10.100.0.11 als Angriffziel angenommen.
 
- #htl3r.code-file(caption: "Fuzzing Script: argparse um Angriffsziel abzufragen ", lang: "python", text: read("../assets/fuzzing/Fuzzing.py"), ranges: ((18,21),))
+ #htl3r.code-file(caption: "Fuzzing Script: argparse um Angriffsziel abzufragen ", lang: "python", text: read("../assets/fuzzing/Fuzzing.py"), ranges: ((21,24),))
 
 Nachdem das Ziel bekannt ist, wird nun ein Target also, ein Ziel für den Aufbau einer TCP Session mit IP-Adresse und Port definiert. Und danach wird mit diesem Target eine Session aufgebaut, die der vorher erstellten Methode übergeben werden kann.
 
- #htl3r.code-file(caption: "Fuzzing Script: Target- und Sessiondefinition", lang: "python", text: read("../assets/fuzzing/Fuzzing.py"), ranges: ((18,18),(23,26)), skips: ((19,0),))
+ #htl3r.code-file(caption: "Fuzzing Script: Target- und Sessiondefinition", lang: "python", text: read("../assets/fuzzing/Fuzzing.py"), ranges: ((21,21),(26,29)), skips: ((22,0),))
 
 === Umsetztung - Fuzzing
 Um das Skript aufzurufen und somit das Fuzzing zu starten, wird folgender Befehl eingegeben:
