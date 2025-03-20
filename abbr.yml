@@ -469,3 +469,17 @@ dns:
   long:
     singular: Domain Name Service
   description: Protokoll zur Auflösung von Domain-Namen auf IP-Adressen
+
+dc:
+  short:
+    singular: DC
+  long:
+    singular: Domain Controller
+  description: Zur Verwaltung von Active-Directory-Domains
+
+dlp:
+  short:
+    singular: DLP
+  long:
+    singular: Data Leak Prevention
+  description: 
