@@ -367,3 +367,105 @@ tls:
     singular: tls
   long:
     singular: Transport Layer Security
+
+
+# FortiGate
+
+fcp:
+  short:
+    singular: FCP
+  long:
+    singular: Fortinet Certified Professional
+  description: Zertifizierung der Firma Fortinet
+
+ngfw:
+  short:
+    singular: NGFW
+  long:
+    singular: Next-Generation Firewall
+  description: Eine Firewall mit Zusatzfunktionen im Vergleich zu einer standard Firewall
+
+vdom:
+  short:
+    singular: VDOM
+  long:
+    singular: Virtual Domain
+  description: Die Aufteilung einer Firewall in mehrere voneinander getrennte Instanzen
+
+nat:
+  short:
+    singular: NAT
+  long:
+    singular: Network Address Translation
+  description: Die Übersetzung von meist privaten IP-Adressen auf Public-IPs 
+
+pat:
+  short:
+    singular: PAT
+  long:
+    singular: Port Address Translation
+  description: Die Übersetzung von meist privaten IP-Adressen auf Public-IPs anhand von Ports
+
+vip:
+  short:
+    singular: VIP
+  long:
+    singular: Virtual IP
+  description: Besondere Form der Übersetzung von IP-Adressen
+
+rib:
+  short:
+    singular: RIB
+  long:
+    singular: Routing Information Database
+  description: Routingtabelle der FortiGate zur Weiterleitung bereits bekannter Herkunft
+
+fib:
+  short:
+    singular: FIB
+  long:
+    singular: Forwarding Information Database
+  description: Routingtabelle der FortiGate aus Kernelsicht
+
+
+ecmp:
+  short:
+    singular: ECMP
+  long:
+    singular: Equal-Cost-Multipath
+  description: Redundante Routen welche alle in die Routing Tabelle geschrieben werden
+
+rip:
+  short:
+    singular: RIP
+  long:
+    singular: Routing Information Protocol
+  description: Distance-Vector Routing Protokoll
+
+ospf:
+  short:
+    singular: OSPF
+  long:
+    singular: Open Shortest Path First
+  description: Link-State Routing Protokoll
+
+rpf:
+  short:
+    singular: RPF
+  long:
+    singular: Reverse Path Forwarding
+  description: Funktion, um IP-Address Spoofing zu verhindern
+
+sso:
+  short:
+    singular: SSO
+  long:
+    singular: Single Sign On
+  description: Funktion welche den Login von Benutzern ermöglicht, ohne dass sich dieser nochmal an der Firewall anmelden muss
+
+dns:
+  short:
+    singular: DNS
+  long:
+    singular: Domain Name Service
+  description: Protokoll zur Auflösung von Domain-Namen auf IP-Adressen
