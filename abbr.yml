@@ -425,3 +425,17 @@ tcp:
   long:
     singular: Transmission Control Protokoll
   description: Verbindungsorientiertes Protokoll, definiert wie Daten übertragen werden.
+
+  sql:
+    short:
+      singular: SQL
+    long:
+      singular: Structured Query Language
+    description: Datenbanksprache zum abfragen, manipulieren und einfügen von Daten in eine Datenbank
+  
+  xml:
+    short:
+      singular: XML
+    long:
+      singular: Extensible Markup Language
+    description: hierachisches Datenformat
