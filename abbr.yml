@@ -439,3 +439,17 @@ xml:
   long:
     singular: Extensible Markup Language
   description: hierachisches Datenformat
+
+mitm:
+  short:
+    singular: mitm
+  long:
+    singular: Man in the Middle
+  description: Angriff zum Abfangen einer Kommunikation zwischen zwei Geräten
+
+arp:
+  short:
+    singular: ARP
+  long:
+    singular: Address Resolution Protokoll
+  description: Protokoll zur Ermittlung der physische Netzadresse durch die IP-Adresse
