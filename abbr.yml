@@ -209,6 +209,14 @@ gpo:
     plural: Group Policy Objects
   description: Dient der Konfiguration von Windows-Computer und Accounts.
 
+rsat:
+  short:
+    singular: RSAT
+  long:
+    singular: Remote Server Administration Tool
+    plural: Remote Server Administration Tools
+  description: Enthält Management-Funktionen zur Administrierung von Windows-Server.
+
 # ----- FortiSIEM
 
 siem:
@@ -283,6 +291,31 @@ gpg:
     singular: GNU Privacy Guard
   description: Eine hybride Verschlüsselungs-Software vom GNU Project.
 
+api:
+  short:
+    singular: API
+    plural: APIs
+  long:
+    singular: Application Programming Interface
+    plural: Application Programming Interfaces
+  description: Eine Verbindung zwischen Computern und Programmen durch Schnittstellen in der Software.
+
+rj:
+  short:
+    singular: RJ
+  long:
+    singular: Registered Jack
+  description: Ein Telekommunikationsstandard für Netzwerkkabel.
+
+svi:
+  short:
+    singular: SVI
+    plural: SVIs
+  long:
+    singular: Switch Virtual Interface
+    plural: Switch Virtual Interfaces
+  description: Ein logischer Layer-3 Link auf einem Switch.
+
 # ----- FORTIANALYZER
 
 soc:
@@ -350,6 +383,7 @@ adu:
 rtu:
   short:
     singular: RTU
+    plural: RTUs
   long:
     singular: Remote Terminal Unit
     plural: Remote Terminal Units
