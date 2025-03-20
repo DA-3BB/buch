@@ -412,3 +412,16 @@ udf:
     plural: UDFs
   long:
     singular: User-Definied-Funktion
+
+dos:
+  short:
+    singular: DOS
+  long:
+    singular: Denail of Service
+
+tcp:
+  short:
+    singular: TCP
+  long:
+    singular: Transmission Control Protokoll
+  description: Verbindungsorientiertes Protokoll, definiert wie Daten übertragen werden.
