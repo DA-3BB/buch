@@ -1,0 +1,22 @@
+enable
+network protocol none
+network parms 10.100.0.100 255.255.255.0 10.100.0.254
+
+transport input ssh
+ip http server
+enable network protocol hidiscovery read-only
+
+configure
+users name 3bb
+users passwd 3bb Team3bb123!
+
+snmp-access global enable
+snmp-server enable traps
+
+device-status monitor all enable
+device-status trap enable
+
+users snmpv3 accessmode 3bb readwrite
+users snmpv3 authentication 3bb sha
+
+copy system:running-config nvram:startup-config

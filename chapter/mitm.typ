@@ -2,9 +2,9 @@
 #htl3r.author("Marlene Reder")
 
 == Man in the Middle Angriff
-Durch einen #htl3r.long[mitm] (#htl3r.short[mitm]) Angriff fängt man die Kommunikation zwischen zwei Geräten ab und schaltet sich in die Mitte, sodass alle folgenden Pakete über das Angreifergerät geschickt werden, um diese dann entweder "nur" mitzulesen oder gegebenenfalls auch zu manipulieren. \
+Durch einen #htl3r.long[mitm] Angriff fängt man die Kommunikation zwischen zwei Geräten ab und schaltet sich in die Mitte, sodass alle folgenden Pakete über das Angreifergerät geschickt werden, um diese dann entweder "nur" mitzulesen oder gegebenenfalls auch zu manipulieren. \
 
-Eine #htl3r.short[mitm] Angriff kann auf unterschiedliche Art und Weise passieren. In diesem Fall wird #htl3r.short[arp] Spoofing oder #htl3r.short[arp] Request Poisoning verwendet um den Datenverkehr abzufangen. Dabei werden #htl3r.short[arp] Request mit der IP-Adresse des anzugreifenden Geräts in LAN gesannt, um dem MAC-Adress-Table zu ändern. Ziel dabei ist, die eigene MAC-Adresse mit der IP-Adresse von einem anderen Gerät im Netzwerk zu assozieren. \
+Ein #htl3r.short[mitm] Angriff kann auf unterschiedliche Art und Weise passieren. In diesem Fall wird #htl3r.short[arp] Spoofing oder #htl3r.short[arp] Request Poisoning verwendet um den Datenverkehr abzufangen. Dabei werden #htl3r.short[arp] Request mit der IP-Adresse des anzugreifenden Geräts in LAN gesannt, um dem MAC-Adress-Table zu ändern. Ziel dabei ist, die eigene MAC-Adresse mit der IP-Adresse von einem anderen Gerät im Netzwerk zu assozieren. \
 Dadurch, dass Modbus alle Daten ohne Authentifizierung im Plaintext verschickt, kann der Datenverkehr sofort nach einem #htl3r.short[mitm] Angriff mit dem Wireshark mitgelesen werden. \
 
 === Vorraussetzungen und Tools für den MITM Angriff
