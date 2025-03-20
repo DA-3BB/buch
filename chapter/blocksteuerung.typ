@@ -166,7 +166,7 @@ Ein Block wird gesteuert, indem es je nach Richtung des Gleisabschnitts einen Ou
 #htl3r.fspace(
   figure(
     image("../assets/blocksteuerung/udf-ende-blockteuerung.png"),
-    caption: "#htl3r.short[udf] Ende"
+    caption: "UDF Ende"
   )
 )
 
@@ -202,7 +202,7 @@ Die Funktion dahinter versteckt sich im #htl3r.short[udf] Anfang. Wenn das #htl3
 #htl3r.fspace(
   figure(
     image("../assets/blocksteuerung/udf-anfang.png", width: 90%),
-    caption: "#htl3r.short[udf] Anfang"
+    caption: "UDF Anfang"
   )
 )
 
@@ -228,7 +228,7 @@ Die #htl3r.short[udf] ist dabei eine AND-Verknüfung von der aktuellen Weichenst
 #htl3r.fspace(
   figure(
     image("../assets/blocksteuerung/udf-weichenstellung.png", width: 80%),
-    caption: "#htl3r.short[udf] Weichenstellung"
+    caption: "UDF Weichenstellung"
   )
 )
 === Überschreiben der Weichenstellung
@@ -260,7 +260,7 @@ Die #htl3r.short[udf] "OWeiche" oder auch "Overwrite Weiche" schaut für den low
 #htl3r.fspace(
   figure(
     image("../assets/blocksteuerung/udf-oweiche.png", width: 95%),
-    caption: "#htl3r.short[udf] Overwrite Weichenstellung"
+    caption: "UDF Overwrite Weichenstellung"
   )
 )
 
@@ -280,7 +280,7 @@ Um die Blockeinfahrts-Reflex-Lichtschranke abzuschalten muss zwischen jedem Inpu
 #htl3r.fspace(
   figure(
     image("../assets/blocksteuerung/input-deaktivieren.png"),
-    caption: "Netzplan mit deaktiverung der Reflexlichtschranke"
+    caption: "Blockschaltbild mit Inputdeaktiverung"
   )
 )
 

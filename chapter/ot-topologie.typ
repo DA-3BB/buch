@@ -23,7 +23,7 @@ Um die Komponenten in der Nähe der Modelleisenbahnanlage zu plazieren, wurde ei
 
 #figure(
     image("../assets/topologie/ot-topologie/ot-steuerzentrale.jpg", width: 45%),
-    caption: "OT Netzplan - Physischer Aufbau der OT"
+    caption: "OT Steuerzentrale"
 )
 
 #figure(

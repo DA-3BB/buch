@@ -63,7 +63,8 @@ Das Datenmodell von Modbus basiert auf einer Tabellenstruktur, wobei für jede V
       [16 Bit/ 2  Bit],
       [40001-49999],
       [Motordrehzahl],
-    )
+    ),
+    caption: "Modbus: wichtigste Datentypen"
   )
 )
 
@@ -127,7 +128,8 @@ Die wichtigsten Funktionscodes lauten wie folgt und beziehen sich dabei auf die 
       [Setzen / schreiben: mehrere Coil],
       [16],
       [Setzen / schreiben: mehrere Holding Register],
-    )
+    ),
+    caption: "Modbus Funktionscodes"
   )
 )
 
@@ -166,7 +168,8 @@ Die Fehlercode lauten:
       [11],
       [Gateway Target Device Failed to Respond],
       [Das Gerät, an dem die Modbus Nachricht adressiert ist, gibt keine Rückmeldung.],
-    )
+    ),
+    caption: "Modbus Fehlercodes"
   )
 )
 

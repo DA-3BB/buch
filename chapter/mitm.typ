@@ -61,18 +61,18 @@ Bevor der Angriff gestartet wird, wird geschaut ob sich die zu angreifenden Ziel
 Nun, da die bekannten IP Adressen beim Scan aufgelistet wurden, kann mit dem #htl3r.short[mitm]-Angriff und somit dem #htl3r.short[arp] Spoofing begonnen werden. Dabei werden im ersten Schritt die Pakete noch nicht modifiziert sonder nur zum mitlesen abgefangen und weitergeleitet.
 
 ```bash
-  ettercap -T -M #htl3r.short[arp] //10.100.0.1/ //10.100.0.11/
+  ettercap -T -M arp //10.100.0.1/ //10.100.0.11/
  ```
 
 #htl3r.fspace(
   figure(
     image("../assets/mitm/arp-posioning-not-corr-without-filter.png"),
-    caption: "mitm: #htl3r.short[arp] Spoofing"
+    caption: "MITM: ARP Spoofing"
   )
 )
 
 ```bash
-  ettercap -T -F coil-true-to-false.ef -M #htl3r.short[arp] //10.100.0.1/ //10.100.0.11/
+  ettercap -T -F coil-true-to-false.ef -M arp //10.100.0.1/ //10.100.0.11/
 ```
 
 Das #htl3r.short[arp] Spoofing kann auch mittels Wireshark angeschaut werden. Die @arp1 zeigt den ersten Teil des #htl3r.short[arp] Spoofing. Dabei schickt das Kali-Linux Gerät, in diesem Fall die _VMware..._, #htl3r.short[arp]-Request zu den IP-Adressen aus dem Ettercap Befehl.  Die Geräte, genauer gesagt die SPS und die #htl3r.short[rtu], die die IP-Adressen 10.100.0.1 und 10.100.0.11 besitzen antworten.
@@ -81,7 +81,7 @@ Das #htl3r.short[arp] Spoofing kann auch mittels Wireshark angeschaut werden. Di
   [
     #figure(
       image("../assets/mitm/wireshark-arp-spoofing_teil1.png"),
-      caption: "#htl3r.short[arp] Request Posioning"
+      caption: "ARP Request Posioning"
     )
    <arp1>
   ]
@@ -92,7 +92,7 @@ Im nächsten Schritt sendet die Kali-Linux-#htl3r.short[vm] #htl3r.short[arp] An
 #htl3r.fspace(
   figure(
     image("../assets/mitm/wireshark-arp-spoofing_teil2.png"),
-    caption: "#htl3r.short[arp] Request Posioning"
+    caption: "ARP Request Posioning"
   )
 )
 
@@ -102,7 +102,7 @@ Nun werden wie in @spooferfolg gezeigt die Modbuspakete über den Angreifer gele
   [
     #figure(
       image("../assets/mitm/wireshark_mitm.png"),
-      caption: "Wiresharkauszug von einem erfolgreichen #htl3r.short[mitm] Angriff"
+      caption: "Wiresharkauszug von einem erfolgreichen MITM-Angriff"
     )
     <spooferfolg>
   ]
@@ -134,7 +134,7 @@ Nun kann der #htl3r.short[mitm]-Angriff erneut mit dem Filter ausgeführt werden
 #htl3r.fspace(
   figure(
     image("../assets/mitm/arp-posioning-not-corr.png"),
-    caption: "#htl3r.short[mitm] durch #htl3r.short[arp] Spoofing mit einem Filter"
+    caption: "MITM durch ARP Spoofing mit einem Filter"
   )
 )
 
@@ -143,6 +143,6 @@ Im Wireshark kann nun beobachtet werden, dass alle Modbuspakete mit einem _Write
 #htl3r.fspace(
   figure(
     image("../assets/mitm/mitm-coil-false.png"),
-    caption: "#htl3r.short[mitm] durch #htl3r.short[arp] Spoofing mit einem Filter"
+    caption: "MITM mit einem Filter im Wireshark"
   )
 )
