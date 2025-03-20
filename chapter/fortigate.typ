@@ -6,12 +6,12 @@ Die Zertifizierungsprüfungen des Fortinet Certified Professional (FCP) umfassen
 
 == Vorbereitung für den FCP
 Von Fortinet wurde dem Team das Training für die Zertifizierung auf der Fortinet-Lernplattform `www.training.fortinet.com` freigeschaltet. Dieses beinhaltet Videos, welche die einzelnen Kapitel genau erklären. Da das Lernen nur anhand von Videos nicht ausreichend ist, wurden anhand der schriftlichen Version der Videos Frage-Antwort-Paare in Excel verfasst. Insgesamt wurden für die Zertifizierung "FortiGate Administrator 7.4" 1255-Fragen verfasst und für "FortiManager Administrator 7.4" 475-Fragen. \
-/*
+
 #figure(
     image("../assets/fortigate/FAQ_snippet_Excel-3.png", width: 100%),
     caption: "Ausschnitt der Excel-Tabelle mit den FAQs"
 )\
-*/
+
 Mithilfe von "Anki", einer bekannten App um FAQs zu lernen, wurden die Frage-Antwort-Paare importiert und jeden Tag 20 neue gelernt, sowie die bereits beantworteten Fragen, welche - je nach Schwierigkeitsgrad - früher oder später wiederholt werden sollten. \
 Ergänzend wurden sogenannte "Labs" durchgeführt, hierfür stellt die Trainingsplattform von Fortinet eine virtuelle Umgebung zur Verfügung, sowie eine Schritt-für-Schritt Anleitung, welche Tasks wie erledigt werden sollen. \
 Um die Inhalte des Kurses auch praktisch und intuitiv zu lernen, wurde eine Topologie aufgebaut, in der die wichtigsten Themen implementiert wurden.
