@@ -28,18 +28,24 @@ python3 Fuzzing.py
 ```
 Dieser startet das Fuzzing - wie auf der Kommandozeile sichtbar wird - unverzüglich.
 #htl3r.fspace(
-  image("../assets/fuzzing/fuzzing-powershell.png"),
-  caption: "Terminalausgabe beim Starten des Fuzzing Scripts"
+  figure(
+    image("../assets/fuzzing/fuzzing-powershell.png"),
+    caption: "Terminalausgabe beim Starten des Fuzzing Scripts"
+  )
 )
 
 Ein Feature von boofuzz ist es dabei auch einen Webserver lokal am Port 26000 zu Starten, welcher Auskünfte über den aktuellen Fuzzing zustand gibt.
 #htl3r.fspace(
-  image("../assets/fuzzing/fuzzing-web.png"),
-  caption: "Fuzzing im Browser"
+  figure(
+    image("../assets/fuzzing/fuzzing-web.png"),
+    caption: "Fuzzing im Browser"
+  )
 )
 
 Wenn dieser Angriff durch den Wireshark betrachtet wird, ist zu sehen, dass immer wieder #htl3r.short[tcp]-Session mit dem Ziel 10.100.0.11 aufgebaut werden, ein Modbuspaket gesendet wird und die Session wieder abgebaut wird. All dies erfolgt so schnell, so dass die Antwort nicht einmal angezeigt wird.
 #htl3r.fspace(
-  image("../assets/fuzzing/wireshark-fuzzing.png"),
-  caption: "Fuzzing im Browser"
+  figure(
+    image("../assets/fuzzing/wireshark-fuzzing.png"),
+    caption: "Fuzzing im Browser"
+  )
 )
