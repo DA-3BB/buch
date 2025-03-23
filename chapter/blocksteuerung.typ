@@ -1,4 +1,4 @@
-#import "@preview/htl3r-da:1.0.0" as htl3r
+#import "@preview/htl3r-da:2.0.0" as htl3r
 #htl3r.author("Marlene Reder")
 
 = Blocksteuerung
@@ -244,7 +244,7 @@ In @weichensteuerung ist zu sehen, dass bei der Weichensteuerung zwischen dem Us
     )
     <weichensteuerung>
   ]
-) 
+)
 
 Fährt nun die Modelleisenbahn in die Gegenrichtung über die Weiche, muss in diesem Fall der Weichenzustand auf Low gesetzt werden. Dies passiert, indem das Programm beim Freischalten des Blockabschnitts den Input _Low_ triggert, der wiederum nach einer kurzen Verzögerung die Weiche auf Low stellt.
 

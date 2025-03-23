@@ -1,4 +1,4 @@
-#import "@preview/htl3r-da:1.0.0" as htl3r
+#import "@preview/htl3r-da:2.0.0" as htl3r
 #htl3r.author("Magdalena Feldhofer")
 #import "@preview/wordometer:0.1.4": word-count, total-words
 #show: word-count

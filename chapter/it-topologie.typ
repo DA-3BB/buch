@@ -1,4 +1,4 @@
-#import "@preview/htl3r-da:1.0.0" as htl3r
+#import "@preview/htl3r-da:2.0.0" as htl3r
 #import "@preview/treet:0.1.1": *
 #htl3r.author("Albin Gashi")
 
