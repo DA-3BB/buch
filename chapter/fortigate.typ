@@ -243,13 +243,13 @@ Security Profiles sind erweiternde Funktionen, welche das Netzwerk bestmöglich 
 Auf jeder Firewall Policy kann der Modus ausgewählt werden, mit welchem die zutreffenden Daten inspiziert werden, sie unterscheiden sich hauptsächlich in Sicherheit und Performance.
 
 - Flow-based: Analysiert den Traffic in Real-time und benötigt weniger Ressourcen als Proxy-based Inspection. Der Fokus liegt auf Performance.
-- Proxy-based: Speichert den Traffic temporär ab und analysiert ihn in der gesamten länge. Benötigt mehr Ressourcen bietet allerdings mehr Sicherheit. Manche Security Profiles wie #htl3r.full[dlp] sind nur in diesem Modus verfügbar.
+- Proxy-based: Speichert den Traffic temporär ab und analysiert ihn in der gesamten Länge. Benötigt mehr Ressourcen bietet allerdings mehr Sicherheit. Manche Security Profiles wie #htl3r.full[dlp] sind nur in diesem Modus verfügbar.
 
 Beide Modi sind für die meisten Security Profiles verfügbar, es gibt Ausnahmen wie zum Beispiel DLP, welches nur im proxy-mode verfügbar ist. \ 
 Achtung: Der Modus des Security Profiles muss mit dem Modus der Firewall-Policy übereinstimmen! Wenn zum Beispiel bei einem Antivirus Profil der Modus Proxy-based-Inspection ist, muss die Firewall-Policy ebenfalls diesen Modus haben.
 
 ==== Antivirus <antivirus>
-// Seite 194
+// Seite 194 
 Eines der Security Profiles ist Antivirus (AV). Es gibt eine Antivirus-Engine welche verwendet wird, um anhand einer Antivirus-Datenbank, Viren und Malware zu erkennen. Für das Paket wird anhand gewisser Parameter eine Signatur erstellt, welche mit den Einträgen der AV-Datenbank verglichen wird. In der Datenbank stehen eine Vielzahl an Signaturen welche aus bereits bekannten Angriffen generiert wurden. \ 
 Es gibt zwei Modi:
 - Flow-based-Inspection: Dieser Modus ist ein Hybrid aus zwei anderen Modi:
@@ -273,18 +273,47 @@ Es gibt zwei Modi:
             caption: "AV proxy-based-inspection Visualisierung Quelle: https://networkinterview.com/fortigate-utm-unified-threat-management/"
         )
     )
-    Alle Pakete werden nur an die Antivirus-Engine geschickt und nicht an den Client. In der Engine werden die Pakete zusammengefügt und es wird eine Signatur generiert, wenn diese in der AV-Datenbank befindet, ist es ein Virus. Falls ein Virus erkannt wird, werden keine Daten an den Client weitergeleitet. Wenn die Pakete als ungefährlich eingestuft werden, werden alle Pakete an den Client weitergeleitet.
+    Alle Pakete werden nur an die Antivirus-Engine geschickt und nicht an den Client. In der Engine werden die Pakete zusammengefügt und es wird eine Signatur generiert, wenn sich diese in der AV-Datenbank befindet, ist es ein Virus. Falls ein Virus erkannt wird, werden keine Daten an den Client weitergeleitet. Wenn die Pakete als ungefährlich eingestuft werden, werden alle Pakete an den Client weitergeleitet.
     \
     Da während des Scannings noch keine Daten am Client ankamen, kann es zu timeouts kommen. Um diese zu vermeiden kann man "Client comforting" aktivieren, hierbei werden ganz langsam Pakete weitergeleitet, um ein Session-timeout zu vermeiden.
 
 Falls ein Virus erkannt wird, wird dem Client eine Block-Webpage angezeigt.
 
-// Hier fehlt block page image
+#htl3r.fspace(
+        figure(
+            image("../assets/fortigate/av-block-page.png", width: 80%),
+            caption: "Block-Page des Eicar-Testfiles"
+        )
+    )
 // image von profile config + config file
+#htl3r.fspace(
+        figure(
+            image("../assets/fortigate/AV-profile.png", width: 80%),
+            caption: "GUI-Konfiguration eines Antivirus-Profiles"
+        )
+    )
+
+#htl3r.code-file(
+  caption: "CLI-Konfiguration eines Antivirus-Profiles",
+  filename: ["fortigate/av-config.conf"],
+  lang: "",
+  text: read("../assets/fortigate/av-config.conf")
+)
+Bei dem Profil wählt man hauptsächlich das Feature-Set und die Protokolle, welche inspiziert werden sollen. Die Protokolle mit einem roten "P" sind nur im Proxy-based-Mode verfügbar. Es gibt ebenfalls die Option gefundene Malware nicht zu Blockieren sonder nur zu Monitoren, also Zulassen und Loggen.
+
 
    // Seite 197
 
 === Web Filtering
+Filtert Websites anhand bestimmter Parameter, sobald eine Session aufgebaut ist. Hierbei gibt es wieder die bereits bekannten Inspection Modi:
+- Flow-based-Inspection: Traffic wird inspiziert, während er ebenfalls an den Client geschickt wird. Die Daten werden allerdings nicht verändert, dementsprechend sind einige Funktionen nicht verfügbar.
+- Proxy-based-Inspection: Traffic wird von der Firewall abgefangen, ohne der Adressat zu sein, deswegen ist der Mode auch "Transparent" genannt. 
+Anhand der SSL-Inspection in #ref(<SSL-Inspection>) 
+
+
+
+
+
 === Intrusion Prevention and Application Control <IPS_App-control>
 
 
