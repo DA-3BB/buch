@@ -483,3 +483,17 @@ dlp:
   long:
     singular: Data Leak Prevention
   description: 
+
+sdwan:
+  short:
+    singular: SD-WAN
+  long:
+    singular: Software Defined WAN
+  description: Ein dynamischer Ansatz um WAN-Daten anhand unterschiedlicher Kriterien effizient weiterzuleiten.
+
+sdn:
+  short:
+    singular: SDN
+  long:
+    singular: Software Defined Network
+  description: Ein dynamischer Ansatz um Netzwerk-Daten anhand unterschiedlicher Kriterien effizient weiterzuleiten.

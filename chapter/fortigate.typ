@@ -112,10 +112,10 @@ Die selbe Konfiguration ist auch über die #htl3r.short[cli] möglich:
   text: read("../assets/fortigate/firewall_policy_nat.conf")
 )
 
-Wenn man Policies erstellt, muss man auf die richtige Reihenfolge achten. Wenn man zwei Policies hat, wobei die eine spezifische Situationen abdeckt und die zweite nur generelle Situation, sollte die spezifischere an erste Stelle in der Reihung kommen, da es sonst sein kann, dass sie nie angewandt wird, weil die generische zuerst zutrifft. \ Angenommen wir haben einen Webserver auf den alle innerhalb des Netzwerkes zugreifen können, ausgenommen von einem User. Dann müsste man zuerst die Policy zum Blockieren dieses Users erstellen und in der Reihenfolge danach die Full-Access Policy. Wenn die Full-Access Policy zuerst wäre, könnte der User auch zugreifen.
+Beim Erstellen von Policies ist die Reihenfolge entscheidend: Eine spezifische Policy sollte vor einer generellen stehen, da sie sonst möglicherweise nie angewandt wird, weil die generelle zuerst greift. \ Angenommen wir haben einen Webserver auf den alle innerhalb des Netzwerkes zugreifen können, ausgenommen von einem User. Dann müsste man zuerst die Policy zum Blockieren dieses Users erstellen und in der Reihenfolge danach die Full-Access Policy. Wenn die Full-Access Policy zuerst wäre, könnte der User auch zugreifen.
  
 
-#htl3r.full[vip] sind eine eher untypische Art von #htl3r.short[nat], da die Ziel-Adresse übersetzt wird. Die Konfiguration einer VIP reicht allerdings noch nicht um sie anzuwenden, dafür muss sie mit einer Firewall-Policy erlaubt werden. \ 
+#htl3r.full[vip] sind eine spezielle Art von #htl3r.short[nat], da die Ziel-Adresse übersetzt wird. Die Konfiguration einer VIP reicht allerdings noch nicht um sie anzuwenden, dafür muss sie mit einer Firewall-Policy erlaubt werden. \ 
 Zu den häufigsten Anwendungsfällen zählt ein Admin-Zugriff von Extern: Ein Administrator verbindet sich von außerhalb des Netzwerks auf eine interne Ressource, um die Ressource aber nicht nach außen sichtbar zu machen, wird sie hinter einer #htl3r.long[vip] sozusagen versteckt. Ein weiterer Anwendungsbereich sind Server welche nach Außen unter einer öffentlichen IP-Adresse sichtbar sind, während sie intern eine private verwenden. Die folgende Grafik zeigt eine #htl3r.short[vip] für einen Web-Server:
 
 #htl3r.fspace(
@@ -147,7 +147,7 @@ Nachdem es mehrere Routen zum selben Ziel geben kann, werden Parameter benötigt
 #htl3r.full[rpf] ist ein Mechanismus um IP-Spoofing zu verhindern. Hierfür wird die Source-IP auf eine Retour-Route geprüft mittels einer von zwei Optionen:
 - Feasible Path: Die Retour-Route muss nicht die beste Route sein.
 - Strict: Die Retour-Route muss die beste Route sein.
-Die generelle Funktion wird wie folgt pro Interface angewandt, während die Art des #htl3r.short[rpf] systemweit gilt. Je nachdem ob man Feasible Path oder Strict RPF möchte setzt man den Befehl "set strict-src-check" auf enabled oder disabled:
+Die generelle Funktion wird wie folgt pro Interface angewandt, während die Art des #htl3r.short[rpf] systemweit gilt. Man kann dementsprechend pro Interface entscheiden, ob das Paket auf eine Retour-Route überprüft werden soll, jedoch nicht ob Feasible Path oder Strict RPF verwendet werden soll, da dies Systemweit eingestellt wird.
 
 #htl3r.code-file(
   caption: "RPF Konfigurationsbeispiel",
@@ -166,9 +166,10 @@ Es gibt zwei Methoden um Benutzer zu authentifizieren:
     - two-factor authentification: Nur als Erweiterung zu den oben genannten Methoden verfügbar. Erweiternd zu traditionellem Username und Passwort wird ein Token oder Zertifikat benötigt. \
 - Passive: Zugangsberechtigung wird passiv durch #htl3r.full[sso] determiniert, User bekommt Authentifizierung nicht mit, unterstützt werden FSSO, RSSO und NTLM. \
 
+
 Bei aktiver Authentifizierung müssen die Protokolle #htl3r.short[dns], #htl3r.short[http], #htl3r.short[https], #htl3r.short[ftp] und Telnet in einer "generellen" Policy erlaubt werden, um das Anzeigen eines Prompts überhaupt möglich zu machen. 
 
-Erwähnenswert ist ebenso, dass nur weil Authentifizierung in einer Policy aktiviert wird, der User nicht automatisch einen Prompt angezeigt bekommt. Es gibt drei Optionen das zu versichern:
+Erwähnenswert ist ebenso, dass nur weil Authentifizierung in einer Policy aktiviert wird, der User nicht automatisch einen Prompt angezeigt bekommt. Wenn es eine "Fall-Through Policy" gibt, eine Policy welche zutrifft wenn alles andere nicht matched wird diese genommen, anstatt dem User einen Login-Screen anzuzeigen. Um  Es gibt drei Optionen um die User-Authentifizierung zu versichern:
 - Authentifizierung in jeder Policy aktivieren.
 - Über die #htl3r.short[cli] Authentifizierung erzwingen.
 - Captive Portal auf dem Source-Port zu aktivieren.
@@ -206,7 +207,7 @@ Folgende Bilder zeigen die Erstellung eines lokalen Benutzers auf der FortiGate:
 )
 
 
-=== Fortinet Single Sign-On (FSSO)
+=== Fortinet Single Sign-On
 #htl3r.full[sso] ist ein Prozess bei welchem die Identität der Benutzer nur einmal bestätigt werden muss und alle anderen Anwendungen sich die Informationen im Hintergrund von einem #htl3r.short[sso]-Agent organisieren, ohne dass der Benutzer es mitbekommt. Meistens wird #htl3r.short[sso] in Zusammenhang mit Active Directory oder Novell eDirectory eingesetzt.
 
 Für Active Directory Umgebungen gibt es zwei Methoden des #htl3r.long[sso] Prozesses:
@@ -236,6 +237,41 @@ Beispiel: #htl3r.short[dc]-agent mode, nachdem die #htl3r.short[dc]-agents und c
 
 // maybe seite 164
 
+
+
+=== Certificate Operations <SSL-Inspection>
+Zertifikate werden einerseits natürlich für User-Authentifizierung verwendet, allerdings auch für Traffic-Inspizierungen. Wenn ein Benutzer eine Website über HTTPS aufruft, überprüft die Firewall mithilfe von Zertifikaten, dass die Website vertrauenswürdig ist. \  Revocation- und Validation-Checks stellen sicher, dass das Zertifikat nicht von der Zertifikatsstelle zurückgezogen wurde oder das Gültigkeitsdatum abgelaufen ist.
+
+=== SSL Inspection 
+Es gibt zwei Arten der Inspizierung, eine entschlüsselt den Datenverkehr und eine nicht:
+- Certificate-Inspection: Entschlüsselt keinen Traffic sondern analysiert nur den FQDN der Website, somit kann man in den Policies nur Web-Filtering und Application Control von den vielzahl der sonst möglichen Security Profiles anwenden.
+- Full-Inspection: Hierbei agiert die FortiGate als eine Art Man-in-the-Middle proxy. Es werden von der FortiGate zwei Sessions aufgebaut: eine zum Client und eine zu dem vom Client gewünschten Web-Server. Client und Server sind allerdings aus ihrer Sicht direkt verbunden. Somit wird nicht wirklich eine Verschlüsselung geknackt sondern einfach nur entschlüsselt. Der Sinn hinter dieser Art von Inspection ist es Angriffe zu erkennen, welche sonst versteckt wären. 
+
+Bei der Full-SSL-Inspection kann es allerdings zu Zertifikat-Warnungen kommen. Diese werden am Client angezeigt, wenn das FortiGate-eigene-Zertifikat nicht am Client hinterlegt ist, oder die FortiGate kein Zertifikat der CA ausgestellt bekommen hat.
+
+Es sind default Profile vorhanden, das Sperrsymbol zeigt, dass diese Profile nicht bearbeitet werden können. Zusätzlich zu dem anpassbaren "custom-deep-inspection profile" können auch eigene Profile erstellt werden.
+#htl3r.fspace(
+    figure(
+        image("../assets/fortigate/ssl-inspection-profiles.png", width: 80%),
+        caption: "Default SLL-Profile"
+    )
+)
+
+Beim Konfigurieren der  SSL-Optionen kann man wählen welche Richtung inspiziert wird (Ingoing/Outgoing). "Multiple Clients Connecting to Multiple Servers" ist Outgoing und ist gedacht um den Webtraffic der eigenen Mitarbeiter einzuschränken. 
+#htl3r.fspace(
+    figure(
+        image("../assets/fortigate/SSL-inspection_options.png", width: 80%),
+        caption: "SSL-Profile Optionen"
+    )
+)
+
+Die Konfiguration des Profiles reicht allerdings noch nicht aus, um den Traffic zu filtern. Dafür muss das Profile in einer Firewall Policy angewandt werden und mit einem anderen Security Profile eingesetzt werden, da SSL-Inspection noch nicht das Abfangen bzw Inspizieren der Daten auslöst. 
+Zusätzlich dazu, wenn man im Profile "Deep Inspection" auswählt muss man darauf achten, dass in der Firewall Policy der Mode Proxy-based-Inspection ist.
+
+
+
+
+
 === Security Profiles <sec_prof>
 Security Profiles sind erweiternde Funktionen, welche das Netzwerk bestmöglich gegen Angriffe schützen, sie werden pro Firewall Policy konfiguriert. 
 
@@ -259,7 +295,7 @@ Es gibt zwei Modi:
     #htl3r.fspace(
         figure(
             image("../assets/fortigate/AV_flow.jpg", width: 100%),
-            caption: "AV flow-based-inspection Visualisierung Quelle: https://community.fortinet.com/t5/Support-Forum/What-flow-based-inspection-do-with-packets/m-p/70425"
+            caption: "AV flow-based-inspection Visualisierung Quelle:https://community.fortinet.com/t5/Support-Forum/What-flow-based-inspection-do-with-packets/m-p/70425"
         )
     )
 
@@ -308,7 +344,8 @@ Bei dem Profil wählt man hauptsächlich das Feature-Set und die Protokolle, wel
 Filtert Websites anhand bestimmter Parameter, sobald eine Session aufgebaut ist. Hierbei gibt es wieder die bereits bekannten Inspection Modi:
 - Flow-based-Inspection: Traffic wird inspiziert, während er ebenfalls an den Client geschickt wird. Die Daten werden allerdings nicht verändert, dementsprechend sind einige Funktionen nicht verfügbar.
 - Proxy-based-Inspection: Traffic wird von der Firewall abgefangen, ohne der Adressat zu sein, deswegen ist der Mode auch "Transparent" genannt. 
-Anhand der SSL-Inspection in #ref(<SSL-Inspection>) 
+
+// Anhand der SSL-Inspection in @SSL-Inspection und der Form dieser
 
 
 
@@ -320,38 +357,20 @@ Anhand der SSL-Inspection in #ref(<SSL-Inspection>)
 // till here
 
 
-=== Certificate Operations <SSL-Inspection>
-Zertifikate werden einerseits natürlich für User-Authentifizierung verwendet, allerdings auch für Traffic-Inspizierungen. Wenn ein Benutzer eine Website über HTTPS aufruft, überprüft die Firewall mithilfe von Zertifikaten, dass die Website vertrauenswürdig ist. \  Revocation- und Validation-Checks stellen sicher, dass das Zertifikat nicht von der Zertifikatsstelle zurückgezogen wurde oder das Gültigkeitsdatum abgelaufen ist.
-
-=== SSL Inspection 
-Es gibt zwei Arten der Inspizierung, eine entschlüsselt den Datenverkehr und eine nicht:
-- Certificate-Inspection: Entschlüsselt keinen Traffic sondern analysiert nur den FQDN der Website, somit kann man in den Policies nur Web-Filtering und Application Control von den vielzahl der sonst möglichen Security Profiles anwenden.
-- Full-Inspection: Hierbei agiert die FortiGate als eine Art Man-in-the-Middle proxy. Es werden von der FortiGate zwei Sessions aufgebaut: eine zum Client und eine zu dem vom Client gewünschten Web-Server. Client und Server sind allerdings aus ihrer Sicht direkt verbunden. Somit wird nicht wirklich eine Verschlüsselung geknackt sondern einfach nur entschlüsselt. Der Sinn hinter dieser Art von Inspection ist es Angriffe zu erkennen, welche sonst versteckt wären. 
-
-Bei der Full-SSL-Inspection kann es allerdings zu Zertifikat-Warnungen kommen. Diese werden am Client angezeigt, wenn das FortiGate-eigene-Zertifikat nicht am Client hinterlegt ist, oder die FortiGate kein Zertifikat der CA ausgestellt bekommen hat.
-
-Es sind default Profile vorhanden, das Sperrsymbol zeigt, dass diese Profile nicht bearbeitet werden können. Zusätzlich zu dem anpassbaren "custom-deep-inspection profile" können auch eigene Profile erstellt werden.
-#htl3r.fspace(
-    figure(
-        image("../assets/fortigate/ssl-inspection-profiles.png", width: 80%),
-        caption: "Default SLL-Profile"
-    )
-)
-
-Beim Konfigurieren der  SSL-Optionen kann man wählen welche Richtung inspiziert wird (Ingoing/Outgoing). "Multiple Clients Connecting to Multiple Servers" ist Outgoing und ist gedacht um den Webtraffic der eigenen Mitarbeiter einzuschränken. 
-#htl3r.fspace(
-    figure(
-        image("../assets/fortigate/SSL-inspection_options.png", width: 80%),
-        caption: "SSL-Profile Optionen"
-    )
-)
-
-Die Konfiguration des Profiles reicht allerdings noch nicht aus, um den Traffic zu filtern. Dafür muss das Profile in einer Firewall Policy angewandt werden und mit einem anderen Security Profile eingesetzt werden, da SSL-Inspection noch nicht das Abfangen bzw Inspizieren der Daten auslöst. 
-Zusätzlich dazu, wenn man im Profile "Deep Inspection" auswählt muss man darauf achten, dass in der Firewall Policy der Mode Proxy-based-Inspection ist.
-
 
 === IPsec VPN
 === SD-WAN Configuration and Monitoring
+#htl3r.full[sdwan] ein Teil von #htl3r.full[sdn], dabei dreht sich alles um einen dynamisches effizienten und Applikations-basierten Weiterleitungsprozess. Die #htl3r.short[sdwan] Lösung von Fortinet nennt sich Secure #htl3r.short[sdwan], da mithilfe der FOrtiOS-Funktionen Sicherheit automatisch implementiert wird. Dafür werden Features wie IPsec, Link Überwachung, fortgeschrittenes Routing, traffic Shaping und UTM-Inspection verwendet. Anhand von Protokoll, Service oder Applikation werden die Daten weitergeleitet. Allerdings funktioniert #htl3r.short[sdwan] nur für Outgoing-Traffic, das Retour-Paket könnte also einen anderen Pfad nehmen. \
+
+Der häufigste Anwendungsfall von #htl3r.short[sdwan], laut Fortinet, ist DIA - Direct Internet Access. Hierbei gibt es mehrere Uplinks, welche sich in Kosten und Performance unterscheiden. Kritischer Traffic wird über die Links mit der besten Performance weitergeleitet, während non-critical Traffic nach einem best-effort System übertragen wird. Die teuersten Links werden entweder nur als Backup oder nur für den kritischen Traffic verwendet.
+
+Ein weiterer Anwendungsfall ist Site-to-Site Traffic, also die Verbindung von Standorten. Als Underlay werden typischerweise physische Links verwendet oder auch LTE-Verbindungen, MPLS, DSL und ATM. Über diese teils unsicheren Links werden sichere Verbindungen aufgebaut, wie zum Beispiel IPsec-Verbindungen. 
+
+#htl3r.short[sdwan] besteht aus mehreren Teilen:
+- Members: Logische oder physische Interfaces 
+- Zones: Gruppieren Members für eine optimierte Konfiguration
+- Performance SLAs: Führen 
+
 === High Availability
 
 // Quelle alles Kapitel FortiGate Guide 
