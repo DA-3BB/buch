@@ -162,7 +162,7 @@ In der Topolgie bestehen zwei #htl3r.long[ad] Standorte, die über einen VPN zwi
 
 === Supervisor-Node <fsm-supervisor>
 
-In der Event Database speichert das FortiSIEM alle Events und Logs. Hier dient die Supervisor-Node als zentraler Knotenpunkt, der von den anderen Collector- oder Worker-Nodes die Daten erhält und aggregiert. Für die Event Database des FortiSIEM können unterschiedliche Datenbanken gewählt werden. Fortinet bietet hier folgende Optionen an:
+In der Event Database im Elasticsearch speichert das FortiSIEM alle Events und Logs. Hier dient die Supervisor-Node als zentraler Knotenpunkt, der von den anderen Collector- oder Worker-Nodes die Daten erhält und aggregiert. Für die Event Database des FortiSIEM können unterschiedliche Datenbanken gewählt werden. Fortinet bietet hier folgende Optionen an:
 
 - #emph("ClickHouse")
 - #emph("NFS Share")
@@ -321,9 +321,9 @@ Die FortiGate wird zusätzlich zum FortiAnalyzer durch das FortiSIEM über die #
 Um die Benutzer des #htl3r.short[ad] in das FortiSIEM einzubinden, kann auch hier ein externer #htl3r.short[ldap]-Server zur Authentifizierung implementiert werden. Als Base Distinguished Name wird `CN=%s,CN=Users,DC=wien,DC=3bb-testlab,DC=at` definiert. Die Variable `%s` wird zum Einfügen des Benutzernamens beim Login verwendet. Nach erfolgreicher Authentifizierung mit dem Domain-Controller kann nun in der #htl3r.long[cmdb] ein User erstellt und dem #htl3r.short[ldap]-Server zugewiesen werden.
 
 #htl3r.fspace(
-  total-width: 80%,
+  total-width: 55%,
   figure(
-    image("../assets/fortisiem/fsm-fg.png"),
+    image("../assets/fortisiem/fsm-ldap.png"),
     caption: [Login am FortiSIEM durch den SOC-Benutzer]
   )
 )
@@ -332,7 +332,9 @@ Um die Benutzer des #htl3r.short[ad] in das FortiSIEM einzubinden, kann auch hie
 
 == Abbildung der OT-Topologie im FortiSIEM
 
-Um die OT-Topologie mit der Modelleisenbahn im FortiSIEM sichtbar zu machen, wurde sich auf den Hirschmann RS20 OT-Switch konzentriert. Dieser verbindet die wichtigsten Komponenten für die Steuerung des Zugnetzwerks und ist daher äußerst kritisch für die Infrastruktur. Für die Konfiguration ist ein Hirschmann V.24 Konsolenkabel notwendig. Dieser basiert auf einem #htl3r.short[rj]11 Anschluss mit sechs Pins. Für eine Password-Recovery wurde das RS20-Image mit einem Flash-Speicher per USB neu installiert. Zur besseren Administrierbarkeit ist am Switch ein #htl3r.short[svi] konfiguriert und der Zugang über #htl3r.short[ssh], #htl3r.short[http] und der HiDiscovery-Software von Hirschmann erlaubt.
+Um die OT-Topologie mit der Modelleisenbahn im FortiSIEM sichtbar zu machen, werden Daten vom Hirschmann RS20 OT-Switch erhoben. Dieser verbindet die wichtigsten Komponenten für die Steuerung des Zugnetzwerks und ist daher äußerst kritisch für die Infrastruktur. Für die Konfiguration ist ein Hirschmann V.24 Konsolenkabel notwendig. Dieses basiert auf einem #htl3r.short[rj]11 Anschluss mit sechs Pins. Für eine Password-Recovery wurde das RS20-Image mit einem Flash-Speicher per USB neu installiert. Hierfür  Zur besseren Administrierbarkeit ist am Switch ein #htl3r.short[svi] konfiguriert und der Zugang über #htl3r.short[ssh], #htl3r.short[http] und der HiDiscovery-Software von Hirschmann erlaubt.
+
+#htl3r.todo[Näher auf die Password-Recovery eingehen]
 
 #htl3r.code-file(
   caption: "Hirschmann RS20 Grundkonfiguration",
