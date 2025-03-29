@@ -1,7 +1,7 @@
 #import "@preview/htl3r-da:2.0.0" as htl3r
 #htl3r.author("Marlene Reder")
 
-= Blocksteuerung
+= Blocksteuerung <blocksteuerung>
 Die Steuerung der Modelleisenbahn besteht aus zwei Teilen, der Weichensteuerung und der Blocksteuerung. In diesem Kapitel wird die Blocksteuerung genauer betrachtet.
 
 == Blockschaltbild

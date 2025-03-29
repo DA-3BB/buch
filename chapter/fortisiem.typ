@@ -5,9 +5,9 @@
 #htl3r.author("Albin Gashi")
 
 = Netzwerküberwachung <fsm>
-Für die Implementierung eines #htl3r.shortpl[siem] in die Topologie wird ein FortiSIEM der Firma Fortinet verwendet. Es kann agent-based oder agentless Logs und Events von Geräten abrufen. In den meisten Fällen wird Syslog oder #htl3r.short[snmp] zur Kommunikation der Geräte mit dem #htl3r.short[siem] verwendet. Es gibt aber auch Ausnahmen, wie im Falle von Windows. Windows Server können entweder mittels #htl3r.short[wmi] oder dem FortiSIEM Windows Agent Daten an das #htl3r.short[siem] übermitteln. Der Vorteil an den Agents liegt darin, dass Logs direkt am Gerät geparst und verschickt werden können, statt mehrere Logs in einem bestimmten Intervall durch das FortiSIEM abzurufen.
+Für die Implementierung eines #htl3r.full[siem] in die Topologie wird ein FortiSIEM der Firma Fortinet verwendet. Es kann agent-based oder agentless Logs und Events von Geräten abrufen. In den meisten Fällen wird Syslog oder #htl3r.full[snmp] zur Kommunikation der Geräte mit dem #htl3r.short[siem] verwendet. Es gibt aber auch Ausnahmen, wie im Falle von Windows. Windows Server können entweder mittels #htl3r.full[wmi] oder dem FortiSIEM Windows Agent Daten an das #htl3r.short[siem] übermitteln. Der Vorteil an den Agents liegt darin, dass Logs direkt am Gerät geparst und verschickt werden können, statt mehrere Logs in einem bestimmten Intervall durch das FortiSIEM abzurufen.
 
-Des Weiteren kann das FortiSIEM Basismetriken durch das #htl3r.short[pam] abrufen. Dies beinhaltet Daten wie den Zustand einer Applikation, Ressourcenverbrauch eines Geräts und vieles mehr. Dadurch können Anomalien in den Daten erkannt werden und Warnungen im FortiSIEM auslösen.
+Des Weiteren kann das FortiSIEM Basismetriken durch das #htl3r.full[pam] abrufen. Dies beinhaltet Daten wie den Zustand einer Applikation, Ressourcenverbrauch eines Geräts und vieles mehr. Dadurch können Anomalien in den Daten erkannt werden und Warnungen im FortiSIEM auslösen.
 
 #pagebreak()
 
@@ -52,7 +52,9 @@ Die Benutzer können neben lokal angelegten Accounts in der #htl3r.short[cmdb] d
 
 Im FortiSIEM gibt es zwei Möglichkeiten Daten von Geräten im Netzwerk zu erhalten. Entweder sucht das FortiSIEM durch die #emph("Discovery") Funktion nach eingetragenen Geräten, oder die Geräte schicken durch FortiSIEM-Agents selber Daten an das #htl3r.short[siem]. Fortinet stellt für diverse Geräte (z.B. Windows und Linux Server) unterschiedliche #emph("Agents") bereit, um Logs und Events zu erhalten.
 
-Für den #emph("Discovery") Prozess sind IP-Adressen der Geräte sowie Zugangsdaten notwendig. Die Zugangsdaten werden in primär und sekundär unterteilt. Primär wird #htl3r.short[snmp] als Zugang verwendet. Zusätzlich werden sekundäre Optionen wie Telnet, #htl3r.short[ssh], #htl3r.short[wmi], #htl3r.short[ldap] oder #htl3r.short[api]-Schnittstellen angeboten. Für die Topologie wird ein Range-Scan in alle #htl3r.shortpl[vlan] durchgeführt. //Dabei werden die
+Für den #emph("Discovery") Prozess sind IP-Adressen der Geräte sowie Zugangsdaten notwendig. Die Zugangsdaten werden in primär und sekundär unterteilt. Primär wird #htl3r.short[snmp] als Zugang verwendet. Zusätzlich werden sekundäre Optionen wie Telnet, #htl3r.short[ssh], #htl3r.short[wmi], #htl3r.short[ldap] oder #htl3r.short[api]-Schnittstellen angeboten. Für die Topologie wird ein Range-Scan in alle #htl3r.shortpl[vlan] durchgeführt.
+//Dabei werden die
+#htl3r.todo[???]
 
 === Abfragen der Daten <fsm-cert-querying>
 

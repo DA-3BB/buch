@@ -14,7 +14,7 @@ Für die IT-Topologie wurde ein #htl3r.long[ad] mit zwei Standorten konfiguriert
   )
 )
 
-Der Standort Wien ist in vier #htl3r.shortpl[vlan] mikrosegmentiert. Zwischen den einzelnen #htl3r.shortpl[vlan] routet die FortiGate mittels Inter-#htl3r.short[vlan]-Routing die Subnetze. Dabei wird auch der Traffic auf das nötigste limitiert, um das Angriffspotenzial einzuschränken. Der Standort Eisenstadt trennt nur zwischen Mitarbeiter-PCs und restlichen Servern. Hier übernimmt ebenfalls die FortiGate die Kommunikation zwischen den #htl3r.shortpl[vlan]. Die #htl3r.shortpl[vlan] werden virtuell am vSphere mittels Distributed Virtual Switch konfiguriert.
+Der Standort Wien ist in vier #htl3r.shortpl[vlan] mikrosegmentiert. Zwischen den einzelnen #htl3r.shortpl[vlan] routet die FortiGate mittels Inter-#htl3r.short[vlan]-Routing die Subnetze. Dabei wird mittels Firewall-Policies der Zugriff zwischen den VLANs begrenzt. Der Standort Eisenstadt trennt nur zwischen Mitarbeiter-PCs und Servern. Hier übernimmt ebenfalls die FortiGate die Kommunikation zwischen den #htl3r.shortpl[vlan]. Die #htl3r.shortpl[vlan] werden virtuell am vSphere mittels Distributed Virtual Switch konfiguriert.
 
 #htl3r.fspace(
   total-width: 100%,
@@ -56,7 +56,7 @@ Für die Implementierung der #htl3r.short[it]-Infrastruktur wurde eine #htl3r.lo
 
 #pagebreak()
 
-Ein Unternehmen schafft auch Abteilungen, die mittels #htl3r.shortpl[ou] realisiert wurden. Dabei wird auch zwischen den Servern und Computern im #htl3r.long[ad] unterschieden. Die Abteilungen #htl3r.short[it] und #htl3r.short[soc] sind auf dem Standort Eisenstadt nicht zu finden.
+In jedem Unternehmen gibt es auch Abteilungen, die mittels #htl3r.shortpl[ou] realisiert wurden. Dabei wird auch zwischen den Servern und Computern im #htl3r.long[ad] unterschieden. Die Abteilungen #htl3r.short[it] und #htl3r.short[soc] sind auf dem Standort Eisenstadt nicht zu finden.
 
 #htl3r.fspace(
   total-width: 100%,
@@ -95,7 +95,7 @@ Ein Unternehmen schafft auch Abteilungen, die mittels #htl3r.shortpl[ou] realisi
 
 #pagebreak()
 
-Die Benutzer und Gruppen sollen so realitätsnah wie möglich ein Unternehmen widerspiegeln. Dabei wurde primär auf den Aspekt eines #htl3r.long[soc] Rücksicht genommen, die mithilfe des FortiAnalyzer und des FortiSIEM die simulierten Mitarbeiterinnen und Mitarbeiter in die Netzwerküberwachung einbinden soll. Mehr dazu in @faz und @fsm. Jeweils ein Nutzer pro Abteilung wird mittels Protected Users abgesichert.
+Die Benutzer und Gruppen sollen so realitätsnah wie möglich ein Unternehmen widerspiegeln. Dabei wurde primär auf den Aspekt eines #htl3r.long[soc] Rücksicht genommen, die mithilfe des FortiAnalyzer und des FortiSIEM die simulierten Mitarbeiterinnen und Mitarbeiter in die Netzwerküberwachung einbinden soll. Mehr dazu in @faz und @fsm. Jeweils ein Nutzer pro Abteilung wird als Protected Users ausgeführt.
 
 #htl3r.fspace(
   total-width: 100%,
@@ -127,10 +127,10 @@ Die Benutzer und Gruppen sollen so realitätsnah wie möglich ein Unternehmen wi
   )
 )
 
-Um die Rechteverwaltung zu vereinfachen wurde das #htl3r.short[agdlp]-Prinzip angewendet. Dadurch befinden sich die globalen Gruppen in Domain-Local Gruppen, die den Zugriff auf Ressourcen bestimmen. Die User befinden sich in den globalen Gruppen. Für jede Berechtigung (z.b. Lesen oder Schreiben) wird eine eigene Domain-Local Gruppe angelegt.
+Um die Rechteverwaltung zu vereinfachen, wurde das #htl3r.short[agdlp]-Prinzip angewendet. Dadurch befinden sich die globalen Gruppen in Domain-Local Gruppen, die den Zugriff auf Ressourcen bestimmen. Die User befinden sich in den globalen Gruppen. Für jede Berechtigung (z.b. Lesen oder Schreiben) wird eine eigene Domain-Local Gruppe angelegt.
 /*
 #htl3r.fspace(
-  total-width: 100%,
+  total-width: 100%,W
   figure(
     table(
       columns: (10em, auto, 8em),
@@ -178,7 +178,7 @@ Um die Rechteverwaltung zu vereinfachen wurde das #htl3r.short[agdlp]-Prinzip an
 */
 #pagebreak()
 
-Die Konfiguration der Domain Controller wurde mittels Powershell-Scripts durchgeführt. Im folgenden Scripts ist die Grundkonfiguration eines Windows Servers zu sehen. Neben dem Hostname und der IP-Adresse für das Interface werden auch #htl3r.short[dns]- und #htl3r.short[ntp]-Server gesetzt. Der DNS-Server ist für deen Fall des Domain Controllers auf sich selber gesetzt, um die Funktionsfähigkeit des #htl3r.long[ad] zu garantieren. Dieser Abschnitt ist zu Beginn jedes Powershell-Scripts zu finden.
+Die Konfiguration der Domain Controller wurde mittels Powershell-Scripts durchgeführt. Im folgenden Script ist die Grundkonfiguration eines Windows-Servers zu sehen. Neben dem Hostname und der IP-Adresse für das Interface werden auch #htl3r.short[dns]- und #htl3r.short[ntp]-Server gesetzt. Der DNS-Server ist für den Fall des Domain-Controllers auf sich selber gesetzt, um die Funktionsfähigkeit des #htl3r.long[ad] zu garantieren. Dieser Abschnitt ist zu Beginn jedes Powershell-Scripts zu finden.
 // Die Scripts wurden über einen #htl3r.short[ftp]-Server zentral verwaltet und am Domain Controller heruntergeladen und ausgeführt.
 
 #htl3r.code-file(
@@ -214,7 +214,7 @@ Am Standort Wien wird ein redundanter #htl3r.short[dhcp]-Server betrieben. Die b
 
 #pagebreak()
 
-Um die beiden Domain Controller besser zu administrieren wurde ein Jump-Server eingerichtet. Dieser erhält durch Windows Remote Management Zugriffsberechtigungen auf die beiden Domain Controller. Der Server-Manager bietet dabei einen Überblick über die Domain Controller und dessen Status. Durch die #htl3r.longpl[rsat] kann der Jump-Server vollständig die Konfiguration der Server übernehmen.
+Um die beiden Domain-Controller besser zu administrieren wurde ein Jump-Server eingerichtet. Dieser erhält durch Windows Remote Management Zugriffsberechtigungen auf die beiden Domain-Controller. Der Server-Manager bietet dabei einen Überblick über die Domain-Controller und dem Status. Durch die #htl3r.longpl[rsat] kann der Jump-Server vollständig die Konfiguration der Server übernehmen.
 
 #htl3r.fspace(
   total-width: 100%,
