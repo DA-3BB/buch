@@ -8,4 +8,4 @@ Um die Sicherheit im Netzwerk zu garantieren, wurde ein Security Information and
 
 Die Sicherheit der Infrastruktur wird durch Angriffe auf die Probe gestellt. Zu den Angriffen zählen Aufspüren von Informationen im Netzwerk, Manipulation der Eisenbahnsteuerung und der Ausfall von kritischen Komponenten. Die Auswirkungen der Angriffe werden dabei protokolliert.
 
-3BB zeigt exemplarisch vor welchen Gefahren kritische Infrastrukturen durch Cyberangriffe bedroht sind und welche Maßnahmen es Bedarf, um diese abzuwehren.
+3BB zeigt exemplarisch vor welchen Gefahren kritische Infrastrukturen durch Cyberangriffe bedroht sind und welche Maßnahmen es bedarf, um diese abzuwehren.
