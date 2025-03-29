@@ -1,5 +1,5 @@
 #import "@preview/htl3r-da:2.0.0" as htl3r
-#htl3r.author("Albin Gashi")l
+#htl3r.author("Albin Gashi")
 
 = Security Operations Center <faz>
 
@@ -56,6 +56,8 @@ Die Konfiguration der Benutzer kann auch mit einem bestehenden #htl3r.short[ldap
 === Reports <faz-cert-reports>
 
 Um laufend über das Geschehen im Netzwerk informiert zu werden, können im FortiAnalyzer Reports angelegt werden. Diese geben einen guten Überblick der vergangenen Tage und Wochen. Mithilfe von Report-Templates können für verschiedene #htl3r.shortpl[adom] und Geräte anhand einer einheitlichen Vorlage Reports generieren. Diese können dann über unterschiedlichste Formate über E-Mail verschickt werden.
+
+#htl3r.todo[ADOMs erläutern]
 
 Im folgenden Beispiel wurde ein Report am Standort Wien generiert. Die Daten von der FortiGate der letzten sieben Tage wurden dabei aggregiert und in Grafiken zusammengefasst. Nicht nur die Durchschnittswerte, sondern auch die Höchstwerte von #htl3r.short[cpu]- und Speicherauslastung werden angezeigt. Darunter befindet sich der genaue Verlauf der zum Zeitpunkt des Reports festgehaltenen Woche.
 
