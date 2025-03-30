@@ -33,6 +33,8 @@ Die Kommunikation der #htl3r.short[sps] läuft ausschließlich über den Etherne
 
 Jeder Merker (`M1` bis `M4`) ist einem Netzwerkausgang (`NQ1` bis `NQ4`) zugeordnet, welcher wiederum einem Coil auf dem Raspberry Pi zugewiesen ist.
 
+Das gesamte Programm auf der #htl3r.short[sps] ist im Kapitel Blocksteuerung genauer beschrieben. Für die Weichensteuerung ist jedoch nur der im obigen Bild ersichtliche Teil notwendig.
+
 == Konfiguration des Raspberry Pi
 Auf dem Raspberry Pi befinden sich verschiedene Skripte (Python beziehungsweise Bash), welche für die Weichensteuerung entscheidend sind und den Raspberry Pi zum Modbus-Server werden lassen. Diese werden im folgenden Abschnitt einzeln beschrieben.
 

@@ -94,7 +94,7 @@ This thread now sleeping for 100 seconds...
 ^C
 ```
 
-Der Code ist aus Gründen der Übersichtlichkeit gekürzt#footnote("Dazwischen sind Informationen über neue Sockets sowie die Anzahl der derzeitigen Sockets (zwischen 524 und 51504)."). Außerdem ist ersichtlich, dass das Skript nach 51504 Paketen abgebrochen wurde (`^C`). Das ist darauf zurückzuführen, dass nach circa einer halben Stunde des Skripts noch immer kein Effekt erreicht wurde. Um das festzustellen, wurden parallel Tests ausgeführt - welche im folgenden Abschnitt dieses Kapitels noch genauer beschrieben und interpretiert werden. Um es kurz zu sagen: Die Tests verliefen positiv. Slowloris konnte den #htl3r.short[http]-Server der #htl3r.short[sps] nicht beeinträchtigen.
+Der Code ist aus Gründen der Übersichtlichkeit gekürzt#footnote("Dazwischen sind Informationen über neue Sockets sowie die Anzahl der derzeitigen Sockets (zwischen 524 und 51504)."). Außerdem ist ersichtlich, dass das Skript nach 51504 Paketen abgebrochen wurde (`^C`). Das ist darauf zurückzuführen, dass nach circa einer halben Stunde des Skripts noch immer kein Effekt erreicht wurde. Um das festzustellen, wurden parallel Tests ausgeführt - welche im folgenden Abschnitt dieses Kapitels noch genauer beschrieben und deren Ergebnisse interpretiert werden. Um es kurz zu sagen: Die Tests verliefen positiv. Slowloris konnte den #htl3r.short[http]-Server der #htl3r.short[sps] nicht beeinträchtigen.
 
 #pagebreak()
 
