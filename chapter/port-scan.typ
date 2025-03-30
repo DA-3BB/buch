@@ -48,7 +48,7 @@ Die Scans werden primär auf die Siemens LOGO SPS  mit der IP-Adresse 10.100.0.1
 Bevor die Scans durchgeführt werden, müssen die beiden verwendeten Tools - nmap und unicornscan - aufgesetzt werden.
 
 ====	Installation von nmap
-Nmap kann auf einem Linux-Rechner (Ubuntu/Debian) mit dem Befehl `sudo apt-get install nmap` installiert werden. Da der Port-Scan jedoch von einem Windows-Gerät ausgeführt wird, muss man entweder eine VM aufsetzen oder das Tool über die Website herunterladen. In diesem Fall wird - der Einfachheit halber - Letzteres gewählt.
+Nmap kann auf einem Linux-Rechner (Ubuntu/Debian) mit dem Befehl `sudo apt-get install nmap` installiert werden. Da der Port-Scan jedoch von einem Windows-Gerät ausgeführt wird, muss man entweder eine #htl3r.short[vm] aufsetzen oder das Tool über die Website herunterladen. In diesem Fall wird - der Einfachheit halber - Letzteres gewählt.
 
 Der Download-Link lautet: #link("https://nmap.org/download.html#windows")
 
@@ -66,7 +66,7 @@ Available nsock engines: iocp poll select
 #pagebreak()
 
 ==== Installation von unicornscan
-Zur Verwendung des Tools unicornscan, wurde auf Kali-Linux installiert. Um diese aufzusetzen, wurde WSL (Windows Subsystem for Linux) verwendet.  Als erster Schritt werden mögliche Distributionen gelistet, die WSL als VMs installieren kann. Der Befehl hierfür lautet:
+Zur Verwendung des Tools unicornscan wird ein Kali-Linux-Gerät benötigt. Um diese aufzusetzen, wurde #htl3r.short[wsl] verwendet. Als erster Schritt werden mögliche Distributionen gelistet, die #htl3r.short[wsl] als #htl3r.shortpl[vm] installieren kann. Der Befehl hierfür lautet:
 
 ```
 C:\Users\esthie>wsl --list --online
@@ -79,13 +79,13 @@ kali-linux                      Kali Linux Rolling
 […]
 ```
 
-Aus dieser Liste kann man den Namen herauslesen, der in folgendem Befehl zur Installation der VM verwendet wird.
+Aus dieser Liste kann man den Namen herauslesen, der in folgendem Befehl zur Installation der #htl3r.short[vm] verwendet wird.
 
 ```
 wsl --install -d kali-linux
 ```
 
-Nach der erfolgreichen Installation der Kali-Linux-Distribution startet  sich die VM im Regelfall automatisch. Falls sie sich nicht öffnet,  kann man mit dem folgenden Befehl in die VM einsteigen:
+Nach der erfolgreichen Installation der Kali-Linux-Distribution startet  sich die #htl3r.short[vm] im Regelfall automatisch. Falls sie sich nicht öffnet,  kann man mit dem folgenden Befehl in die #htl3r.short[vm] einsteigen:
 
 ```
 C:\Users\esthie>wsl -d kali-linux
@@ -125,7 +125,7 @@ report bugs to osace-users@lists.sourceforge.net
 #pagebreak()
 
 ====	Host-Discovery
-Host-Discovery bezeichnet den Prozess, Informationen über die Geräte in einem Netzwerk zu sammeln. In diesem Fall wird es verwendet, um die IP-Adressen des Raspberry Pi sowie der SPS herauszufinden und zu testen, ob diese online sind. Hierfür wird nmap - mit der Option -sn - verwendet, welche einen Ping-Scan durchführt, ohne die Ports zu scannen.
+Host-Discovery bezeichnet den Prozess, Informationen über die Geräte in einem Netzwerk zu sammeln. In diesem Fall wird es verwendet, um die IP-Adressen des Raspberry Pi sowie der #htl3r.short[sps] herauszufinden und zu testen, ob diese online sind. Hierfür wird nmap - mit der Option -sn - verwendet, welche einen Ping-Scan durchführt, ohne die Ports zu scannen.
 
 ```
 C:\Users\esthie>nmap -sn 10.100.0.0/24
@@ -156,26 +156,24 @@ Nmap done: 256 IP addresses (6 hosts up) scanned in 30.88 seconds
 
 #pagebreak()
 
-Der Ping-Scan zeigt, dass zum Zeitpunkt des Scans sechs Geräte auf den ICMP-Echo-Request antworten. Diese Geräte sind:
+Der Ping-Scan zeigt, dass zum Zeitpunkt des Scans sechs Geräte auf den #htl3r.short[icmp]-Echo-Request antworten. Diese Geräte sind:
 - die Siemens LOGO SPS (10.100.0.1),
 - der Raspberry Pi (10.100.0.2),
 - die drei WaveShare-Module (10.100.0.11 bis .13) und
 - der Switch (10.100.0.253).
 Außerdem sieht man in der Übersicht den Management-PC, von dem aus der Ping-Scan ausgeführt wurde.
 
-Anmerkung: Falls etwaige Firewall-Settings keine ICMP-Echo-Requests
-zulassen, kann es sein, dass sie bei diesem Befehl nicht auftauchen.
-Für den Rahmen der Diplomarbeit kann dies jedoch ignoriert werden.
+Anmerkung: Falls etwaige Firewall-Settings keine #htl3r.short[icmp]-Echo-Requests zulassen, kann es sein, dass sie bei diesem Befehl nicht auftauchen. Für den Rahmen der Diplomarbeit kann dies jedoch ignoriert werden.
 
 === Erwartete Scanergebnisse
-Da keine Angriffe auf ein fremdes Netz durchgeführt werden, besteht die Möglichkeit, konfigurierte Parameter („Referenzwerte“) vom Raspberry Pi sowie der SPS zu ermitteln.
+Da keine Angriffe auf ein fremdes Netz durchgeführt werden, besteht die Möglichkeit, konfigurierte Parameter („Referenzwerte“) vom Raspberry Pi sowie der #htl3r.short[sps] zu ermitteln.
 
-Für die SPS kann man die LOGO!Soft Comfort 8.4 verwenden und in den Einstellungen bestimmte Parameter auslesen - wie im folgenden Unterkapitel beschrieben, aus welchen dann die offenen Ports ermittelt werden können. Beim Raspberry Pi werden die offenen Ports mit einem Befehl ausgelesen.
+Für die #htl3r.short[sps] kann man die LOGO!Soft Comfort 8.4 verwenden und in den Einstellungen bestimmte Parameter auslesen - wie im folgenden Unterkapitel beschrieben, aus welchen dann die offenen Ports ermittelt werden können. Beim Raspberry Pi werden die offenen Ports mit einem Befehl ausgelesen.
 
 #pagebreak()
 
 ====	Siemens LOGO SPS
-In der LOGO!Soft Comfort findet man unter den Online-Einstellungen der SPS im Reiter „Einstellungen für Zugriffskontrolle“ folgende Übersichtstabelle:
+In der LOGO!Soft Comfort findet man unter den Online-Einstellungen der #htl3r.short[sps] im Reiter „Einstellungen für Zugriffskontrolle“ folgende Übersichtstabelle:
 
 #figure(
   image("../assets/angriffe/port-scanning/sps_zugriffssicherheit.png", width: 70%),
@@ -218,7 +216,7 @@ tcp        0      0 0.0.0.0:5900    0.0.0.0:*         LISTEN  729/vncserver-x11-
 […]
 ```
 
-Die Optionen, welche für den Befehl verwendet wurden, zeigen die TCP-Ports (`-t`), welche sich im LISTEN-Status befinden (`-l`), der Prozess - also PID sowie Programmname -, welcher den Port verwendet (`-p`) und die Portnummer selbst (`-n`).
+Die Optionen, welche für den Befehl verwendet wurden, zeigen die #htl3r.short[tcp]-Ports (`-t`), welche sich im LISTEN-Status befinden (`-l`), der Prozess - also PID sowie Programmname -, welcher den Port verwendet (`-p`) und die Portnummer selbst (`-n`).
 
 Durch diesen Befehl kann nun ermittelt werden, welche Ports offen sind.
 
@@ -239,7 +237,7 @@ Durch diesen Befehl kann nun ermittelt werden, welche Ports offen sind.
 #pagebreak()
 
 === Durchführung der Port-Scans
-Nachdem nun die „Referenzwerte“ ermittelt wurden, werden - mit den beiden gewählten Tools - nun Port-Scans auf den Raspberry Pi und die SPS durchgeführt.
+Nachdem nun die „Referenzwerte“ ermittelt wurden, werden - mit den beiden gewählten Tools - nun Port-Scans auf den Raspberry Pi und die #htl3r.short[sps] durchgeführt.
 
 ==== Nmap
 Für nmap werden die folgenden beiden Optionen verwendet.
@@ -249,7 +247,7 @@ nmap -sS -p- [IP-Adresse]
 nmap -sS -p502-510 [IP-Adresse]
 ```
 
-Die Option `-sS` steht für einen TCP-SYN-Scan , welcher entweder auf alle Ports (`-p-`) oder auf eine Port-Range (`-p502-510`) ausgeführt wird.
+Die Option `-sS` steht für einen #htl3r.short[tcp]-SYN-Scan , welcher entweder auf alle Ports (`-p-`) oder auf eine Port-Range (`-p502-510`) ausgeführt wird.
 
 Der erste Scan addressiert den Raspberry Pi. Der Befehl sowie der Output lauten wie folgt:
 
@@ -272,7 +270,7 @@ Aus dem Output lässt sich erkennen, dass die Ports 22, 502 und 5900 offen sind.
 
 #pagebreak()
 
-Der zweite Scan richtet sich nun an die SPS und ihre offenen Ports. Am Befehl selbst ändert sich nichts.
+Der zweite Scan richtet sich nun an die #htl3r.short[sps] und ihre offenen Ports. Am Befehl selbst ändert sich nichts.
 
 ```
 C:\Users\esthie>nmap -sS -p- 10.100.0.1
@@ -323,7 +321,7 @@ Nun werden analoge Befehle mit unicornscan ausgeführt, um zu vergleichen, ob be
 
 `unicornscan -msf -p1-65535 [IP-Adresse]`
 
-Die Option `-msf` legt den Modus des Scans fest, welcher in diesem Fall (`sf`) wieder ein TCP-SYN-Scan ist. Bei unicornscan gibt es keine Option für alle Ports, weshalb diese manuell eingegeben werden müssen (`-p1-65535`).
+Die Option `-msf` legt den Modus des Scans fest, welcher in diesem Fall (`sf`) wieder ein #htl3r.short[tcp]-SYN-Scan ist. Bei unicornscan gibt es keine Option für alle Ports, weshalb diese manuell eingegeben werden müssen (`-p1-65535`).
 
 Es wird wieder mit dem Scan auf den Raspberry Pi mit denselben Parametern begonnen:
 
@@ -336,7 +334,7 @@ TCP open          asa-appl-proto[  502]         from 10.100.0.2  ttl 63
 TCP open                  winvnc[ 5900]         from 10.100.0.2  ttl 63
 ```
 
-Nun wird die SPS erneut gescannt, ebenfalls mit demselben Befehl wie zuvor.
+Nun wird die #htl3r.short[sps] erneut gescannt, ebenfalls mit demselben Befehl wie zuvor.
 
 ```
 ┌──(root㉿Jellyfish-Fields)-[/mnt/c/Users/esthie]
@@ -370,7 +368,7 @@ Nach den erfolgreichen Scans lässt sich nun die folgende Tabelle aufstellen.
     caption: [Vergleichstabelle der Port-Scans auf den Raspberry Pi]
 )
 
-Die Ports 22 (SSH), 502 (Modbus) und 5900 (VNC) sind alle wie erwartet offen. Der Port 631 für CUPS (Common Unix Printing System) ist jedoch bei keinem der beiden Scans als offen erkannt worden. Der wahrscheinlichste Grund hierfür ist, das CUPS ist meist so konfiguriert, dass es nur lokale Verbindungen (von 127.0.0.1) akzeptiert. Bei einem Scan von einem anderen Gerät könnte der Dienst als nicht offen erscheinen.
+Die Ports 22 (#htl3r.short[ssh]), 502 (Modbus) und 5900 (#htl3r.short[vnc]) sind alle wie erwartet offen. Der Port 631 für #htl3r.short[cups] ist jedoch bei keinem der beiden Scans als offen erkannt worden. Der wahrscheinlichste Grund hierfür ist, das #htl3r.short[cups] ist meist so konfiguriert, dass es nur lokale Verbindungen (von 127.0.0.1) akzeptiert. Bei einem Scan von einem anderen Gerät könnte der Dienst als nicht offen erscheinen.
 
 #pagebreak()
 
@@ -392,25 +390,10 @@ Die erwarteten Werte sowie die Ergebnisse von nmap und unicornscan befinden sich
     caption: [Vergleichstabelle der Port-Scans auf die SPS]
 )
 
-Die Ports 80 (HTTP), 102 (S7) und 135 (TDE) sind - wie erwartet - offen. Auffällig ist, dass statt der erwarteten Port-Range 502 bis 510 für Modbus nur Port 510 offen ist. Das kann daran liegen, dass die SPS kein Modbus-Server, sondern Modbus-Client ist und deswegen nur einen dieser Ports benötigt. Der Port 8443 ist ein alternativer HTTPS-Port, auf der SPS ist jedoch nur HTTP benötigt und nicht HTTPS.
+Die Ports 80 (#htl3r.short[http]), 102 (#htl3r.short[s7]) und 135 (#htl3r.short[tde]) sind - wie erwartet - offen. Auffällig ist, dass statt der erwarteten Port-Range 502 bis 510 für Modbus nur Port 510 offen ist. Das kann daran liegen, dass die #htl3r.short[sps] kein Modbus-Server, sondern Modbus-Client ist und deswegen nur einen dieser Ports benötigt. Der Port 8443 ist ein alternativer #htl3r.short[https]-Port, auf der #htl3r.short[sps] ist jedoch nur #htl3r.short[http] benötigt und nicht #htl3r.short[https].
 
 Die LOGO!Soft 8.4 besitzt keine zentrale Port-Übersicht, daher ist es schwer, ohne einen Port-Scan herauszufinden, dass Port 8443 offen ist. Die Einstellungen für die Ports sind fixiert und können vom User nicht verändert werden, was ein Grund für das fehlende Menü sein kann.#footnote[https://support.industry.siemens.com/forum/at/en/posts/logo-soft-comfort-port-conflict/160301]
 
+=== Fazit
 
-// TODOs
-// include sources from word file
-
-/*
-Zugriff 16.11.2024
-https://nmap.org/book/man.html
-https://www.kali.org/tools/unicornscan/
-
-Zugriff 11.12.2024
-https://de.wikipedia.org/wiki/Portscanner
-
-Zugriff 12.12.2024
-https://de.wikipedia.org/wiki/Nmap
-
-Zugriff 13.12.2024
-https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=10002296
-*/
+Die Port-Scans haben gezeigt, dass nicht nur die erwarteten Ports offen sind. Es gibt Ports, die zwar offen sind, jedoch nicht erkannt werden - wie #htl3r.short[cups] am Raspberry Pi, sowie Ports, die nicht auf dem lokalen Gerät ausgelesen werden können - wie #htl3r.short[https] auf der #htl3r.short[sps]. Es ist wichtig, regelmäßig zu prüfen, welche Ports offen sind und ob diese benötigt werden, da jeder offene Port eine potenzielle Angriffsfläche bietet. 

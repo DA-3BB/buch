@@ -12,7 +12,7 @@ Für die Durchführung eines Replay-Angriffs muss man valide Daten aus dem Netzw
 
 Es wird eine neue Aufzeichnung des Traffics gestartet, in welcher gültige Daten abgefangen werden. Für die folgende Demonstration wurde die _Weiche 4_ gewählt.
 
-Als erstes wird der Ausgangszustand betrachtet. Hierfür wurde ein HTTP-Paket der SPS an den Management-PC ausgewählt und die Nutzdaten des Pakets ausgewertet.
+Als erstes wird der Ausgangszustand betrachtet. Hierfür wurde ein #htl3r.short[http]-Paket der #htl3r.short[sps] an den Management-PC ausgewählt und die Nutzdaten des Pakets ausgewertet.
 
 #pagebreak()
 
@@ -21,7 +21,7 @@ Als erstes wird der Ausgangszustand betrachtet. Hierfür wurde ein HTTP-Paket de
   caption: "Ausschnitt des HTTP-Paketes vor der Änderung der Weiche in Wireshark"
 )
 
-Diese Daten - markiert in pink - sind im XML-Format und können mit einem beliebigen Online-Tool#footnote[https://www.samltool.com/prettyprint.php] lesbarer formatiert werden. So erhält man folgendes:
+Diese Daten - markiert in pink - sind im #htl3r.short[xml]-Format und können mit einem beliebigen Online-Tool#footnote[https://www.samltool.com/prettyprint.php] lesbarer formatiert werden. So erhält man folgendes:
 
 ```xml
 <rs>
@@ -74,7 +74,7 @@ Das Paket, das den gesuchten Befehl enthält, ist das folgende:
   caption: "Ausschnitt des HTTP-Paketes mit dem Befehl zum Ändern der Weiche in Wireshark"
 )
 
-Um die Weiche 4 zu bearbeiten wird also vom Management-PC der folgende Befehl an die SPS gesendet.
+Um die Weiche 4 zu bearbeiten wird also vom Management-PC der folgende Befehl an die #htl3r.short[sps] gesendet.
 
 `SETVARS:_local_=v3,M..1:4-1,00`
 
@@ -87,7 +87,7 @@ Der zuvor ausgelesene Befehl soll nun erneut abgesendet werden. Hierfür wird da
 
 `curl -X POST "http://10.100.0.1/AJAX" -d "SETVARS:_local_=v3,M..1:4-1,00"`
 
-Das Kommando führt einen HTTP-POST-Request auf den gegebenen URL - den Webserver der SPS - durch. Mit der Option `-d` werden die Daten spezifiziert, die an den Server gesendet werden sollen, in diesem Fall der zuvor ausgelesene Befehl zum Ändern der Stellung der Weichen.
+Das Kommando führt einen #htl3r.short[http]-POST-Request auf den gegebenen URL - den Webserver der #htl3r.short[sps] - durch. Mit der Option `-d` werden die Daten spezifiziert, die an den Server gesendet werden sollen, in diesem Fall der zuvor ausgelesene Befehl zum Ändern der Stellung der Weichen.
 
 Führt man den Befehl aus, bekommt man die folgende Rückmeldung:
 
@@ -97,13 +97,13 @@ Führt man den Befehl aus, bekommt man die folgende Rückmeldung:
 Forbidden.
 ```
 
-Das bedeutet, dass die SPS ohne valide Tokens keinen Zugriff akzeptiert. Es könnte sein, dass Siemens für seine Produkte Cross-Side Request Forgery Protection#footnote[https://owasp.org/www-community/attacks/csrf] implementiert hat.#footnote[Im Jahr 2018 wurde Siemens ein Vorfall gemeldet: https://www.cisa.gov/news-events/ics-advisories/icsa-15-239-02] Bei CSRF missbraucht der Angreifer eine gültige Nutzung eines Users dazu, um Aktionen durchzuführen, während der Nutzer authorisiert ist. Ein Schutz vor diesem Angriff kann zu Folge haben, dass bestimmte Anfragen verweigert werden, wenn sie keinen gültigen Token haben oder aus keiner gültigen Session kommen.
+Das bedeutet, dass die #htl3r.short[sps] ohne valide Tokens keinen Zugriff akzeptiert. Es könnte sein, dass Siemens für seine Produkte Cross-Side Request Forgery Protection#footnote[https://owasp.org/www-community/attacks/csrf] implementiert hat.#footnote[Im Jahr 2018 wurde Siemens ein Vorfall gemeldet: https://www.cisa.gov/news-events/ics-advisories/icsa-15-239-02] Bei CSRF missbraucht der Angreifer eine gültige Nutzung eines Users dazu, um Aktionen durchzuführen, während der Nutzer authorisiert ist. Ein Schutz vor diesem Angriff kann zu Folge haben, dass bestimmte Anfragen verweigert werden, wenn sie keinen gültigen Token haben oder aus keiner gültigen Session kommen.
 
 Um dies zu umgehen, kann man die Session-ID (Cookies) auslesen. Theoretisch kann man diese mithilfe eines Man-in-the-Middle-Angriffes oder anderen Exploits auslesen, das würde jedoch den Umfang dieses beschriebenen Angriffes überschreiten. Da der Replay-Angriff im eigenen Netzwerk zum Identifizieren der Schwachstellen gedacht ist, kann man die Cookies direkt aus dem Browser auslesen und in den Befehl integrieren.
 
 #pagebreak()
 
-Die Cookies des Webinterfaces der SPS kann man in den gespeicherten Variablen des Browsers (unter Firefox dem Webspeicher) auslesen.
+Die Cookies des Webinterfaces der #htl3r.short[sps] kann man in den gespeicherten Variablen des Browsers (unter Firefox dem Webspeicher) auslesen.
 
 #figure(
   image("../assets/angriffe/replay/session-id.png", width: 100%),
@@ -118,7 +118,7 @@ curl -X POST "http://10.100.0.1/AJAX" -b "Session-id=84f95779b816ac86edfa7a52fc0
 curl -X POST "http://10.100.0.1/AJAX" -b "Session-id=84f95779b816ac86edfa7a52fc0cc97a01902eb4ea96f9b96ad63c344dfd1b15" -d "GETVARS:_local_=v3,M..1:4-1"
 ```
 
-Wichtig zu betrachten sind hier die drei Kommandos, die mithilfe der Option `-d` an den Webserver der SPS übergeben werden:
+Wichtig zu betrachten sind hier die drei Kommandos, die mithilfe der Option `-d` an den Webserver der #htl3r.short[sps] übergeben werden:
 - `-d "SETVARS:_local_=v3,M..1:4-1,01"` setzt die Position der Weiche 4 auf `01`,
 - `-d "SETVARS:_local_=v3,M..1:4-1,00"` setzt die Position der Weiche 4 auf `00` und
 - `-d "GETVARS:_local_=v3,M..1:4-1"` liefert die aktuelle Position der Weiche 4 zurück.
@@ -129,7 +129,7 @@ Wichtig zu betrachten sind hier die drei Kommandos, die mithilfe der Option `-d`
 Bei einem Replay-Angriff werden die abgefangenen Befehle nicht bearbeitet - das wären dann Code-Injections. Daher kann der Angreifer nur Schaden anrichten, wenn der Nutzer bereits die Weichen erneut umgeschalten hat. In diesem Fall wurde der Befehl zum Ändern der Weiche 4 auf Position `00` abgefangen. Sendet man diesen Befehl erneut ab, während die Weiche 4 ihre Position noch nicht erneut geändert hat, so hat der Angriff keine Auswirkung. Natürlich kann der Angreifer weitere Pakete abfangen und dies so umgehen. Für dieses Beispiel wurde jedoch die Weiche 4 vom Nutzer auf Position `01` geändert.
 
 ==== Senden des abgefangenen Befehls
-Der Angreifer versendet nun den Befehl an die SPS.
+Der Angreifer versendet nun den Befehl an die #htl3r.short[sps].
 
 ```
 ┌──(esther㉿Jellyfish-Fields)-[/mnt/c/Users/esthie]
@@ -176,12 +176,9 @@ Im Skript am Raspberry Pi (siehe Kapitel Weichensteuerung) ist ein Feature einge
 
 `11/10/24 05:07:06 - INFO : servo Weiche4 switched to min` #footnote[Die Zeiten des Raspberry Pi sind nicht synchronisiert.]
 
-Das bedeutet, dass der Raspberry Pi den Befehl von der SPS zum Ändern der Position der Weiche 4 erhalten hat.
+Das bedeutet, dass der Raspberry Pi den Befehl von der #htl3r.short[sps] zum Ändern der Position der Weiche 4 erhalten hat.
 
 === Fazit
-Aus dem durchgeführten Angriff ist ersichtlich, dass man für einen Replay-Angriff auf die SPS nicht einfach nur Pakete abfangen und erneut aussenden kann. Man benötigt eine Art der Authentifizierung - also eine valide Session - um Befehle absenden zu können.
+Aus dem durchgeführten Angriff ist ersichtlich, dass man für einen Replay-Angriff auf die #htl3r.short[sps] nicht einfach nur Pakete abfangen und erneut aussenden kann. Man benötigt eine Art der Authentifizierung - also eine valide Session - um Befehle absenden zu können.
 
 Sollte ein Angreifer jedoch in der Lage sein, die Session-Cookies eines autorisierten Nutzers abfangen zu können, kann er ohne Probleme beliebige Befehle absenden. Dies kann mithilfe von zum Beispiel Malware geschehen oder sogar via Brute-Force.
-
-
-// TODO add src https://chain.link/education-hub/replay-attack Zugriff 05.03.2025

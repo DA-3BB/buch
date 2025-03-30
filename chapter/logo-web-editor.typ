@@ -2,10 +2,10 @@
 #htl3r.author("Esther Lina Mayer")
 
 = Website des HTTP-Servers auf der SPS
-Im folgenden Kapitel wird die Konfiguration der Website des HTTP-Servers auf der SPS behandelt.
+Im folgenden Kapitel wird die Konfiguration der Website des #htl3r.short[http]-Servers auf der #htl3r.short[sps] behandelt.
 
 == Aufbau des LWE
-Der LWE generiert bei neu erstellten Projekten benötigte Seiten. Diese sind in der untenstehenden Abbildung aufgelistet und werden im folgenden genauer beschrieben.
+Der #htl3r.short[lwe] generiert bei neu erstellten Projekten benötigte Seiten. Diese sind in der untenstehenden Abbildung aufgelistet und werden im folgenden genauer beschrieben.
 
 #figure(
   image("../assets/lwe/seitenuebersicht.png", width: 25%),
@@ -14,7 +14,7 @@ Der LWE generiert bei neu erstellten Projekten benötigte Seiten. Diese sind in 
 
 In der ersten Zeile ist der Projektname (3bb-webserver) ersichtlich. Unter ihm sind die anderen Seiten des Projektes zu finden.
 
-Pages sind die Seiten, die am HTTP-Server der SPS gehostet werden. Standardmäßig – und im Fall 3BB – existieren die beiden Seiten Login Page und Home Page. Erstere ist die Anmelde-Seite, bei welcher der User der SPS (das Passwort ist default-mäßig admin, kann aber mit der LOGO! Soft 8.4 geändert werden) sich anmeldet.
+Pages sind die Seiten, die am #htl3r.short[http]-Server der #htl3r.short[sps] gehostet werden. Standardmäßig – und im Fall 3BB – existieren die beiden Seiten Login Page und Home Page. Erstere ist die Anmelde-Seite, bei welcher der User der #htl3r.short[sps] (das Passwort ist default-mäßig admin, kann aber mit der LOGO! Soft 8.4 geändert werden) sich anmeldet.
 
 #pagebreak()
 
@@ -25,7 +25,7 @@ Pages sind die Seiten, die am HTTP-Server der SPS gehostet werden. Standardmäß
 
 Die zweite Seite – Home Page – ist jene, auf welche der User nach der Anmeldung weitergeleitet wird. Da diese die primäre Seite ist, wird auf sie in einem Folgekapitel detailliert eingegangen.
 
-Neben den Pages gibt es die Global Configuration, in welcher der Tag Table von besonderer Bedeutung ist. Der IoT Thing Table ist nur in Cloud-Projekten verfügbar, was in diesem Projekt nicht der Fall ist. Im Tag Table werden die Blöcke (z.B. Merker, Inputs, …) einer Variable zugewiesen, welche dann auf den Pages referenziert werden kann. Die genaue Konfiguration befindet sich weiter unten.
+Neben den Pages gibt es die Global Configuration, in welcher der Tag Table von besonderer Bedeutung ist. Der #htl3r.short[iot] Thing Table ist nur in Cloud-Projekten verfügbar, was in diesem Projekt nicht der Fall ist. Im Tag Table werden die Blöcke (z.B. Merker, Inputs, …) einer Variable zugewiesen, welche dann auf den Pages referenziert werden kann. Die genaue Konfiguration befindet sich weiter unten.
 
 Zuletzt gibt es noch den Navigator, eine Menüleiste zur Navigation zwischen den Pages. Dieser wird benötigt, wenn man mehrere Pages erstellt. Für dieses Projekt wurde davon nicht Gebrauch gemacht.
 
@@ -44,7 +44,7 @@ Im folgenden Bild ist die Konfiguration ersichtlich:
 )
 
 === Home Page
-Für die Home Page werden die Components, welche der LWE zur Verfügung stellt, benötigt. Die gegebene Auswahl ist die folgende:
+Für die Home Page werden die Components, welche der #htl3r.short[lwe] zur Verfügung stellt, benötigt. Die gegebene Auswahl ist die folgende:
 
 #figure(
   image("../assets/lwe/component.png", width: 55%),
@@ -110,14 +110,14 @@ Zusammen sieht der Webserver nun wie in der folgenden Abbildung aus:
 )
 
 == Upload auf die SPS
-Um die Website auf die SPS zu spielen, benötigt die SPS eine Mikro-SD-Karte. Im LWE gibt es oben im Menü den folgenden Button:
+Um die Website auf die #htl3r.short[sps] zu spielen, benötigt die #htl3r.short[sps] eine Mikro-SD-Karte. Im #htl3r.short[lwe] gibt es oben im Menü den folgenden Button:
 
 #figure(
   image("../assets/lwe/deploy.png", width: 40%),
   caption: "Button für das Speichern auf die SD-Karte"
 )
 
-Ist der Upload abgeschlossen, so kann man die SD-Karte in die SPS stecken. Beim Anmelden auf der SPS muss nun die Checkbox „bei benutzerspezifischer Website“ (siehe nachfolgende Abbildung) ausgewählt werden.
+Ist der Upload abgeschlossen, so kann man die SD-Karte in die #htl3r.short[sps] stecken. Beim Anmelden auf der #htl3r.short[sps] muss nun die Checkbox „bei benutzerspezifischer Website“ (siehe nachfolgende Abbildung) ausgewählt werden.
 
 #pagebreak()
 
@@ -128,4 +128,4 @@ Ist der Upload abgeschlossen, so kann man die SD-Karte in die SPS stecken. Beim 
 
 Hat man zuvor „Angemeldet bleiben“ ausgewählt, so muss man sich abmelden, um auf die neue Website zu kommen.
 
-In den folgenden Kapiteln wird meist der Default-Webserver der SPS für Screenshots herangezogen. Dies ist auf persönliche Präferenzen sowie den Zeitpunkt des Verfassens des jeweiligen Kapitels zurückzuführen.
+In den folgenden Kapiteln wird meist der Default-Webserver der #htl3r.short[sps] für Screenshots herangezogen. Dies ist auf persönliche Präferenzen sowie den Zeitpunkt des Verfassens des jeweiligen Kapitels zurückzuführen.

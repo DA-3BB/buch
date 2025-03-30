@@ -449,9 +449,10 @@ udf:
 
 dos:
   short:
-    singular: DOS
+    singular: DoS
   long:
     singular: Denail of Service
+  description: Angriff, der ein Gerät mittels Überlastung durch Anfragen versucht lahmzulegen
 
 tcp:
   short:
@@ -602,3 +603,83 @@ dlp:
   long:
     singular: Data Leak Prevention
   description:
+    
+# 
+
+venv:
+  short:
+    singular: venv
+  long:
+    singular: Virtual Environment
+  description: isolierter Arbeitsbereich in Python
+
+i2c:
+  short:
+    singular: I2C
+  long:
+    singular: Inter-Integrated Circuit
+  description: serielles Kommunikationsprotokoll
+
+ddos:
+  short:
+    singular: DDoS
+  long:
+    singular: Distributed Denial of Service
+  description: Form von Denial of Service, bei welchem der Angriff von vielen Geräten (z.B. Botnet) kommt
+  
+wsl:
+  short:
+    singular: WSL
+  long:
+    singular: Windows Subsystem for Linux 
+
+icmp:
+  short:
+    singular: ICMP
+  long:
+    singular: Internet Control Message Protocol
+    
+vnc:
+  short:
+    singular: VNC
+  long:
+    singular: Virtual Network Computing
+  description: Fernzugriffsprotokoll
+
+cups:
+  short:
+    singular: CUPS
+  long:
+    singular: Common Unix Printing System
+  description: Unix-basiertes Drucksystem
+  
+s7:
+  short:
+    singular: S7
+  long: 
+    singular: S7-Steuerung
+  
+tde:
+  short:
+    singular: TDE
+  long: 
+    singular: Totally Integrated Automation (TIA) Development Environment
+
+url:
+  short:
+    singular: URL
+    plural: URLs
+  long: 
+    singular: Uniform Resource Locator
+
+lwe:
+  short:
+    singular: LWE
+  long: 
+    singular: LOGO! Web-Editor
+    
+iot:
+  short:
+    singular: IoT
+  long: 
+    singular: Internet of Things
