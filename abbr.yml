@@ -1,3 +1,17 @@
+nis-2:
+  long:
+    singular: NIS-2
+  description: Richtlinie (EU) 2022/2555 des Europäischen Parlaments und des Rates vom 14. Dezember 2022 über Maßnahmen für ein hohes gemeinsames Cybersicherheitsniveau in der Union
+
+hmi:
+  short:
+    singular: HMI
+    plural: HMIs
+  long:
+    singular: Human Machine Interface
+    plural: Human Machine Interfaces
+  description: Eine Steueroberfläche für das Bedienen von Geräten und Komponenten.
+
 sms:
   short:
     singular: SMS
@@ -71,8 +85,8 @@ sps:
     singular: SPS
     plural: SPSen
   long:
-    singular: Speicherprogrammierbare Steuerung
-    plural: Speicherprogrammierbare Steuerungen
+    singular: speicherprogrammierbare Steuerung
+    plural: speicherprogrammierbare Steuerungen
 
 crc:
   short:
@@ -387,7 +401,7 @@ rtu:
   long:
     singular: Remote Terminal Unit
     plural: Remote Terminal Units
-  description: Ein steuertechnisches Element, das Daten einholt, und zur Zentrale weiterleitet.
+  description: Eine Schnittstelle zwischen technischen Prozessen und einer zentrale Steuereinheit.
 
 sd-wan:
   short:
@@ -451,7 +465,7 @@ dos:
   short:
     singular: DoS
   long:
-    singular: Denail of Service
+    singular: Denial of Service
   description: Angriff, der ein Gerät mittels Überlastung durch Anfragen versucht lahmzulegen
 
 tcp:
@@ -547,7 +561,6 @@ fib:
     singular: Forwarding Information Database
   description: Routingtabelle der FortiGate aus Kernelsicht
 
-
 ecmp:
   short:
     singular: ECMP
@@ -583,13 +596,6 @@ sso:
     singular: Single Sign On
   description: Funktion welche den Login von Benutzern ermöglicht, ohne dass sich dieser nochmal an der Firewall anmelden muss
 
-dns:
-  short:
-    singular: DNS
-  long:
-    singular: Domain Name Service
-  description: Protokoll zur Auflösung von Domain-Namen auf IP-Adressen
-
 dc:
   short:
     singular: DC
@@ -603,8 +609,8 @@ dlp:
   long:
     singular: Data Leak Prevention
   description:
-    
-# 
+
+#
 
 venv:
   short:
@@ -626,19 +632,19 @@ ddos:
   long:
     singular: Distributed Denial of Service
   description: Form von Denial of Service, bei welchem der Angriff von vielen Geräten (z.B. Botnet) kommt
-  
+
 wsl:
   short:
     singular: WSL
   long:
-    singular: Windows Subsystem for Linux 
+    singular: Windows Subsystem for Linux
 
 icmp:
   short:
     singular: ICMP
   long:
     singular: Internet Control Message Protocol
-    
+
 vnc:
   short:
     singular: VNC
@@ -652,34 +658,34 @@ cups:
   long:
     singular: Common Unix Printing System
   description: Unix-basiertes Drucksystem
-  
+
 s7:
   short:
     singular: S7
-  long: 
+  long:
     singular: S7-Steuerung
-  
+
 tde:
   short:
     singular: TDE
-  long: 
+  long:
     singular: Totally Integrated Automation (TIA) Development Environment
 
 url:
   short:
     singular: URL
     plural: URLs
-  long: 
+  long:
     singular: Uniform Resource Locator
 
 lwe:
   short:
     singular: LWE
-  long: 
+  long:
     singular: LOGO! Web-Editor
-    
+
 iot:
   short:
     singular: IoT
-  long: 
+  long:
     singular: Internet of Things

@@ -1,24 +1,51 @@
-# sind die zwei noch fenrir?
+industrial-transform:
+  type: web
+  title: What is Industry 4.0? Here's A Super Easy Explanation For Anyone
+  author: Bernard Marr
+  url:
+    value: https://www.forbes.com/sites/bernardmarr/2018/09/02/what-is-industry-4-0-heres-a-super-easy-explanation-for-anyone/
+    date: 2025-03-30
+  date: 2018-09-02
 
-hc-auto-prov:
-  type: Article
+industrial-it:
+  type: web
+  title: "Industrial IT: Die Digitale Transformation der Industrie"
+  author: Hamza Laarach
+  url:
+    value: https://leyton.com/de/insights/articles/industrial-it-die-digitale-transformation-der-industrie/
+    date: 2025-03-30
+  date: 2025-03-27
+
+cyberattack-deaths:
+  type: web
+  title: The mounting death toll of hospital cyberattacks
+  author: Maggie Miller
+  url:
+    value: https://www.politico.com/news/2022/12/28/cyberattacks-u-s-hospitals-00075638
+    date: 2025-03-30
+  date: 2022-12-28
+
+nis2:
+  type: legislation
+  note: directive
+  title: NIS-2-Richtlinie
+  organization: EU
+  serial-number: "2022/2555"
+  url:
+    value: https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32022L2555
+    date: 2025-03-30
+  date: 2022-12-14
+
+ics-sec:
+  type: web
+  title: Industrial Control System Security
   author:
-    given-name: Ruddy
-    name: Kyle
-  title: How Automated Provisioning Tools Pave the Way to Multi-Cloud Adoption
+    name: Bundesamt für Sicherheit in der Informationstechnik
+    alias: BSI
   url:
-    value: "https://www.hashicorp.com/blog/how-automated-provisioning-tools-pave-the-way-to-multi-cloud-adoption"
-    date: 2024-12-14
-  date: 2021-09-23
-
-ci-docs:
-  type: misc
-  title: Cloud-init documentation
-  author: Canonical Group Ltd.
-  url:
-    value: https://cloudinit.readthedocs.io/en/latest/index.html
-    date: 2024-12-14
-  date: 2024
+    value: https://www.allianz-fuer-cybersicherheit.de/SharedDocs/Downloads/Webs/ACS/DE/BSI-CS/BSI-CS_005.pdf?__blob=publicationFile&v=6
+    date: 2025-03-30
+  date: 2022-05-03
 
 # ----- OT
 
