@@ -38,7 +38,7 @@ Für die Limitierung des Traffics werden auf der FortiGate Policies konfiguriert
 
 Der #htl3r.short[ftp]-Server wurde in die Topologie implementiert, um das Speichern von Konfigurationen zu erleichtern. Komponenten wie Windows oder Linux-Server können so ihre Powershell und Bash-Scripts herunterladen und ausführen. Das erleichtert die Provisionierung, falls Komponenten einen Ausfall erleiden. Manche Geräte von Fortinet, wie z.B. der FortiAnalyzer, können ihre Konfigurationen auch automatisch auf einen FTP-Server hochladen. Für das FortiSIEM wurden die Windows- und Linux-Agents abgelegt, um diese auf die einzelnen Komponenten zu verteilen.
 
-Der #htl3r.short[ftp]-Server wurde mit dem Package `vsftpd` realisiert. Ein User mit zugehörigem Home-Ordner, auf dem die Ablage der Scripts stattfindet, wurde erstellt. Die Begrenzung des Zugriffs auf die Verzeichnisse wurde durch `chroot_local_user=YES` in `/etc/vsftpd.conf` durchgeführt.
+Der #htl3r.short[ftp]-Server wurde mit dem Package `vsftpd` realisiert. Ein User mit zugehörigem Home-Ordner, auf dem die Ablage der Scripts durchgeführt wird, wurde erstellt. Die Begrenzung des Zugriffs auf die Verzeichnisse wurde durch `chroot_local_user=YES` in `/etc/vsftpd.conf` durchgeführt.
 
 #pagebreak()
 
@@ -95,7 +95,7 @@ In jedem Unternehmen gibt es auch Abteilungen, die mittels #htl3r.shortpl[ou] re
 
 #pagebreak()
 
-Die Benutzer und Gruppen sollen so realitätsnah wie möglich ein Unternehmen widerspiegeln. Dabei wurde primär auf den Aspekt eines #htl3r.long[soc] Rücksicht genommen, die mithilfe des FortiAnalyzer und des FortiSIEM die simulierten Mitarbeiterinnen und Mitarbeiter in die Netzwerküberwachung einbinden soll. Mehr dazu in @faz und @fsm. Jeweils ein Nutzer pro Abteilung wird als Protected Users ausgeführt.
+Die Benutzer und Gruppen sollen so realitätsnah wie möglich ein Unternehmen widerspiegeln. Dabei wurde primär auf den Aspekt eines #htl3r.long[soc] Rücksicht genommen, die mithilfe des FortiAnalyzer und des FortiSIEM die simulierten Mitarbeiterinnen und Mitarbeiter in die Netzwerküberwachung einbinden soll. Mehr dazu in @faz und @fsm. Jeweils ein Nutzer pro Abteilung wird als Protected User ausgeführt.
 
 #htl3r.fspace(
   total-width: 100%,
@@ -113,10 +113,10 @@ Die Benutzer und Gruppen sollen so realitätsnah wie möglich ein Unternehmen wi
       [pmeier], [Peter Meier], [Office],
       [cschmidt], [Clara Schmidt], [Office],
       [nhoffmann], [Nina Hoffmann], [Office],
-      [jschwarz], [Julia Schwarz], [Marketing],
-      [dmueller], [David Müller], [Marketing],
+      [vpuschner], [Victoria Puschner], [Marketing],
+      [vkreuzer], [Viktor Kreuzer], [Marketing],
       [erichter], [Eva Richter], [Marketing],
-      [mbauer], [Maximilian Bauer], [#htl3r.short[it]],
+      [jring], [Julian Ring], [#htl3r.short[it]],
       [sweber], [Sandra Weber], [#htl3r.short[it]],
       [cbauer], [Christian Bauer], [#htl3r.short[it]],
       [lefischer], [Lena Fischer], [#htl3r.short[soc]],
@@ -214,7 +214,7 @@ Am Standort Wien wird ein redundanter #htl3r.short[dhcp]-Server betrieben. Die b
 
 #pagebreak()
 
-Um die beiden Domain-Controller besser zu administrieren wurde ein Jump-Server eingerichtet. Dieser erhält durch Windows Remote Management Zugriffsberechtigungen auf die beiden Domain-Controller. Der Server-Manager bietet dabei einen Überblick über die Domain-Controller und dem Status. Durch die #htl3r.longpl[rsat] kann der Jump-Server vollständig die Konfiguration der Server übernehmen.
+Um die beiden Domain-Controller besser zu administrieren wurde ein Jump-Server eingerichtet. Dieser erhält durch Windows Remote Management Zugriffsberechtigungen auf die beiden Domain-Controller. Der Server-Manager bietet dabei einen Überblick über die Domain-Controller und deren Status. Durch die #htl3r.longpl[rsat] kann der Jump-Server vollständig die Konfiguration der Server übernehmen.
 
 #htl3r.fspace(
   total-width: 100%,
