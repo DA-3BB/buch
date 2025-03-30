@@ -47,6 +47,8 @@
 
 #include "chapter/weichensteuerung.typ"
 
+#include "chapter/logo-web-editor.typ"
+
 // Angriffe
 
 #include "chapter/angriffe_intro.typ"

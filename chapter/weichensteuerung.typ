@@ -1,7 +1,7 @@
 #import "@preview/htl3r-da:2.0.0" as htl3r
 #htl3r.author("Esther Lina Mayer")
 
-= Weichensteuerung
+= Weichensteuerung <chapter-weichensteuerung>
 Dieses Kapitel befasst sich mit der Steuerung der Weichen und den Komponenten, welche dafür benötigt werden. Diese Komponenten sind
 
 #figure(
