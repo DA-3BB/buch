@@ -29,6 +29,10 @@
   bibliography-content: bibliography("refs.yml", title: [Literaturverzeichnis])
 )
 
+#include "chapter/vorwort.typ"
+
+#pagebreak()
+
 #include "chapter/einleitung.typ"
 
 #pagebreak()
