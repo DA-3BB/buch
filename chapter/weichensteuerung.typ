@@ -1,7 +1,7 @@
 #import "@preview/htl3r-da:2.0.0" as htl3r
 #htl3r.author("Esther Lina Mayer")
 
-= Weichensteuerung <chapter-weichensteuerung>
+= Weichensteuerung
 Dieses Kapitel befasst sich mit der Steuerung der Weichen und den Komponenten, welche dafür benötigt werden. Diese Komponenten sind
 
 #figure(
@@ -57,11 +57,11 @@ Die Konfiguration des Modbus-Servers am Raspberry Pi kann mithilfe der Konfigura
   text: read("../assets/python_programm/script/3bb_cfg.json")
 )
 
+#pagebreak()
+
 Im obigen Ausschnitt der Konfigurationsdatei befindet sich die Konfiguration der Optionen für Weiche 1. In Zeile 24 bis Zeile 27 befindet sich die Konfiguration des Servos selbst. Der `pin` ist der Steckplatz auf dem Servohat des Raspberry Pi, die Optionen `maxPw` und `minPw` sind die Werte, welche via Pulsweitenmodulation die Position der Servos bestimmen. In Zeile 29 und 30 ist die Zuordnung vom Servo zum Coil an der SPS festgelegt.
 
 In Zeile 24 befindet sich die Bezeichnung `gpio` - diese wird in den folgenden Skripten als `i2c` bezeichnet, da der Servo-Hat des Raspberry Pi mit diesem Protokoll kommuniziert. Die Bezeichnung ist eine Verallgemeinerung für bessere Lesbarkeit.
-
-#pagebreak()
 
 === Konfiguration des Modbus-Servers mithilfe von Python
 Das wichtigste Skript am Raspberry Pi ist das Skript `modbus_server.py`, welches einen Modbus-Server aufsetzt und die I2C-Treiber für die Servos lädt, um die Servos zu steuern. Im Skript gibt es neben der regulären Implementierung auch eine "Dummy"-Implementierung - ohne Initialisierung der I2C-Treiber. Im folgenden Abschnitt ist das Skript genauer beschrieben.
@@ -131,6 +131,8 @@ Alle zuvor genannten Klassen und Methoden werden zusammen in der `main()`-Method
 In diesem Abschnitt des Skripts werden die Optionen, die vom User beim Aufrufen des Skripts mitgegeben werden. Die beiden Argumente sind:
 - `--cfg-file`, welches erlaubt, eine eigene Konfigurationsdatei an das Programm zu übergeben, sowie
 - `-test`, um den "Dummy"-Betrieb zu starten.
+
+#pagebreak()
 
 Zwischen dem obigen und dem folgenden Codeausschnitten befinden sich diverse Log-Einträge, die aus Gründen der Übersichtlichkeit in diesem Abschnitt nicht gelistet werden.
 

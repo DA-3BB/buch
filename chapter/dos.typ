@@ -46,6 +46,8 @@ Nmap done: 1 IP address (1 host up) scanned in 1836.76 seconds
 
 Ab Zeile 9 findet sich das Ergebnis des Scans: "`Probably vulnerable`". Die SPS ist also anfällig für einen DoS-Angriff.
 
+#pagebreak()
+
 ==== Vorbereitung von Slowloris
 Slowloris wird in einer Virtuellen Maschine am Management-PC installiert. Das Betriebssystem der VM kann beliebig gewählt werden. Im folgenden wird die Kali-Linux-VM (Version 2024.3) verwendet, welche im Kapitel Port-Scanning für unicornscan aufgesetzt wurde. Hierfür werden die folgenden Befehle ausgeführt.
 
@@ -55,13 +57,12 @@ chmod +x slowloris.pl
 sudo apt-get install libio-socket-ssl-perl
 ```
 
-#pagebreak()
-
 ==== Durchführung von Slowloris
 Das Skript kann mit dem folgenden Befehl ausgeführt werden.
 
 `perl slowloris.pl -dns 10.100.0.1`
 
+#pagebreak()
 
 Im obigen Befehl wird kein Port angegeben, da per default der Port 80 verwendet wird. Der Output lautet wie folgt.
 

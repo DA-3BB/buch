@@ -291,6 +291,8 @@ MAC Address: 4C:E7:05:93:E7:F2 (Siemens Industrial Automation Products, Chengdu)
 Nmap done: 1 IP address (1 host up) scanned in 13.95 seconds
 ```
 
+#pagebreak()
+
 Die offenen Ports sind also Port 80, 102, 135, 510 und 8443. Aus dem Output kann man erkennen, dass aus der Port-Range für Modbus (502 bis 510) nur einer von diesen geöffnet ist. Um sicher zu gehen, wird die Range separat noch einmal gescannt:
 
 ```
@@ -346,10 +348,10 @@ TCP open                     fcp[  510]         from 10.100.0.1  ttl 254
 TCP open            pcsync-https[ 8443]         from 10.100.0.1  ttl 254
 ```
 
+#pagebreak()
+
 ===	Ergebnisse der Port-Scans
 Im folgenden Abschnitt werden die Ergebnisse von nmap und unicornscan mit den erwarteten Werten in einer Tabelle verglichen.
-
-#pagebreak()
 
 ====	Raspberry Pi
 Nach den erfolgreichen Scans lässt sich nun die folgende Tabelle aufstellen.
