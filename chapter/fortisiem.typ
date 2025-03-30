@@ -334,7 +334,7 @@ Um die Benutzer des #htl3r.short[ad] in das FortiSIEM einzubinden, kann auch hie
 
 == Abbildung der OT-Topologie im FortiSIEM
 
-Um die OT-Topologie mit der Modelleisenbahn im FortiSIEM sichtbar zu machen, werden Daten vom Hirschmann RS20 OT-Switch erhoben. Dieser verbindet die wichtigsten Komponenten für die Steuerung des Zugnetzwerks und ist daher äußerst kritisch für die Infrastruktur. Für die Konfiguration ist ein Hirschmann V.24 Konsolenkabel notwendig. Dieses basiert auf einem #htl3r.short[rj]11 Anschluss mit sechs Pins. Für eine Password-Recovery wurde das RS20-Image mit einem Flash-Speicher per USB neu installiert. Hierfür  Zur besseren Administrierbarkeit ist am Switch ein #htl3r.short[svi] konfiguriert und der Zugang über #htl3r.short[ssh], #htl3r.short[http] und der HiDiscovery-Software von Hirschmann erlaubt.
+Um die OT-Topologie mit der Modelleisenbahn im FortiSIEM sichtbar zu machen, werden Daten vom Hirschmann RS20 OT-Switch erhoben. Dieser verbindet die wichtigsten Komponenten für die Steuerung des Zugnetzwerks und ist daher äußerst kritisch für die Infrastruktur. Für die Konfiguration ist ein Hirschmann V.24 Konsolenkabel notwendig. Dieses basiert auf einem #htl3r.short[rj]11 Anschluss mit sechs Pins. Da das Gerät im Vorhinein bereits konfiguriert war, wurde eine Passwort-Recovery durchgeführt. Für die Password-Recovery wurde das RS20-Image mit einem Flash-Speicher per USB neu installiert. Zur besseren Administrierbarkeit ist am Switch ein #htl3r.short[svi] konfiguriert und der Zugang über #htl3r.short[ssh], #htl3r.short[http] und der HiDiscovery-Software von Hirschmann erlaubt.
 
 #htl3r.todo[Näher auf die Password-Recovery eingehen]
 
