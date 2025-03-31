@@ -1,7 +1,10 @@
 #import "@preview/htl3r-da:1.0.0" as htl3r
-#htl3r.author("Magdalena Feldhofer")
+
 
 #import "@preview/wordometer:0.1.4": word-count, total-words
+
+#htl3r.author("Magdalena Feldhofer")
+
 
 #show: word-count
 
@@ -358,9 +361,18 @@ Filtert Websites anhand bestimmter Parameter, sobald eine Session aufgebaut ist.
 
 
 
+=== SSL VPN
+Ein #htl3r.full[vpn] mittels dem SSL Protokoll, beziehungsweise der neueren Version TLS, allerdings wird immer noch von SSL gesprochen. Der Tunnel kann über zwei Modi aufgebaut werden: Tunnel Mode und Web Mode. 
+
+- Tunnel Mode: Verwendet einen #htl3r.short[vpn] Client (FortiClient), beziehungsweise einen Virtuellen Adapter, um diesen installieren zu können, werden administrative Rechte auf dem Endgerät benötigt.
+- Web Mode: Verwendet nur einen Web Browser um den Tunnel aufzubauen, allerdings sind nur ein paar Protokolle wie #htl3r.short[ftp], #htl3r.short[https] und RDP möglich. Dieser Mode macht nur bei Remote-Access-#htl3r.short[vpn]s Sinn. 
+
+
 === IPsec VPN
+
+
 === SD-WAN Configuration and Monitoring
-#htl3r.full[sdwan] ein Teil von #htl3r.full[sdn], dabei dreht sich alles um einen dynamisches effizienten und Applikations-basierten Weiterleitungsprozess. Die #htl3r.short[sdwan] Lösung von Fortinet nennt sich Secure #htl3r.short[sdwan], da mithilfe der FOrtiOS-Funktionen Sicherheit automatisch implementiert wird. Dafür werden Features wie IPsec, Link Überwachung, fortgeschrittenes Routing, traffic Shaping und UTM-Inspection verwendet. Anhand von Protokoll, Service oder Applikation werden die Daten weitergeleitet. Allerdings funktioniert #htl3r.short[sdwan] nur für Outgoing-Traffic, das Retour-Paket könnte also einen anderen Pfad nehmen. \
+#htl3r.full[sdwan] ein Teil von #htl3r.full[sdn], dabei dreht sich alles um einen dynamischen, effizienten und Applikations-basierten Weiterleitungsprozess. Die #htl3r.short[sdwan] Lösung von Fortinet nennt sich Secure #htl3r.short[sdwan], da mithilfe der FOrtiOS-Funktionen Sicherheit automatisch implementiert wird. Dafür werden Features wie IPsec, Link Überwachung, fortgeschrittenes Routing, traffic Shaping und UTM-Inspection verwendet. Anhand von Protokoll, Service oder Applikation werden die Daten weitergeleitet. Allerdings funktioniert #htl3r.short[sdwan] nur für Outgoing-Traffic, das Retour-Paket könnte also einen anderen Pfad nehmen. \
 
 Der häufigste Anwendungsfall von #htl3r.short[sdwan], laut Fortinet, ist DIA - Direct Internet Access. Hierbei gibt es mehrere Uplinks, welche sich in Kosten und Performance unterscheiden. Kritischer Traffic wird über die Links mit der besten Performance weitergeleitet, während non-critical Traffic nach einem best-effort System übertragen wird. Die teuersten Links werden entweder nur als Backup oder nur für den kritischen Traffic verwendet.
 
@@ -369,13 +381,57 @@ Ein weiterer Anwendungsfall ist Site-to-Site Traffic, also die Verbindung von St
 #htl3r.short[sdwan] besteht aus mehreren Teilen:
 - Members: Logische oder physische Interfaces 
 - Zones: Gruppieren Members für eine optimierte Konfiguration
-- Performance SLAs: Führen 
+- Performance SLAs: Führen Member-Checks durch, überprüft ob die Member up/down sind. Bei einem aktiven Member werden Paket-Verlust, Jitter und Latenz gemessen.
+- SD-WAN Regeln: Definieren welcher Link gewählt wird anhand von drei Strategien.
+    - Manual: Administrator wählt manuell, welches Member zur Weiterleitung preferiert wird.
+    - Best Quality: Member mit der besten Performance wird automatisch preferiert, Performance wird mit einem definierten #htl3r.full[sla] gemessen.
+    - Lowest Cost (SLA):
+
+Die Regeln werden wie Policies von oben nach unten durchsucht, allerdings erlauben SD-WAN Regeln keinen Traffic. Es muss also eine passende Firewall Policy geben, welche den Traffic erlaubt, damit im nächsten Schritt SD-WAN verwendet werden kann. Falls keine SD-WAN Regel zutrifft, wird die Implicit-Regel verwendet. Diese verwendet einfach die normale Routing Tabelle, wobei automatisch loadbalancing aktiviert wird, anhand der Source-IP.
 
 === High Availability
+FortiGate #htl3r.full[ha] ist eine Methode, um mehrere Firewalls aus Redundanzgründen zu einer zu machen. Dabei wird das FortiGate Clustering Protocol verwendet, um die #htl3r.short[ha]-Mitglieder zu erkennen und den Status dieser zu überwachen, dafür werden sogenannte Heartbeat-Interfaces verwendet. Das sind Interfaces welche nur für Statusüberprüfung und Konfigurationssynchronisation verwendet werden.\
 
-// Quelle alles Kapitel FortiGate Guide 
+Es wird grundsätzlich in die Modi active-active und active-passive unterschieden. Active-Active ist der Modus, bei dem die Primary FortiGate Sessions an alle anderen Mitglieder verteilt um so eine Art loadbalancing zu erreichen. Active-Passive hingegen verteilt keine Sessions, das Primary Gerät trägt die volle Last. 
+\ 
+Definiert wird die HA-Gruppe mit einem Namen, einer Nummer, einem Passwort und den Heartbeat Interfaces.
 
+#htl3r.fspace(
+    [
+        #figure(
+            image("../assets/fortigate/ha-config.png", width: 100%),
+            caption: "Konfiguration eines HA Members"
+        ) <ha-gui>
+    ]
+    )
+#figure(
+    htl3r.code-file(
+    caption: "CLI-Konfiguration eines HA Members",
+    filename: ["fortigate/ha.conf"],
+    lang: "",
+    text: read("../assets/fortigate/ha.conf")
+    )
+)  <ha-cli>
+#htl3r.fspace(
+        figure(
+            image("../assets/fortigate/ha-cluster-cut.png", width: 110%),
+            caption: "Status eines HA Clusters"
+        )
+    )
 
+Welches Mitglied Primary wird, wird bestimmt anhand den folgenden Parametern in der angegebenen Reihenfolge. Wenn der erste Parameter bei allen Mitgliedern gleich ist, wird der zweite Parameter in betrachtung gezogen.
 
+1. Anzahl der überwachten Interfaces
+2. HA Uptime
+3. Priorität
+4. Seriennummer
+
+Es gibt allerdigns auch die Möglichkeit die Punkte zwei (HA Uptime) und drei (Priorität) zu tauschen, damit kann man die Wahl des Primary besser steuern. Konfiguriert wird dies wie in @ha-gui mit dem Parameter "Increase priority effect" oder in der CLI @ha-cli mit ``` set override enable ``` 
+\
+Als große Schwierigkeit hat sich die Konfigurationssynchronisation herausgestellt, da hier alle Interfaces die exakt selbe Konfiguration haben (ausgenommen HA-Interfaces). Eine rundandte Internetanbindung über zwei unterschiedliche #htl3r.full[isp] ist somit nur mit Switches möglich.
+
+Der große Vorteil von #htl3r.short[ha] liegt in der Ausfallsicherheit, somit kann innerhalb kürzester Zeit, ein Übergang zwischen aktiven und passiv passieren.
 
 #total-words Words insgesamt
+
+// Quelle alles Kapitel FortiGate Guide 
