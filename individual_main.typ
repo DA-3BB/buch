@@ -30,5 +30,5 @@
 )
 
 #include "chapter/fortigate.typ"
-#include "chapter/fortimanager.typ"
+//#include "chapter/fortimanager.typ"
 

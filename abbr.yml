@@ -532,4 +532,11 @@ adom:
   long:
     singular: Administrative Domain
   description: Unterteil einen FortiManager in mehrere Instanzen, um das Management mit hoher Effizienz und Sicherheit zu ermöglichen.
-  
+
+ips:
+  short:
+    singular: IPS
+  long:
+    singular: Intrusion Prevention System
+  description: Feature von modernen Firewalls, welches anhand einer Datenbank Angriffe anhand von Signaturen erkennen kann.
+    

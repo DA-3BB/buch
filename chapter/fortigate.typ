@@ -245,10 +245,10 @@ Beispiel: #htl3r.short[dc]-agent mode, nachdem die #htl3r.short[dc]-agents und c
 === Certificate Operations <SSL-Inspection>
 Zertifikate werden einerseits natürlich für User-Authentifizierung verwendet, allerdings auch für Traffic-Inspizierungen. Wenn ein Benutzer eine Website über HTTPS aufruft, überprüft die Firewall mithilfe von Zertifikaten, dass die Website vertrauenswürdig ist. \  Revocation- und Validation-Checks stellen sicher, dass das Zertifikat nicht von der Zertifikatsstelle zurückgezogen wurde oder das Gültigkeitsdatum abgelaufen ist.
 
-=== SSL Inspection 
+==== SSL Inspection 
 Es gibt zwei Arten der Inspizierung, eine entschlüsselt den Datenverkehr und eine nicht:
-- Certificate-Inspection: Entschlüsselt keinen Traffic sondern analysiert nur den FQDN der Website, somit kann man in den Policies nur Web-Filtering und Application Control von den vielzahl der sonst möglichen Security Profiles anwenden.
-- Full-Inspection: Hierbei agiert die FortiGate als eine Art Man-in-the-Middle proxy. Es werden von der FortiGate zwei Sessions aufgebaut: eine zum Client und eine zu dem vom Client gewünschten Web-Server. Client und Server sind allerdings aus ihrer Sicht direkt verbunden. Somit wird nicht wirklich eine Verschlüsselung geknackt sondern einfach nur entschlüsselt. Der Sinn hinter dieser Art von Inspection ist es Angriffe zu erkennen, welche sonst versteckt wären. 
+- Certificate-Inspection: Entschlüsselt keinen Traffic sondern analysiert nur den nicht verschlüsselten Teil, somit kann man in den Policies nur Web-Filtering und Application Control von der Vielzahl der sonst möglichen Security Profiles anwenden.
+- Full-Inspection: Hierbei agiert die FortiGate als eine Art Man-in-the-Middle Proxy. Es werden von der FortiGate zwei Sessions aufgebaut: eine zum Client und eine zu dem vom Client gewünschten Server. Client und Server sind allerdings aus ihrer Sicht direkt verbunden. Somit wird nicht wirklich eine Verschlüsselung geknackt sondern einfach nur entschlüsselt und wieder verschlüsselt. Der Sinn hinter dieser Art von Inspection ist es Angriffe zu erkennen, welche sonst versteckt wären. 
 
 Bei der Full-SSL-Inspection kann es allerdings zu Zertifikat-Warnungen kommen. Diese werden am Client angezeigt, wenn das FortiGate-eigene-Zertifikat nicht am Client hinterlegt ist, oder die FortiGate kein Zertifikat der CA ausgestellt bekommen hat.
 
@@ -260,7 +260,7 @@ Es sind default Profile vorhanden, das Sperrsymbol zeigt, dass diese Profile nic
     )
 )
 
-Beim Konfigurieren der  SSL-Optionen kann man wählen welche Richtung inspiziert wird (Ingoing/Outgoing). "Multiple Clients Connecting to Multiple Servers" ist Outgoing und ist gedacht um den Webtraffic der eigenen Mitarbeiter einzuschränken. 
+Beim Konfigurieren der SSL-Optionen kann man wählen welche Richtung inspiziert wird (Ingoing/Outgoing). "Multiple Clients Connecting to Multiple Servers" ist Outgoing und ist gedacht um den Traffic der eigenen Mitarbeiter einzuschränken. "Protecting SSL Server" schützt den eigen-betriebenen Server, wie zum Beispiel ein Web Server, welcher von außen erreichbar ist. 
 #htl3r.fspace(
     figure(
         image("../assets/fortigate/SSL-inspection_options.png", width: 80%),
@@ -269,10 +269,6 @@ Beim Konfigurieren der  SSL-Optionen kann man wählen welche Richtung inspiziert
 )
 
 Die Konfiguration des Profiles reicht allerdings noch nicht aus, um den Traffic zu filtern. Dafür muss das Profile in einer Firewall Policy angewandt werden und mit einem anderen Security Profile eingesetzt werden, da SSL-Inspection noch nicht das Abfangen bzw Inspizieren der Daten auslöst. 
-Zusätzlich dazu, wenn man im Profile "Deep Inspection" auswählt muss man darauf achten, dass in der Firewall Policy der Mode Proxy-based-Inspection ist.
-
-
-
 
 
 === Security Profiles <sec_prof>
@@ -284,7 +280,7 @@ Auf jeder Firewall Policy kann der Modus ausgewählt werden, mit welchem die zut
 - Flow-based: Analysiert den Traffic in Real-time und benötigt weniger Ressourcen als Proxy-based Inspection. Der Fokus liegt auf Performance.
 - Proxy-based: Speichert den Traffic temporär ab und analysiert ihn in der gesamten Länge. Benötigt mehr Ressourcen bietet allerdings mehr Sicherheit. Manche Security Profiles wie #htl3r.full[dlp] sind nur in diesem Modus verfügbar.
 
-Beide Modi sind für die meisten Security Profiles verfügbar, es gibt Ausnahmen wie zum Beispiel DLP, welches nur im proxy-mode verfügbar ist. \ 
+Beide Modi sind für die meisten Security Profiles verfügbar, es gibt Ausnahmen wie zum Beispiel #htl3r.short[dlp], welches nur im proxy-mode verfügbar ist. \ 
 Achtung: Der Modus des Security Profiles muss mit dem Modus der Firewall-Policy übereinstimmen! Wenn zum Beispiel bei einem Antivirus Profil der Modus Proxy-based-Inspection ist, muss die Firewall-Policy ebenfalls diesen Modus haben.
 
 ==== Antivirus <antivirus>
@@ -324,7 +320,7 @@ Falls ein Virus erkannt wird, wird dem Client eine Block-Webpage angezeigt.
             caption: "Block-Page des Eicar-Testfiles"
         )
     )
-// image von profile config + config file
+
 #htl3r.fspace(
         figure(
             image("../assets/fortigate/AV-profile.png", width: 80%),
@@ -338,24 +334,68 @@ Falls ein Virus erkannt wird, wird dem Client eine Block-Webpage angezeigt.
   lang: "",
   text: read("../assets/fortigate/av-config.conf")
 )
-Bei dem Profil wählt man hauptsächlich das Feature-Set und die Protokolle, welche inspiziert werden sollen. Die Protokolle mit einem roten "P" sind nur im Proxy-based-Mode verfügbar. Es gibt ebenfalls die Option gefundene Malware nicht zu Blockieren sonder nur zu Monitoren, also Zulassen und Loggen.
+Bei dem Profil wählt man hauptsächlich das Feature-Set und die Protokolle, welche inspiziert werden sollen. Die Protokolle mit einem roten "P" sind nur im Proxy-based-Mode verfügbar. Es gibt ebenfalls die Option gefundene Malware nicht zu Blockieren sonder nur zu Überwachen, also Zulassen und Loggen.
 
 
    // Seite 197
 
-=== Web Filtering
+==== Web Filtering
 Filtert Websites anhand bestimmter Parameter, sobald eine Session aufgebaut ist. Hierbei gibt es wieder die bereits bekannten Inspection Modi:
 - Flow-based-Inspection: Traffic wird inspiziert, während er ebenfalls an den Client geschickt wird. Die Daten werden allerdings nicht verändert, dementsprechend sind einige Funktionen nicht verfügbar.
-- Proxy-based-Inspection: Traffic wird von der Firewall abgefangen, ohne der Adressat zu sein, deswegen ist der Mode auch "Transparent" genannt. 
+- Proxy-based-Inspection: Traffic wird von der Firewall abgefangen und inspiziert, ohne der Adressat zu sein, deswegen ist der Mode auch "Transparent" genannt. 
 
+Im Profile gibt es folgende Einstellungen:
+- Feature-Set: Flow-based und Proxy-based.
+- FortiGuard Category Based Filter: Hierbei wird die FortiGuard Datenbank verwendet (bei aktiver Lizenz) um Websites anhand ihrer Kategorie zu erlauben oder blockieren. In der Datenbank gibt es zu den Websites vordefinierte Kategorien wie zum Beispiel Social Media, News oder auch illegale Inhalte. Jeder dieser Kategorien ist eine Action zugewiesen, New wird per default erlaubt, während illegale Inhalte blockiert werden.
+- Allow users to override blocked categories: Erlaubt bestimmten Benutzern oder Gruppen den Zugriff auf Websites, welcher für andere User nicht erlaubt ist.
+- Enforce 'Safe Search' on Google, Yahoo!, Bing, Yandex: Aktiviert das Feature 'Safe Search' in den angegebenen Browsern.
+- Block invalid URLs: Blockiert URLs die welche im CN Feld des SSl Zertifikats keinen validen Domain Name haben.
+- URL Filter: Ermöglicht statisches Filtern von Websites, entweder Simple, Regular Expression oder Wildcard. 
+
+Für jede Kategorie von FortiGuard gibt es folgende Actions:
+- Allow: Erlaubt die Kategorie ohne einen Log-Eintrag zu machen.
+- Monitor: Erlaubt die Kategorie und macht einen Log-Eintrag.
+- Block: Blockiert die Kategorie
+- Warning: Zeigt dem User eine Block-Page an, dass diese Website nicht erlaubt ist, dem User wird allerdings die Option gegeben diese Warnung zu ignorieren und die Website anzuzeigen.
+- Authenticate: Der Zugriff wird nur für bestimmte User und Gruppen erlaubt.
+
+Für URL Filter gibt es jedoch nicht alle Actions die es für FortiGuard Kategorien gibt: Warning und Authenticate sind hier nicht möglich. Stattdessen gibt es die Option Exempt, sie ermöglicht, dass alle anderen Schritte eines Web Filter Profiles übersprungen werden. 
+
+#htl3r.fspace(
+        figure(
+            image("../assets/fortigate/webfilter_categories.png", width: 80%),
+            caption: "GUI-Konfiguration eines Webfilter-Profiles mit Kategorien"
+        )
+    )
+
+#htl3r.fspace(
+        figure(
+            image("../assets/fortigate/webfilter-profile.png", width: 80%),
+            caption: "GUI-Konfiguration eines Webfilter-Profiles mit statischen URL-Filtern"
+        )
+    )
+/*
+#htl3r.code-file(
+  caption: "CLI-Konfiguration des Webfilter Profiles in einer Firewall Policy",
+  filename: ["fortigate/webfilter-firewall-policy"],
+  lang: "",
+  text: read("../assets/fortigate/webfilter_policy.conf")
+)
+*/
 // Anhand der SSL-Inspection in @SSL-Inspection und der Form dieser
 
+Ablauf eines Web Filters: Die Liste an URl Filter wird durchsucht nach einem Match, falls die Action Exempt ist wird die Website direkt beim User angezeigt. Bei Allow wird die FortiGuard Kategorien Liste durchsucht, falls hier ebenfalls Allowed wird, kommen schließlich noch die Advanced Filters und wenn diese auch erlaubt sind, wird die Website dem User angezeigt. Advanced Filters sind beispielweise Safe-search oder auch das Entfernen von Java applets, welches nur im Proxy Mode verfügbar ist.
 
 
+==== Intrusion Prevention and Application Control <IPS_App-control>
+#htl3r.full[ips] ist eine Funktion von modernen #htl3r.short[ngfw]s, es ermöglicht das Erkennen von Angriffen anhand einer Datenbank mit Angriffssignaturen. Eine Voraussetzung damit #htl3r.short[ips] eingesetzt werden kann um Angriffe zu erkennen ist, dass der Angriff bereits bekannt und eine Signatur davon in der Datenbank vorhanden ist. Um Zero-Day Attacken zu erkennen eignet es sich somit nicht.
+\
+Signaturen sind ..........!!!!!!!!!!!!!!!!!!!!!
 
-
-=== Intrusion Prevention and Application Control <IPS_App-control>
-
+Grundsätzlich gibt es drei Teile des #htl3r.short[ips]:
+- IPS Signatur Datenbank: Hier werden die ganzen Signaturen gespeichert
+- Protocol Decoders
+- IPS Engine
 
 // till here
 
@@ -368,11 +408,11 @@ Ein #htl3r.full[vpn] mittels dem SSL Protokoll, beziehungsweise der neueren Vers
 - Web Mode: Verwendet nur einen Web Browser um den Tunnel aufzubauen, allerdings sind nur ein paar Protokolle wie #htl3r.short[ftp], #htl3r.short[https] und RDP möglich. Dieser Mode macht nur bei Remote-Access-#htl3r.short[vpn]s Sinn. 
 
 
-=== IPsec VPN
+//=== IPsec VPN
 
 
 === SD-WAN Configuration and Monitoring
-#htl3r.full[sdwan] ein Teil von #htl3r.full[sdn], dabei dreht sich alles um einen dynamischen, effizienten und Applikations-basierten Weiterleitungsprozess. Die #htl3r.short[sdwan] Lösung von Fortinet nennt sich Secure #htl3r.short[sdwan], da mithilfe der FOrtiOS-Funktionen Sicherheit automatisch implementiert wird. Dafür werden Features wie IPsec, Link Überwachung, fortgeschrittenes Routing, traffic Shaping und UTM-Inspection verwendet. Anhand von Protokoll, Service oder Applikation werden die Daten weitergeleitet. Allerdings funktioniert #htl3r.short[sdwan] nur für Outgoing-Traffic, das Retour-Paket könnte also einen anderen Pfad nehmen. \
+#htl3r.full[sdwan] ist ein Teil von #htl3r.full[sdn], dabei dreht sich alles um einen dynamischen, effizienten und Applikations-basierten Weiterleitungsprozess. Die #htl3r.short[sdwan] Lösung von Fortinet nennt sich Secure #htl3r.short[sdwan], da mithilfe der FortiOS-Funktionen Sicherheit automatisch implementiert wird. Dafür werden Features wie IPsec, Link Überwachung, fortgeschrittenes Routing, traffic-shaping und UTM-Inspection verwendet. Anhand von Adresse, Protokoll, Service oder Applikation werden die Daten weitergeleitet. Allerdings funktioniert #htl3r.short[sdwan] nur für Outgoing-Traffic, das Retour-Paket könnte also einen anderen Pfad nehmen. \
 
 Der häufigste Anwendungsfall von #htl3r.short[sdwan], laut Fortinet, ist DIA - Direct Internet Access. Hierbei gibt es mehrere Uplinks, welche sich in Kosten und Performance unterscheiden. Kritischer Traffic wird über die Links mit der besten Performance weitergeleitet, während non-critical Traffic nach einem best-effort System übertragen wird. Die teuersten Links werden entweder nur als Backup oder nur für den kritischen Traffic verwendet.
 
@@ -380,14 +420,22 @@ Ein weiterer Anwendungsfall ist Site-to-Site Traffic, also die Verbindung von St
 
 #htl3r.short[sdwan] besteht aus mehreren Teilen:
 - Members: Logische oder physische Interfaces 
-- Zones: Gruppieren Members für eine optimierte Konfiguration
-- Performance SLAs: Führen Member-Checks durch, überprüft ob die Member up/down sind. Bei einem aktiven Member werden Paket-Verlust, Jitter und Latenz gemessen.
+- Zones: Gruppe von Members für eine optimierte, meist in Overlay und Underlay getrennt.
+- Performance SLAs: Führen Member-Checks durch, bei diesen überprüft wird, ob die Members up/down sind. Bei einem aktiven Member werden Paket-Verlust, Jitter und Latenz gemessen.
 - SD-WAN Regeln: Definieren welcher Link gewählt wird anhand von drei Strategien.
     - Manual: Administrator wählt manuell, welches Member zur Weiterleitung preferiert wird.
-    - Best Quality: Member mit der besten Performance wird automatisch preferiert, Performance wird mit einem definierten #htl3r.full[sla] gemessen.
-    - Lowest Cost (SLA):
+    - Best Quality: Member welches den niedrigsten Qualtiy-Wert hat, möglich sind Paket-Verlust, Jitter oder Latenz.
+    - Lowest Cost (SLA): Member, welches das #htl3r.short[sla] erfüllt, falls es mehrere Members gibt die es erfüllen, werden Kosten und Priorität als entscheidende Werte herangezogen.
 
-Die Regeln werden wie Policies von oben nach unten durchsucht, allerdings erlauben SD-WAN Regeln keinen Traffic. Es muss also eine passende Firewall Policy geben, welche den Traffic erlaubt, damit im nächsten Schritt SD-WAN verwendet werden kann. Falls keine SD-WAN Regel zutrifft, wird die Implicit-Regel verwendet. Diese verwendet einfach die normale Routing Tabelle, wobei automatisch loadbalancing aktiviert wird, anhand der Source-IP.
+Die Regeln werden wie Firewall Policies von oben nach unten durchsucht, allerdings erlauben SD-WAN Regeln keinen Traffic. Es muss also eine passende Firewall Policy geben, welche den Traffic erlaubt, damit im nächsten Schritt SD-WAN verwendet werden kann. Falls keine SD-WAN Regel zutrifft, wird die Implicit-Regel verwendet. Diese verwendet einfach die normale Routing Tabelle, wobei automatisch loadbalancing aktiviert wird.
+
+
+
+// BILDERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+
+
+
+
 
 === High Availability
 FortiGate #htl3r.full[ha] ist eine Methode, um mehrere Firewalls aus Redundanzgründen zu einer zu machen. Dabei wird das FortiGate Clustering Protocol verwendet, um die #htl3r.short[ha]-Mitglieder zu erkennen und den Status dieser zu überwachen, dafür werden sogenannte Heartbeat-Interfaces verwendet. Das sind Interfaces welche nur für Statusüberprüfung und Konfigurationssynchronisation verwendet werden.\
@@ -430,12 +478,9 @@ Es gibt allerdigns auch die Möglichkeit die Punkte zwei (HA Uptime) und drei (P
 \
 Als große Schwierigkeit hat sich die Konfigurationssynchronisation herausgestellt, da hier alle Interfaces die exakt selbe Konfiguration haben (ausgenommen HA-Interfaces). Eine rundandte Internetanbindung über zwei unterschiedliche #htl3r.full[isp] ist somit nur mit Switches möglich.
 
-Der große Vorteil von #htl3r.short[ha] liegt in der Ausfallsicherheit, somit kann innerhalb kürzester Zeit, ein Übergang zwischen aktiven und passiv passieren.
+Der große Vorteil von #htl3r.short[ha] liegt in der Ausfallsicherheit, somit kann innerhalb kürzester Zeit, ein Übergang zwischen aktiv und passiv passieren.
 
-
-
-
-
+#pagebreak()
 
 == FortiManager Administrator 7.4
 Der FortiManager ist ein weiteres Produkt der Firma Fortinet, wobei hier der Fokus bei #htl3r.full[mssp] und anderen großen Unternehmen, mit einer Vielzahl von Standorten und Fortinet-Geräten, liegt. 
@@ -443,7 +488,7 @@ Der FortiManager ist ein weiteres Produkt der Firma Fortinet, wobei hier der Fok
 === ADOMs
 Eine #htl3r.full[adom] ist eine logische Abgrenzung innerhalb des FortiManagers, damit kann man unterschiedlichen Administratoren Zugriff auf nur die von ihnen verwalteten Geräte erlauben. 
 \
-Jede #htl3r.short[adom] hat dabei eigene Geräte und Policy Packages welche sie verwaltet und speichert, eine FortiGate kann nur einer #htl3r.short[adom] zugewiesen sein. Ein wichtiger Teil von #htl3r.short[adom]s ist jedoch, dass sie nur für jeweils eine Firmware Version einer Geräteart verwendet werden sollten. Als Beispiel: Wir sind ein #htl3r.short[mssp] und haben viele Kunden, der Kunde 3BB hat vier FortiGates im Einsatz, zwei FortiGate 60Es mit der Version 7.4.2 und zwei FortiGate 60Es mit der Version 7.6.1 Für jede Kombination aus Version (major release) und Modell sollte eine eigene #htl3r.short[adom] erstellt werden, damit es mit Scripts und Variablen nicht zu Problem kommt. Es könnte also nun die #htl3r.short[adom]s "Kunde-A_FGT60E_7-4-2", "FortiGates_3BB-v7-6" und "FortiGates_3BB-v7-4" geben. #htl3r.short[adom]s müssen aktiviert werden bevor sie erstellt werden können:
+Jede #htl3r.short[adom] hat dabei eigene Geräte, Policy Packages und Objekte welche sie verwaltet und speichert, eine FortiGate kann nur einer #htl3r.short[adom] zugewiesen sein. Ein wichtiger Teil von #htl3r.short[adom]s ist jedoch, dass sie nur für jeweils eine Firmware Version einer Geräteart verwendet werden sollten. Als Beispiel: Wir sind ein #htl3r.short[mssp] und haben viele Kunden, der Kunde 3BB hat vier FortiGates im Einsatz, zwei FortiGate 60Es mit der Version 7.4.2 und zwei FortiGate 60Es mit der Version 7.6.1 Für jede Kombination aus Version (major release) und Modell sollte eine eigene #htl3r.short[adom] erstellt werden, damit es mit Scripts und Variablen nicht zu Problem kommt. Es könnte also nun die #htl3r.short[adom]s "Kunde-A_FGT60E_7-4-2", "FortiGates_3BB-v7-6" und "FortiGates_3BB-v7-4" geben. #htl3r.short[adom]s müssen aktiviert werden bevor sie erstellt werden können:
 
 #htl3r.code-file(
   caption: "Aktivierung-ADOMs-CLI",
@@ -458,8 +503,8 @@ Jede #htl3r.short[adom] hat dabei eigene Geräte und Policy Packages welche sie 
   )
 )
 
-=== Policy Packages
-
+//=== Policy Packages
+Policy Packages ermöglichen eine zentralisierte Verwaltung mehrerer Policies in einer #htl3r.short[adom]. In jedem Policy Package werden 
 
 
 #total-words Words insgesamt
