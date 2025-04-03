@@ -609,9 +609,6 @@ dlp:
     singular: DLP
   long:
     singular: Data Leak Prevention
-  description:
-
-#
 
 venv:
   short:
@@ -690,3 +687,76 @@ iot:
     singular: IoT
   long:
     singular: Internet of Things
+  description: 
+
+sdwan:
+  short:
+    singular: SD-WAN
+  long:
+    singular: Software Defined WAN
+  description: Ein dynamischer Ansatz um WAN-Daten anhand unterschiedlicher Kriterien effizient weiterzuleiten.
+
+sdn:
+  short:
+    singular: SDN
+  long:
+    singular: Software Defined Network
+  description: Ein dynamischer Ansatz um Netzwerk-Daten anhand unterschiedlicher Kriterien effizient weiterzuleiten.
+
+sla:
+  short:
+    singular: SLA
+  long:
+    singular: Service Level Agreement
+  description: Legt Werte fest, welche erreicht werden sollen.
+
+ha:
+  short:
+    singular: HA
+  long:
+    singular: High Availability
+  description: Methode, um mehrere FortiGates zu einer zusammenzufassen, um Redundanz zu gewährleisten.
+  
+isp:
+  short:
+    singular: ISP
+  long:
+    singular: Internet Service Provider
+  description: Unternehmen, welches Endkunden den Anschluss ans Internet ermöglicht.
+  
+mssp:
+  short:
+    singular: MSSP
+  long:
+    singular: Managed Security Service Provider
+  description: Unternehmen, welche Security-Leistungen, wie das Verwalten von Firewalls, anbieten.
+  
+adom:
+  short:
+    singular: ADOM
+  long:
+    singular: Administrative Domain
+  description: Unterteil einen FortiManager in mehrere Instanzen, um das Management mit hoher Effizienz und Sicherheit zu ermöglichen.
+
+ips:
+  short:
+    singular: IPS
+  long:
+    singular: Intrusion Prevention System
+  description: Feature von modernen Firewalls, welches anhand einer Datenbank Angriffe anhand von Signaturen erkennen kann.
+
+
+ssl:
+  short:
+    singular: SSL
+  long:
+    singular: Secure Sockets Layer
+  description: Ist ein veraltetes Protokoll für verschlüsselte VPNs.
+   
+tls:
+  short:
+    singular: TLS
+  long:
+    singular: Transport Layer Security
+  description: Ist die neuere Version von SSL.
+   
