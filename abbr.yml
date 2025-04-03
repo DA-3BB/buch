@@ -467,7 +467,7 @@ dos:
     singular: DoS
   long:
     singular: Denial of Service
-  description: Angriff, der ein Gerät mittels Überlastung durch Anfragen versucht lahmzulegen
+  description: Ein Angriff, der durch Überlastung ein Gerät funktionsunfähig macht.
 
 tcp:
   short:
