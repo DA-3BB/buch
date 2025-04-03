@@ -15,8 +15,6 @@ License UUID:           [ZENSIERT]
 System UUID:            [ZENSIERT]
 =Disk Summary=
 Data Name       Disk Location                            Disk Mount           Disk Used       Disk Avail      Disk Size       Pct Used
-/opt/phoenix/bin/phshowVersion.sh: line 107: [: -lt: unary operator expected
-/opt/phoenix/bin/phshowVersion.sh: line 109: [: -lt: unary operator expected
 EventDB:
 No Archive Configured
 CMDB:           /dev/sdd1                                /cmdb                813M            60G             60G             2

@@ -1,30 +1,100 @@
-hc-auto-prov:
-  type: Article
-  author:
-    given-name: Ruddy
-    name: Kyle
-  title: How Automated Provisioning Tools Pave the Way to Multi-Cloud Adoption
+industrial-transform:
+  type: web
+  title: What is Industry 4.0? Here's A Super Easy Explanation For Anyone
+  author: Bernard Marr
   url:
-    value: "https://www.hashicorp.com/blog/how-automated-provisioning-tools-pave-the-way-to-multi-cloud-adoption"
-    date: 2024-12-14
-  date: 2021-09-23
+    value: https://www.forbes.com/sites/bernardmarr/2018/09/02/what-is-industry-4-0-heres-a-super-easy-explanation-for-anyone/
+    date: 2025-03-14
+  date: 2018-09-02
 
-ci-docs:
-  type: misc
-  title: Cloud-init documentation
-  author: Canonical Group Ltd.
+industrial-it:
+  type: web
+  title: "Industrial IT: Die Digitale Transformation der Industrie"
+  author: Hamza Laarach
   url:
-    value: https://cloudinit.readthedocs.io/en/latest/index.html
-    date: 2024-12-14
-  date: 2024
+    value: https://leyton.com/de/insights/articles/industrial-it-die-digitale-transformation-der-industrie/
+    date: 2025-03-14
+  date: 2025-03-27
+
+cyberattack-deaths:
+  type: web
+  title: The mounting death toll of hospital cyberattacks
+  author: Maggie Miller
+  url:
+    value: https://www.politico.com/news/2022/12/28/cyberattacks-u-s-hospitals-00075638
+    date: 2025-03-14
+  date: 2022-12-28
+
+nis2:
+  type: legislation
+  note: directive
+  title: NIS-2-Richtlinie
+  organization: EU
+  serial-number: "2022/2555"
+  url:
+    value: https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32022L2555
+    date: 2025-03-14
+  date: 2022-12-14
+
+dsgvo:
+  type: legislation
+  note: directive
+  title: DSGVO
+  organization: EU
+  serial-number: "2016/679"
+  url:
+    value: https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32016R0679
+    date: 2025-02-08
+  date: 2016-04-27
+
+ics-sec:
+  type: web
+  title: Industrial Control System Security
+  author:
+    name: Bundesamt für Sicherheit in der Informationstechnik
+    alias: BSI
+  url:
+    value: https://www.allianz-fuer-cybersicherheit.de/SharedDocs/Downloads/Webs/ACS/DE/BSI-CS/BSI-CS_005.pdf?__blob=publicationFile&v=6
+    date: 2025-03-30
+  date: 2022-05-03
+
+# ----- OT
+
+serielleschnittstellen:
+  author: Dwyer Instruments, LLC
+  title: RS485, RS422 and RS232
+  type: Web
+  url: https://www.dwyeromega.com/en-us/resources/rs422-rs485-rs232
+  date: 2025
+
+asciialt:
+  author: Inray Industriesoftware GmbH
+  title: Was ist Modbus?
+  type: Web
+  url: https://www.kepware-opcserver.de/was-ist-modbus/
+  date: 2025-3-16
+
+arp-spoofing:
+  author: IONOS Redaktion
+  title: ARP-Spoofing – Schwachstelle in der Netzwerksicherheit
+  type: Web
+  url: https://www.ionos.de/digitalguide/server/sicherheit/arp-spoofing-angriffe-aus-dem-internen-netzwerk/
+  date: 2025-3-15
 
 # ----- FORTISIEM
 
 fortisiem:
   type: Book
-  author: Fortinet, Inc.
+  author: Fortinet
   title: FortiSIEM Study Guide for FortiSIEM 6.3
   date: 2021
+
+fortianalyzer:
+  type: Book
+  author: Fortinet
+  title: FortiAnalyzer Analyst Study Guide
+  subtitle: FortiAnalyzer 7.4
+  date: 2023
 
 elastic-vs-sql:
   type: thesis
@@ -37,6 +107,68 @@ elastic-vs-sql:
     date: 2024-12-28
   date: 2023-05-25
 
+# quellen esther start
 
-# ----- FORTISIEM
+nmap-manual:
+  type: misc
+  title: Nmap Reference Guide
+  author: Nmap
+  url:
+    value: https://nmap.org/book/man.html
+    date: 2024-11-16
+  date: 2024
 
+unicornscan:
+  type: misc
+  title: Unicornscan Tool Documentation
+  author: Kali-Linux
+  url:
+    value: https://www.kali.org/tools/unicornscan/#tool-documentation
+    date: 2024-11-16
+  date: 2024
+
+strafgesetzbuch:
+  type: misc
+  title: "Bundesrecht konsolidiert: Gesamte Rechtsvorschrift für Strafgesetzbuch, Fassung vom 16.03.2025"
+  author: Bundesrechtsinformationssystem
+  url:
+    value: https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=10002296
+    date: 2024-12-13
+  date: 2024
+
+replay:
+  type: misc
+  title: What Is a Replay Attack?
+  author: Chainlink Education Hub
+  url:
+    value: https://chain.link/education-hub/replay-attack
+    date: 2025-03-05
+  date: 2025
+
+dos-guidance:
+  type: misc
+  title: Denial of Service (DoS) guidance
+  author: National Cyber Security Centre UK
+  url:
+    value: https://www.ncsc.gov.uk/collection/denial-service-dos-guidance-collection
+    date: 2025-01-24
+  date: 2025
+
+dos-slowloris:
+  type: misc
+  title: Slowloris DDoS attack
+  author: Cloudflare
+  url:
+    value: https://www.cloudflare.com/learning/ddos/ddos-attack-tools/slowloris/
+    date: 2024-12-30
+  date: 2024
+
+nmap-slowloris:
+  type: misc
+  title: Script http-slowloris
+  author: Nmap
+  url:
+    value: https://nmap.org/nsedoc/scripts/http-slowloris.html
+    date: 2025-01-04
+  date: 2025
+# quellen esther ende

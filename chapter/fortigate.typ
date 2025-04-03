@@ -11,42 +11,48 @@
 = FCP - Network Security 
 Die Zertifizierungsprüfungen des "#htl3r.full[fcp]"  umfassen die wichtigsten Funktionen der Produkte der Firma Fortinet. Das Zertifikat "#htl3r.short[fcp] - Network Security" besteht aus mehreren Modulen: einem Pflichtmodul, dem FortiGate Administrator und einem optionalen - in meinem Fall - dem FortiManager Administrator. Um das Ziel der Zertifizierungsprüfungen erreichen zu können, wurde der Weg des FAQ#footnote("selbstgeschriebene Frage-Antwort-Paare, um die Inhalte der Zertifizierungsunterlagen zu lernen")-Lernens gewählt. 
 
+
 == Vorbereitung für den FCP
 Von Fortinet wurde dem Team das Training für die Zertifizierung auf der Fortinet-Lernplattform `www.training.fortinet.com` freigeschaltet. Dieses beinhaltet Videos, welche die einzelnen Kapitel genau erklären. Da das Lernen nur anhand von Videos nicht ausreichend ist, wurden anhand der schriftlichen Version der Videos Frage-Antwort-Paare in Excel verfasst. Insgesamt wurden für die Zertifizierung "FortiGate Administrator 7.4" 1255-Fragen verfasst und für "FortiManager Administrator 7.4" 475-Fragen. \
+/*
 #htl3r.fspace(
     figure(
         image("../assets/fortigate/FAQ_snippet_Excel-3.png", width: 100%),
         caption: "Ausschnitt der Excel-Tabelle mit den FAQs"
     )
 )\
-Mithilfe von "Anki", einer bekannten App um FAQs zu lernen, wurden die Frage-Antwort-Paare importiert und jeden Tag 20 neue gelernt, sowie die bereits beantworteten Fragen, welche - je nach Schwierigkeitsgrad - früher oder später wiederholt werden sollten. \ 
+*/
+Mithilfe von "Anki", einer bekannten App um FAQs zu lernen, wurden die Frage-Antwort-Paare importiert und jeden Tag 20 neue gelernt, sowie die bereits beantworteten Fragen, welche - je nach Schwierigkeitsgrad - früher oder später wiederholt werden sollten. \
 Ergänzend wurden sogenannte "Labs" durchgeführt, hierfür stellt die Trainingsplattform von Fortinet eine virtuelle Umgebung zur Verfügung, sowie eine Schritt-für-Schritt Anleitung, welche Tasks wie erledigt werden sollen. \
 Um die Inhalte des Kurses auch praktisch und intuitiv zu lernen, wurde eine Topologie aufgebaut, in der die wichtigsten Themen implementiert wurden.
 
 
 === Training mit FAQs
-Jeden Tag wurde eine Anzahl von 20 neuen FAQs gelernt. Man bekommt jeweils eine Frage angezeigt, bei welcher die Antwort noch nicht sichtbar ist. Somit muss man sich zuerst seine eigene Antwort denken, bevor man die korrekte sieht. 
+Jeden Tag wurde eine Anzahl von 20 neuen FAQs gelernt. Man bekommt jeweils eine Frage angezeigt, bei welcher die Antwort noch nicht sichtbar ist. Somit muss man sich zuerst seine eigene Antwort denken, bevor man die korrekte sieht.
+/*
 #htl3r.fspace(
     figure(
         image("../assets/fortigate/anki_screenshot_example_faq_closed.png", width: 50%),
         caption: "Beispiel einer verdeckten Karteikarte"
     )
 )
+*/
 Mit dem Drücken einer Taste auf der Tastatur wird die richtige Antwort sichtbar und man hat vier Auswahlmöglichkeiten, um sein eigenes Wissenslevel einzuschätzen: "Again", "Hard", "Good" und "Easy". Je nachdem wie oft man diese Frage schon beantwortet hat, sieht man neben jeder Möglichkeit eine Zeitangabe in Minuten/Tagen/Monaten, wann man diese Frage wieder beantworten muss. Wenn man also eine Frage schon mehrmals beantwortet hat und gerade wieder, würde man die Option "Good" oder "Easy" wählen, neben welcher "1.1 Mo" steht, diese Frage muss man in 1.1 Monaten wieder beantworten, bis dahin erscheint diese Frage nicht mehr. Somit werden jeden Tag zwischen 50 und 150 Fragen wiederholt, sowie 20 neue gelernt, für jede Zertifizierung einzeln. \ \
+/*
 #htl3r.fspace(
     figure(
         image("../assets/fortigate/anki_screenshot_example_faq_open.png", width: 70%),
         caption: "Beispiel einer offenen Karteikarte"
     )
 )
-
-#pagebreak()
+*/
 
 == FortiGate Administrator 7.4
 In den folgenden Abschnitten werden die Kapitel des Zertifikatskurses zusammengefasst.
+
 === System und Netzwerk Einstellungen
-Im ersten Kapitel des Kurses lernt man die Grundlagen über die FortiGate, die #htl3r.full[ngfw] von Fortinet. Man erfährt, wie man sich das erste Mal mit der FortiGate verbinden kann, die Interfaces konfiguriert und #htl3r.short[dhcp]- und #htl3r.short[vlan]-Einstellungen tätigt. \ 
-Im folgenden Bild erkennt man die physischen Ports eins bis drei, welche mit Aliassen versehen sind (bsp.: Port3 --> Inet), für die leichtere Lesbarkeit der Konfiguration. Jedes der angezeigten Interfaces hat eine IP-Adresse zugewiesen, sei es via #htl3r.short[dhcp] oder statisch. Dieser Unterschied kann aus der Grafik allerdings nicht entnommen werden, dafür ist ein tieferer Einblick notwendig. In der letzten Spalte sieht man die Protokolle "Ping", "#htl3r.short[https]", "#htl3r.short[ssh]" und "#htl3r.short[http]", diese Protokolle sind für den administrativen Zugriff auf die FortiGate, auf diesen Interfaces erlaubt.  
+Im ersten Kapitel des Kurses lernt man die Grundlagen über die FortiGate, die #htl3r.full[ngfw] von Fortinet. Man erfährt, wie man sich das erste Mal mit der FortiGate verbinden kann, die Interfaces konfiguriert und #htl3r.short[dhcp]- und #htl3r.short[vlan]-Einstellungen tätigt. \
+Im folgenden Bild erkennt man die physischen Ports eins bis drei, welche mit Aliassen versehen sind (bsp.: Port3 --> Inet), für die leichtere Lesbarkeit der Konfiguration. Jedes der angezeigten Interfaces hat eine IP-Adresse zugewiesen, sei es via #htl3r.short[dhcp] oder statisch. Dieser Unterschied kann aus der Grafik allerdings nicht entnommen werden, dafür ist ein tieferer Einblick notwendig. In der letzten Spalte sieht man die Protokolle "Ping", "#htl3r.short[https]", "#htl3r.short[ssh]" und "#htl3r.short[http]", diese Protokolle sind für den administrativen Zugriff auf die FortiGate, auf diesen Interfaces erlaubt.
 #htl3r.fspace(
     figure(
         image("../assets/fortigate/interface-overview.png", width: 100%),
@@ -85,6 +91,7 @@ Als Beispiel: Die folgende Grafik zeigt ein einfaches Netzwerk (linke Seite), mi
         caption: "Netzplan für die folgende Beispielkonfiguration einer Policy"
     )
 )
+
 Wenn man den Zugriff für das #htl3r.short[lan] ins Internet erlauben möchte, wobei nur Adressen des #htl3r.short[lan]s sowie die User in der Gruppe "Internet_Access" zugelassen werden, würde man folgende Werte setzen:
 #htl3r.fspace(
     figure(
@@ -101,7 +108,6 @@ Die selbe Konfiguration ist auch über die #htl3r.short[cli] möglich:
   text: read("../assets/fortigate/firewall_policy.conf")
 )
 
-
 #htl3r.full[nat] ist hauptsächlich dafür zuständig, private IP-Adressen auf öffentliche zu übersetzen, hierbei meist die Quell-Adresse. Da es nicht unendlich viele öffentlichen IP-Adressen gibt, ist dieses Verfahren hilfreich, um diese zu sparen, da mit Hilfe von #htl3r.full[pat] mehrere Adressen auf eine öffentliche zugewiesen werden und dann auch wieder auf die privaten zurück zu übersetzen. NAT übersetzt Adressen entweder anhand der outgoing-IP-Adresse des Interfaces oder anhand eines Pools. Das folgende Bild zeigt die NAT-Konfigurationsoptionen, welche pro Firewall-Policy zur Verfügung stehen:
 #htl3r.fspace
     #figure(
@@ -109,6 +115,7 @@ Die selbe Konfiguration ist auch über die #htl3r.short[cli] möglich:
         caption: "Beispielhafte Policy Konfiguration"
     )
 )
+
 #htl3r.code-file(
   caption: "Firewall-Policy NAT Konfigurationsbeispiel",
   filename: ["fortigate/firewall-policy-nat.conf"],
@@ -120,6 +127,7 @@ Beim Erstellen von Policies ist die Reihenfolge entscheidend: Eine spezifische P
  
 
 #htl3r.full[vip] sind eine spezielle Art von #htl3r.short[nat], da die Ziel-Adresse übersetzt wird. Die Konfiguration einer VIP reicht allerdings noch nicht um sie anzuwenden, dafür muss sie mit einer Firewall-Policy erlaubt werden. \ 
+
 Zu den häufigsten Anwendungsfällen zählt ein Admin-Zugriff von Extern: Ein Administrator verbindet sich von außerhalb des Netzwerks auf eine interne Ressource, um die Ressource aber nicht nach außen sichtbar zu machen, wird sie hinter einer #htl3r.long[vip] sozusagen versteckt. Ein weiterer Anwendungsbereich sind Server welche nach Außen unter einer öffentlichen IP-Adresse sichtbar sind, während sie intern eine private verwenden. Die folgende Grafik zeigt eine #htl3r.short[vip] für einen Web-Server:
 
 #htl3r.fspace(
@@ -138,14 +146,14 @@ Zu den häufigsten Anwendungsfällen zählt ein Admin-Zugriff von Extern: Ein Ad
 
 === Routing
 Routing ist dafür zuständig, ein Paket von einem Netzwerk an ein anderes weiterzuleiten. Die Schwierigkeit besteht darin, zu wissen, welcher Port mit dem richtigen Netz verbunden ist. Um das Problem zu lösen gibt es Routing Tabellen, in welchen steht, welches Netzwerk über welches Interface erreichbar ist bzw. wohin das Paket gesendet werden muss. \
-Bei der FortiGate gibt es zwei Routing-Tabellen: Die #htl3r.full[rib] und die #htl3r.full[fib]. In der #htl3r.short[rib] stehen nur aktive Routen während die #htl3r.short[fib] die Routing Tabelle aus der Sicht des Kernels darstellt.\ 
+Bei der FortiGate gibt es zwei Routing-Tabellen: Die #htl3r.full[rib] und die #htl3r.full[fib]. In der #htl3r.short[rib] stehen nur aktive Routen während die #htl3r.short[fib] die Routing Tabelle aus der Sicht des Kernels darstellt.\
 
 #htl3r.full[ecmp]: Routen des selben Protokolls mit selber Ziel-Adresse, Distance, Metrik und Priority. Alle #htl3r.short[ecmp] Routen stehen in der #htl3r.short[rib] und es wird automatisch geloadbalanced.
-\ 
+\
 
 Nachdem es mehrere Routen zum selben Ziel geben kann, werden Parameter benötigt, mit denen die beste Route bestimmt wird. Die beste Route ist somit abhängig von den folgenden Werten:
 - Distance: Erster relevante Parameter bei gleichen Routen, welche von unterschiedlichen Protokollen gelernt wurden. Je niedriger dieser Wert desto besser, mit Ciscos Administrativer Distanz vergleichbar, bsp: #htl3r.short[ospf]: 110, #htl3r.short[rip]: 120.
-- Metric: Relevant bei gleichen Routen welche von dem selben Protokoll gelernt wurden. Abhängig vom verwendeten Protokoll sieht die Metric und die Metric-berechnung unterschiedlich aus. Bei #htl3r.full[ospf] wären es die Kosten und bei #htl3r.full[rip] der Hopcount.\  
+- Metric: Relevant bei gleichen Routen welche von dem selben Protokoll gelernt wurden. Abhängig vom verwendeten Protokoll sieht die Metric und die Metric-berechnung unterschiedlich aus. Bei #htl3r.full[ospf] wären es die Kosten und bei #htl3r.full[rip] der Hopcount.\
 - Priority: Entscheidend bei statische Routen mit der selben Distance.
 
 #htl3r.full[rpf] ist ein Mechanismus um IP-Spoofing zu verhindern. Hierfür wird die Source-IP auf eine Retour-Route geprüft mittels einer von zwei Optionen:
@@ -162,14 +170,14 @@ Die generelle Funktion wird wie folgt pro Interface angewandt, während die Art 
 
 
 === Firewall Authentication
-Bei der FortiGate werden nicht nur Geräte und IP-Adressen authentifiziert sondern auch Benutzer und Gruppen, dies wird durch das Zuordnen von Benutzern zu Firewall Policy Sources ermöglicht. In einer Policy wählt man zusätzlich zu Quell-Adresse User-Objekte aus, erst wenn beide Parameter übereinstimmen wird die Policy angewandt.  \ 
+Bei der FortiGate werden nicht nur Geräte und IP-Adressen authentifiziert sondern auch Benutzer und Gruppen, dies wird durch das Zuordnen von Benutzern zu Firewall Policy Sources ermöglicht. In einer Policy wählt man zusätzlich zu Quell-Adresse User-Objekte aus, erst wenn beide Parameter übereinstimmen wird die Policy angewandt.  \
 Es gibt zwei Methoden um Benutzer zu authentifizieren:
+
 - Active: Benutzer bekommen einen login prompt angezeigt, unterscheidung in:
     - local password authentification: Zugangsdaten werden direkt auf der Firewall gespeichert. Diese Methode wird nicht für Unternehmen mit mehr als einer Firewall empfohlen.
     - Server-bases password authentification: auch "remote password authentification" genannt, hier werden Zugangsdaten auf POP3, RADIUS, LDAP oder TACACS+ Servern gespeichert.
     - two-factor authentification: Nur als Erweiterung zu den oben genannten Methoden verfügbar. Erweiternd zu traditionellem Username und Passwort wird ein Token oder Zertifikat benötigt. \
 - Passive: Zugangsberechtigung wird passiv durch #htl3r.full[sso] determiniert, User bekommt Authentifizierung nicht mit, unterstützt werden FSSO, RSSO und NTLM. \
-
 
 Bei aktiver Authentifizierung muss das Protokoll #htl3r.short[dns] und eines von den folgenden: #htl3r.short[http], #htl3r.short[https], #htl3r.short[ftp] oder Telnet in einer "generellen" Policy erlaubt werden, um das Anzeigen eines Prompts überhaupt möglich zu machen. 
 
@@ -177,8 +185,9 @@ Erwähnenswert ist ebenso, dass nur weil Authentifizierung in einer Policy aktiv
 - Authentifizierung in jeder Policy aktivieren.
 - Über die #htl3r.short[cli] Authentifizierung erzwingen.
 - Captive Portal auf dem Source-Port zu aktivieren.
+
 #pagebreak()
-Folgende Bilder zeigen die Erstellung eines lokalen Benutzers auf der FortiGate:\ 
+Folgende Bilder zeigen die Erstellung eines lokalen Benutzers auf der FortiGate:\
 
 
 1. Art des Kontos bestimmen:
@@ -203,7 +212,7 @@ Folgende Bilder zeigen die Erstellung eines lokalen Benutzers auf der FortiGate:
     )
 )
 4. Benutzerkonto aktivieren und wenn gewollt zu Gruppen hinzufügen:
-#htl3r.fspace(    
+#htl3r.fspace(
     figure(
         image("../assets/fortigate/user-create4.png", width: 80%),
         caption: "Benutzer erstellen Schritt 4"
@@ -237,7 +246,6 @@ Beispiel: #htl3r.short[dc]-agent mode, nachdem die #htl3r.short[dc]-agents und c
   lang: "",
   text: read("../assets/fortigate/collector_agent.conf")
 )
-
 
 // maybe seite 164
 
@@ -273,9 +281,9 @@ Die Konfiguration des Profiles reicht allerdings noch nicht aus, um den Traffic 
 
 
 === Security Profiles <sec_prof>
-Security Profiles sind erweiternde Funktionen, welche das Netzwerk bestmöglich gegen Angriffe schützen, sie werden pro Firewall Policy konfiguriert. 
+Security Profiles sind erweiternde Funktionen, welche das Netzwerk bestmöglich gegen Angriffe schützen, sie werden pro Firewall Policy konfiguriert.
 
-==== Inspection Modes 
+==== Inspection Modes
 Auf jeder Firewall Policy kann der Modus ausgewählt werden, mit welchem die zutreffenden Daten inspiziert werden, sie unterscheiden sich hauptsächlich in Sicherheit und Performance.
 
 - Flow-based: Analysiert den Traffic in Real-time und benötigt weniger Ressourcen als Proxy-based Inspection. Der Fokus liegt auf Performance.
@@ -287,6 +295,7 @@ Achtung: Der Modus des Security Profiles muss mit dem Modus der Firewall-Policy 
 ==== Antivirus <antivirus>
 // Seite 194 
 Eines der Security Profiles ist Antivirus (AV). Es gibt eine Antivirus-Engine welche verwendet wird, um anhand einer Antivirus-Datenbank, Viren und Malware zu erkennen. Für das Paket wird anhand gewisser Parameter eine Signatur erstellt, welche mit den Einträgen der AV-Datenbank verglichen wird. In der Datenbank stehen eine Vielzahl an Signaturen welche aus bereits bekannten Angriffen generiert wurden. \ 
+
 Es gibt zwei Modi:
 - Flow-based-Inspection: Dieser Modus ist ein Hybrid aus zwei anderen Modi:
     - Default-scanning: Macht es möglich verschachtelte Ordner zu inspizieren, ohne das ganze Container-file im Buffer zu speichern.
@@ -443,6 +452,10 @@ Für einen #htl3r.short[ssl] #htl3r.short[vpn] müssen folgende Schritte abgearb
 
 //=== IPsec VPN
 
+
+Die Konfiguration des Profiles reicht allerdings noch nicht aus, um den Traffic zu filtern. Dafür muss das Profile in einer Firewall Policy angewandt werden und mit einem anderen Security Profile eingesetzt werden, da SSL-Inspection noch nicht das Abfangen bzw Inspizieren der Daten auslöst.
+
+Zusätzlich dazu, wenn man im Profile "Deep Inspection" auswählt muss man darauf achten, dass in der Firewall Policy der Mode Proxy-based-Inspection ist.
 
 === SD-WAN Configuration and Monitoring
 #htl3r.full[sdwan] ist ein Teil von #htl3r.full[sdn], dabei dreht sich alles um einen dynamischen, effizienten und Applikations-basierten Weiterleitungsprozess. Die #htl3r.short[sdwan] Lösung von Fortinet nennt sich Secure #htl3r.short[sdwan], da mithilfe der FortiOS-Funktionen Sicherheit automatisch implementiert wird. Dafür werden Features wie IPsec, Link Überwachung, fortgeschrittenes Routing, traffic-shaping und UTM-Inspection verwendet. Anhand von Adresse, Protokoll, Service oder Applikation werden die Daten weitergeleitet. Allerdings funktioniert #htl3r.short[sdwan] nur für Outgoing-Traffic, das Retour-Paket könnte also einen anderen Pfad nehmen. \

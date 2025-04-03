@@ -1,0 +1,18 @@
+config system interface
+    edit "port6"
+        set vdom "root"
+        set allowaccess ping fabric
+        set type physical
+        set alias "WIEN-3BB"
+        set device-identification enable
+        set lldp-transmission enable
+        set role lan
+        set snmp-index 6
+    next
+end
+
+config log fortianalyzer setting
+    set status enable
+    set server "10.3.18.20"
+    set serial "FAZ-VMTM24016778"
+end
