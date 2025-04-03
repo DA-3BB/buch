@@ -687,7 +687,7 @@ iot:
     singular: IoT
   long:
     singular: Internet of Things
-  description: 
+  description:
 
 sdwan:
   short:
@@ -716,27 +716,20 @@ ha:
   long:
     singular: High Availability
   description: Methode, um mehrere FortiGates zu einer zusammenzufassen, um Redundanz zu gewährleisten.
-  
+
 isp:
   short:
     singular: ISP
   long:
     singular: Internet Service Provider
   description: Unternehmen, welches Endkunden den Anschluss ans Internet ermöglicht.
-  
+
 mssp:
   short:
     singular: MSSP
   long:
     singular: Managed Security Service Provider
   description: Unternehmen, welche Security-Leistungen, wie das Verwalten von Firewalls, anbieten.
-  
-adom:
-  short:
-    singular: ADOM
-  long:
-    singular: Administrative Domain
-  description: Unterteil einen FortiManager in mehrere Instanzen, um das Management mit hoher Effizienz und Sicherheit zu ermöglichen.
 
 ips:
   short:
@@ -752,11 +745,10 @@ ssl:
   long:
     singular: Secure Sockets Layer
   description: Ist ein veraltetes Protokoll für verschlüsselte VPNs.
-   
+
 tls:
   short:
     singular: TLS
   long:
     singular: Transport Layer Security
   description: Ist die neuere Version von SSL.
-   
