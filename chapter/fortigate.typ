@@ -1,4 +1,4 @@
-#import "@preview/htl3r-da:1.0.0" as htl3r
+#import "@preview/htl3r-da:2.0.0" as htl3r
 
 
 //#import "@preview/wordometer:0.1.4": word-count, total-words
@@ -8,8 +8,8 @@
 
 //#show: word-count
 
-= FCP - Network Security 
-Die Zertifizierungsprüfungen des "#htl3r.full[fcp]"  umfassen die wichtigsten Funktionen der Produkte der Firma Fortinet. Das Zertifikat "#htl3r.short[fcp] - Network Security" besteht aus mehreren Modulen: einem Pflichtmodul, dem FortiGate Administrator und einem optionalen - in meinem Fall - der FortiManager Administrator. Um das Ziel der Zertifizierungsprüfungen erreichen zu können, wurde der Weg des Lernens mit FAQs#footnote("selbstgeschriebene Frage-Antwort-Paare, um die Inhalte der Zertifizierungsunterlagen zu lernen") gewählt. 
+= FCP - Network Security
+Die Zertifizierungsprüfungen des "#htl3r.full[fcp]"  umfassen die wichtigsten Funktionen der Produkte der Firma Fortinet. Das Zertifikat "#htl3r.short[fcp] - Network Security" besteht aus mehreren Modulen: einem Pflichtmodul, dem FortiGate Administrator und einem optionalen - in meinem Fall - der FortiManager Administrator. Um das Ziel der Zertifizierungsprüfungen erreichen zu können, wurde der Weg des Lernens mit FAQs#footnote("selbstgeschriebene Frage-Antwort-Paare, um die Inhalte der Zertifizierungsunterlagen zu lernen") gewählt.
 
 
 == Vorbereitung für den FCP
@@ -124,9 +124,9 @@ Die selbe Konfiguration ist auch über die #htl3r.short[cli] möglich:
 )
 
 Beim Erstellen von Policies ist die Reihenfolge entscheidend: Eine spezifische Policy sollte vor einer generellen stehen, da sie sonst möglicherweise nie angewandt wird, weil die generelle zuerst greift. \ Angenommen, wir haben einen Webserver, auf den alle innerhalb des Netzwerkes zugreifen können - mit Ausnahme eines Users. Dann müsste man zuerst die Policy zum Blockieren dieses Users erstellen und in der Reihenfolge danach die Full-Access Policy. Wenn die Full-Access Policy zuerst kommt, könnte der User auch zugreifen.
- 
 
-#htl3r.full[vip] sind eine spezielle Art von #htl3r.short[nat], da die Ziel-Adresse übersetzt wird. Die Konfiguration einer VIP reicht allerdings noch nicht um sie anzuwenden, dafür muss sie mit einer Firewall-Policy erlaubt werden. \ 
+
+#htl3r.full[vip] sind eine spezielle Art von #htl3r.short[nat], da die Ziel-Adresse übersetzt wird. Die Konfiguration einer VIP reicht allerdings noch nicht um sie anzuwenden, dafür muss sie mit einer Firewall-Policy erlaubt werden. \
 
 Zu den häufigsten Anwendungsfällen zählt ein Admin-Zugriff von Extern: Ein Administrator verbindet sich von außerhalb des Netzwerks auf eine interne Ressource, um die Ressource aber nicht nach außen sichtbar zu machen, wird sie hinter einer #htl3r.long[vip] versteckt. Ein weiterer Anwendungsbereich sind Server welche nach Außen unter einer öffentlichen IP-Adresse sichtbar sind, während sie intern eine private verwenden. Die folgende Grafik zeigt eine #htl3r.short[vip] für einen Web-Server:
 
@@ -179,7 +179,7 @@ Es gibt zwei Methoden um Benutzer zu authentifizieren:
     - two-factor authentification: Nur als Erweiterung zu den oben genannten Methoden verfügbar. Erweiternd zu traditionellem Username und Passwort wird ein Token oder Zertifikat benötigt. \
 - Passive: Die Zugangsberechtigung wird passiv durch #htl3r.full[sso] determiniert, der User bekommt Authentifizierung nicht mit, unterstützt werden FSSO, RSSO und NTLM. \
 
-Bei aktiver Authentifizierung muss das Protokoll #htl3r.short[dns] und eines von den folgenden: #htl3r.short[http], #htl3r.short[https], #htl3r.short[ftp] oder Telnet in einer "generellen" Policy erlaubt werden, um das Anzeigen eines Prompts überhaupt möglich zu machen. 
+Bei aktiver Authentifizierung muss das Protokoll #htl3r.short[dns] und eines von den folgenden: #htl3r.short[http], #htl3r.short[https], #htl3r.short[ftp] oder Telnet in einer "generellen" Policy erlaubt werden, um das Anzeigen eines Prompts überhaupt möglich zu machen.
 
 Erwähnenswert ist ebenso, dass nur weil Authentifizierung in einer Policy aktiviert wird, der User nicht automatisch einen Prompt angezeigt bekommt. Wenn es eine "Fall-Through Policy" gibt, eine Policy welche zutrifft wenn alles andere nicht matched wird diese genommen, anstatt dem User einen Login-Screen anzuzeigen. Es gibt drei Optionen um die User-Authentifizierung zu aktivieren:
 - Authentifizierung in jeder Policy aktivieren.
@@ -254,10 +254,10 @@ Beispiel: #htl3r.short[dc]-agent mode, nachdem die #htl3r.short[dc]-agents und c
 === Certificate Operations <SSL-Inspection>
 Zertifikate werden einerseits natürlich für User-Authentifizierung verwendet, allerdings auch für Traffic-Inspizierungen. Wenn ein Benutzer eine Website über HTTPS aufruft, überprüft die Firewall mithilfe von Zertifikaten, dass die Website vertrauenswürdig ist. \  Revocation- und Validation-Checks stellen sicher, dass das Zertifikat nicht von der Zertifikatsstelle zurückgezogen wurde oder das Gültigkeitsdatum abgelaufen ist.
 
-==== SSL Inspection 
+==== SSL Inspection
 Es gibt zwei Arten der Inspizierung, eine entschlüsselt den Datenverkehr und eine nicht:
 - Certificate-Inspection: Entschlüsselt keinen Traffic sondern analysiert nur den nicht verschlüsselten Teil, somit kann man in den Policies nur Web-Filtering und Application Control von der Vielzahl der sonst möglichen Security Profiles anwenden.
-- Full-Inspection: Hierbei agiert die FortiGate als eine Art Man-in-the-Middle Proxy. Es werden von der FortiGate zwei Sessions aufgebaut: eine zum Client und eine zu dem vom Client gewünschten Server. Client und Server sind allerdings aus ihrer Sicht direkt verbunden. Somit wird nicht wirklich eine Verschlüsselung geknackt sondern einfach nur entschlüsselt und wieder verschlüsselt. Der Sinn hinter dieser Art von Inspection ist es Angriffe zu erkennen, welche sonst versteckt wären. 
+- Full-Inspection: Hierbei agiert die FortiGate als eine Art Man-in-the-Middle Proxy. Es werden von der FortiGate zwei Sessions aufgebaut: eine zum Client und eine zu dem vom Client gewünschten Server. Client und Server sind allerdings aus ihrer Sicht direkt verbunden. Somit wird nicht wirklich eine Verschlüsselung geknackt sondern einfach nur entschlüsselt und wieder verschlüsselt. Der Sinn hinter dieser Art von Inspection ist es Angriffe zu erkennen, welche sonst versteckt wären.
 
 Bei der Full-SSL-Inspection kann es allerdings zu Zertifikat-Warnungen kommen. Diese werden am Client angezeigt, wenn das FortiGate-eigene-Zertifikat nicht am Client hinterlegt ist, oder die FortiGate kein Zertifikat der CA ausgestellt bekommen hat.
 
@@ -269,7 +269,7 @@ Es sind default Profile vorhanden, das Sperrsymbol zeigt, dass diese Profile nic
     )
 )
 
-Beim Konfigurieren der SSL-Optionen kann man wählen, welche Richtung inspiziert wird (Ingoing/Outgoing). "Multiple Clients Connecting to Multiple Servers" ist Outgoing und ist gedacht um den Traffic der eigenen Mitarbeiter einzuschränken. "Protecting SSL Server" schützt den eigen-betriebenen Server, wie zum Beispiel ein Web Server, welcher von außen erreichbar ist. 
+Beim Konfigurieren der SSL-Optionen kann man wählen, welche Richtung inspiziert wird (Ingoing/Outgoing). "Multiple Clients Connecting to Multiple Servers" ist Outgoing und ist gedacht um den Traffic der eigenen Mitarbeiter einzuschränken. "Protecting SSL Server" schützt den eigen-betriebenen Server, wie zum Beispiel ein Web Server, welcher von außen erreichbar ist.
 #htl3r.fspace(
     figure(
         image("../assets/fortigate/SSL-inspection_options.png", width: 80%),
@@ -277,7 +277,7 @@ Beim Konfigurieren der SSL-Optionen kann man wählen, welche Richtung inspiziert
     )
 )
 
-Die Konfiguration des Profiles reicht allerdings noch nicht aus, um den Traffic zu filtern. Dafür muss das Profile in einer Firewall Policy angewandt werden und mit einem anderen Security Profile eingesetzt werden, da SSL-Inspection noch nicht das Abfangen bzw Inspizieren der Daten auslöst. 
+Die Konfiguration des Profiles reicht allerdings noch nicht aus, um den Traffic zu filtern. Dafür muss das Profile in einer Firewall Policy angewandt werden und mit einem anderen Security Profile eingesetzt werden, da SSL-Inspection noch nicht das Abfangen bzw Inspizieren der Daten auslöst.
 
 
 === Security Profiles <sec_prof>
@@ -289,12 +289,12 @@ Auf jeder Firewall Policy kann der Modus ausgewählt werden, mit welchem die zut
 - Flow-based: Analysiert den Traffic in Real-time und benötigt weniger Ressourcen als Proxy-based Inspection. Der Fokus liegt auf Performance.
 - Proxy-based: Speichert den Traffic temporär ab und analysiert ihn in der gesamten Länge. Benötigt mehr Ressourcen bietet allerdings mehr Sicherheit. Manche Security Profiles wie #htl3r.full[dlp] sind nur in diesem Modus verfügbar.
 
-Beide Modi sind für die meisten Security Profiles verfügbar, es gibt Ausnahmen wie zum Beispiel #htl3r.short[dlp], welches nur im proxy-mode verfügbar ist. \ 
+Beide Modi sind für die meisten Security Profiles verfügbar, es gibt Ausnahmen wie zum Beispiel #htl3r.short[dlp], welches nur im proxy-mode verfügbar ist. \
 Achtung: Der Modus des Security Profiles muss mit dem Modus der Firewall-Policy übereinstimmen! Wenn zum Beispiel bei einem Antivirus Profil der Modus Proxy-based-Inspection ist, muss die Firewall-Policy ebenfalls diesen Modus haben.
 
 ==== Antivirus <antivirus>
-// Seite 194 
-Eines der Security Profiles ist Antivirus (AV). Es gibt eine Antivirus-Engine welche verwendet wird, um anhand einer Antivirus-Datenbank, Viren und Malware zu erkennen. Für das Paket wird anhand gewisser Parameter eine Signatur erstellt, welche mit den Einträgen der AV-Datenbank verglichen wird. In der Datenbank stehen eine Vielzahl an Signaturen welche aus bereits bekannten Angriffen generiert wurden. \ 
+// Seite 194
+Eines der Security Profiles ist Antivirus (AV). Es gibt eine Antivirus-Engine welche verwendet wird, um anhand einer Antivirus-Datenbank, Viren und Malware zu erkennen. Für das Paket wird anhand gewisser Parameter eine Signatur erstellt, welche mit den Einträgen der AV-Datenbank verglichen wird. In der Datenbank stehen eine Vielzahl an Signaturen welche aus bereits bekannten Angriffen generiert wurden. \
 
 Es gibt zwei Modi:
 - Flow-based-Inspection: Dieser Modus ist ein Hybrid aus zwei anderen Modi:
@@ -353,7 +353,7 @@ Bei dem Profil wählt man hauptsächlich das Feature-Set und die Protokolle, wel
 ==== Web Filtering
 Filtert Websites anhand bestimmter Parameter, sobald eine Session aufgebaut ist. Hierbei gibt es wieder die bereits bekannten Inspection Modi:
 - Flow-based-Inspection: Traffic wird inspiziert, während er ebenfalls an den Client gesendet wird. Die Daten werden allerdings nicht verändert, dementsprechend sind einige Funktionen nicht verfügbar.
-- Proxy-based-Inspection: Traffic wird von der Firewall abgefangen und inspiziert, ohne der Adressat zu sein, deswegen ist der Mode auch "Transparent" genannt. 
+- Proxy-based-Inspection: Traffic wird von der Firewall abgefangen und inspiziert, ohne der Adressat zu sein, deswegen ist der Mode auch "Transparent" genannt.
 
 Im Profile gibt es folgende Einstellungen:
 - Feature-Set: Flow-based und Proxy-based.
@@ -361,7 +361,7 @@ Im Profile gibt es folgende Einstellungen:
 - Allow users to override blocked categories: Erlaubt bestimmten Benutzern oder Gruppen den Zugriff auf Websites, welcher für andere User nicht erlaubt ist.
 - Enforce 'Safe Search' on Google, Yahoo!, Bing, Yandex: Aktiviert das Feature 'Safe Search' in den angegebenen Browsern.
 - Block invalid URLs: Blockiert URLs die welche im CN Feld des SSl Zertifikats keinen validen Domain Name haben.
-- URL Filter: Ermöglicht statisches Filtern von Websites, entweder Simple, Regular Expression oder Wildcard. 
+- URL Filter: Ermöglicht statisches Filtern von Websites, entweder Simple, Regular Expression oder Wildcard.
 
 Für jede Kategorie von FortiGuard gibt es folgende Actions:
 - Allow: Erlaubt die Kategorie ohne einen Log-Eintrag zu machen.
@@ -370,7 +370,7 @@ Für jede Kategorie von FortiGuard gibt es folgende Actions:
 - Warning: Zeigt dem User eine Block-Page an, dass diese Website nicht erlaubt ist, dem User wird allerdings die Option gegeben diese Warnung zu ignorieren und die Website anzuzeigen.
 - Authenticate: Der Zugriff wird nur für bestimmte User und Gruppen erlaubt.
 
-Für URL Filter gibt es jedoch nicht alle Actions die es für FortiGuard Kategorien gibt: Warning und Authenticate sind hier nicht möglich. Stattdessen gibt es die Option Exempt, sie ermöglicht, dass alle anderen Schritte eines Web Filter Profiles übersprungen werden. 
+Für URL Filter gibt es jedoch nicht alle Actions die es für FortiGuard Kategorien gibt: Warning und Authenticate sind hier nicht möglich. Stattdessen gibt es die Option Exempt, sie ermöglicht, dass alle anderen Schritte eines Web Filter Profiles übersprungen werden.
 
 #htl3r.fspace(
         figure(
@@ -401,7 +401,7 @@ Ablauf eines Web Filters: Die Liste an URl Filter wird durchsucht nach einem Mat
 ==== Intrusion Prevention <IPS>
 #htl3r.full[ips] ist eine Funktion von modernen #htl3r.short[ngfw]s, es ermöglicht das Erkennen von Angriffen anhand einer Datenbank mit Angriffssignaturen. Eine Voraussetzung damit #htl3r.short[ips] eingesetzt werden kann um Angriffe zu erkennen ist, dass der Angriff bereits bekannt und eine Signatur davon in der Datenbank vorhanden ist. Um Zero-Day Attacken zu erkennen eignet es sich somit nicht.
 \
-Signaturen sind eine Kombination aus aus einem Type Header (F-SBID) und mehreren Option/Value Paaren, diese Paare werden verwendet, um ein Paket eindeutig zu identifizieren. 
+Signaturen sind eine Kombination aus aus einem Type Header (F-SBID) und mehreren Option/Value Paaren, diese Paare werden verwendet, um ein Paket eindeutig zu identifizieren.
 Options können zum Beispiel das Protokoll mit den Values wie IP oder TCP sein oder Payload mit dem Value des Payloads
 
 Grundsätzlich gibt es drei Teile des #htl3r.short[ips]:
@@ -434,10 +434,10 @@ Beim Hinzufügen von Signaturen zu einem IPS Profil kann man folgende Einstellun
 
 
 === SSL VPN
-Ein #htl3r.full[vpn] mittels #htl3r.full[ssl], beziehungsweise der neueren Version #htl3r.full[tls] kann sowohl verwendet werden um Standorte zu verbinden, als auch einen Client zum Firmennetz. Der Tunnel kann über zwei Modi aufgebaut werden: Tunnel Mode und Web Mode. 
+Ein #htl3r.full[vpn] mittels #htl3r.full[ssl], beziehungsweise der neueren Version #htl3r.full[tls] kann sowohl verwendet werden um Standorte zu verbinden, als auch einen Client zum Firmennetz. Der Tunnel kann über zwei Modi aufgebaut werden: Tunnel Mode und Web Mode.
 
 - Tunnel Mode: Verwendet einen #htl3r.short[vpn] Client (FortiClient), beziehungsweise einen Virtuellen Adapter, um diesen installieren zu können, werden administrative Rechte auf dem Endgerät benötigt.
-- Web Mode: Verwendet nur einen Web Browser um den Tunnel aufzubauen, allerdings sind nur ein paar Protokolle wie #htl3r.short[ftp], #htl3r.short[https] und RDP möglich. Dieser Mode macht nur bei Remote-Access-#htl3r.short[vpn]s Sinn. 
+- Web Mode: Verwendet nur einen Web Browser um den Tunnel aufzubauen, allerdings sind nur ein paar Protokolle wie #htl3r.short[ftp], #htl3r.short[https] und RDP möglich. Dieser Mode macht nur bei Remote-Access-#htl3r.short[vpn]s Sinn.
 
 Split-Tunneling ist eine Option, bei welcher der Traffic je nach Inhalt auf unterschiedliche Links aufgeteilt wird. Beispielsweise wird der Traffic an das HQ über den Tunnel geschickt, während jeglicher anderer Traffic direkt ins Internet geschickt wird. Gegenteilig dazu wäre, den ganzen Traffic durch den Tunnel zu schicken, dies eignet sich, wenn man den ganzen Traffic der Mitarbeiter auch im Home Office durch das HQ zu schicken. Dabei entsteht zwar eine höhere Last am HQ allerdings bietet diese Option mehr Security.
 
@@ -447,7 +447,7 @@ Für einen #htl3r.short[ssl] #htl3r.short[vpn] müssen folgende Schritte abgearb
 - #htl3r.short[ssl] #htl3r.short[vpn] Einstellungen konfigurieren
 - Erstellen einer passenden Firewall Policy
 
-In der unten gezeigten Grafik wird ein SSL-VPN Portal konfiguriert. Hierbei werden User auf jeweils eine VPN Verbindung gleichzeitig beschränkt. Der Tunnel-Mode wird verwendet und Split-Tunneling ist deaktiviert. Für die Zuweisung von IP-Adressen im Tunnel an die Clients, wird der Pool "SSLVPN_TUNNEL_ADDR1" verwendet.  
+In der unten gezeigten Grafik wird ein SSL-VPN Portal konfiguriert. Hierbei werden User auf jeweils eine VPN Verbindung gleichzeitig beschränkt. Der Tunnel-Mode wird verwendet und Split-Tunneling ist deaktiviert. Für die Zuweisung von IP-Adressen im Tunnel an die Clients, wird der Pool "SSLVPN_TUNNEL_ADDR1" verwendet.
 #htl3r.fspace(
         figure(
             image("../assets/fortigate/ssl-profile.png", width: 100%),
@@ -455,7 +455,7 @@ In der unten gezeigten Grafik wird ein SSL-VPN Portal konfiguriert. Hierbei werd
         )
     )
 
-Die folgende Grafik zeigt die SSL-VPN Einstellungen, diese gelten für alle SSL-VPN Tunnel. Man setzt den Status des SSL-VPNs, auf welchen Interfaces die Firewall Session-Anfragen annimmt, der Port welcher für die Verbindung verwendet werden soll und das Zertifikat mit dem die Firewall identifiziert wird. 
+Die folgende Grafik zeigt die SSL-VPN Einstellungen, diese gelten für alle SSL-VPN Tunnel. Man setzt den Status des SSL-VPNs, auf welchen Interfaces die Firewall Session-Anfragen annimmt, der Port welcher für die Verbindung verwendet werden soll und das Zertifikat mit dem die Firewall identifiziert wird.
 #htl3r.fspace(
         figure(
             image("../assets/fortigate/ssl-vpn-settings.png", width: 90%),
@@ -472,7 +472,7 @@ Zusätzlich dazu, wenn man im Profile Proxy-based Mode auswählt muss man darauf
 
 Der häufigste Anwendungsfall von #htl3r.short[sdwan] - laut Fortinet - ist DIA - Direct Internet Access. Hierbei gibt es mehrere Uplinks, welche sich in Kosten und Performance unterscheiden. Kritischer Traffic wird über die Links mit der besten Performance weitergeleitet, während non-critical Traffic nach einem best-effort System übertragen wird. Die teuersten Links werden entweder nur als Backup oder nur für den kritischen Traffic verwendet.
 
-Ein weiterer Anwendungsfall ist Site-to-Site Traffic, also die Verbindung von Standorten. Als Underlay werden typischerweise physische Links verwendet oder auch LTE-Verbindungen, MPLS, DSL und ATM. Über diese teils unsicheren Links werden sichere Verbindungen aufgebaut, wie zum Beispiel IPsec-Verbindungen. 
+Ein weiterer Anwendungsfall ist Site-to-Site Traffic, also die Verbindung von Standorten. Als Underlay werden typischerweise physische Links verwendet oder auch LTE-Verbindungen, MPLS, DSL und ATM. Über diese teils unsicheren Links werden sichere Verbindungen aufgebaut, wie zum Beispiel IPsec-Verbindungen.
 
 #htl3r.fspace(
         figure(
@@ -484,7 +484,7 @@ Ein weiterer Anwendungsfall ist Site-to-Site Traffic, also die Verbindung von St
 
 
 #htl3r.short[sdwan] besteht aus mehreren Teilen:
-- Members: Logische oder physische Interfaces 
+- Members: Logische oder physische Interfaces
 - Zones: Gruppe von Members für eine optimierte, meist in Overlay und Underlay getrennt.
 - Performance SLAs: Führen Member-Checks durch, bei diesen überprüft wird, ob die Members up/down sind. Bei einem aktiven Member werden Paket-Verlust, Jitter und Latenz gemessen.
 - SD-WAN Regeln: Definieren welcher Link gewählt wird anhand von drei Strategien.
@@ -492,7 +492,7 @@ Ein weiterer Anwendungsfall ist Site-to-Site Traffic, also die Verbindung von St
     - Best Quality: Member welches den niedrigsten Qualtiy-Wert hat, möglich sind Paket-Verlust, Jitter oder Latenz.
     - Lowest Cost (SLA): Member, welches das #htl3r.short[sla] erfüllt, falls es mehrere Members gibt die es erfüllen, werden Kosten und Priorität als entscheidende Werte herangezogen.
 
-Das folgende Bild zeigt, dass die Zonen "Inside" und "Outside" erstellt wurden und die Members "LAN", "WAN1" und "WAN2" erstellt und den Zonen zugewiesen worden sind. 
+Das folgende Bild zeigt, dass die Zonen "Inside" und "Outside" erstellt wurden und die Members "LAN", "WAN1" und "WAN2" erstellt und den Zonen zugewiesen worden sind.
 #htl3r.fspace(
         figure(
             image("../assets/fortigate/sdwan-zone-members.png", width: 80%),
@@ -533,8 +533,8 @@ Das folgende Bild zeigt die zugehörige Firewall Policy zu der zuvor konfigurier
 === High Availability
 FortiGate #htl3r.full[ha] ist eine Methode, um mehrere Firewalls aus Redundanzgründen zu einer zu machen. Dabei wird das FortiGate Clustering Protocol verwendet, um die #htl3r.short[ha]-Mitglieder zu erkennen und den Status dieser zu überwachen, dafür werden sogenannte Heartbeat-Interfaces verwendet. Das sind Interfaces welche nur für Statusüberprüfung und Konfigurationssynchronisation verwendet werden.\
 
-Es wird grundsätzlich in die Modi active-active und active-passive unterschieden. Active-Active ist der Modus, bei dem die Primary FortiGate Sessions an alle anderen Mitglieder verteilt um so eine Art loadbalancing zu erreichen. Active-Passive hingegen verteilt keine Sessions, das Primary Gerät trägt die volle Last. 
-\ 
+Es wird grundsätzlich in die Modi active-active und active-passive unterschieden. Active-Active ist der Modus, bei dem die Primary FortiGate Sessions an alle anderen Mitglieder verteilt um so eine Art loadbalancing zu erreichen. Active-Passive hingegen verteilt keine Sessions, das Primary Gerät trägt die volle Last.
+\
 Definiert wird die HA-Gruppe mit einem Namen, einer Nummer, einem Passwort und den Heartbeat Interfaces.
 
 #htl3r.fspace(
@@ -567,7 +567,7 @@ Welches Mitglied Primary wird, wird anhand der folgenden Parameter in der angege
 3. Priorität
 4. Seriennummer
 
-Es gibt allerdings auch die Möglichkeit die Punkte zwei (HA Uptime) und drei (Priorität) zu tauschen, damit kann man die Wahl des Primary besser steuern. Konfiguriert wird dies wie in @ha-gui mit dem Parameter "Increase priority effect" oder in der CLI @ha-cli mit ``` set override enable ``` 
+Es gibt allerdings auch die Möglichkeit die Punkte zwei (HA Uptime) und drei (Priorität) zu tauschen, damit kann man die Wahl des Primary besser steuern. Konfiguriert wird dies wie in @ha-gui mit dem Parameter "Increase priority effect" oder in der CLI @ha-cli mit ``` set override enable ```
 \
 Als große Schwierigkeit hat sich die Konfigurationssynchronisation herausgestellt, da hier alle Interfaces die exakt selbe Konfiguration haben müssen (ausgenommen HA-Interfaces). Eine rundandte Internetanbindung über zwei unterschiedliche #htl3r.full[isp] ist somit nur mit Switches möglich.
 
@@ -580,4 +580,4 @@ Der große Vorteil von #htl3r.short[ha] liegt in der Ausfallsicherheit, somit ka
 
 //#total-words Words insgesamt
 
-// Quelle alles Kapitel FortiGate Guide 
+// Quelle alles Kapitel FortiGate Guide
