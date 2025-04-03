@@ -3,8 +3,6 @@
 
 = Vorwort
 
-#htl3r.todo[Was gehört hier noch hin?]
-
 Der Name der Diplomarbeit wurde von Esther Lina Mayer ins Leben gerufen. Hierfür orientierte sie sich am Namen der Schule (HTL 3 Rennweg) sowie der ÖBB (Österreichische Bundesbahnen).
 
 == Danksagung
@@ -15,7 +13,7 @@ Unser Dank gilt den Betreuern dieser Diplomarbeit, Christian Schöndorfer und Ri
 
 Des Weiteren möchten wir uns bei der Diplomarbeit #emph("Atropos") für die Konfiguration und Verwaltung der UCS bedanken. Ohne dem Team wäre ein Großteil der Diplomarbeit nicht realisierbar gewesen.
 
-Zusätzlich möchten wir uns bei Julian Burger für die Umsetzung der Diplomarbeitsvorlage bedanken.
+Auch möchten wir uns bei Julian Burger für die Umsetzung der Diplomarbeitsvorlage bedanken.
 
 Zu guter Letzt möchten wir uns bei folgenden externen Kooperationspartnern für ihre Unterstützung bedanken:
 - Fortinet: Bereitstellung von Lizenzen, Literatur und Know-how.
