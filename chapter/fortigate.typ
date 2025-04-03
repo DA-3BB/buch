@@ -451,7 +451,14 @@ Der häufigste Anwendungsfall von #htl3r.short[sdwan] - laut Fortinet - ist DIA 
 
 Ein weiterer Anwendungsfall ist Site-to-Site Traffic, also die Verbindung von Standorten. Als Underlay werden typischerweise physische Links verwendet oder auch LTE-Verbindungen, MPLS, DSL und ATM. Über diese teils unsicheren Links werden sichere Verbindungen aufgebaut, wie zum Beispiel IPsec-Verbindungen. 
 
-// GRAFIKKKKKKK
+#htl3r.fspace(
+        figure(
+            image("../assets/fortigate/site-to-site-sdwan-scenario.png", width: 100%),
+            caption: "SD-WAN Site-to-Site Szenario"
+        )
+    )
+
+
 
 #htl3r.short[sdwan] besteht aus mehreren Teilen:
 - Members: Logische oder physische Interfaces 
@@ -462,6 +469,13 @@ Ein weiterer Anwendungsfall ist Site-to-Site Traffic, also die Verbindung von St
     - Best Quality: Member welches den niedrigsten Qualtiy-Wert hat, möglich sind Paket-Verlust, Jitter oder Latenz.
     - Lowest Cost (SLA): Member, welches das #htl3r.short[sla] erfüllt, falls es mehrere Members gibt die es erfüllen, werden Kosten und Priorität als entscheidende Werte herangezogen.
 
+Das folgende Bild zeigt, dass die Zonen "Inside" und "Outside" erstellt wurden und die Members "LAN" und "WAN" erstellt und den Zonen zugewiesen worden sind. 
+#htl3r.fspace(
+        figure(
+            image("../assets/fortigate/sdwan-zone-members.png", width: 80%),
+            caption: "SD-WAN Zonen und Members"
+        )
+    )
 
 // BEISPIELLLLLL
 Die Regeln werden wie Firewall Policies von oben nach unten durchsucht, allerdings erlauben SD-WAN Regeln keinen Traffic. Es muss also eine passende Firewall Policy geben, welche den Traffic erlaubt, damit im nächsten Schritt SD-WAN verwendet werden kann. Falls keine SD-WAN Regel zutrifft, wird die Implicit-Regel verwendet. Diese verwendet einfach die normale Routing Tabelle, wobei automatisch loadbalancing aktiviert wird.
