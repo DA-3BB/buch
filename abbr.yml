@@ -87,6 +87,7 @@ sps:
   long:
     singular: speicherprogrammierbare Steuerung
     plural: speicherprogrammierbare Steuerungen
+  description: Dient der Steuerung von Maschinen und Anlagen.
 
 crc:
   short:
