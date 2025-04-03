@@ -9,7 +9,7 @@
 #show: word-count
 
 = FCP - Network Security 
-Die Zertifizierungsprüfungen des #htl3r.full[fcp]  umfassen die wichtigsten Funktionen der Produkte der Firma Fortinet. Das Zertifikat "#htl3r.short[fcp] - Network Security" besteht aus mehreren Modulen: einem Pflichtmodul, dem FortiGate Administrator und einem optionalen, in meinem Fall, dem FortiManager Administrator. Um das Ziel der Zertifizierungsprüfungen erreichen zu können, wurde der Weg des FAQ#footnote("selbstgeschriebene Frage-Antwort-Paare, um die Inhalte der Zertifizierungsunterlagen zu lernen")-Lernens gewählt. 
+Die Zertifizierungsprüfungen des "#htl3r.full[fcp]"  umfassen die wichtigsten Funktionen der Produkte der Firma Fortinet. Das Zertifikat "#htl3r.short[fcp] - Network Security" besteht aus mehreren Modulen: einem Pflichtmodul, dem FortiGate Administrator und einem optionalen - in meinem Fall - dem FortiManager Administrator. Um das Ziel der Zertifizierungsprüfungen erreichen zu können, wurde der Weg des FAQ#footnote("selbstgeschriebene Frage-Antwort-Paare, um die Inhalte der Zertifizierungsunterlagen zu lernen")-Lernens gewählt. 
 
 == Vorbereitung für den FCP
 Von Fortinet wurde dem Team das Training für die Zertifizierung auf der Fortinet-Lernplattform `www.training.fortinet.com` freigeschaltet. Dieses beinhaltet Videos, welche die einzelnen Kapitel genau erklären. Da das Lernen nur anhand von Videos nicht ausreichend ist, wurden anhand der schriftlichen Version der Videos Frage-Antwort-Paare in Excel verfasst. Insgesamt wurden für die Zertifizierung "FortiGate Administrator 7.4" 1255-Fragen verfasst und für "FortiManager Administrator 7.4" 475-Fragen. \
@@ -74,13 +74,14 @@ Das Kapitel umfasst ebenfalls, welche Möglichkeiten der Administrierung zur Ver
 Es gibt auch eine Funktion, um eine Firewall-Instanz in mehrere aufzuteilen: Die einzelnen #htl3r.full[vdom] können (per-default) nicht untereinander kommunizieren und sind dementsprechend hilfreich, wenn man mehrere Kunden getrennt verwalten möchte, beispielsweise als Managed Security Service Provider (MSSP).
 
 === Firewall Policies und NAT
-Firewall Policies sind Regeln welche den Datenverkehr zwischen den Interfaces der Firewall einschränken. Es gibt verschiedene Werte welche in einer Policy konfiguriert werden können, um möglichst genau zu bestimmen, welcher Traffic erlaubt oder blockiert wird. Am Wichtigsten sind Quell- und Ziel-Interface, hiermit wird bestimmt welche Policies für das aktuelle Paket angewendet werden. Genauer eingeschränkt wird mithilfe von Quell- und Zieladressen: Von wo wohin ist Traffic erlaubt? Welcher User darf ein gewisses Service verwenden, sowie auch um welche Uhrzeiten welcher Datenverkehr erlaubt bzw. verboten wird. Für alle aktuellen Firewalls am Markt gilt ebenfalls das Prinzip des "implicit deny": Datenweiterleitung wird grundsätzlich verboten - außer es gibt eine Policy - die es erlaubt. \
+Firewall Policies sind Regeln welche den Datenverkehr zwischen den Interfaces der Firewall einschränken beziehungsweise erlauben. Für alle aktuellen Firewalls am Markt gilt ebenfalls das Prinzip des "implicit deny": Datenweiterleitung wird grundsätzlich verboten - außer es gibt eine Policy - die es erlaubt.\
+Es gibt verschiedene Werte welche in einer Policy konfiguriert werden können, um möglichst genau zu bestimmen, welcher Traffic erlaubt oder blockiert wird. Am Wichtigsten sind Quell- und Ziel-Interface, hiermit wird bestimmt welche Policies für das aktuelle Paket angewendet werden. Genauer eingeschränkt wird mithilfe von Quell- und Zieladressen: Von wo wohin ist Traffic erlaubt? Welcher User darf ein gewisses Service verwenden, sowie auch um welche Uhrzeiten welcher Datenverkehr erlaubt bzw. verboten wird.  \
 
 Als Beispiel: Die folgende Grafik zeigt ein einfaches Netzwerk (linke Seite), mit einer Firewall als Trennung zwischen #htl3r.short[lan] und dem Internet (Wolke der rechten Seite).
 
 #htl3r.fspace(
     figure(
-        image("../assets/fortigate/szenario_policy.png", width: 80%),
+        image("../assets/fortigate/szenario_policy.png", width: 120%),
         caption: "Netzplan für die folgende Beispielkonfiguration einer Policy"
     )
 )
@@ -170,9 +171,9 @@ Es gibt zwei Methoden um Benutzer zu authentifizieren:
 - Passive: Zugangsberechtigung wird passiv durch #htl3r.full[sso] determiniert, User bekommt Authentifizierung nicht mit, unterstützt werden FSSO, RSSO und NTLM. \
 
 
-Bei aktiver Authentifizierung müssen die Protokolle #htl3r.short[dns], #htl3r.short[http], #htl3r.short[https], #htl3r.short[ftp] und Telnet in einer "generellen" Policy erlaubt werden, um das Anzeigen eines Prompts überhaupt möglich zu machen. 
+Bei aktiver Authentifizierung muss das Protokoll #htl3r.short[dns] und eines von den folgenden: #htl3r.short[http], #htl3r.short[https], #htl3r.short[ftp] oder Telnet in einer "generellen" Policy erlaubt werden, um das Anzeigen eines Prompts überhaupt möglich zu machen. 
 
-Erwähnenswert ist ebenso, dass nur weil Authentifizierung in einer Policy aktiviert wird, der User nicht automatisch einen Prompt angezeigt bekommt. Wenn es eine "Fall-Through Policy" gibt, eine Policy welche zutrifft wenn alles andere nicht matched wird diese genommen, anstatt dem User einen Login-Screen anzuzeigen. Um  Es gibt drei Optionen um die User-Authentifizierung zu versichern:
+Erwähnenswert ist ebenso, dass nur weil Authentifizierung in einer Policy aktiviert wird, der User nicht automatisch einen Prompt angezeigt bekommt. Wenn es eine "Fall-Through Policy" gibt, eine Policy welche zutrifft wenn alles andere nicht matched wird diese genommen, anstatt dem User einen Login-Screen anzuzeigen. Es gibt drei Optionen um die User-Authentifizierung zu aktivieren:
 - Authentifizierung in jeder Policy aktivieren.
 - Über die #htl3r.short[cli] Authentifizierung erzwingen.
 - Captive Portal auf dem Source-Port zu aktivieren.
@@ -211,7 +212,7 @@ Folgende Bilder zeigen die Erstellung eines lokalen Benutzers auf der FortiGate:
 
 
 === Fortinet Single Sign-On
-#htl3r.full[sso] ist ein Prozess bei welchem die Identität der Benutzer nur einmal bestätigt werden muss und alle anderen Anwendungen sich die Informationen im Hintergrund von einem #htl3r.short[sso]-Agent organisieren, ohne dass der Benutzer es mitbekommt. Meistens wird #htl3r.short[sso] in Zusammenhang mit Active Directory oder Novell eDirectory eingesetzt.
+#htl3r.full[sso] ist ein Prozess bei welchem die Identität der Benutzer nur einmal bestätigt werden muss und alle anderen Anwendungen sich die Informationen im Hintergrund von einem #htl3r.short[sso]-Agent organisieren, ohne dass der Benutzer sich nochmals einloggen muss. Meistens wird #htl3r.short[sso] in Zusammenhang mit Active Directory oder Novell eDirectory eingesetzt.
 
 Für Active Directory Umgebungen gibt es zwei Methoden des #htl3r.long[sso] Prozesses:
 - #htl3r.short[dc]-Agent Mode: die empfohlene Variante, benötigt einen #htl3r.short[dc]-agent auf jedem #htl3r.long[dc] und einen oder mehrere collector-agents auf Windows-Servern. Der Benutzer meldet sich am  #htl3r.long[dc] an, der  #htl3r.short[dc]-agent sieht das Event und leitet es an den collector-agent weiter, welcher es an die FortiGate weiterleitet.
@@ -260,7 +261,7 @@ Es sind default Profile vorhanden, das Sperrsymbol zeigt, dass diese Profile nic
     )
 )
 
-Beim Konfigurieren der SSL-Optionen kann man wählen welche Richtung inspiziert wird (Ingoing/Outgoing). "Multiple Clients Connecting to Multiple Servers" ist Outgoing und ist gedacht um den Traffic der eigenen Mitarbeiter einzuschränken. "Protecting SSL Server" schützt den eigen-betriebenen Server, wie zum Beispiel ein Web Server, welcher von außen erreichbar ist. 
+Beim Konfigurieren der SSL-Optionen kann man wählen, welche Richtung inspiziert wird (Ingoing/Outgoing). "Multiple Clients Connecting to Multiple Servers" ist Outgoing und ist gedacht um den Traffic der eigenen Mitarbeiter einzuschränken. "Protecting SSL Server" schützt den eigen-betriebenen Server, wie zum Beispiel ein Web Server, welcher von außen erreichbar ist. 
 #htl3r.fspace(
     figure(
         image("../assets/fortigate/SSL-inspection_options.png", width: 80%),
@@ -300,7 +301,8 @@ Es gibt zwei Modi:
 
     Normalerweise wäre Flow-based-Inspection weniger Ressourcenintensiv, da aber die Pakete sowohl an die Engine als auch Client geschickt werden, wird mehr CPU-Aufwand benötigt.
 
-    
+#pagebreak()
+
 - Proxy-based-Inspection:
     #htl3r.fspace(
         figure(
@@ -387,25 +389,56 @@ Für URL Filter gibt es jedoch nicht alle Actions die es für FortiGuard Kategor
 Ablauf eines Web Filters: Die Liste an URl Filter wird durchsucht nach einem Match, falls die Action Exempt ist wird die Website direkt beim User angezeigt. Bei Allow wird die FortiGuard Kategorien Liste durchsucht, falls hier ebenfalls Allowed wird, kommen schließlich noch die Advanced Filters und wenn diese auch erlaubt sind, wird die Website dem User angezeigt. Advanced Filters sind beispielweise Safe-search oder auch das Entfernen von Java applets, welches nur im Proxy Mode verfügbar ist.
 
 
-==== Intrusion Prevention and Application Control <IPS_App-control>
+==== Intrusion Prevention <IPS>
 #htl3r.full[ips] ist eine Funktion von modernen #htl3r.short[ngfw]s, es ermöglicht das Erkennen von Angriffen anhand einer Datenbank mit Angriffssignaturen. Eine Voraussetzung damit #htl3r.short[ips] eingesetzt werden kann um Angriffe zu erkennen ist, dass der Angriff bereits bekannt und eine Signatur davon in der Datenbank vorhanden ist. Um Zero-Day Attacken zu erkennen eignet es sich somit nicht.
 \
-Signaturen sind ..........!!!!!!!!!!!!!!!!!!!!!
+Signaturen sind eine Kombination aus aus einem Type Header (F-SBID) und mehreren Option/Value Paaren, diese Paare werden verwendet, um ein Paket eindeutig zu identifizieren. 
+Options können zum Beispiel das Protokoll mit den Values wie IP oder TCP sein oder Payload mit dem Value des Payloads
 
 Grundsätzlich gibt es drei Teile des #htl3r.short[ips]:
-- IPS Signatur Datenbank: Hier werden die ganzen Signaturen gespeichert
-- Protocol Decoders
-- IPS Engine
+- IPS Signatur Datenbank: Hier werden die ganzen Signaturen gespeichert.
+- Protocol Decoders: Ermöglichen das Erkennen von Protokollen anhand ihrer Eigenschaften, somit kann beispielsweise http eindeutig als http identifiziert werden.
+- IPS Engine: Verwaltet die IPS Signaturen Datenbank und Protocol Decoders aber auch Web-Filtering und Antivirus.
 
-// till here
+Zusätzlich zu den bereits bekannten Actions (Allow, Monitor, Block) gibt es die folgenden:
+- Reset: Generiert und sendet ein TCP Reset Paket an den Client, wenn die zugewiesene Signatur erkannt wird.
+- Default: Jede Signatur hat von FortiGuard bereits eine Signatur zugewiesen, diese wird angewandt.
+- Quarantine: Blockiert die IP-Adresse des Angreifers für eine festlegbare Zeit.
+
+Beim Hinzufügen von Signaturen zu einem IPS Profil kann man folgende Einstellungen konfigurieren:
+- Type: Bei der Option "Filter" wird die Datenbank nach beispielsweise Betriebssystem oder Severity gefiltert. Bei der Option "Signature" wählt man aus der Datenbank manuell die gewollten Signaturen aus.
+- Action: man kann hier die Action für alle ausgewählten Signaturen setzen.
+- Packet logging: Aktiviert oder Deaktiviert das Loggen.
+- Status
+
+#htl3r.fspace(
+        figure(
+            image("../assets/fortigate/IPS_Signatures2.png", width: 120%),
+            caption: "Signatur Datenbank bei einem IPS Profile"
+        )
+    )
+
+
+
+
 
 
 
 === SSL VPN
-Ein #htl3r.full[vpn] mittels dem SSL Protokoll, beziehungsweise der neueren Version TLS, allerdings wird immer noch von SSL gesprochen. Der Tunnel kann über zwei Modi aufgebaut werden: Tunnel Mode und Web Mode. 
+Ein #htl3r.full[vpn] mittels #htl3r.full[ssl], beziehungsweise der neueren Version #htl3r.full[tls] kann sowohl verwendet werden um Standorte zu verbinden, als auch einen Client zum Firmennetz. Der Tunnel kann über zwei Modi aufgebaut werden: Tunnel Mode und Web Mode. 
 
 - Tunnel Mode: Verwendet einen #htl3r.short[vpn] Client (FortiClient), beziehungsweise einen Virtuellen Adapter, um diesen installieren zu können, werden administrative Rechte auf dem Endgerät benötigt.
 - Web Mode: Verwendet nur einen Web Browser um den Tunnel aufzubauen, allerdings sind nur ein paar Protokolle wie #htl3r.short[ftp], #htl3r.short[https] und RDP möglich. Dieser Mode macht nur bei Remote-Access-#htl3r.short[vpn]s Sinn. 
+
+Split tunneling ist eine Option, bei welcher der Traffic je nach Inhalt auf unterschiedliche Links aufgeteilt wird. Beispielsweise wird der Traffic an das HQ über den Tunnel geschickt, während jeglicher anderer Traffic direkt ins Internet geschickt wird. Gegenteilig dazu wäre, den ganzen Traffic durch den Tunnel zu schicken, dies eignet sich, wenn man den ganzen Traffic der Mitarbeiter auch im Home Office durch das HQ zu schicken. Dabei entsteht zwar eine höhere Last am HQ allerdings bietet diese Option mehr Security.
+
+Für einen #htl3r.short[ssl] #htl3r.short[vpn] müssen folgende Schritte abgearbeitet werden:
+- User und Gruppen erstellen
+- #htl3r.short[ssl] #htl3r.short[vpn] Portal konfigurieren
+- #htl3r.short[ssl] #htl3r.short[vpn] Einstellungen konfigurieren
+- Erstellen einer passenden Firewall Policy
+
+
 
 
 //=== IPsec VPN
@@ -414,9 +447,11 @@ Ein #htl3r.full[vpn] mittels dem SSL Protokoll, beziehungsweise der neueren Vers
 === SD-WAN Configuration and Monitoring
 #htl3r.full[sdwan] ist ein Teil von #htl3r.full[sdn], dabei dreht sich alles um einen dynamischen, effizienten und Applikations-basierten Weiterleitungsprozess. Die #htl3r.short[sdwan] Lösung von Fortinet nennt sich Secure #htl3r.short[sdwan], da mithilfe der FortiOS-Funktionen Sicherheit automatisch implementiert wird. Dafür werden Features wie IPsec, Link Überwachung, fortgeschrittenes Routing, traffic-shaping und UTM-Inspection verwendet. Anhand von Adresse, Protokoll, Service oder Applikation werden die Daten weitergeleitet. Allerdings funktioniert #htl3r.short[sdwan] nur für Outgoing-Traffic, das Retour-Paket könnte also einen anderen Pfad nehmen. \
 
-Der häufigste Anwendungsfall von #htl3r.short[sdwan], laut Fortinet, ist DIA - Direct Internet Access. Hierbei gibt es mehrere Uplinks, welche sich in Kosten und Performance unterscheiden. Kritischer Traffic wird über die Links mit der besten Performance weitergeleitet, während non-critical Traffic nach einem best-effort System übertragen wird. Die teuersten Links werden entweder nur als Backup oder nur für den kritischen Traffic verwendet.
+Der häufigste Anwendungsfall von #htl3r.short[sdwan] - laut Fortinet - ist DIA - Direct Internet Access. Hierbei gibt es mehrere Uplinks, welche sich in Kosten und Performance unterscheiden. Kritischer Traffic wird über die Links mit der besten Performance weitergeleitet, während non-critical Traffic nach einem best-effort System übertragen wird. Die teuersten Links werden entweder nur als Backup oder nur für den kritischen Traffic verwendet.
 
 Ein weiterer Anwendungsfall ist Site-to-Site Traffic, also die Verbindung von Standorten. Als Underlay werden typischerweise physische Links verwendet oder auch LTE-Verbindungen, MPLS, DSL und ATM. Über diese teils unsicheren Links werden sichere Verbindungen aufgebaut, wie zum Beispiel IPsec-Verbindungen. 
+
+// GRAFIKKKKKKK
 
 #htl3r.short[sdwan] besteht aus mehreren Teilen:
 - Members: Logische oder physische Interfaces 
@@ -427,6 +462,8 @@ Ein weiterer Anwendungsfall ist Site-to-Site Traffic, also die Verbindung von St
     - Best Quality: Member welches den niedrigsten Qualtiy-Wert hat, möglich sind Paket-Verlust, Jitter oder Latenz.
     - Lowest Cost (SLA): Member, welches das #htl3r.short[sla] erfüllt, falls es mehrere Members gibt die es erfüllen, werden Kosten und Priorität als entscheidende Werte herangezogen.
 
+
+// BEISPIELLLLLL
 Die Regeln werden wie Firewall Policies von oben nach unten durchsucht, allerdings erlauben SD-WAN Regeln keinen Traffic. Es muss also eine passende Firewall Policy geben, welche den Traffic erlaubt, damit im nächsten Schritt SD-WAN verwendet werden kann. Falls keine SD-WAN Regel zutrifft, wird die Implicit-Regel verwendet. Diese verwendet einfach die normale Routing Tabelle, wobei automatisch loadbalancing aktiviert wird.
 
 
@@ -467,16 +504,16 @@ Definiert wird die HA-Gruppe mit einem Namen, einer Nummer, einem Passwort und d
         )
     )
 
-Welches Mitglied Primary wird, wird bestimmt anhand den folgenden Parametern in der angegebenen Reihenfolge. Wenn der erste Parameter bei allen Mitgliedern gleich ist, wird der zweite Parameter in betrachtung gezogen.
+Welches Mitglied Primary wird, wird anhand der folgenden Parameter in der angegebenen Reihenfolge bestimmt. Wenn der erste Parameter bei allen Mitgliedern gleich ist, wird der zweite Parameter in Betrachtung gezogen.
 
 1. Anzahl der überwachten Interfaces
 2. HA Uptime
 3. Priorität
 4. Seriennummer
 
-Es gibt allerdigns auch die Möglichkeit die Punkte zwei (HA Uptime) und drei (Priorität) zu tauschen, damit kann man die Wahl des Primary besser steuern. Konfiguriert wird dies wie in @ha-gui mit dem Parameter "Increase priority effect" oder in der CLI @ha-cli mit ``` set override enable ``` 
+Es gibt allerdings auch die Möglichkeit die Punkte zwei (HA Uptime) und drei (Priorität) zu tauschen, damit kann man die Wahl des Primary besser steuern. Konfiguriert wird dies wie in @ha-gui mit dem Parameter "Increase priority effect" oder in der CLI @ha-cli mit ``` set override enable ``` 
 \
-Als große Schwierigkeit hat sich die Konfigurationssynchronisation herausgestellt, da hier alle Interfaces die exakt selbe Konfiguration haben (ausgenommen HA-Interfaces). Eine rundandte Internetanbindung über zwei unterschiedliche #htl3r.full[isp] ist somit nur mit Switches möglich.
+Als große Schwierigkeit hat sich die Konfigurationssynchronisation herausgestellt, da hier alle Interfaces die exakt selbe Konfiguration haben müssen (ausgenommen HA-Interfaces). Eine rundandte Internetanbindung über zwei unterschiedliche #htl3r.full[isp] ist somit nur mit Switches möglich.
 
 Der große Vorteil von #htl3r.short[ha] liegt in der Ausfallsicherheit, somit kann innerhalb kürzester Zeit, ein Übergang zwischen aktiv und passiv passieren.
 
@@ -503,9 +540,10 @@ Jede #htl3r.short[adom] hat dabei eigene Geräte, Policy Packages und Objekte we
   )
 )
 
+/*
 //=== Policy Packages
 Policy Packages ermöglichen eine zentralisierte Verwaltung mehrerer Policies in einer #htl3r.short[adom]. In jedem Policy Package werden 
-
+*/
 
 #total-words Words insgesamt
 

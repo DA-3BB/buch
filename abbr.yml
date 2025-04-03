@@ -539,4 +539,19 @@ ips:
   long:
     singular: Intrusion Prevention System
   description: Feature von modernen Firewalls, welches anhand einer Datenbank Angriffe anhand von Signaturen erkennen kann.
-    
+
+
+ssl:
+  short:
+    singular: SSL
+  long:
+    singular: Secure Sockets Layer
+  description: Ist ein veraltetes Protokoll für verschlüsselte VPNs.
+   
+tls:
+  short:
+    singular: TLS
+  long:
+    singular: Transport Layer Security
+  description: Ist die neuere Version von SSL.
+   
