@@ -177,7 +177,7 @@ nmap-slowloris:
 fortigate:
   type: Book
   author: Fortinet
-  title: FortiGate Administrator Study Guide 
+  title: FortiGate Administrator Study Guide
   subtitle: FortiOS 7.4
   date: 2023
 
