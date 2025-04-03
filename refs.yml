@@ -4,7 +4,7 @@ industrial-transform:
   author: Bernard Marr
   url:
     value: https://www.forbes.com/sites/bernardmarr/2018/09/02/what-is-industry-4-0-heres-a-super-easy-explanation-for-anyone/
-    date: 2025-03-30
+    date: 2025-03-14
   date: 2018-09-02
 
 industrial-it:
@@ -13,7 +13,7 @@ industrial-it:
   author: Hamza Laarach
   url:
     value: https://leyton.com/de/insights/articles/industrial-it-die-digitale-transformation-der-industrie/
-    date: 2025-03-30
+    date: 2025-03-14
   date: 2025-03-27
 
 cyberattack-deaths:
@@ -22,7 +22,7 @@ cyberattack-deaths:
   author: Maggie Miller
   url:
     value: https://www.politico.com/news/2022/12/28/cyberattacks-u-s-hospitals-00075638
-    date: 2025-03-30
+    date: 2025-03-14
   date: 2022-12-28
 
 nis2:
@@ -33,8 +33,19 @@ nis2:
   serial-number: "2022/2555"
   url:
     value: https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32022L2555
-    date: 2025-03-30
+    date: 2025-03-14
   date: 2022-12-14
+
+dsgvo:
+  type: legislation
+  note: directive
+  title: DSGVO
+  organization: EU
+  serial-number: "2016/679"
+  url:
+    value: https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32016R0679
+    date: 2025-02-08
+  date: 2016-04-27
 
 ics-sec:
   type: web
@@ -74,9 +85,16 @@ arp-spoofing:
 
 fortisiem:
   type: Book
-  author: Fortinet, Inc.
+  author: Fortinet
   title: FortiSIEM Study Guide for FortiSIEM 6.3
   date: 2021
+
+fortianalyzer:
+  type: Book
+  author: Fortinet
+  title: FortiAnalyzer Analyst Study Guide
+  subtitle: FortiAnalyzer 7.4
+  date: 2023
 
 elastic-vs-sql:
   type: thesis
