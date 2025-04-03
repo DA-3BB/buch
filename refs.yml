@@ -172,3 +172,18 @@ nmap-slowloris:
     date: 2025-01-04
   date: 2025
 # quellen esther ende
+
+# Quellen FortiGate & FortiManager
+fortigate:
+  type: Book
+  author: Fortinet
+  title: FortiGate Administrator Study Guide
+  subtitle: FortiOS 7.4
+  date: 2023
+
+fortimanager:
+  type: Book
+  author: Fortinet
+  title: FortiManager Administrator Study Guide
+  subtitle: FortiManager 7.4
+  date: 2023
