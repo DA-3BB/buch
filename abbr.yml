@@ -1,3 +1,17 @@
+nis-2:
+  long:
+    singular: NIS-2
+  description: Richtlinie (EU) 2022/2555 des Europäischen Parlaments und des Rates vom 14. Dezember 2022 über Maßnahmen für ein hohes gemeinsames Cybersicherheitsniveau in der Union
+
+hmi:
+  short:
+    singular: HMI
+    plural: HMIs
+  long:
+    singular: Human Machine Interface
+    plural: Human Machine Interfaces
+  description: Eine Steueroberfläche für das Bedienen von Geräten und Komponenten.
+
 sms:
   short:
     singular: SMS
@@ -71,8 +85,9 @@ sps:
     singular: SPS
     plural: SPSen
   long:
-    singular: Speicherprogrammierbare Steuerung
-    plural: Speicherprogrammierbare Steuerungen
+    singular: speicherprogrammierbare Steuerung
+    plural: speicherprogrammierbare Steuerungen
+  description: Dient der Steuerung von Maschinen und Anlagen.
 
 crc:
   short:
@@ -209,6 +224,14 @@ gpo:
     plural: Group Policy Objects
   description: Dient der Konfiguration von Windows-Computer und Accounts.
 
+rsat:
+  short:
+    singular: RSAT
+  long:
+    singular: Remote Server Administration Tool
+    plural: Remote Server Administration Tools
+  description: Enthält Management-Funktionen zur Administrierung von Windows-Server.
+
 # ----- FortiSIEM
 
 siem:
@@ -283,6 +306,31 @@ gpg:
     singular: GNU Privacy Guard
   description: Eine hybride Verschlüsselungs-Software vom GNU Project.
 
+api:
+  short:
+    singular: API
+    plural: APIs
+  long:
+    singular: Application Programming Interface
+    plural: Application Programming Interfaces
+  description: Eine Verbindung zwischen Computern und Programmen durch Schnittstellen in der Software.
+
+rj:
+  short:
+    singular: RJ
+  long:
+    singular: Registered Jack
+  description: Ein Telekommunikationsstandard für Netzwerkkabel.
+
+svi:
+  short:
+    singular: SVI
+    plural: SVIs
+  long:
+    singular: Switch Virtual Interface
+    plural: Switch Virtual Interfaces
+  description: Ein logischer Layer-3 Link auf einem Switch.
+
 # ----- FORTIANALYZER
 
 soc:
@@ -350,10 +398,11 @@ adu:
 rtu:
   short:
     singular: RTU
+    plural: RTUs
   long:
     singular: Remote Terminal Unit
     plural: Remote Terminal Units
-  description: Ein steuertechnisches Element, das Daten einholt, und zur Zentrale weiterleitet.
+  description: Eine Schnittstelle zwischen technischen Prozessen und einer zentrale Steuereinheit.
 
 sd-wan:
   short:
@@ -412,3 +461,294 @@ udf:
     plural: UDFs
   long:
     singular: User-Definied-Funktion
+
+dos:
+  short:
+    singular: DoS
+  long:
+    singular: Denial of Service
+  description: Ein Angriff, der durch Überlastung ein Gerät funktionsunfähig macht.
+
+tcp:
+  short:
+    singular: TCP
+  long:
+    singular: Transmission Control Protokoll
+  description: Verbindungsorientiertes Protokoll, definiert wie Daten übertragen werden.
+
+sql:
+  short:
+    singular: SQL
+  long:
+    singular: Structured Query Language
+  description: Datenbanksprache zum abfragen, manipulieren und einfügen von Daten in eine Datenbank
+
+xml:
+  short:
+    singular: XML
+  long:
+    singular: Extensible Markup Language
+  description: hierachisches Datenformat
+
+mitm:
+  short:
+    singular: mitm
+  long:
+    singular: Man in the Middle
+  description: Angriff zum Abfangen einer Kommunikation zwischen zwei Geräten
+
+arp:
+  short:
+    singular: ARP
+  long:
+    singular: Address Resolution Protokoll
+  description: Protokoll zur Ermittlung der physische Netzadresse durch die IP-Adresse
+
+# FortiGate
+
+fcp:
+  short:
+    singular: FCP
+  long:
+    singular: Fortinet Certified Professional
+  description: Zertifizierung der Firma Fortinet
+
+ngfw:
+  short:
+    singular: NGFW
+  long:
+    singular: Next-Generation Firewall
+  description: Eine Firewall mit Zusatzfunktionen im Vergleich zu einer standard Firewall
+
+vdom:
+  short:
+    singular: VDOM
+  long:
+    singular: Virtual Domain
+  description: Die Aufteilung einer Firewall in mehrere voneinander getrennte Instanzen
+
+nat:
+  short:
+    singular: NAT
+  long:
+    singular: Network Address Translation
+  description: Die Übersetzung von meist privaten IP-Adressen auf Public-IPs
+
+pat:
+  short:
+    singular: PAT
+  long:
+    singular: Port Address Translation
+  description: Die Übersetzung von meist privaten IP-Adressen auf Public-IPs anhand von Ports
+
+vip:
+  short:
+    singular: VIP
+  long:
+    singular: Virtual IP
+  description: Besondere Form der Übersetzung von IP-Adressen
+
+rib:
+  short:
+    singular: RIB
+  long:
+    singular: Routing Information Database
+  description: Routingtabelle der FortiGate zur Weiterleitung bereits bekannter Herkunft
+
+fib:
+  short:
+    singular: FIB
+  long:
+    singular: Forwarding Information Database
+  description: Routingtabelle der FortiGate aus Kernelsicht
+
+ecmp:
+  short:
+    singular: ECMP
+  long:
+    singular: Equal-Cost-Multipath
+  description: Redundante Routen welche alle in die Routing Tabelle geschrieben werden
+
+rip:
+  short:
+    singular: RIP
+  long:
+    singular: Routing Information Protocol
+  description: Distance-Vector Routing Protokoll
+
+ospf:
+  short:
+    singular: OSPF
+  long:
+    singular: Open Shortest Path First
+  description: Link-State Routing Protokoll
+
+rpf:
+  short:
+    singular: RPF
+  long:
+    singular: Reverse Path Forwarding
+  description: Funktion, um IP-Address Spoofing zu verhindern
+
+sso:
+  short:
+    singular: SSO
+  long:
+    singular: Single Sign On
+  description: Funktion welche den Login von Benutzern ermöglicht, ohne dass sich dieser nochmal an der Firewall anmelden muss
+
+dc:
+  short:
+    singular: DC
+  long:
+    singular: Domain Controller
+  description: Zur Verwaltung von Active-Directory-Domains
+
+dlp:
+  short:
+    singular: DLP
+  long:
+    singular: Data Leak Prevention
+
+venv:
+  short:
+    singular: venv
+  long:
+    singular: Virtual Environment
+  description: isolierter Arbeitsbereich in Python
+
+i2c:
+  short:
+    singular: I2C
+  long:
+    singular: Inter-Integrated Circuit
+  description: serielles Kommunikationsprotokoll
+
+ddos:
+  short:
+    singular: DDoS
+  long:
+    singular: Distributed Denial of Service
+  description: Form von Denial of Service, bei welchem der Angriff von vielen Geräten (z.B. Botnet) kommt
+
+wsl:
+  short:
+    singular: WSL
+  long:
+    singular: Windows Subsystem for Linux
+
+icmp:
+  short:
+    singular: ICMP
+  long:
+    singular: Internet Control Message Protocol
+
+vnc:
+  short:
+    singular: VNC
+  long:
+    singular: Virtual Network Computing
+  description: Fernzugriffsprotokoll
+
+cups:
+  short:
+    singular: CUPS
+  long:
+    singular: Common Unix Printing System
+  description: Unix-basiertes Drucksystem
+
+s7:
+  short:
+    singular: S7
+  long:
+    singular: S7-Steuerung
+
+tde:
+  short:
+    singular: TDE
+  long:
+    singular: Totally Integrated Automation (TIA) Development Environment
+
+url:
+  short:
+    singular: URL
+    plural: URLs
+  long:
+    singular: Uniform Resource Locator
+
+lwe:
+  short:
+    singular: LWE
+  long:
+    singular: LOGO! Web-Editor
+
+iot:
+  short:
+    singular: IoT
+  long:
+    singular: Internet of Things
+  description:
+
+sdwan:
+  short:
+    singular: SD-WAN
+  long:
+    singular: Software Defined WAN
+  description: Ein dynamischer Ansatz um WAN-Daten anhand unterschiedlicher Kriterien effizient weiterzuleiten.
+
+sdn:
+  short:
+    singular: SDN
+  long:
+    singular: Software Defined Network
+  description: Ein dynamischer Ansatz um Netzwerk-Daten anhand unterschiedlicher Kriterien effizient weiterzuleiten.
+
+sla:
+  short:
+    singular: SLA
+  long:
+    singular: Service Level Agreement
+  description: Legt Werte fest, welche erreicht werden sollen.
+
+ha:
+  short:
+    singular: HA
+  long:
+    singular: High Availability
+  description: Methode, um mehrere FortiGates zu einer zusammenzufassen, um Redundanz zu gewährleisten.
+
+isp:
+  short:
+    singular: ISP
+  long:
+    singular: Internet Service Provider
+  description: Unternehmen, welches Endkunden den Anschluss ans Internet ermöglicht.
+
+mssp:
+  short:
+    singular: MSSP
+  long:
+    singular: Managed Security Service Provider
+  description: Unternehmen, welche Security-Leistungen, wie das Verwalten von Firewalls, anbieten.
+
+ips:
+  short:
+    singular: IPS
+  long:
+    singular: Intrusion Prevention System
+  description: Feature von modernen Firewalls, welches anhand einer Datenbank Angriffe anhand von Signaturen erkennen kann.
+
+
+ssl:
+  short:
+    singular: SSL
+  long:
+    singular: Secure Sockets Layer
+  description: Ist ein veraltetes Protokoll für verschlüsselte VPNs.
+
+tls:
+  short:
+    singular: TLS
+  long:
+    singular: Transport Layer Security
+  description: Ist die neuere Version von SSL.

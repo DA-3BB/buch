@@ -1,4 +1,4 @@
-#import "@local/htl3r-da:0.1.0" as htl3r
+#import "@preview/htl3r-da:2.0.0" as htl3r
 #htl3r.author("Marlene Reder")
 
 == OT Topologie <piverkabelung>
@@ -23,11 +23,11 @@ Um die Komponenten in der Nähe der Modelleisenbahnanlage zu plazieren, wurde ei
 
 #figure(
     image("../assets/topologie/ot-topologie/ot-steuerzentrale.jpg", width: 45%),
-    caption: "OT Netzplan - Physischer Aufbau der OT"
+    caption: "OT Steuerzentrale"
 )
 
 #figure(
-    image("../assets/topologie/ot-topologie/3BB_Netzplan_v1_0.png"),
+    image("../assets/topologie/ot-topologie/3BB_Netzplan_v2_1.png"),
     caption: "OT Netzplan - Physischer Aufbau der OT"
 )
 
