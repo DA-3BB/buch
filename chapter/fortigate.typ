@@ -114,7 +114,7 @@ Die selbe Konfiguration ist auch über die #htl3r.short[cli] möglich:
 #htl3r.fspace
     #figure(
         image("../assets/fortigate/policy_NAT.png", width: 80%),
-        caption: "Beispielhafte Policy Konfiguration"
+        caption: "Beispielhafte NAT Policy Konfiguration"
     )
 )
 
@@ -461,7 +461,7 @@ Die folgende Grafik zeigt die SSL-VPN Einstellungen, diese gelten für alle SSL-
 #htl3r.fspace(
         figure(
             image("../assets/fortigate/ssl-vpn-settings.png", width: 90%),
-            caption: "Konfiguration eines SSL Portals"
+            caption: "Konfiguration der SSL Settings"
         )
     )
 

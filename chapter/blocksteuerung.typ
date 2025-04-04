@@ -146,7 +146,7 @@ Bei der Blocksteuerung ist immer der aktuelle, der letzte und der nächste Block
   [
     #figure(
       image("../assets/blocksteuerung/block-an.jpg"),
-      caption: "Gesammte Blocksteuerung"
+      caption: "Blockübersicht mit Modelleisenbahn"
     ) <an>
   ]
 )
@@ -157,7 +157,7 @@ Sobald nun  die Modelleisenbahn in den nächsten Block fährt, wird der übernä
   [
     #figure(
       image("../assets/blocksteuerung/block-uebergang-2.jpg"),
-      caption: "Gesammte Blocksteuerung"
+      caption: "Blockübergang mit Modelleisenbahn"
     ) <uebergang>
   ]
 )
