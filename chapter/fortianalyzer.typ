@@ -3,7 +3,7 @@
 
 = Security Operations Center <faz>
 
-Um eine realitätsnahe #htl3r.short[soc]-Umgebung zu schaffen, wird der FortiAnalyzer in die Topologie implementiert. Mithilfe der Integration in das Fortinet-Ökosystem bietet der FortiAnalyzer eine Übersicht über Risiken und Schwachstellen von Security-Geräten wie Firewalls. Es aggregiert alle Logs von Fortinet-Komponenten, um daraus übersichtliche Dashboards und Reports für #htl3r.short[soc]-Teams zu bauen.
+Um eine realitätsnahe #htl3r.short[soc]-Umgebung zu schaffen, wird der FortiAnalyzer in die Topologie implementiert. Mithilfe der Integration in das Fortinet-Ökosystem bietet der FortiAnalyzer eine Übersicht über Risiken und Schwachstellen von Security-Geräten wie Firewalls. Es aggregiert alle Logs von Fortinet-Komponenten, um daraus übersichtliche Dashboards und Reports für #htl3r.short[soc]-Teams zu bauen @fortianalyzer.
 
 Mithilfe von #htl3r.shortpl[adom] kann der Zugriff auf Logs und Funktionen im #htl3r.short[gui] sowie #htl3r.short[cli] eingeschränkt werden. Dies ist besonders für große #htl3r.long[soc] sinnvoll. Des Weiteren können für Mitarbeiter des #htl3r.short[soc]-Teams automatische Reports als HTML, PDF, XML, CSV oder JSON generiert werden.
 
@@ -44,7 +44,6 @@ Um die FortiGate mit dem FortiAnalyzer zu verbinden, muss die Konfiguration an d
   text: read("../assets/fortianalyzer/WIEN-3BB-FG"),
 )
 
-
 === Logs aggregieren <faz-cert-logs>
 
 Damit der FortiAnalyzer Logs der Geräte sammeln kann, müssen diese mittels #emph("Fabric Connectors") verbunden werden. Die Konfiguration dafür erfolgt explizit auf jedem Gerät. Anschließend können die Geräte entsprechend den #htl3r.short[adom]s zugeteilt werden, um diese für bestimmte Nutzer zugänglich zu machen. Daraufhin kann beispielsweise die Auslastung oder der Speicherbedarf einzelner Komponenten zentral überwacht werden.
@@ -56,8 +55,6 @@ Die Konfiguration der Benutzer kann auch mit einem bestehenden #htl3r.short[ldap
 === Reports <faz-cert-reports>
 
 Um laufend über das Geschehen im Netzwerk informiert zu werden, können im FortiAnalyzer Reports angelegt werden. Diese geben einen guten Überblick der vergangenen Tage und Wochen. Mithilfe von Report-Templates können für verschiedene #htl3r.shortpl[adom] und Geräte anhand einer einheitlichen Vorlage Reports generieren. Diese können dann über unterschiedlichste Formate über E-Mail verschickt werden.
-
-#htl3r.todo[ADOMs erläutern]
 
 Im folgenden Beispiel wurde ein Report am Standort Wien generiert. Die Daten von der FortiGate der letzten sieben Tage wurden dabei aggregiert und in Grafiken zusammengefasst. Nicht nur die Durchschnittswerte, sondern auch die Höchstwerte von #htl3r.short[cpu]- und Speicherauslastung werden angezeigt. Darunter befindet sich der genaue Verlauf der zum Zeitpunkt des Reports festgehaltenen Woche.
 

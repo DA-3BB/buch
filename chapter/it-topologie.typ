@@ -38,7 +38,7 @@ Für die Limitierung des Traffics werden auf der FortiGate Policies konfiguriert
 
 Der #htl3r.short[ftp]-Server wurde in die Topologie implementiert, um das Speichern von Konfigurationen zu erleichtern. Komponenten wie Windows oder Linux-Server können so ihre Powershell und Bash-Scripts herunterladen und ausführen. Das erleichtert die Provisionierung, falls Komponenten einen Ausfall erleiden. Manche Geräte von Fortinet, wie z.B. der FortiAnalyzer, können ihre Konfigurationen auch automatisch auf einen FTP-Server hochladen. Für das FortiSIEM wurden die Windows- und Linux-Agents abgelegt, um diese auf die einzelnen Komponenten zu verteilen.
 
-Der #htl3r.short[ftp]-Server wurde mit dem Package `vsftpd` realisiert. Ein User mit zugehörigem Home-Ordner, auf dem die Ablage der Scripts durchgeführt wird, wurde erstellt. Die Begrenzung des Zugriffs auf die Verzeichnisse wurde durch `chroot_local_user=YES` in `/etc/vsftpd.conf` durchgeführt.
+Der #htl3r.short[ftp]-Server wurde mit dem Package `vsftpd` realisiert. Ein User mit zugehörigem Home-Ordner, auf dem die Ablage der Scripts durchgeführt wird, wurde erstellt. Die Begrenzung des Zugriffs auf die Verzeichnisse wurde durch `chroot_local_user=YES` in \ `/etc/vsftpd.conf` durchgeführt.
 
 #pagebreak()
 
@@ -107,7 +107,7 @@ Die Benutzer und Gruppen sollen so realitätsnah wie möglich ein Unternehmen wi
       [mmustermann], [Max Mustermann], [Management],
       [abecker], [Anna Becker], [Management],
       [bschmidt], [Bernd Schmidt], [Management],
-      [sklein], [Sophie Klein], [Finance],
+      [npfeffer], [Nick Pfeffer], [Finance],
       [lfischer], [Lukas Fischer], [Finance],
       [twagner], [Tina Wagner], [Finance],
       [pmeier], [Peter Meier], [Office],

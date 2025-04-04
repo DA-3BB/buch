@@ -242,7 +242,7 @@ In Zeile 17 ist ersichtlich, dass der Raspberry Pi eine neue Verbindung zu einem
 
 #pagebreak()
 
-Man kann nun den Webserver der #htl3r.short[sps] von einem Management-PC starten. Die Addressierung lautet: `http://10.100.0.1`. Es öffnet sich eine Seite, auf der der Nutzer sich authentifizieren muss. Das Passwort für den User "Web User" ist auf dem Default-Wert ("admin") belassen worden.
+Man kann nun den Webserver der #htl3r.short[sps] von einem Management-PC starten. Die Addressierung lautet: `http://10.100.0.1`. Es öffnet sich eine Seite, auf der der Nutzer sich authentifizieren muss. Das Passwort für den User "Web User" ist auf dem Default-Passwort ("admin") belassen worden.
 
 #figure(
   image("../assets/python_programm/sps/login.png", width: 80%),

@@ -1,7 +1,7 @@
 nis-2:
   long:
     singular: NIS-2
-  description: Richtlinie (EU) 2022/2555 des Europäischen Parlaments und des Rates vom 14. Dezember 2022 über Maßnahmen für ein hohes gemeinsames Cybersicherheitsniveau in der Union
+  description: Richtlinie (EU) 2022/2555 des Europäischen Parlaments und des Rates vom 14. Dezember 2022 über Maßnahmen für ein hohes gemeinsames Cybersicherheitsniveau in der Union.
 
 hmi:
   short:
@@ -48,6 +48,7 @@ ot:
     singular: OT
   long:
     singular: Operational Technology
+  description: Ein Netzwerk zur Steuerung von Industriekomponenten.
 
 lan:
   short:
@@ -62,6 +63,7 @@ vlan:
     plural: VLANs
   long:
     singular: Virtual Local Area Network
+  description: Teilt ein physisches Netzwerk in logische Segmente.
 
 cpu:
   short:
@@ -87,18 +89,13 @@ sps:
   long:
     singular: speicherprogrammierbare Steuerung
     plural: speicherprogrammierbare Steuerungen
+  description: Dient der Steuerung von Maschinen und Anlagen.
 
 crc:
   short:
     singular: CRC
   long:
     singular: Cyclic Redundancy Check
-
-scada:
-  short:
-    singular: SCADA
-  long:
-    singular: Supervisory Control and Data Acquisition
 
 gui:
   short:
@@ -148,14 +145,6 @@ ad:
     singular: Active Directory
   description: Ein Verzeichnisdienst von Microsoft.
 
-addc:
-  short:
-    singular: ADDC
-    plural: ADDCs
-  long:
-    singular: Active Directory Domain Controller
-  description: Beinhaltet die Datenbank einer Active Directory Infrastruktur.
-
 adds:
   short:
     singular: ADDS
@@ -191,7 +180,7 @@ ou:
   long:
     singular: Organizational Unit
     plural: Organizational Units
-  description:
+  description: Dient der Zuordnung von Active Directory Objekten in administrative Bereiche.
 
 ftp:
   short:
@@ -246,21 +235,21 @@ snmp:
     singular: SNMP
   long:
     singular: Simple Network Management Protocol
-  description: Ein Internet-Standard für das Sammeln von Informationen zu Geräten in einem Netzwerk
+  description: Ein Internet-Standard für das Sammeln von Informationen zu Geräten in einem Netzwerk.
 
 wmi:
   short:
     singular: WMI
   long:
     singular: Windows Management Instrumentation
-  description: Eine Erweiterung der Windows-Treiber, um extern auf Informationen zuzugreifen
+  description: Eine Erweiterung der Windows-Treiber, um extern auf Informationen zuzugreifen.
 
 pam:
   short:
     singular: PAM
   long:
     singular: Performance and Availability Management
-  description: Bietet Einblicke in den Zustand von Geräten und Applikationen in einem Netzwerk durch das FortiSIEM
+  description: Bietet Einblicke in den Zustand von Geräten und Applikationen in einem Netzwerk durch das FortiSIEM.
 
 cmdb:
   short:
@@ -269,13 +258,6 @@ cmdb:
   long:
     singular: Confiugration and Management Database
   description: Nutzt eine Postgres Datenbank um FortiSIEM-Konfigurationen wie Geräteinformationen, Zugangsdaten, Regeln und Reports zu speichern.
-
-gdpr:
-  short:
-    singular: GDPR
-  long:
-    singular: General Data Protection Regulation
-  description: Name der Datenschutzgrundverordnung auf Englisch
 
 dsgvo:
   short:
@@ -414,6 +396,7 @@ vpn:
     singular: VPN
   long:
     singular: Virtual Private Network
+  description: Eine logische Verbindung zwischen zwei physisch entfernte Netzwerke.
 
 ipsec:
   short:
@@ -466,7 +449,7 @@ dos:
     singular: DoS
   long:
     singular: Denial of Service
-  description: Angriff, der ein Gerät mittels Überlastung durch Anfragen versucht lahmzulegen
+  description: Ein Angriff, der durch Überlastung ein Gerät funktionsunfähig macht.
 
 tcp:
   short:
@@ -608,9 +591,6 @@ dlp:
     singular: DLP
   long:
     singular: Data Leak Prevention
-  description:
-
-#
 
 venv:
   short:
@@ -689,6 +669,7 @@ iot:
     singular: IoT
   long:
     singular: Internet of Things
+<<<<<<< HEAD
 
 di:
   short:
@@ -703,3 +684,70 @@ coil:
   long:
     singular: Coil
     plural: Coils
+=======
+  description:
+
+sdwan:
+  short:
+    singular: SD-WAN
+  long:
+    singular: Software Defined WAN
+  description: Ein dynamischer Ansatz um WAN-Daten anhand unterschiedlicher Kriterien effizient weiterzuleiten.
+
+sdn:
+  short:
+    singular: SDN
+  long:
+    singular: Software Defined Network
+  description: Ein dynamischer Ansatz um Netzwerk-Daten anhand unterschiedlicher Kriterien effizient weiterzuleiten.
+
+sla:
+  short:
+    singular: SLA
+  long:
+    singular: Service Level Agreement
+  description: Legt Werte fest, welche erreicht werden sollen.
+
+ha:
+  short:
+    singular: HA
+  long:
+    singular: High Availability
+  description: Methode, um mehrere FortiGates zu einer zusammenzufassen, um Redundanz zu gewährleisten.
+
+isp:
+  short:
+    singular: ISP
+  long:
+    singular: Internet Service Provider
+  description: Unternehmen, welches Endkunden den Anschluss ans Internet ermöglicht.
+
+mssp:
+  short:
+    singular: MSSP
+  long:
+    singular: Managed Security Service Provider
+  description: Unternehmen, welche Security-Leistungen, wie das Verwalten von Firewalls, anbieten.
+
+ips:
+  short:
+    singular: IPS
+  long:
+    singular: Intrusion Prevention System
+  description: Feature von modernen Firewalls, welches anhand einer Datenbank Angriffe anhand von Signaturen erkennen kann.
+
+
+ssl:
+  short:
+    singular: SSL
+  long:
+    singular: Secure Sockets Layer
+  description: Ist ein veraltetes Protokoll für verschlüsselte VPNs.
+
+tls:
+  short:
+    singular: TLS
+  long:
+    singular: Transport Layer Security
+  description: Ist die neuere Version von SSL.
+>>>>>>> 23364d461159d8bae8aae5e4138b8926d6957d26
