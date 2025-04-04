@@ -59,7 +59,7 @@ Zum Programmieren selbst wurde in diesem Projekt die Sprache "#htl3r.long[fub]".
         image("../assets/topologie/ot-topologie/komponenten/siemens-logo.jpg", width: 50%),
         caption: "SPS - Siemens LOGO!")
 )
-
+#pagebreak()
 ==== LOGO!Soft Comfort V8.4
 Die Oberfläche von 'LOGO!Soft Comfort' ist in zwei große Bereiche eingeteilt, den 'Diagram Mode' und das 'Network Project'. Im Diagram Mode gibt es das Fenster 'Instrutions' aus dem die Funktionsblöcke in den 'Diagram Editor' gezogen werden können. Im 'Diagram Editor' wird dabei die gesammte Steuerung abgebildet.
 
@@ -95,7 +95,7 @@ Bevor das Programm allerdings angezeigt wird, wird man zu einem Konnektivitätst
     image("../assets/ot-topologie/sps-test.png", width: 70%),
     caption: "Test der Konnektivität zwischen PC und SPS"
 )\
-
+#pagebreak()
 Nach einer erfogreichen Konnektivität wird nicht nur im Diagram Editor das Programm angezeigt, es wird auch in der Network View die #htl3r.short[sps] abgebildet siehe @networkview. Auf dieser können nun Einstellungen wie die IP-Adresse der #htl3r.short[sps] getätigt aber auch das Busprotokoll Modbus aktiviert werden. Weiters ist zu erkennen, dass die #htl3r.short[sps] nicht nur eine Verbindung zum PC hat, sondern auch vier weitere Verbindungen. Diese zeigen auf, dass im Programm auf externe Inputs beziehungsweise Outputs verwiesen wird. Im Falle des Projekts ist das der Raspberry PI und die drei Relaismodule.
 
 #figure(
