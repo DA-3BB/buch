@@ -140,8 +140,28 @@ Das Programm, um die Gleisabschnitte zu schalten, ist mit der Software LOGO!Soft
 Um bei größeren Programmen einen Überblick zu behalten, können mehrere Bausteine zu einem größeren zusammengefasst werden. Dieser größere Baustein wird als #htl3r.long[udf] oder auch #htl3r.short[udf] bezeichnet.
 
 == Programm im Detail
-Die Blocksteuerung funktioniert indem sobald die Modelleisenbahn einen Block verlässt der übernächste freigeschalten wird und der vorletzte dekativert wird. Mit dem übernächsten Gleisabschnitt ist nicht der Block gemeint in den, die Modelleisenbahn zu dem Zeitpunkt einfährt, sondern den danach.
+Bei der Blocksteuerung ist immer der aktuelle, der letzte und der nächste Block freigeschalten, damit der Übergang zwischen den Blöcken ohne Verzögerung funktionert siehe @an.
 
+#htl3r.fspace(
+  [
+    #figure(
+      image("../assets/blocksteuerung/block-an.jpg"),
+      caption: "Gesammte Blocksteuerung"
+    ) <an>
+  ]
+)
+
+Sobald nun  die Modelleisenbahn in den nächsten Block fährt, wird der übernächste Block freigeschalten und der vorletzte dekativert. Mit dem übernächsten Gleisabschnitt ist dabei nicht der Block gemeint in den, die Modelleisenbahn zu dem Zeitpunkt einfährt, sondern der danach siehe @uebergang.
+
+#htl3r.fspace(
+  [
+    #figure(
+      image("../assets/blocksteuerung/block-uebergang-2.jpg"),
+      caption: "Gesammte Blocksteuerung"
+    ) <uebergang>
+  ]
+)
+#pagebreak()
 Nachdem das Programm für die Blocksteuerung im Ganzen etwas unübersichtlich ist, werden hier einzelne Zeile herausgenommen und beschrieben.
 #htl3r.fspace(
   figure(
@@ -161,7 +181,7 @@ Wie in @mapping beschrieben, wird jeder Modbus Input und Output einer Adresse im
   ]
 )
 
-
+#pagebreak()
 == Outputverarbeitung
 Die Modelleisenbahn fährt indem an einen Block Strom angelegt wird. Dabei wird je nach Richtung entweder dem äußeren oder inneren Gleisabschnitt Strom hinzugefügt. Um dies in der Steuerung auf der #htl3r.short[sps] abzubilden und anzusteuern gibt es pro Blockabschnitt zwei Outputs, die die jeweilige Richtung steuern.
 \ \
@@ -260,6 +280,7 @@ Die #htl3r.short[udf] "weichensteuerung" ist dabei eine AND-Verknüpfung von der
     caption: "UDF Weichenstellung"
   )
 )
+#pagebreak()
 === Überschreiben der Weichenstellung
 Beim Fahren über die Weiche in die gegengesetzte Richtung entsteht das Problem, dass die Weiche in die richtige Richtig gestellt sein muss, damit der Zug die Weiche nicht aufschneidet. Um dieses Problem zu bewältigen muss der Weichenzustand überschrieben werden, sobald der Zug über diese fährt. Gleichzeitg soll aber der Weichenzustand immer noch manuell eingestellt werden können.
 
@@ -320,7 +341,7 @@ Um die Blockeinfahrts-Reflex-Lichtschranke abzuschalten muss zwischen jedem Inpu
     ) <deaktivierung>
   ] 
 )
-
+#pagebreak()
 === Stoppen der Steuerung
 Die gesammte Steuerung wird gestoppt, indem auf allen Gleisabschnitten der Strom entzogen wird. Dabei hängt ein Merker am Reset-Eingang aller Outpus. Sobald dieser Merker angeschalten wird ist der Strom weg, wodurch der Zug auf keine Art und Weise fahren kann, bevor nicht der Merker wieder auf False gesetzt ist.
 
