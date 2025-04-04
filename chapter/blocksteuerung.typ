@@ -28,7 +28,7 @@ Auch die Reflex-Lichtschranken sind beschriftet mit BX.Y, um einen Überblick zu
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/3BB_Gleisplan_blocke-reflex.png"),
+    image("../assets/blocksteuerung/3BB_Gleisplan_blocke-reflex.jpg"),
     caption: "Gleisplan mit Blöcken und Reflex-Lichtschrankenbeschriftung"
   )
 )
@@ -56,7 +56,7 @@ Die Relaismodule dienen als dezentrale Steuerelemente. Sie zeichnen den Input de
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/3BB_relais-modul.png", width: 75%),
+    image("../assets/blocksteuerung/3BB_relais-modul.jpg", width: 75%),
     caption: "Ein- und Ausgänge eines Relaismoduls"
   )
 )

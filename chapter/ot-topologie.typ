@@ -123,7 +123,7 @@ Der Raspberry übernimmt als Modbus Server die Weichensteuerung mittels Pythonsk
 Um die Blöcke der Eisenbahnstrecke anzusteuern, wurden drei Relaismodule mit Modbus Funktion verwendet. Dabei handelt es sich um das Modbus POE ETH Relay (B) des Unternehmens Waveshare. Es verfügt über 8 Relais Ausgänge, einem Ethernetport und 8 digitalen Eingängen. Die drei Module sollten dabei die dezentrale Steuerung darstellen, die nur noch mithilfe eines Ethernetkabels an den Hauptstandort, die Zentrale, angebunden ist.
 
 #figure(
-    image("../assets/ot-topologie/gleisplan/3BB_relais-modul.png", width: 60%),
+    image("../assets/ot-topologie/gleisplan/3BB_relais-modul.jpg", width: 60%),
     caption: "Waveshare Modbus POE ETH Relay (B) - Relais Modul"
 )
 
