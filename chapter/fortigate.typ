@@ -48,7 +48,7 @@ Mit dem Drücken einer Taste auf der Tastatur wird die richtige Antwort sichtbar
 
 
 == FortiGate Administrator 7.4
-In den folgenden Abschnitten werden die Kapitel des Zertifikatskurses zusammengefasst. @fortigate
+In den folgenden Abschnitten werden die wichtigsten Kapitel des Zertifikatskurses zusammengefasst. @fortigate
 
 === System und Netzwerk Einstellungen
 Im ersten Kapitel des Kurses lernt man die Grundlagen über die FortiGate, die #htl3r.full[ngfw] von Fortinet. Man erfährt, wie man sich das erste Mal mit der FortiGate verbinden kann, die Interfaces konfiguriert und #htl3r.short[dhcp]- und #htl3r.short[vlan]-Einstellungen vornimmt. \
@@ -79,6 +79,8 @@ Das Kapitel umfasst ebenfalls, welche Möglichkeiten der Administrierung zur Ver
 
 Es gibt auch eine Funktion, um eine Firewall-Instanz in mehrere aufzuteilen: Die einzelnen #htl3r.full[vdom] können (per-default) nicht untereinander kommunizieren und sind dementsprechend hilfreich, wenn man mehrere Kunden getrennt verwalten möchte, beispielsweise als Managed Security Service Provider (MSSP).
 
+#pagebreak()
+
 === Firewall Policies und NAT
 Firewall Policies sind Regeln, welche den Datenverkehr zwischen den Interfaces der Firewall einschränken beziehungsweise erlauben. Für alle aktuellen Firewalls am Markt gilt ebenfalls das Prinzip des "implicit deny": Datenweiterleitung wird grundsätzlich verboten - außer es gibt eine Policy - die es erlaubt.\
 Es gibt verschiedene Werte welche in einer Policy konfiguriert werden können, um möglichst genau zu bestimmen, welcher Traffic erlaubt oder blockiert wird. Am Wichtigsten sind Quell- und Ziel-Interface, hiermit wird bestimmt welche Policies für das aktuelle Paket angewendet werden. Genauer eingeschränkt wird mithilfe von Quell- und Zieladressen: Von wo wohin ist Traffic erlaubt? Welcher User darf ein gewisses Service verwenden, sowie auch um welche Uhrzeiten welcher Datenverkehr erlaubt bzw. verboten wird.  \
@@ -95,7 +97,7 @@ Als Beispiel: Die folgende Grafik zeigt ein einfaches Netzwerk (linke Seite), mi
 Wenn man den Zugriff für das #htl3r.short[lan] ins Internet erlauben möchte, wobei nur Adressen des #htl3r.short[lan]s sowie die User in der Gruppe "Internet_Access" zugelassen werden, würde man folgende Werte setzen:
 #htl3r.fspace(
     figure(
-        image("../assets/fortigate/simple_policy.png", width: 80%),
+        image("../assets/fortigate/simple_policy.png", width: 70%),
         caption: "Beispielhafte Policy Konfiguration"
     )
 )
@@ -186,7 +188,6 @@ Erwähnenswert ist ebenso, dass nur weil Authentifizierung in einer Policy aktiv
 - Über die #htl3r.short[cli] Authentifizierung erzwingen.
 - Captive Portal auf dem Source-Port zu aktivieren.
 
-#pagebreak()
 Folgende Bilder zeigen die Erstellung eines lokalen Benutzers auf der FortiGate:\
 
 
@@ -301,22 +302,23 @@ Es gibt zwei Modi:
     - Default-scanning: Macht es möglich, verschachtelte Ordner zu inspizieren, ohne das ganze Container-file im Buffer zu speichern.
     - Legacy-scanning: Speichert den ganzen Container und inspiziert ihn anschließend.
     Anhand des folgenden Bildes lässt sich das System am besten erklären. Alle Pakete, bis auf das letzte, werden an die Antivirus-Engine geschickt und zusätzlich auch an den Client. Das letzte Paket wird nur an die Engine geschickt, dort werden die Pakete zusammengefügt und es wird eine Signatur generiert, wenn diese in der AV-Datenbank befindet, ist es ein Virus. Falls ein Virus erkannt wird, wird das letzte Paket nicht an den Client weitergeleitet. Auch wenn der Großteil des Viruses schon am Client angekommen ist, ist es ungefährlich, da der Virus alle Pakete benötigt. Wenn die Pakete als ungefährlich eingestuft werden, wird das letzte Paket auch an den Client weitergeleitet.
-    #htl3r.fspace(
+
+       #htl3r.fspace(
+        total-width: 100%,
         figure(
-            image("../assets/fortigate/AV_flow.jpg", width: 100%),
-            caption: "AV flow-based-inspection Visualisierung Quelle:https://community.fortinet.com/t5/Support-Forum/What-flow-based-inspection-do-with-packets/m-p/70425"
+            image("../assets/fortigate/AV_flow3.jpg"),
+            caption: [AV flow-based-inspection Visualisierung @flowbased]
         )
     )
 
     Normalerweise wäre Flow-based-Inspection weniger Ressourcenintensiv, da aber die Pakete sowohl an die Engine als auch Client geschickt werden, wird mehr CPU-Aufwand benötigt.
 
-#pagebreak()
-
 - Proxy-based-Inspection:
     #htl3r.fspace(
+        total-width: 100%,
         figure(
-            image("../assets/fortigate/AV_proxy.jpg", width: 100%),
-            caption: "AV proxy-based-inspection Visualisierung Quelle: https://networkinterview.com/fortigate-utm-unified-threat-management/"
+            image("../assets/fortigate/AV_proxy2.jpg"),
+            caption: [AV proxy-based-inspection Visualisierung @proxybased]
         )
     )
     Alle Pakete werden nur an die Antivirus-Engine geschickt und nicht an den Client. In der Engine werden die Pakete zusammengefügt und es wird eine Signatur generiert, wenn sich diese in der AV-Datenbank befindet, ist es ein Virus. Falls ein Virus erkannt wird, werden keine Daten an den Client weitergeleitet. Wenn die Pakete als ungefährlich eingestuft werden, werden alle Pakete an den Client weitergeleitet.
@@ -573,11 +575,11 @@ Als große Schwierigkeit hat sich die Konfigurationssynchronisation herausgestel
 
 Der große Vorteil von #htl3r.short[ha] liegt in der Ausfallsicherheit, somit kann innerhalb kürzester Zeit, ein Übergang zwischen aktiv und passiv passieren.
 
+=== Fazit
+Zusammengefasst ist die FortiGate eine Firewall mit einer Vielzahl an modernen Funktionen, welche gemeinsam eine sehr gute Grenze für das Trennen von Netzwerken bieten.
 
-
-
+#pagebreak()
 
 
 //#total-words Words insgesamt
 
-// Quelle alles Kapitel FortiGate Guide
