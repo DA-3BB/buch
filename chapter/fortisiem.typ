@@ -5,7 +5,7 @@
 #htl3r.author("Albin Gashi")
 
 = Netzwerküberwachung <fsm>
-Für die Implementierung eines #htl3r.full[siem] in die Topologie wird ein FortiSIEM der Firma Fortinet verwendet. Es kann agent-based oder agentless Logs und Events von Geräten abrufen. In den meisten Fällen wird Syslog oder #htl3r.full[snmp] zur Kommunikation der Geräte mit dem #htl3r.short[siem] verwendet. Es gibt aber auch Ausnahmen, wie im Falle von Windows. Windows Server können entweder mittels #htl3r.full[wmi] oder dem FortiSIEM Windows Agent Daten an das #htl3r.short[siem] übermitteln. Der Vorteil an den Agents liegt darin, dass Logs direkt am Gerät geparst und verschickt werden können, statt mehrere Logs in einem bestimmten Intervall durch das FortiSIEM abzurufen @fortisiem.
+Für die Implementierung eines #htl3r.full[siem] in die Topologie wird ein FortiSIEM der Firma Fortinet verwendet. Es kann agent-based oder agentless Logs und Events von Geräten abrufen. In den meisten Fällen wird Syslog oder #htl3r.short[snmp] zur Kommunikation der Geräte mit dem #htl3r.short[siem] verwendet. Es gibt aber auch Ausnahmen, wie im Falle von Windows. Windows Server können entweder mittels #htl3r.full[wmi] oder dem FortiSIEM Windows Agent Daten an das #htl3r.short[siem] übermitteln. Der Vorteil an den Agents liegt darin, dass Logs direkt am Gerät geparst und verschickt werden können, statt mehrere Logs in einem bestimmten Intervall durch das FortiSIEM abzurufen @fortisiem.
 
 Des Weiteren kann das FortiSIEM Basismetriken durch das #htl3r.full[pam] abrufen. Dies beinhaltet Daten wie den Zustand einer Applikation, Ressourcenverbrauch eines Geräts und vieles mehr. Dadurch können Anomalien in den Daten erkannt werden und Warnungen im FortiSIEM auslösen.
 
@@ -324,9 +324,9 @@ Die FortiGate wird zusätzlich zum FortiAnalyzer durch das FortiSIEM über die #
 Um die Benutzer des #htl3r.short[ad] in das FortiSIEM einzubinden, kann auch hier ein externer #htl3r.short[ldap]-Server zur Authentifizierung implementiert werden. Als Base Distinguished Name wird `CN=%s,CN=Users,DC=wien,DC=3bb-testlab,DC=at` definiert. Die Variable `%s` wird zum Einfügen des Benutzernamens beim Login verwendet. Nach erfolgreicher Authentifizierung mit dem Domain-Controller kann nun in der #htl3r.long[cmdb] ein User erstellt und dem #htl3r.short[ldap]-Server zugewiesen werden.
 
 #htl3r.fspace(
-  total-width: 55%,
+  //total-width: 55%,
   figure(
-    image("../assets/fortisiem/fsm-ldap.png"),
+    image("../assets/fortisiem/fsm-ldap.png", width: 65%),
     caption: [Login am FortiSIEM durch den SOC-Benutzer]
   )
 )
