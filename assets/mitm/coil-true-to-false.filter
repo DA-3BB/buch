@@ -1,6 +1,9 @@
 if (ip.proto == TCP && tcp.dst == 502) {
-    if (search(DATA.data, "\xff\x00")) {
-        msg( "Found \xff\x00");
-        replace( "\xff\x00", "\x00\x00" );
-    }
+	if (search(DATA.data, "\x0F")){
+		msg("Function code 15");
+		if (search(DATA.data, "\x08")){
+			replace("\x08","\x00");	
+			msg("Relaced Data");
+		}
+	}
 }

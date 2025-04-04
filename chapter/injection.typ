@@ -25,7 +25,7 @@ python3 ModBusSploit-main/start.py
 
 Nun kann das Modul zum Ändern des Coils und somit zur Injektion aufgerufen werden.
 ```
-use modules/exploit/Injektion/writeSingleCoil
+use modules/exploit/injection/writeSingleCoil
 ```
 Nachfolgend werden die entsprechenden Werte für den Angriff definiert.
 ```
@@ -49,7 +49,10 @@ Der Verlauf kann nun auch im Wireshark betrachtet werden. Dabei ist zu sehen, da
 
 #htl3r.fspace(
   figure(
-    image("../assets/injection/wireshark-komplette-injection.png"),
+    image("../assets/injection/wireshark-komplette-injection.png", width: 120%),
     caption: "Injektion Angriff im Wireshark"
   )
 )
+
+=== Fazit
+Für eine Modbus Injektion wird mehr Wissen über die Steuerung als bei Angriffen wie dem Fuzzing oder dem #htl3r.short[mitm] benötigt. Da sowohl die Unit ID bekannt sein muss als auch das Wissen, welche Register verwendet werden. Allerdings kann das sehr einfach durch ausprobieren beziehungsweise durch andere Angriffe herrausgefunden werden. 

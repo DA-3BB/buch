@@ -21,12 +21,12 @@ Es gibt drei unterschiedliche Ausführungen von Modbus:
 
 Je nach Protokoll ist die Schnittstelle zur Datenübertragung eine andere:	RS-485, RS-422, RS-232 oder TCP/IP über Ethernet.
 \ \
-*Vorteile vom Modbus*
+*Vorteile von Modbus*
 -	Einfachheit: Modbus ist ein vergleichsweises einfaches Protokoll.
 -	Nicht properitär.
 -	Flexibilität: sowohl für serielle Schnittstellen als auch für TCP/IP Netze.
 \
-*Nachteile vom Modbus*
+*Nachteile von Modbus*
 -	Sicherheit: Das Protokoll hat keine eingebauten Sicherheitsmechanismen und Authentifizierung mechanismen.
 -	Datenkapazität: Die Datenmenge ist pro Nachricht begrenzt, das heißt Ineffizienz bei großen Datenmengen.
 -	Keine dynamische Adressvergabe.
@@ -139,7 +139,7 @@ Die Fehlercode lauten:
 #htl3r.fspace(
   figure(
       table(
-      columns: 3,
+      columns: (0.5fr, 1fr, 1.5fr),
       table.header([*Fehlercode*],[*Kurzbeschreibung*],[*Bedeutung*]),
       [1],
       [Illegal Function],
@@ -209,7 +209,7 @@ Die RS232 Schnittstelle ist die älterste, aber auch die am weitesten verbreitet
 
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/RS232-verkabelung.png"),
+    image("../assets/modbus/RS232-verkabelung.png", width: 50%),
     caption: "RS232 Verkabelung",
   )
 )
@@ -218,7 +218,7 @@ Die Schnittstelle RS422 erlaubt im Gegensatz zum Vorgänger RS232 eine Point-to-
 
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/RS422-verkabelung.png"),
+    image("../assets/modbus/RS422-verkabelung.png", width: 50%),
     caption: "RS422 Verkabelung"
   )
 )
@@ -227,7 +227,7 @@ Die Schnittstelle RS422 erlaubt im Gegensatz zum Vorgänger RS232 eine Point-to-
 Die RS485 Schnittstelle weist dieselben elektrischen Eigenschaften wie RS422 auf. Dazu kommt allerdings, dass RS485 Multipoint-to-Multipoint fähig ist. In der häufigsten Bauweise, die nur als zwei Drähten besteht ist sie jedoch nur Halbduplex fähig. Die Vollduplex Bauart mit vier  ist hingegen nur sehr selten zu finden. @serielleschnittstellen
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/RS485-verkabelung.png"),
+    image("../assets/modbus/RS485-verkabelung.png", width: 50%),
     caption: "RS485 Verkabelung"
   )
 )

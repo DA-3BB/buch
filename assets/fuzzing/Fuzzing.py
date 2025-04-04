@@ -12,7 +12,7 @@ def FuzzWriteCoil(session: Session):
     s_word(00, name='Reference Number', fuzzable=False, endian=BIG_ENDIAN)
     s_word(0x0008, name='Bit Count', fuzzable=False, endian=BIG_ENDIAN)
     s_byte(0x0001, name='Byte Count', fuzzable=False, endian=BIG_ENDIAN)
-    s_byte(0x0000, name='Data', fuzzable=False, endian=BIG_ENDIAN)
+    s_byte(0x0000, name='Data', fuzzable=True, endian=BIG_ENDIAN)
 
     session.connect(s_get("fuzz_modbus_write_coil"))
     session.fuzz()

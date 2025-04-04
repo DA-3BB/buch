@@ -491,7 +491,7 @@ xml:
 
 mitm:
   short:
-    singular: mitm
+    singular: MITM
   long:
     singular: Man in the Middle
   description: Angriff zum Abfangen einer Kommunikation zwischen zwei Geräten
@@ -689,3 +689,17 @@ iot:
     singular: IoT
   long:
     singular: Internet of Things
+
+di:
+  short:
+    singular: DI
+  long:
+    singular: Discrete Input
+    plural: Discrete Inputs
+
+coil:
+  short:
+    singular: C
+  long:
+    singular: Coil
+    plural: Coils
