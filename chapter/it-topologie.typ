@@ -245,7 +245,7 @@ Die physische 60E FortiGate wird mittels LAN-Kabel mit dem Switch der OT verbund
   total-width: 100%,
   figure(
     image("../assets/it-topologie/it-ot-verbindung.png"),
-    caption: [logischer Netzplan der IT-Topologie]
+    caption: [Physische Verbindung der IT mit der OT]
   )
 )
 
