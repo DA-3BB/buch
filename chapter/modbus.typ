@@ -2,8 +2,6 @@
 #htl3r.author("Marlene Reder")
 
 = MODBUS
-
-== Überblick
 Modbus ist ein Industrieprotokollstandard der Firma Modicon, heute Schneider Electrics, der in den späten 70er Jahren auf dem Markt kam.
 
 Es ist ein Kommunikationsprotokoll zwischen:
@@ -21,12 +19,12 @@ Es gibt drei unterschiedliche Ausführungen von Modbus:
 
 Je nach Protokoll ist die Schnittstelle zur Datenübertragung eine andere:	RS-485, RS-422, RS-232 oder TCP/IP über Ethernet.
 \ \
-*Vorteile vom Modbus*
+*Vorteile von Modbus*
 -	Einfachheit: Modbus ist ein vergleichsweises einfaches Protokoll.
 -	Nicht properitär.
 -	Flexibilität: sowohl für serielle Schnittstellen als auch für TCP/IP Netze.
 \
-*Nachteile vom Modbus*
+*Nachteile von Modbus*
 -	Sicherheit: Das Protokoll hat keine eingebauten Sicherheitsmechanismen und Authentifizierung mechanismen.
 -	Datenkapazität: Die Datenmenge ist pro Nachricht begrenzt, das heißt Ineffizienz bei großen Datenmengen.
 -	Keine dynamische Adressvergabe.
@@ -72,7 +70,7 @@ Diese Tabellen sind auf den Servergeräten gespeichert und somit eine Teilmenge 
 
 ===	Modbus ADU
 Die Modbus #htl3r.short[adu] hat je nach Kommunikationslayer einen anderen Aufbau (vergleiche die jeweiligen  Spezifikationen), die darin eingebettete #htl3r.long[pdu] hat allerdings immer die gleiche Struktur.
-
+#pagebreak()
 ====	Modbus Protocol Data Unit
 Es gibt drei Arten von PDUs:
 -	Anfrage: MODBUS Request #htl3r.short[pdu], mb_req_pdu
@@ -134,12 +132,12 @@ Die wichtigsten Funktionscodes lauten wie folgt und beziehen sich dabei auf die 
 )
 
 Dieser Funktionscode wird bei der Antwort auch genauso wieder zurückgegeben. Es sei denn, es ist ein Fehler aufgetreten. Dann wird eine Fehlermeldung als Funktionscode zurückgegeben. Diese Fehlermeldung beeinhaltet den Funktionscode mit dem invertierten most significant Bit ist. Außerdem wird ein Fehlercode im Datenfeld zurückgegeben.
-
+#pagebreak()
 Die Fehlercode lauten:
 #htl3r.fspace(
   figure(
       table(
-      columns: 3,
+      columns: (0.5fr, 1fr, 1.5fr),
       table.header([*Fehlercode*],[*Kurzbeschreibung*],[*Bedeutung*]),
       [1],
       [Illegal Function],
@@ -209,8 +207,8 @@ Die RS232 Schnittstelle ist die älterste, aber auch die am weitesten verbreitet
 
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/RS232-verkabelung.png"),
-    caption: "RS232 Verkabelung",
+    image("../assets/modbus/RS232-verkabelung.png", width: 50%),
+    caption: [RS232 Verkabelung @rs-232]
   )
 )
 ==== RS422 <rs422>
@@ -218,8 +216,8 @@ Die Schnittstelle RS422 erlaubt im Gegensatz zum Vorgänger RS232 eine Point-to-
 
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/RS422-verkabelung.png"),
-    caption: "RS422 Verkabelung"
+    image("../assets/modbus/RS422-verkabelung.png", width: 55%),
+    caption: [RS422 Verkabelung @rs-422]
   )
 )
 
@@ -227,8 +225,8 @@ Die Schnittstelle RS422 erlaubt im Gegensatz zum Vorgänger RS232 eine Point-to-
 Die RS485 Schnittstelle weist dieselben elektrischen Eigenschaften wie RS422 auf. Dazu kommt allerdings, dass RS485 Multipoint-to-Multipoint fähig ist. In der häufigsten Bauweise, die nur als zwei Drähten besteht ist sie jedoch nur Halbduplex fähig. Die Vollduplex Bauart mit vier  ist hingegen nur sehr selten zu finden. @serielleschnittstellen
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/RS485-verkabelung.png"),
-    caption: "RS485 Verkabelung"
+    image("../assets/modbus/RS485-verkabelung.png", width: 50%),
+    caption: [RS485 Verkabelung @rs-485]
   )
 )
 
@@ -237,14 +235,14 @@ Bei Modbus #htl3r.short[rtu] besteht die #htl3r.short[adu] zusätzlich zur #htl3
 
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/modbus-rtu-adu.png", width: 80%),
+    image("../assets/modbus/modbus-rtu-adu.png"),
     caption: "Modbus RTU: Application Data Unit"
   )
 )
 
 ====	Adressfeld
 Im Adressfeld steht immer die Adress des Servers, die bei jedem Busteilnehmer eindeutig sein muss. Dabei stehen 8 Bit - also der Bereich von 0 bis 255 - zur Verfügung, wobei 0 die Broadcast Adresse ist und die Adressen von 248 bis 255 sind laut Standart reserviert. Empfohlen ist aber nur die Verwendung von bis zu 32 Geräten. Das ergibt sich aus der möglichen Leistung der RS485-Treiberbausteine. Diese liefern nur genug Strom für 31 andere Geräte (das sendende Gerät hört auch mit - daher 32). Für mehr als 32 Teilnehmer würde man zusätzliche Leitungstreiber bzw. Repeater benötigen.
-
+#pagebreak()
 ===	Kommunikationsbeispiel
 + *Clientanfrage an Server*
   - Funktionscode 1 - Anfrage einen Coil auszulesen.
@@ -271,7 +269,7 @@ Hier in einem abgefangenen Wireshark Frame dargestellt:
     caption: "Modbus TCP/IP - Antwort"
   )
 )
-
+#pagebreak()
 ==	Modbus ASCII
 Diese Form von Modbus ist mittlerweile veraltet und wird nur noch von älteren Systemen benutzt. @asciialt
 Modbus #htl3r.short[ascii] und Modbus #htl3r.short[rtu] verwenden beide serielle Schnittstellen zur Übertragung. Allerdings werden die Daten bei Modbus #htl3r.short[ascii] nicht im Binärformat, sondern in #htl3r.short[ascii]-Code übertragen. Das heißt, jedes Byte wird in zwei hexadezimal ASCII Zeichen konvertiert. Dies hat einen geringeren Datendurchsatz zur Folge.
@@ -285,7 +283,7 @@ Bei Modbus #htl3r.short[ascii] ist der Aufbau sehr ähnlich zu Modbus #htl3r.sho
     caption: "Modbus ASCII: Application Data Unit"
   )
 )
-
+#pagebreak()
 ==	Modbus TCP/IP
 Modbus TCP/IP ist ein Applikation Layer Protokoll, dass das Modbus #htl3r.long[pdu] in ein TCP-Packet kapselt. Es ermöglicht so die Übermittlung über ein IP-Netzwerk. Dabei wird der TCP-Port 502 verwendet und die Begriffe Master/Slave werden oft durch Client/Server ausgetauscht.
 ===	Aufbau #htl3r.long[adu]

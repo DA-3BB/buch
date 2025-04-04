@@ -241,4 +241,12 @@ Auf Basis dieser Topologie wird nun das #htl3r.short[siem] das Netzwerk überwac
 
 Die physische 60E FortiGate wird mittels LAN-Kabel mit dem Switch der OT verbunden, als auch mit dem Switch der UCS.
 
+#htl3r.fspace(
+  total-width: 100%,
+  figure(
+    image("../assets/it-topologie/it-ot-verbindung.png"),
+    caption: [Physische Verbindung der IT mit der OT]
+  )
+)
+
 Um die Standorte Wien, Eisenstadt und das Zugnetzwerk zu verbinden, sind drei Firewalls im einsatz. Die eine Physische 60E und zwei virtuelle FortiGates in der Version 7.6. Alle drei haben ein Interface in einem Vlan, in welchem nur sie kommunizieren können, es simuliert das Internet. Dadurch, dass man Daten zwischen Standorten nicht unverschlüsselt übertragen möchte, werden IPSec VPN Tunnel zwischen den Standorten gespannt mit dem Full-Mesh Modell (jede Firewall ist mit jeder anderen verbunden).

@@ -23,7 +23,7 @@
     "HTL 3 Rennweg",
   ),
   date: datetime.today(),
-  print-ref: true,
+  print-ref: false,
   generative-ai-clause: none,
   abbreviation: yaml("abbr.yml"),
   bibliography-content: bibliography("refs.yml", title: [Literaturverzeichnis])

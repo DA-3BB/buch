@@ -22,6 +22,9 @@ Jede #htl3r.short[adom] hat dabei eigene Geräte, Policy Packages und Objekte we
   )
 )
 
+=== Fazit
+Der FortiManager eignet sich für große Unternehmen, mit einer hohen Anzahl an Fortinet Geräten. Die Verwaltung wird stark vereinfacht und es gibt gute Möglichkeiten für das gleichzeitige Arbeiten mehrerer Administratoren. 
+
 /*
 //=== Policy Packages
 Policy Packages ermöglichen eine zentralisierte Verwaltung mehrerer Policies in einer #htl3r.short[adom]. In jedem Policy Package werden

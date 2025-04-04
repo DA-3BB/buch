@@ -11,14 +11,14 @@ Dadurch, dass Modbus alle Daten ohne Authentifizierung im Plaintext verschickt, 
 Um den Man in the Middle Angriff durchführen zu können, wird zuallererst Zugang zum LAN benötigt. Dies kann durch eine offene Schnittstelle, z.B. einen Port an einem Switch oder ein komprimiertes Netzwerkgerät erfolgen. \
 
 Weiters wird auf dem Angreifergerät eine Kali-Linux Distribution in einer #htl3r.long[vm] oder als Hostbetriebssystem benötigty, da für den Angriff die vorinstallierten Tools Ettercap, Etterfilter und Wireshark verwendet werden. \
-
+#pagebreak()
 ==== Ettercap
 Ettercap ist ein Multifunktionstool, mit dessen Hilfe Man in the Middle-Angriffe durchgeführt werden können, um Sniffing, Filtering und Einspeisung von malizösen Daten zu erreichen. Ettercap wird im @umsetztung-mitm mit folgenden Optionen verwendet. \
 
 #htl3r.fspace(
   figure(
     table(
-      columns: 3,
+      columns: (0.5fr, 0.5fr, 1.5fr),
       table.header(
         [*Option*], [*Parameter*], [*Funktion*],
       ),
@@ -55,33 +55,57 @@ Bevor der Angriff gestartet wird, wird geschaut ob sich die zu angreifenden Ziel
 ```bash
   ettercap -T -s 'lq'
 ```
+Dabei kann in der @hostscan erkannt werden, dass vier Geräte im Netzwerk gefunden wurden. Nachdem der Netzaufbau bekannt ist können die IP-Adressen auch gleich den Geräten zugeordnet werden, ein*e Angreifer*in ohne dieses Wissen kann dies einfach durch durchtesten ausprobieren. 
 
-*output screenshot wird noch ergänzt*
-
-Nun, da die bekannten IP Adressen beim Scan aufgelistet wurden, kann mit dem #htl3r.short[mitm]-Angriff und somit dem #htl3r.short[arp] Spoofing begonnen werden. Dabei werden im ersten Schritt die Pakete noch nicht modifiziert sonder nur zum mitlesen abgefangen und weitergeleitet.
+#htl3r.fspace(
+  [
+    #figure(
+      image("../assets/mitm/mitm-hostscan.png"),
+      caption: "Hostscan mit ettercap"
+    ) <hostscan>
+  ]
+)
+#pagebreak()
+Nach dem Scan kann auch schon mit dem #htl3r.short[mitm]-Angriff und somit dem #htl3r.short[arp] Spoofing begonnen werden. Dabei werden im ersten Schritt die Pakete noch nicht modifiziert sonder nur zum mitlesen abgefangen und weitergeleitet.
 
 ```bash
   ettercap -T -M arp //10.100.0.1/ //10.100.0.11/
  ```
 
+Der Output des Befehls gibt gleich mehrere Informationen preis. Einerseits auf welchem Interface der Angriff stattfindet.
 #htl3r.fspace(
   figure(
-    image("../assets/mitm/arp-posioning-not-corr-without-filter.png"),
-    caption: "MITM: ARP Spoofing"
+    image("../assets/mitm/mitm-1.png"),
+    caption: "Ausgabe MITM Angriff: Interface"
   )
 )
 
-```bash
-  ettercap -T -F coil-true-to-false.ef -M arp //10.100.0.1/ //10.100.0.11/
-```
+Andererseits, beide Angriffsziele im Netzwerk gefunden wurden und das #htl3r.short[arp] Spoofing begonnen hat.
 
+#htl3r.fspace(
+  figure(
+    image("../assets/mitm/mitm-2.png"),
+    caption: "Ausgabe MITM Angriff: Angriffsziele"
+  )
+)
+
+Und als letztes werden fortlaufend alle Pakete im Terminal abgebildet die bei der Kommunikation abgefangen wurden.
+
+#htl3r.fspace(
+  figure(
+    image("../assets/mitm/mitm-3.png"),
+    caption: "Ausgabe MITM Angriff: abgefangene Pakete"
+  )
+)
+
+#pagebreak()
 Das #htl3r.short[arp] Spoofing kann auch mittels Wireshark angeschaut werden. Die @arp1 zeigt den ersten Teil des #htl3r.short[arp] Spoofing. Dabei schickt das Kali-Linux Gerät, in diesem Fall die _VMware..._, #htl3r.short[arp]-Request zu den IP-Adressen aus dem Ettercap Befehl.  Die Geräte, genauer gesagt die SPS und die #htl3r.short[rtu], die die IP-Adressen 10.100.0.1 und 10.100.0.11 besitzen antworten.
 
 #htl3r.fspace(
   [
     #figure(
       image("../assets/mitm/wireshark-arp-spoofing_teil1.png"),
-      caption: "ARP Request Posioning"
+      caption: "ARP Request Posioning - Teil 1"
     )
    <arp1>
   ]
@@ -92,7 +116,7 @@ Im nächsten Schritt sendet die Kali-Linux-#htl3r.short[vm] #htl3r.short[arp] An
 #htl3r.fspace(
   figure(
     image("../assets/mitm/wireshark-arp-spoofing_teil2.png"),
-    caption: "ARP Request Posioning"
+    caption: "ARP Request Posioning - Teil 2"
   )
 )
 
@@ -107,8 +131,8 @@ Nun werden wie in @spooferfolg gezeigt die Modbuspakete über den Angreifer gele
     <spooferfolg>
   ]
 )
-
-Um den Datenstrom nun nicht nur mitlesen zu können, sondern ihn auch zu verändern, wird ein Filter erstellt. Dieser beeinhaltet eine Abfrage nach einem Modbus Paket, welches einen Coil auf _TRUE_ setzt und ändert den Inhalt, sodass der Coil _FALSE_ bleibt.
+#pagebreak()
+Um den Datenstrom nun nicht nur mitlesen zu können, sondern ihn auch zu verändern, wird ein Filter erstellt. Dieser beeinhaltet eine Abfrage nach einem Modbus Paket. Weiters wird abgefragt ob in diesem Modbus Paket ein Coil eingeschalten wird. Sollte dies der Falls sein, wird das Paket so verändert, dass das Paket den Coil aus- statt einschaltet.
 
 #htl3r.code-file(lang: "c", text: read("../assets/mitm/coil-true-to-false.filter"), caption: "Filter für eine Coiländerung")
 
@@ -124,25 +148,28 @@ Damit der Filter bei Ettercap angegeben werden kann, muss er noch in eine Binär
     caption: "Etterfilter generieren"
   )
 )
-
+#pagebreak()
 Nun kann der #htl3r.short[mitm]-Angriff erneut mit dem Filter ausgeführt werden.
 
 ```bash
-  ettercap -T -F coil-true-false.filter -M #htl3r.short[arp] //10.100.0.1/ //10.100.0.11/
+  ettercap -T -F coil-true-to-false.ef -M arp //10.100.0.1/ //10.100.0.11/
 ```
 
 #htl3r.fspace(
   figure(
-    image("../assets/mitm/arp-posioning-not-corr.png"),
+    image("../assets/mitm/arp-posioning-filter.png"),
     caption: "MITM durch ARP Spoofing mit einem Filter"
   )
 )
-
-Im Wireshark kann nun beobachtet werden, dass alle Modbuspakete mit einem _Write Single Coil_ Funktionscode als Datenwert _FALSE_ beziehungsweise 0 haben.
+#pagebreak()
+In Wireshark kann nun beobachtet werden, dass alle Modbuspakete mit einem _Write Single Coil_ Funktionscode als Datenwert _FALSE_ beziehungsweise 0 haben.
 
 #htl3r.fspace(
   figure(
-    image("../assets/mitm/mitm-coil-false.png"),
+    image("../assets/mitm/mitm-coil-false.png", width: 120%),
     caption: "MITM mit einem Filter im Wireshark"
   )
 )
+
+=== Fazit
+Ein #htl3r.long[mitm] Angriff ist bei Busprotokoll, wie in dem Fall Modbus TCP sehr erfolgreich, da die übermittelten Daten im Plaintext und ohne Authentifizierung einfach zum Mitlesen un Manipulieren sind, gleichzeitg aber einen enormen Schaden am System anrichten können.

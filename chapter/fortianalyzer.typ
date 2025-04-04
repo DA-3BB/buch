@@ -81,9 +81,9 @@ Im #htl3r.long[soc] spielt auch die Inspizierung des Traffics eine wichtige Roll
 Durch die Einbindung des #htl3r.short[ldap]-Servers bekommen die Mitarbeiterinnen und Mitarbeiter des unternehmensinternen #htl3r.long[soc] die Möglichkeit, jederzeit einen Blick auf die Dashboards zu werfen. In diesem Fall ist die Mitarbeiterin Lena Fischer die Vorsitzende des #htl3r.long[soc] und erhält dadurch auch den Zugang auf den FortiAnalyzer. Im folgenden Abbild werden die zu konfigurierenden Parameter für eine #htl3r.short[ldap]-Authentifizierung aufgelistet.
 
 #htl3r.fspace(
-  total-width: 70%,
+  //total-width: 70%,
   figure(
-    image("../assets/fortianalyzer/faz-ldap.png"),
+    image("../assets/fortianalyzer/faz-ldap.png", width: 100%),
     caption: [Konfiguration des LDAP-Servers im FortiAnalyzer]
   )
 )

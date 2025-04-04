@@ -1,4 +1,4 @@
-#import "@local/htl3r-da:0.1.0" as htl3r
+#import "@preview/htl3r-da:2.0.0" as htl3r
 #htl3r.author("Esther Lina Mayer")
 
 = Website des HTTP-Servers auf der SPS
