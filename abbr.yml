@@ -431,12 +431,6 @@ mbap:
   long:
     singular: Modbus Application Protocol
 
-tls:
-  short:
-    singular: tls
-  long:
-    singular: Transport Layer Security
-
 udf:
   short:
     singular: UDF
@@ -669,7 +663,6 @@ iot:
     singular: IoT
   long:
     singular: Internet of Things
-<<<<<<< HEAD
 
 di:
   short:
@@ -684,7 +677,6 @@ coil:
   long:
     singular: Coil
     plural: Coils
-=======
   description:
 
 sdwan:
@@ -750,4 +742,3 @@ tls:
   long:
     singular: Transport Layer Security
   description: Ist die neuere Version von SSL.
->>>>>>> 23364d461159d8bae8aae5e4138b8926d6957d26
