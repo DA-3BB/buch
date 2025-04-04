@@ -24,7 +24,7 @@ Um die Komponenten in der Nähe der Modelleisenbahnanlage zu plazieren, wurde ei
 
 #figure(
     image("../assets/topologie/ot-topologie/ot-steuerzentrale.jpg", width: 45%),
-    caption: "OT Steuerzentrale"
+    caption: [OT Steuerzentrale]
 )
 
 #figure(
@@ -116,7 +116,7 @@ Der Raspberry übernimmt als Modbus Server die Weichensteuerung mittels Pythonsk
 
 #figure(
     image("../assets/topologie/ot-topologie/komponenten/raspberry-pi_grafik.png", width: 60%),
-    caption: "Raspberry PI 3B"
+    caption: [Raspberry PI 3B @raspquelle @rasphatquelle]
 )
 #pagebreak()
 === Relais Modul

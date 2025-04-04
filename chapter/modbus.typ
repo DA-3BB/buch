@@ -2,8 +2,6 @@
 #htl3r.author("Marlene Reder")
 
 = MODBUS
-
-== Überblick
 Modbus ist ein Industrieprotokollstandard der Firma Modicon, heute Schneider Electrics, der in den späten 70er Jahren auf dem Markt kam.
 
 Es ist ein Kommunikationsprotokoll zwischen:
@@ -72,7 +70,7 @@ Diese Tabellen sind auf den Servergeräten gespeichert und somit eine Teilmenge 
 
 ===	Modbus ADU
 Die Modbus #htl3r.short[adu] hat je nach Kommunikationslayer einen anderen Aufbau (vergleiche die jeweiligen  Spezifikationen), die darin eingebettete #htl3r.long[pdu] hat allerdings immer die gleiche Struktur.
-
+#pagebreak()
 ====	Modbus Protocol Data Unit
 Es gibt drei Arten von PDUs:
 -	Anfrage: MODBUS Request #htl3r.short[pdu], mb_req_pdu
@@ -134,7 +132,7 @@ Die wichtigsten Funktionscodes lauten wie folgt und beziehen sich dabei auf die 
 )
 
 Dieser Funktionscode wird bei der Antwort auch genauso wieder zurückgegeben. Es sei denn, es ist ein Fehler aufgetreten. Dann wird eine Fehlermeldung als Funktionscode zurückgegeben. Diese Fehlermeldung beeinhaltet den Funktionscode mit dem invertierten most significant Bit ist. Außerdem wird ein Fehlercode im Datenfeld zurückgegeben.
-
+#pagebreak()
 Die Fehlercode lauten:
 #htl3r.fspace(
   figure(
@@ -210,7 +208,7 @@ Die RS232 Schnittstelle ist die älterste, aber auch die am weitesten verbreitet
 #htl3r.fspace(
   figure(
     image("../assets/modbus/RS232-verkabelung.png", width: 50%),
-    caption: "RS232 Verkabelung",
+    caption: [RS232 Verkabelung @rs-232]
   )
 )
 ==== RS422 <rs422>
@@ -218,17 +216,17 @@ Die Schnittstelle RS422 erlaubt im Gegensatz zum Vorgänger RS232 eine Point-to-
 
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/RS422-verkabelung.png", width: 50%),
-    caption: "RS422 Verkabelung"
+    image("../assets/modbus/RS422-verkabelung.png", width: 65%),
+    caption: [RS422 Verkabelung @rs-422]
   )
 )
-
+#pagebreak()
 ==== RS485
 Die RS485 Schnittstelle weist dieselben elektrischen Eigenschaften wie RS422 auf. Dazu kommt allerdings, dass RS485 Multipoint-to-Multipoint fähig ist. In der häufigsten Bauweise, die nur als zwei Drähten besteht ist sie jedoch nur Halbduplex fähig. Die Vollduplex Bauart mit vier  ist hingegen nur sehr selten zu finden. @serielleschnittstellen
 #htl3r.fspace(
   figure(
     image("../assets/modbus/RS485-verkabelung.png", width: 50%),
-    caption: "RS485 Verkabelung"
+    caption: [RS485 Verkabelung @rs-485]
   )
 )
 
