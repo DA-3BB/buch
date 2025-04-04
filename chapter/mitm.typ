@@ -11,14 +11,14 @@ Dadurch, dass Modbus alle Daten ohne Authentifizierung im Plaintext verschickt, 
 Um den Man in the Middle Angriff durchführen zu können, wird zuallererst Zugang zum LAN benötigt. Dies kann durch eine offene Schnittstelle, z.B. einen Port an einem Switch oder ein komprimiertes Netzwerkgerät erfolgen. \
 
 Weiters wird auf dem Angreifergerät eine Kali-Linux Distribution in einer #htl3r.long[vm] oder als Hostbetriebssystem benötigty, da für den Angriff die vorinstallierten Tools Ettercap, Etterfilter und Wireshark verwendet werden. \
-
+#pagebreak()
 ==== Ettercap
 Ettercap ist ein Multifunktionstool, mit dessen Hilfe Man in the Middle-Angriffe durchgeführt werden können, um Sniffing, Filtering und Einspeisung von malizösen Daten zu erreichen. Ettercap wird im @umsetztung-mitm mit folgenden Optionen verwendet. \
 
 #htl3r.fspace(
   figure(
     table(
-      columns: 3,
+      columns: (0.5fr, 0.5fr, 1.5fr),
       table.header(
         [*Option*], [*Parameter*], [*Funktion*],
       ),
@@ -65,7 +65,7 @@ Dabei kann in der @hostscan erkannt werden, dass vier Geräte im Netzwerk gefund
     ) <hostscan>
   ]
 )
-
+#pagebreak()
 Nach dem Scan kann auch schon mit dem #htl3r.short[mitm]-Angriff und somit dem #htl3r.short[arp] Spoofing begonnen werden. Dabei werden im ersten Schritt die Pakete noch nicht modifiziert sonder nur zum mitlesen abgefangen und weitergeleitet.
 
 ```bash
@@ -98,7 +98,7 @@ Und als letztes werden fortlaufend alle Pakete im Terminal abgebildet die bei de
   )
 )
 
-
+#pagebreak()
 Das #htl3r.short[arp] Spoofing kann auch mittels Wireshark angeschaut werden. Die @arp1 zeigt den ersten Teil des #htl3r.short[arp] Spoofing. Dabei schickt das Kali-Linux Gerät, in diesem Fall die _VMware..._, #htl3r.short[arp]-Request zu den IP-Adressen aus dem Ettercap Befehl.  Die Geräte, genauer gesagt die SPS und die #htl3r.short[rtu], die die IP-Adressen 10.100.0.1 und 10.100.0.11 besitzen antworten.
 
 #htl3r.fspace(
@@ -131,7 +131,7 @@ Nun werden wie in @spooferfolg gezeigt die Modbuspakete über den Angreifer gele
     <spooferfolg>
   ]
 )
-
+#pagebreak()
 Um den Datenstrom nun nicht nur mitlesen zu können, sondern ihn auch zu verändern, wird ein Filter erstellt. Dieser beeinhaltet eine Abfrage nach einem Modbus Paket. Weiters wird abgefragt ob in diesem Modbus Paket ein Coil eingeschalten wird. Sollte dies der Falls sein, wird das Paket so verändert, dass das Paket den Coil aus- statt einschaltet.
 
 #htl3r.code-file(lang: "c", text: read("../assets/mitm/coil-true-to-false.filter"), caption: "Filter für eine Coiländerung")
@@ -148,7 +148,7 @@ Damit der Filter bei Ettercap angegeben werden kann, muss er noch in eine Binär
     caption: "Etterfilter generieren"
   )
 )
-
+#pagebreak()
 Nun kann der #htl3r.short[mitm]-Angriff erneut mit dem Filter ausgeführt werden.
 
 ```bash
@@ -161,7 +161,7 @@ Nun kann der #htl3r.short[mitm]-Angriff erneut mit dem Filter ausgeführt werden
     caption: "MITM durch ARP Spoofing mit einem Filter"
   )
 )
-
+#pagebreak()
 In Wireshark kann nun beobachtet werden, dass alle Modbuspakete mit einem _Write Single Coil_ Funktionscode als Datenwert _FALSE_ beziehungsweise 0 haben.
 
 #htl3r.fspace(

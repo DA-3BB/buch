@@ -10,7 +10,7 @@ Bevor die Steuerung selbst erklärt werden kann, ist wichtig zu wissen, dass die
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/3BB_Gleisplan_bloecke-mit-beschriftung.png"),
+    image("../assets/blocksteuerung/3BB_Gleisplan_bloecke-mit-beschriftung.png", width: 90%),
     caption: "Gleisplan mit Blöcken"
   )
 )
@@ -208,7 +208,7 @@ In der @ausfahrt kann dieses Verhalten beobachtet werden. Dabei ist "I1" die Blo
     ) <ausfahrt>
   ]
 )
-
+#pagebreak()
 Wenn nun auf der danebenliegenen Reflex-Lichtschranke ein Signal gesendet wird, in diesem Fall "I2", wird sie nicht durchgeschalten, weil die Steuerung nur mit Blockausfahrtsignalen arbeitet und ansonsten ein zurückliegender Block eingeschaltet werden würde. 
 
 #htl3r.fspace(
@@ -226,7 +226,7 @@ Die Funktion dahinter versteckt sich in der #htl3r.short[udf] "anfang". Die #htl
     caption: "UDF Anfang"
   )
 )
-
+#pagebreak()
 === Inputverarbeitung mit Weiche
 Wenn nun der aktuelle Block eine Weiche beinhaltet, kann nicht einfach nur der nächste Block freigeschalten werden, sondern es muss erstmal geschaut werden, wie die Weichenstellung aktuell ist um den nächsten Block zu bestimmen. Dies wird mit der #htl3r.short[udf] "weichenstellung" gemacht. Diese #htl3r.short[udf] hängt am Output der #htl3r.shortpl[udf] "anfang" und bekommt zusätzlich noch einen Input für die akutelle Weichenstellung. Die #htl3r.short[udf] "weichenstellung" schaltet nun je Weichenstellung den nächsten Block frei.
 \ \
@@ -240,7 +240,7 @@ In der @weiche0 ist zu sehen, dass "I2" die Reflex-Lichtschranke das Blockausfah
     ) <weiche0>
   ] 
 )
-
+#pagebreak()
 Sollte die Weiche in die andere Richtung geschalten sein, wird stattdessen wie in @weiche1 abgebildet der Output "Q2" freigeschalten.
 
 #htl3r.fspace(
@@ -278,28 +278,28 @@ Vor dem Weichenausgang hängt dabei eine #htl3r.short[udf] "OWeiche" oder "Overw
 )
 
 Fährt nun die Modelleisenbahn in die Gegenrichtung über die Weiche, triggert das entweder den Input _Low_ oder _High_ der #htl3r.short[udf] "OWeiche". Die #htl3r.long[udf] bewirkt daraufhin, dass der aktuelle Zustand der Weiche überschrieben wird. 
-\ \
+#pagebreak()
 In @ueberschreiben ist zu sehen, dass die Reflex-Lichtschranke "I2" an ging und somit das Signal sendet, dass der Zug in die Gegenrichtung über die Weiche fährunt. Dies passiert, indem das Programm beim Freischalten des Blockabschnitts den Input _Low_ triggert, der wiederum nach einer kurzen Verzögerung den Steuerausgang für die Weiche "NQ1" auf Low stellt und somit der Userinput überschrieben wird.
 
 #htl3r.fspace(
   [
     #figure(
-      image("../assets/blocksteuerung/ueberweiche3.png", width: 85%),
+      image("../assets/blocksteuerung/ueberweiche3.png", width: 90%),
       caption: "Schaldbild Weichensteuerung überschrieben"
     ) <ueberschreiben>
   ] 
 )
-
+#pagebreak()
 Die #htl3r.short[udf] "OWeiche" sieht für den low-overwrite und den high-overwrite gleich aus. Die #htl3r.short[udf] besteht jeweils aus zwei Triggern und einer Kombination aus AND und OR Gattern, die das Überschreiben ermöglichen. Der erste Trigger (4,5 Sekunden) ist dabei zuständig für eine kurze Verzögerung vor dem Überschreiben. Die Verzögerung wird benötigt, damit im restlichen Programm der nächste Block in die richtige Richtung freigeschalten wird. Der zweite Trigger (7 Sekunden) ist die Zeit, die das Überschreiben anhalten soll. Diese Zeit ist die gemessene Dauer, die die Modelleisenbahn benötigt, um vom triggern der #htl3r.short[udf] "OWeiche" bis zur Weiche selbst zu gelangen.
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/udf-oweiche.png", width: 95%),
+    image("../assets/blocksteuerung/udf-oweiche.png"),
     caption: "UDF Overwrite Weichenstellung"
   )
 )
 
-
+#pagebreak()
 === Funktion, um Inputs zu deaktiveren
 Die gleichzeitige Verarbeitung von zwei nebeneinander liegenden Reflex-Lichtschranken wird durch die #htl3r.short[udf] "anfang" siehe @anfang verhindert. Allerdins muss auch sichergestellt werden, dass der richtige Input verarbeitet wird. Der "richtige" Input ist dabei das Blockausfahrtsignal. Das passiert indem das Blockeinfahrtsignal dekativert wird, sobald der dazu gehörige Gleisabschnitt aktivert wird.
 

@@ -7,7 +7,6 @@ Fuzzing kommt aus der automatisierten Softwaretestung und soll dabei zufällige 
 === Vorrausetzungen für den Angriff
 Um mit dem Angriff Fuzzing ausführen zu können, wird ein Gerät innerhalb des Netzwerks benötigt, das ein Python Script mit der Libary _boofuzz_ und _argparse_ ausführen kann und Wireshark installiert hat.
 
-
 === Fuzzing Script
 Im ersten Teil des Fuzzing Scripts wird eine Methode definiert, die die Modbuspakete für das Fuzzing selbst erstellt und das Fuzzing ausführt. Dabei wird angegeben, welche Werte "fuzzable" sind, also welche Werte durch zufällige andere Werte ersetzt werden sollen. In diesem Fall ist dies die Transaction ID, die Länge, die Adresse des Coils und die Daten.
 
@@ -20,7 +19,7 @@ Um allerdings das Fuzzing ausführen zu können, muss eine Session übergeben we
 Nachdem das Ziel bekannt ist, wird nun ein Target also, ein Ziel für den Aufbau einer #htl3r.short[tcp]-Session mit IP-Adresse und Port definiert. Mit diesem Target wird nun eine Session aufgebaut, die der vorher erstellten Methode übergeben werden kann.
 
  #htl3r.code-file(caption: "Fuzzing Script: Target- und Sessiondefinition", lang: "python", text: read("../assets/fuzzing/Fuzzing.py"), ranges: ((21,21),(26,29)), skips: ((22,0),))
-
+#pagebreak()
 === Umsetztung - Fuzzing
 Um das Skript aufzurufen und somit das Fuzzing zu starten, wird folgender Befehl eingegeben:
 ```

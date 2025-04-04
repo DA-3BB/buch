@@ -10,7 +10,7 @@ Um die Injektion ausführen zu können, wird ein Gerät benötigt, das Zugriff a
 Zusätzlich muss die Unit ID für die Modbuskommunikation herrausgefunden werden. Das kann man entweder mit einem Man in the Middle Angriff machen oder die Anleitungen von #htl3r.short[rtu] Herstellern lesen, da die Unit ID dort festgelegt sein kann. In unserem Fall ist die Unit ID 1.
 
 Weiters ist das Framework ModBusSploit herunterzuladen. Dieses ist unter diesem Link aufzufinden: "https://github.com/C4l1b4n/ModBusSploit". Das Framework arbeitet mit Modulen, welche Angriffsvektoren auf das Protokoll Modbus #htl3r.short[tcp] aufzeigen. Dabei wird nur das Modul _writeSingleCoil_ verwendet, allerdings gibt es eine weitere Anzahl von Modulen mit Diverse Injektionen sowie Denail of Service Angriffen.
-
+#pagebreak()
 === Umsetztung - Code Injektion
 Um das Framework zu starten, wird die Datei _start.py_ ausgeführt.
 ```
@@ -34,6 +34,7 @@ set register 4
 set id 1
 set value ON
 ```
+#pagebreak()
 Um schlussendlich den Angriff selbst ausführen zu können:
 ```
 exploit
