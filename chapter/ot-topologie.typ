@@ -115,10 +115,10 @@ Der Raspberry übernimmt als Modbus Server die Weichensteuerung mittels Pythonsk
 
 
 #figure(
-    image("../assets/topologie/ot-topologie/komponenten/raspberry-pi_grafik.png", width: 40%),
+    image("../assets/topologie/ot-topologie/komponenten/raspberry-pi_grafik.png", width: 60%),
     caption: "Raspberry PI 3B"
 )
-
+#pagebreak()
 === Relais Modul
 Um die Blöcke der Eisenbahnstrecke anzusteuern, wurden drei Relaismodule mit Modbus Funktion verwendet. Dabei handelt es sich um das Modbus POE ETH Relay (B) des Unternehmens Waveshare. Es verfügt über 8 Relais Ausgänge, einem Ethernetport und 8 digitalen Eingängen. Die drei Module sollten dabei die dezentrale Steuerung darstellen, die nur noch mithilfe eines Ethernetkabels an den Hauptstandort, die Zentrale, angebunden ist.
 
@@ -134,7 +134,6 @@ Um die Grundkonfiguration der Waveshare Relais vorzunehmen, kann die Software 'V
     image("../assets/ot-topologie/vircom.png", width: 60%),
     caption: "Vircom Software"
 )
-\ \
 Um die Relais bestmöglich nach Anwendungsfall einzusetzten, sollte zuerste der Richtige Control Mode eingestellt werden. Die Control Modes geben an wie die Eingänge und Ausgänge der Relaismodule geschalten werden sollen. Dabei ist zu beachten, dass beim linkage Modus die Relais nicht seperat angesprochen werden können.
 - 0x0000 normaler Modus: Relais werden direkt mit Befehlen angesprochen.
 - 0x0001 linkage Modus: Relaisstatus entspricht dem Status des jeweiligen Inputs.
@@ -149,8 +148,7 @@ Genutzt wird dabei die "ZIMO SN1D Reflex-Lichtschranke", diese erfordern keine w
   figure(image("../assets/topologie/ot-topologie/hersteller-zimo-stein-stationaer-einrichtungs-modul-zimo-sn1d-reflex-lichtschranke.png"), caption: "Bauteile Reflex-Lichtschranke"),
   figure(image("../assets/topologie/ot-topologie/hersteller-zimo-stein-stationaer-einrichtungs-modul-zimo-sn1d-reflex-lichtschranke~4.png"), caption: "Installationsweise Reflexlichtschranke"),
 )
-
-
+#pagebreak()
 === Switch
 In der #htl3r.short[ot]-Topologie wird zum Verbinden der Geräte ein Hirschmann RS20 Railswitch verwendet. Außerdem werden #htl3r.short[snmp] Daten an die IT Überwachung des Netzwerks weitergeben.
 #figure(
