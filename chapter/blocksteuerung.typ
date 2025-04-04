@@ -146,7 +146,7 @@ Nachdem das Programm für die Blocksteuerung im Ganzen etwas unübersichtlich is
 #htl3r.fspace(
   figure(
     image("../assets/blocksteuerung/3BB_Blocksteuerung_v1_8.jpg", width: 80%),
-    caption: "Gesammte Blocksteuerung"
+    caption: "Gesamte Blocksteuerung"
   )
 )
 
@@ -322,7 +322,7 @@ Um die Blockeinfahrts-Reflex-Lichtschranke abzuschalten muss zwischen jedem Inpu
 )
 
 === Stoppen der Steuerung
-Die gesammte Steuerung wird gestoppt, indem auf allen Gleisabschnitten der Strom entzogen wird. Dabei hängt ein Merker am Reset-Eingang aller Outpus. Sobald dieser Merker angeschalten wird ist der Strom weg, wodurch der Zug auf keine Art und Weise fahren kann, bevor nicht der Merker wieder auf False gesetzt ist.
+Die gesamte Steuerung wird gestoppt, indem auf allen Gleisabschnitten der Strom entzogen wird. Dabei hängt ein Merker am Reset-Eingang aller Outpus. Sobald dieser Merker angeschalten wird ist der Strom weg, wodurch der Zug auf keine Art und Weise fahren kann, bevor nicht der Merker wieder auf False gesetzt ist.
 
 #htl3r.fspace(
   figure(
