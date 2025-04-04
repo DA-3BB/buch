@@ -187,3 +187,22 @@ fortimanager:
   title: FortiManager Administrator Study Guide
   subtitle: FortiManager 7.4
   date: 2023
+
+flowbased:
+  type: misc
+  title: Flow-based Scanning Mode
+  author: Rashmi Bhardwaj
+  url:
+    value: https://networkinterview.com/wp-content/uploads/2022/08/fortigate-utm-3.jpg.webp
+    date: 2025-03-19
+  date: 2024
+
+proxybased:
+  type: misc
+  title: Proxy-based Scanning Mode
+  author: Rashmi Bhardwaj
+  url:
+    value: https://networkinterview.com/wp-content/uploads/2022/08/fortigate-utm-2.jpg.webp 
+    date: 2025-03-19
+  date: 2024
+
