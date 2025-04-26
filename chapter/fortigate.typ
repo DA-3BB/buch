@@ -377,7 +377,7 @@ Für URL Filter gibt es jedoch nicht alle Actions die es für FortiGuard Kategor
 #htl3r.fspace(
         figure(
             image("../assets/fortigate/webfilter_categories.png", width: 80%),
-            caption: "GUI-Konfiguration eines Webfilter-Profiles mit Kategorien"
+            caption: "GUI-Konfiguration eines Webfilter-Profiles mit \n Kategorien"
         )
     )
 
@@ -469,7 +469,7 @@ Die Konfiguration des Profiles reicht allerdings noch nicht aus, um den Traffic 
 
 Zusätzlich dazu, wenn man im Profile Proxy-based Mode auswählt muss man darauf achten, dass in der Firewall Policy der Mode auch Proxy-based-Inspection ist.
 
-=== SD-WAN Configuration and Monitoring
+=== SD-WAN Configuration und Monitoring
 #htl3r.full[sdwan] ist ein Teil von #htl3r.full[sdn], dabei dreht sich alles um einen dynamischen, effizienten und Applikations-basierten Weiterleitungsprozess. Die #htl3r.short[sdwan] Lösung von Fortinet nennt sich Secure #htl3r.short[sdwan], da mithilfe der FortiOS-Funktionen Sicherheit automatisch implementiert wird. Dafür werden Features wie IPsec, Link Überwachung, fortgeschrittenes Routing, traffic-shaping und UTM-Inspection verwendet. Anhand von Adresse, Protokoll, Service oder Applikation werden die Daten weitergeleitet. Allerdings funktioniert #htl3r.short[sdwan] nur für Outgoing-Traffic, das Retour-Paket könnte also einen anderen Pfad nehmen. \
 
 Der häufigste Anwendungsfall von #htl3r.short[sdwan] - laut Fortinet - ist DIA - Direct Internet Access. Hierbei gibt es mehrere Uplinks, welche sich in Kosten und Performance unterscheiden. Kritischer Traffic wird über die Links mit der besten Performance weitergeleitet, während non-critical Traffic nach einem best-effort System übertragen wird. Die teuersten Links werden entweder nur als Backup oder nur für den kritischen Traffic verwendet.
@@ -518,7 +518,7 @@ Die nächste Grafik zeigt den zweiten Teil einer SD-WAN Regel, hierbei wird ausg
         )
     )
 
-Die Regeln werden wie Firewall Policies von oben nach unten durchsucht, allerdings erlauben SD-WAN Regeln keinen Traffic. Es muss also eine passende Firewall Policy geben, welche den Traffic erlaubt, damit im nächsten Schritt SD-WAN verwendet werden kann. Falls keine SD-WAN Regel zutrifft, wird die Implicit-Regel verwendet. Diese verwendet einfach die normale Routing Tabelle, wobei automatisch loadbalancing aktiviert wird.
+Die Regeln werden - wie Firewall Policies - von oben nach unten durchsucht, allerdings erlauben SD-WAN Regeln keinen Traffic. Es muss also eine passende Firewall Policy geben, welche den Traffic erlaubt, damit im nächsten Schritt SD-WAN verwendet werden kann. Falls keine SD-WAN Regel zutrifft, wird die Implicit-Regel verwendet. Diese verwendet einfach die normale Routing Tabelle, wobei automatisch loadbalancing aktiviert wird.
 
 Das folgende Bild zeigt die zugehörige Firewall Policy zu der zuvor konfigurierten SD-WAN Regel.
 #htl3r.fspace(
