@@ -126,7 +126,7 @@ Wichtig zu betrachten sind hier die drei Kommandos, die mithilfe der Option `-d`
 #pagebreak()
 
 ==== Erfolgsbedingungen des Replay-Angriffs
-Bei einem Replay-Angriff werden die abgefangenen Befehle nicht bearbeitet - das wären dann Code-Injections. Daher kann der Angreifer nur Schaden anrichten, wenn der Nutzer bereits die Weichen erneut umgeschalten hat. In diesem Fall wurde der Befehl zum Ändern der Weiche 4 auf Position `00` abgefangen. Sendet man diesen Befehl erneut ab, während die Weiche 4 ihre Position noch nicht erneut geändert hat, so hat der Angriff keine Auswirkung. Natürlich kann der Angreifer weitere Pakete abfangen und dies so umgehen. Für dieses Beispiel wurde jedoch die Weiche 4 vom Nutzer auf Position `01` geändert.
+Bei einem Replay-Angriff werden die abgefangenen Befehle nicht bearbeitet - das wären dann Code-Injections. Daher kann der Angreifer nur Schaden anrichten, wenn der Nutzer bereits die Weichen erneut umgeschaltet hat. In diesem Fall wurde der Befehl zum Ändern der Weiche 4 auf Position `00` abgefangen. Sendet man diesen Befehl erneut ab, während die Weiche 4 ihre Position noch nicht erneut geändert hat, so hat der Angriff keine Auswirkung. Natürlich kann der Angreifer weitere Pakete abfangen und dies so umgehen. Für dieses Beispiel wurde jedoch die Weiche 4 vom Nutzer auf Position `01` geändert.
 
 ==== Senden des abgefangenen Befehls
 Der Angreifer versendet nun den Befehl an die #htl3r.short[sps].

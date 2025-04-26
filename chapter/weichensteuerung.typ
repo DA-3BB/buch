@@ -36,7 +36,7 @@ Jeder Merker (`M1` bis `M4`) ist einem Netzwerkausgang (`NQ1` bis `NQ4`) zugeord
 Das gesamte Programm auf der #htl3r.short[sps] ist im Kapitel Blocksteuerung genauer beschrieben. Für die Weichensteuerung ist jedoch nur der im obigen Bild ersichtliche Teil notwendig.
 
 == Konfiguration des Raspberry Pi
-Auf dem Raspberry Pi befinden sich verschiedene Skripte (Python beziehungsweise Bash), welche für die Weichensteuerung entscheidend sind und den Raspberry Pi zum Modbus-Server werden lassen. Diese werden im folgenden Abschnitt einzeln beschrieben.
+Auf dem Raspberry Pi befinden sich verschiedene Skripte (Python beziehungsweise Bash), welche für die Weichensteuerung entscheidend sind und die Funktionalität des Modbus-Servers auf dem Raspberry Pi bereitstellen. Diese werden im folgenden Abschnitt einzeln beschrieben.
 
 #pagebreak()
 
@@ -61,7 +61,7 @@ Die Konfiguration des Modbus-Servers am Raspberry Pi kann mithilfe der Konfigura
 
 Im obigen Ausschnitt der Konfigurationsdatei befindet sich die Konfiguration der Optionen für Weiche 1. In Zeile 24 bis Zeile 27 befindet sich die Konfiguration des Servos selbst. Der `pin` ist der Steckplatz auf dem Servohat des Raspberry Pi, die Optionen `maxPw` und `minPw` sind die Werte, welche via Pulsweitenmodulation die Position der Servos bestimmen. In Zeile 29 und 30 ist die Zuordnung vom Servo zum Coil an der #htl3r.short[sps] festgelegt.
 
-In Zeile 24 befindet sich die Bezeichnung `gpio` - diese wird in den folgenden Skripten als `i2c` bezeichnet, da der Servo-Hat des Raspberry Pi mit diesem Protokoll kommuniziert. Die Bezeichnung ist eine Verallgemeinerung für bessere Lesbarkeit.
+/*In Zeile 24 befindet sich die Bezeichnung `gpio` - diese wird in den folgenden Skripten als `i2c` bezeichnet, da der Servo-Hat des Raspberry Pi mit diesem Protokoll kommuniziert. Die Bezeichnung ist eine Verallgemeinerung für bessere Lesbarkeit.*/
 
 === Konfiguration des Modbus-Servers mithilfe von Python
 Das wichtigste Skript am Raspberry Pi ist das Skript `modbus_server.py`, welches einen Modbus-Server aufsetzt und die #htl3r.short[i2c]-Treiber für die Servos lädt, um die Servos zu steuern. Im Skript gibt es neben der regulären Implementierung auch eine "Dummy"-Implementierung - ohne Initialisierung der #htl3r.short[i2c]-Treiber. Im folgenden Abschnitt ist das Skript genauer beschrieben.
@@ -75,7 +75,7 @@ Das wichtigste Skript am Raspberry Pi ist das Skript `modbus_server.py`, welches
 )
 
 In dem oben gezeigten Abschnitt sind die globalen Variablen des Skripts definiert.
-- Die Zeile `host = '0.0.0.0'` definiert den Client, auf welchen der Raspberry Pi lauscht, in diesem Fall hört er auf "alle".
+- Die Zeile `host = '0.0.0.0'` definiert den Client, von welchen der Raspberry Pi auf eine Verbindungsanfrage wartet - in diesem Fall akzeptiert er diese von "allen".
 - Der `port = 502` definiert den Standard-Modbus-Port.
 - Die Konfigurationsdatei wird mit der Option `cfg_json_file = "3bb_cfg.json"` an das Programm übergeben. Dieses File kann mit der Konfigurationsdatei überschrieben und somit bearbeitet werden.
 - Für das Logging wurde das Loglevel `DEBUG` gewählt. Die Methode, welche das Logging definiert, wird im folgenden Abschnitt aus Gründen der Übersichtlichkeit nicht behandelt. Sie basiert auf dem Package `PyLog`.
@@ -148,7 +148,7 @@ In dem oben geliseten Abschnitt wird der Server initialisiert - im Testbetrieb m
 
 #pagebreak()
 
-Da nun die wichtigsten Skripte erklärt wurden, kann der Server gestartet werden. Dafür sorgt das folgende Hilfsskript:
+Nachdem die wichtigsten Skripte erklärt wurden, kann das Starten des Servers betrachtet werden. Hierfür sorgt das folgende Hilfsskript:
 
 #htl3r.code-file(
   caption: "Skript zum Starten des Servers",
@@ -188,7 +188,7 @@ Das Skript schickt an alle in der Konfigurationsdatei `3bb_cfg.json` definierten
   text: read("../assets/python_programm/script/modbus_client.py")
 )
 
-Im obigen Ausschnitt findet sich eine Endlosschleife, welche jeden Servo aus der Konfigurationsdatei durchgeht, um ihm den neuen Wert `test_value` - welcher `True` oder `False` beträft - zuzuweisen. Am Ende der Schleife#footnote[Dieser Teil wurde aus Gründen der Übersichtlichkeit hier nicht gezeigt] befindet sich der Teil, welcher die Variable `test_value` vom einen Wert zum anderen welchselt.
+Im obigen Ausschnitt findet sich eine Endlosschleife, welche jeden Servo aus der Konfigurationsdatei durchgeht, um ihm den neuen Wert `test_value` - welcher `True` oder `False` beträgt - zuzuweisen. Am Ende der Schleife#footnote[Dieser Teil wird aus Gründen der Übersichtlichkeit hier nicht gezeigt] befindet sich der Teil, welcher die Variable `test_value` vom einen Wert zum anderen wechselt.
 
 Aufrufen kann man das Python-Programm mit dem folgenden Skript:
 
@@ -204,7 +204,7 @@ Aufrufen kann man das Python-Programm mit dem folgenden Skript:
 
 === Debugging des Skripts
 
-Ein Problem mit dem Skript für den Modbus-Server kann auftreten, sollte es nicht korrekt beendet werden. Dies kann geschehen, wenn man das Programm nicht stoppt (`^C`) und die Stromversorgung zur Schaltung absteckt. Das Python-Programm kann den Prozess nicht korrekt beenden#footnote[Wenn das Skript planmäßig beendet wird, so wird im Bash-Skript ein `deactivate` ausgeführt.] und blockiert damit den Port `502`, welcher jedoch benötigt wird, um das Skript zu starten. Empfehlenswert ist es also, vor dem Abstecken der Stromversorgung das Programm zu beenden. Sollte man das vergessen, kann man das Problem mit den folgenden Befehlen lösen.
+Ein Problem mit dem Skript für den Modbus-Server kann auftreten, wenn es nicht korrekt beendet werden sollte. Dies kann geschehen, wenn man das Programm nicht stoppt (`^C`) und die Stromversorgung zur Schaltung unterbricht. Das Python-Programm kann den Prozess nicht korrekt beenden#footnote[Wenn das Skript planmäßig beendet wird, so wird im Bash-Skript ein `deactivate` ausgeführt.] und blockiert damit den Port `502`, welcher jedoch benötigt wird, um das Skript zu starten. Es ist daher empfehlenswert, vor dem Abstecken der Stromversorgung das Programm zu beenden. Sollte man das vergessen, kann man das Problem mit den folgenden Befehlen lösen.
 
 1. Mit dem Befehl `sudo netstat -tlpn` kann man den Prozess auslesen, welcher von Python gestartet wurde. Hier muss man die Prozess-ID notieren.
 2. Im nächsten Schritt wird der Prozess mit `sudo kill PID` beendet. `PID` wird mit der ausgelesenen Prozess-ID ersetzt.
@@ -238,11 +238,12 @@ root@raspberrypi:/home/admin/3bb_mod_bus# 3bb-start-raspberry-modbusserver-for-t
 11/10/24 05:06:34 - INFO : connect Servant to ThreeDB Object
 ```
 
-In Zeile 17 ist ersichtlich, dass der Raspberry Pi eine neue Verbindung zu einem Client - der #htl3r.short[sps] - aufgebaut hat. Der Server ist also nun funktionsbereit.
+In Zeile 17 ist ersichtlich, dass der Raspberry Pi eine neue Verbindung zu einem Client - der #htl3r.short[sps] - aufgebaut hat. Der Server ist nun funktionsbereit.
 
 #pagebreak()
 
-Man kann nun den Webserver der #htl3r.short[sps] von einem Management-PC starten. Die Addressierung lautet: `http://10.100.0.1`. Es öffnet sich eine Seite, auf der der Nutzer sich authentifizieren muss. Das Passwort für den User "Web User" ist auf dem Default-Passwort ("admin") belassen worden.
+Man kann nun den Webserver der #htl3r.short[sps] von einem Management-PC starten. Die Addressierung lautet: `http://10.100.0.1`. Es öffnet sich eine Seite, auf der der Nutzer sich authentifizieren muss. Für das Passwort des Users "Web User" wurde der Default-Wert
+("admin") belassen.
 
 #figure(
   image("../assets/python_programm/sps/login.png", width: 80%),
@@ -279,7 +280,7 @@ Wird der Merker 4 geändert, wird ein Modbus-#htl3r.short[tcp]-Paket an den Rasp
 11/10/24 05:07:18 - INFO : servo Weiche4 switched to max
 ```
 
-Der Zustand der Weiche 4 wurde also von "min" auf "max" geschalten. Weiters kann man den physischen Zustand der Weiche 4 vergleichen.
+Der Zustand der Weiche 4 wurde also von "min" auf "max" geschaltet. Die Weiche hat nun ihre Position verändert.
 
 #figure(
     grid(

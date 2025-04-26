@@ -251,3 +251,12 @@ raspquelle:
    value: https://hexdocs.pm/nerves_system_rpi3/assets/images/raspberry-pi-3-model-b.png
    date: 2025-01-03
   date: 2016
+
+portscanlegal:
+  type: misc
+  title: The Official Nmap Project Guide to Network Discovery and Security Scanning - Legal Issues
+  author: nmap
+  url:
+   value: https://nmap.org/book/legal-issues.html
+   date: 2024-12-17
+  date: 2024

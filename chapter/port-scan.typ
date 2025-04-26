@@ -31,9 +31,9 @@ Tabelle zusammengefasst sind:
 )
 
 ====	Rechtliches
-Der legale bzw. illegale Einsatz von Port-Scans ist Gegenstand zahlreicher Diskussionen. Vereinfacht dargestellt können sie in eigenen Systemen ohne rechtliche Probleme eingesetzt werden. Beim Einsatz in Fremdsystemen, insbesondere zur Vorbereitung eines Expolits, macht man sich strafbar. Die große Anzahl an Verbindungsanfragen kann bei leistungsschwächeren Geräten zu Fehlfunktionen, Funktionseinschränkungen bis hin zur Überlastung führen, was auch ohne Absicht zum Angriff als Sabotage gesehen werden kann und rechtliche Konsequenzen mit sich ziehen könnte.
+Der legale bzw. illegale Einsatz von Port-Scans ist Gegenstand zahlreicher Diskussionen @portscanlegal. Vereinfacht dargestellt können sie in eigenen Systemen ohne rechtliche Probleme eingesetzt werden. Beim Einsatz in Fremdsystemen, insbesondere zur Vorbereitung eines Expolits, macht man sich strafbar. Die große Anzahl an Verbindungsanfragen kann bei leistungsschwächeren Geräten zu Fehlfunktionen, Funktionseinschränkungen bis hin zur Überlastung führen, was auch ohne Absicht zum Angriff als Sabotage gesehen werden kann und rechtliche Konsequenzen mit sich ziehen könnte.
 
-Mögliche treffende Paragrafen aus dem Strafgesetzbuch #footnote[Siehe https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=10002296] sind
+Mögliche zutreffende Paragrafen aus dem Strafgesetzbuch #footnote[Siehe https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=10002296] sind
 - § 5 - Vorsatz bzw. § 15 - Versuch
 - § 118a - Widerrechtlicher Zugriff auf ein Computersystem
 - § 126b - Störung der Funktionsfähigkeit eines Computersystems
