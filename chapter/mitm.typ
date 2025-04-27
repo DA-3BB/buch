@@ -4,16 +4,16 @@
 == Man in the Middle Angriff
 Durch einen #htl3r.long[mitm] Angriff fängt man die Kommunikation zwischen zwei Geräten ab und schaltet sich in die Mitte, sodass alle folgenden Pakete über das Angreifergerät geschickt werden, um diese dann entweder "nur" mitzulesen oder gegebenenfalls auch zu manipulieren. \
 
-Ein #htl3r.short[mitm] Angriff kann auf unterschiedliche Art und Weise passieren. In diesem Fall wird #htl3r.short[arp] Spoofing oder #htl3r.short[arp] Request Poisoning verwendet um den Datenverkehr abzufangen. Dabei werden #htl3r.short[arp] Request mit der IP-Adresse des anzugreifenden Geräts in LAN gesannt, um dem MAC-Adress-Table zu ändern. Ziel dabei ist, die eigene MAC-Adresse mit der IP-Adresse von einem anderen Gerät im Netzwerk zu assozieren. \
-Dadurch, dass Modbus alle Daten ohne Authentifizierung im Plaintext verschickt, kann der Datenverkehr sofort nach einem #htl3r.short[mitm] Angriff mit dem Wireshark mitgelesen werden. \
+Ein #htl3r.short[mitm] Angriff kann auf unterschiedliche Art und Weise passieren. In diesem Fall wird #htl3r.short[arp] Spoofing oder #htl3r.short[arp] Request Poisoning verwendet um den Datenverkehr abzufangen. Dabei werden #htl3r.short[arp] Requests mit der IP-Adresse des anzugreifenden Geräts in das LAN gesandt, um dem MAC-Adress-Table zu ändern. Ziel dabei ist, die eigene MAC-Adresse mit der IP-Adresse von einem anderen Gerät im Netzwerk zu assozieren. \
+Dadurch, dass Modbus alle Daten ohne Authentifizierung im Plaintext verschickt, kann der Datenverkehr sofort nach einem #htl3r.short[mitm] Angriff mit Wireshark mitgelesen werden. \
 
-=== Vorraussetzungen und Tools für den MITM Angriff
+=== Voraussetzungen und Tools für den MITM Angriff
 Um den Man in the Middle Angriff durchführen zu können, wird zuallererst Zugang zum LAN benötigt. Dies kann durch eine offene Schnittstelle, z.B. einen Port an einem Switch oder ein komprimiertes Netzwerkgerät erfolgen. \
 
 Weiters wird auf dem Angreifergerät eine Kali-Linux Distribution in einer #htl3r.long[vm] oder als Hostbetriebssystem benötigty, da für den Angriff die vorinstallierten Tools Ettercap, Etterfilter und Wireshark verwendet werden. \
 #pagebreak()
 ==== Ettercap
-Ettercap ist ein Multifunktionstool, mit dessen Hilfe Man in the Middle-Angriffe durchgeführt werden können, um Sniffing, Filtering und Einspeisung von malizösen Daten zu erreichen. Ettercap wird im @umsetztung-mitm mit folgenden Optionen verwendet. \
+Ettercap ist ein Multifunktionstool, mit dessen Hilfe Man in the Middle-Angriffe durchgeführt werden können, um Sniffing, Filtering und Einspeisung von maliziösen Daten zu erreichen. Ettercap wird im @umsetztung-mitm mit folgenden Optionen verwendet. \
 
 #htl3r.fspace(
   figure(
@@ -66,7 +66,7 @@ Dabei kann in der @hostscan erkannt werden, dass vier Geräte im Netzwerk gefund
   ]
 )
 #pagebreak()
-Nach dem Scan kann auch schon mit dem #htl3r.short[mitm]-Angriff und somit dem #htl3r.short[arp] Spoofing begonnen werden. Dabei werden im ersten Schritt die Pakete noch nicht modifiziert sonder nur zum mitlesen abgefangen und weitergeleitet.
+Nach dem Scan kann mit dem #htl3r.short[mitm]-Angriff und somit dem #htl3r.short[arp] Spoofing begonnen werden. Dabei werden im ersten Schritt die Pakete noch nicht modifiziert sonder nur zum Mitlesen abgefangen und weitergeleitet.
 
 ```bash
   ettercap -T -M arp //10.100.0.1/ //10.100.0.11/
@@ -80,7 +80,7 @@ Der Output des Befehls gibt gleich mehrere Informationen preis. Einerseits auf w
   )
 )
 
-Andererseits, beide Angriffsziele im Netzwerk gefunden wurden und das #htl3r.short[arp] Spoofing begonnen hat.
+Andererseits wird angezeigt, dass beide Angriffsziele im Netzwerk gefunden wurden und das #htl3r.short[arp] Spoofing begonnen hat.
 
 #htl3r.fspace(
   figure(
@@ -89,7 +89,7 @@ Andererseits, beide Angriffsziele im Netzwerk gefunden wurden und das #htl3r.sho
   )
 )
 
-Und als letztes werden fortlaufend alle Pakete im Terminal abgebildet die bei der Kommunikation abgefangen wurden.
+Und als letztes werden fortlaufend alle Pakete im Terminal aufgelistet die bei der Kommunikation abgefangen wurden.
 
 #htl3r.fspace(
   figure(
@@ -99,7 +99,7 @@ Und als letztes werden fortlaufend alle Pakete im Terminal abgebildet die bei de
 )
 
 #pagebreak()
-Das #htl3r.short[arp] Spoofing kann auch mittels Wireshark angeschaut werden. Die @arp1 zeigt den ersten Teil des #htl3r.short[arp] Spoofing. Dabei schickt das Kali-Linux Gerät, in diesem Fall die _VMware..._, #htl3r.short[arp]-Request zu den IP-Adressen aus dem Ettercap Befehl.  Die Geräte, genauer gesagt die SPS und die #htl3r.short[rtu], die die IP-Adressen 10.100.0.1 und 10.100.0.11 besitzen antworten.
+Das #htl3r.short[arp] Spoofing kann auch mittels Wireshark inspiziert werden. Die @arp1 zeigt den ersten Teil des #htl3r.short[arp] Spoofing. Dabei schickt das Kali-Linux Gerät, in diesem Fall die _VMware..._, #htl3r.short[arp]-Request zu den IP-Adressen aus dem Ettercap Befehl.  Die Geräte, genauer gesagt die SPS und die #htl3r.short[rtu], die die IP-Adressen 10.100.0.1 und 10.100.0.11 besitzen antworten.
 
 #htl3r.fspace(
   [
@@ -162,7 +162,7 @@ Nun kann der #htl3r.short[mitm]-Angriff erneut mit dem Filter ausgeführt werden
   )
 )
 #pagebreak()
-In Wireshark kann nun beobachtet werden, dass alle Modbuspakete mit einem _Write Single Coil_ Funktionscode als Datenwert _FALSE_ beziehungsweise 0 haben.
+Mit Wireshark kann nun beobachtet werden, dass alle Modbuspakete mit einem _Write Single Coil_ Funktionscode als Datenwert _FALSE_ beziehungsweise 0 haben.
 
 #htl3r.fspace(
   figure(
@@ -172,4 +172,4 @@ In Wireshark kann nun beobachtet werden, dass alle Modbuspakete mit einem _Write
 )
 
 === Fazit
-Ein #htl3r.long[mitm] Angriff ist bei Busprotokoll, wie in dem Fall Modbus TCP sehr erfolgreich, da die übermittelten Daten im Plaintext und ohne Authentifizierung einfach zum Mitlesen un Manipulieren sind, gleichzeitg aber einen enormen Schaden am System anrichten können.
+Ein #htl3r.long[mitm] Angriff ist bei einem Busprotokoll, wie in dem Fall Modbus TCP sehr erfolgreich, da die übermittelten Daten im Plaintext und ohne Authentifizierung einfach zum Mitlesen un Manipulieren sind, gleichzeitg aber einen enormen Schaden am System anrichten können.
