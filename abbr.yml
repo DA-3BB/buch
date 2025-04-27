@@ -385,12 +385,6 @@ rtu:
     plural: Remote Terminal Units
   description: Eine Schnittstelle zwischen technischen Prozessen und einer zentrale Steuereinheit.
 
-sd-wan:
-  short:
-    singular: SD-WAN
-  long:
-    singular: Software-Defined Wide Area Network
-
 vpn:
   short:
     singular: VPN
