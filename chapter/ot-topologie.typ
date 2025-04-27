@@ -2,7 +2,7 @@
 #htl3r.author("Marlene Reder")
 
 == OT Topologie <piverkabelung>
-Um die Operational Technology möglichst praxisnah darzustellen, wurde ein Modelleisenbahnnetz entwickelt. Dabei ist sowohl ein Gleisplan mit Elementen wie Wendeschleifen und Weichen geplant, als auch die Steuerung mit praxisrelevanten Komponenten und dem Protokoll "Modbus TCP" entwickelt worden.
+Um die Operational Technology möglichst praxisnah darzustellen, wurde ein Modelleisenbahnnetz entwickelt. Dabei wurde sowohl ein Gleisplan mit Elementen wie Wendeschleifen und Weichen geplant, als auch die Steuerung mit praxisrelevanten Komponenten und dem Protokoll "Modbus TCP" entwickelt.
 
 #figure(
     image("../assets/topologie/ot-topologie/3BB_Gleisplan.jpg", width: 74%),
@@ -129,7 +129,7 @@ Um die Blöcke der Eisenbahnstrecke anzusteuern, werden drei Relaismodule mit Mo
 
 Das besondere an dem Waveshare Relais ist, dass es über Modbus TCP Funktionen verfügt. Weiters könnnen die Inputs sowohl für passive als auch aktive Kontakte verwendet werden.
 \ \
-Um die Grundkonfiguration der Waveshare Relais vorzunehmen, kann die Software 'VirCom' eingesetzt werden. Diese findet mit einem Klick auf "Device" alle Waveshare Module, die im Netzwerk hängen, ohne die IP-Adresse oder sonstige Informationen zu haben. Sobald die IP-Adresse der Geräte bekannt ist, können alle anderen Einstellungen auch mit dieser mit der IP-Adresse des Relais Moduls über einen Webbrowser getätigt werden.
+Um die Grundkonfiguration der Waveshare Relais vorzunehmen, kann die Software 'VirCom'#footnote["https://www.waveshare.com/wiki/Modbus_POE_ETH_Relay_(B)#How_to_Connect_Modbus_POE_ETH_Relay_to_Waveshare_Cloud"] eingesetzt werden. Diese findet mit einem Klick auf "Device" alle Waveshare Module, die im Netzwerk hängen, ohne die IP-Adresse oder sonstige Informationen zu haben. Sobald die IP-Adresse der Geräte bekannt ist, können alle anderen Einstellungen auch mit dieser mit der IP-Adresse des Relais Moduls über einen Webbrowser getätigt werden.
 #figure(
     image("../assets/ot-topologie/vircom.png", width: 60%),
     caption: "Vircom Software"
