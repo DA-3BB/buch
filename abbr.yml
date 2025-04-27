@@ -26,7 +26,7 @@ cli:
   long:
     singular: Command Line Interface
     plural: Command Line Interfaces
-  description: Die Schnittstelle zwischen Computer und Benutzer basierend auf Textzeilen.
+  description: Die Schnittstelle zwischen Computer und User basierend auf Textzeilen.
 
 vm:
   short:
@@ -104,7 +104,7 @@ gui:
   long:
     singular: Graphical User Interface
     plural: Graphical User Interfaces
-  description: grafische Oberfläche für Benutzer.
+  description: grafische Oberfläche für User.
 
 ssh:
   short:
@@ -271,7 +271,7 @@ radius:
     singular: RADIUS
   long:
     singular: Remote Authentication Dial-In User Service
-  description: Protokoll zur Authentifizierung, Autorisierung, und Accounting von Benutzern in einem Netzwerk.
+  description: Protokoll zur Authentifizierung, Autorisierung, und Accounting von Usern in einem Netzwerk.
 
 attck:
   short:
@@ -384,12 +384,6 @@ rtu:
     singular: Remote Terminal Unit
     plural: Remote Terminal Units
   description: Eine Schnittstelle zwischen technischen Prozessen und einer zentrale Steuereinheit.
-
-sd-wan:
-  short:
-    singular: SD-WAN
-  long:
-    singular: Software-Defined Wide Area Network
 
 vpn:
   short:
@@ -727,7 +721,6 @@ ips:
   long:
     singular: Intrusion Prevention System
   description: Feature von modernen Firewalls, welches anhand einer Datenbank Angriffe anhand von Signaturen erkennen kann.
-
 
 ssl:
   short:
