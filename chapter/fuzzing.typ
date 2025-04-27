@@ -12,11 +12,11 @@ Im ersten Teil des Fuzzing Scripts wird eine Methode definiert, die die Modbuspa
 
 #htl3r.code-file(caption: "Fuzzing Script: Methode FuzzWriteCoil", lang: "python", text: read("../assets/fuzzing/Fuzzing.py"), ranges: ((1, 18),))
 
-Um allerdings das Fuzzing ausführen zu können, muss eine Session übergeben werden. Dieses wird im main erstellt, indem das Angriffsziel mithilfe von argparse vom User abgefragt wird. Wenn der User kein Ziel spezifizert, wird die IP-Adresse 10.100.0.11 als Angriffziel angenommen.
+Um allerdings das Fuzzing ausführen zu können, muss eine Session übergeben werden. Dieses Session wird in der Main-Methode erstellt, indem das Angriffsziel mithilfe von argparse vom User abgefragt wird. Wenn der User kein Ziel spezifizert, wird die IP-Adresse 10.100.0.11 als Angriffziel angenommen.
 
  #htl3r.code-file(caption: "Fuzzing Script: argparse um Angriffsziel abzufragen ", lang: "python", text: read("../assets/fuzzing/Fuzzing.py"), ranges: ((21,24),))
 
-Nachdem das Ziel bekannt ist, wird nun ein Target also, ein Ziel für den Aufbau einer #htl3r.short[tcp]-Session mit IP-Adresse und Port definiert. Mit diesem Target wird nun eine Session aufgebaut, die der vorher erstellten Methode übergeben werden kann.
+Nachdem das Ziel bekannt ist, wird nun ein Target, ein Ziel für den Aufbau einer #htl3r.short[tcp]-Session mit IP-Adresse und Port definiert. Mit diesem Target wird nun eine Session aufgebaut, die der vorher erstellten Methode übergeben werden kann.
 
  #htl3r.code-file(caption: "Fuzzing Script: Target- und Sessiondefinition", lang: "python", text: read("../assets/fuzzing/Fuzzing.py"), ranges: ((21,21),(26,29)), skips: ((22,0),))
 #pagebreak()
@@ -55,4 +55,4 @@ Wenn das Fuzzing durch den Wireshark betrachtet wird, ist zu sehen, dass immer w
 )
 
 === Fazit
-Für den Angriff Fuzzing ist kein Verständnis der Steuerung nötig, da alle möglichen Kombinationen von Attributen ausgetestet werden. Dies macht Fuzzing zum testen der Steueranlage auf ungewolltes Verhalten sehr brauchbar. Gleichzeitg muss der*die Angreifer*in keinen genaueren einblick in die Steuerung haben um Schaden anzustellen.
+Für den Angriff Fuzzing ist kein Verständnis der Steuerung nötig, da alle möglichen Kombinationen von Attributen ausgetestet werden. Dies macht Fuzzing zum Testen der Steueranlage auf ungewolltes Verhalten sehr brauchbar. Gleichzeitg muss der*die Angreifer*in keinen genaueren einblick in die Steuerung haben um Schaden anzustellen.
