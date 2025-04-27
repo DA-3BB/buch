@@ -12,11 +12,11 @@ Im ersten Teil des Fuzzing Scripts wird eine Methode definiert, die die Modbuspa
 
 #htl3r.code-file(caption: "Fuzzing Script: Methode FuzzWriteCoil", lang: "python", text: read("../assets/fuzzing/Fuzzing.py"), ranges: ((1, 18),))
 
-Um allerdings das Fuzzing ausführen zu können, muss eine Session übergeben werden. Dieses wird im main erstellt, indem das Angriffsziel mithilfe von argparse vom User abgefragt wird. Wenn der User kein Ziel spezifizert, wird die IP-Adresse 10.100.0.11 als Angriffziel angenommen.
+Um allerdings das Fuzzing ausführen zu können, muss eine Session übergeben werden. Dieses Session wird in der Main-Methode erstellt, indem das Angriffsziel mithilfe von argparse vom User abgefragt wird. Wenn der User kein Ziel spezifizert, wird die IP-Adresse 10.100.0.11 als Angriffziel angenommen.
 
  #htl3r.code-file(caption: "Fuzzing Script: argparse um Angriffsziel abzufragen ", lang: "python", text: read("../assets/fuzzing/Fuzzing.py"), ranges: ((21,24),))
 
-Nachdem das Ziel bekannt ist, wird nun ein Target also, ein Ziel für den Aufbau einer #htl3r.short[tcp]-Session mit IP-Adresse und Port definiert. Mit diesem Target wird nun eine Session aufgebaut, die der vorher erstellten Methode übergeben werden kann.
+Nachdem das Ziel bekannt ist, wird nun ein Target, ein Ziel für den Aufbau einer #htl3r.short[tcp]-Session mit IP-Adresse und Port definiert. Mit diesem Target wird nun eine Session aufgebaut, die der vorher erstellten Methode übergeben werden kann.
 
  #htl3r.code-file(caption: "Fuzzing Script: Target- und Sessiondefinition", lang: "python", text: read("../assets/fuzzing/Fuzzing.py"), ranges: ((21,21),(26,29)), skips: ((22,0),))
 #pagebreak()
@@ -30,7 +30,7 @@ Dieser startet das Fuzzing - wie auf der Kommandozeile sichtbar wird - unverzüg
 #htl3r.fspace(
   [
     #figure(
-      image("../assets/fuzzing/fuzzing-powershell.png", width: 110%),
+      image("../assets/fuzzing/fuzzing-powershell.jpg", width: 110%),
       caption: "Terminalausgabe beim Starten des Fuzzing Scripts"
     ) <fuzzingstart>
   ]
@@ -40,7 +40,7 @@ Ein Feature von boofuzz ist es dabei auch einen Webserver lokal am Port 26000 zu
 #htl3r.fspace(
   [
     #figure(
-      image("../assets/fuzzing/fuzzing-web.png"),
+      image("../assets/fuzzing/fuzzing-web.jpg"),
       caption: "Fuzzing im Browser"
     ) <fuzzingweb>
   ]
@@ -49,10 +49,10 @@ Ein Feature von boofuzz ist es dabei auch einen Webserver lokal am Port 26000 zu
 Wenn das Fuzzing durch den Wireshark betrachtet wird, ist zu sehen, dass immer wieder #htl3r.short[tcp]-Session mit dem Ziel 10.100.0.11 aufgebaut werden, ein Modbuspaket gesendet wird und die Session wieder abgebaut wird. All dies erfolgt so schnell, so dass die Antwort nicht einmal angezeigt wird.
 #htl3r.fspace(
   figure(
-    image("../assets/fuzzing/wireshark-fuzzing.png"),
+    image("../assets/fuzzing/wireshark-fuzzing.jpg"),
     caption: "Fuzzing im Wireshark"
   )
 )
 
 === Fazit
-Für den Angriff Fuzzing ist kein Verständnis der Steuerung nötig, da alle möglichen Kombinationen von Attributen ausgetestet werden. Dies macht Fuzzing zum testen der Steueranlage auf ungewolltes Verhalten sehr brauchbar. Gleichzeitg muss der*die Angreifer*in keinen genaueren einblick in die Steuerung haben um Schaden anzustellen.
+Für den Angriff Fuzzing ist kein Verständnis der Steuerung nötig, da alle möglichen Kombinationen von Attributen ausgetestet werden. Dies macht Fuzzing zum Testen der Steueranlage auf ungewolltes Verhalten sehr brauchbar. Gleichzeitg muss der Angreifer oder die Angreiferin keinen genaueren einblick in die Steuerung haben um Schaden anzustellen.

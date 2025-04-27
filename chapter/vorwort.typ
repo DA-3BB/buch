@@ -3,7 +3,7 @@
 
 = Vorwort
 
-Der Name der Diplomarbeit wurde von Esther Lina Mayer ins Leben gerufen. Hierfür orientierte sie sich am Namen der Schule (HTL 3 Rennweg) sowie der ÖBB (Österreichische Bundesbahnen).
+Der Name der Diplomarbeit "3BB" wurde von Esther Lina Mayer ins Leben gerufen. Hierfür orientierte sie sich am Namen der Schule (HTL 3 Rennweg) sowie der ÖBB (Österreichische Bundesbahnen).
 
 == Danksagung
 

@@ -18,7 +18,7 @@ python3 ModBusSploit-main/start.py
 ```
 #htl3r.fspace(
   figure(
-    image("../assets/injection/modbussploit-start.png"),
+    image("../assets/injection/modbussploit-start.jpg"),
     caption: "ModBusSploit gestartet"
   )
 )
@@ -41,19 +41,19 @@ exploit
 ```
 #htl3r.fspace(
   figure(
-    image("../assets/injection/modbussploit-angirff.png"),
+    image("../assets/injection/modbussploit-angirff.jpg"),
     caption: "Injektion Angriff ausgeführt"
   )
 )
 
-Der Verlauf kann nun auch im Wireshark betrachtet werden. Dabei ist zu sehen, dass das Angreifergerät mit der IP-Adresse 10.100.0.99 zuerst eine #htl3r.short[tcp] Session mit der #htl3r.short[rtu] aufbaut. Danach kann beobachtet werden, dass das maliziöse Modbuspacket verschickt wird und schlussendlich die Verbindung wieder aufgelöst wird. Somit ist der Angirff in kürzerster Zeit erfolgt und die Angreifer*in nun wieder passiv geworden.
+Der Verlauf kann nun auch im Wireshark betrachtet werden. Dabei ist zu sehen, dass das Angreifergerät mit der IP-Adresse 10.100.0.99 zuerst eine #htl3r.short[tcp] Session mit der #htl3r.short[rtu] aufbaut. Danach kann beobachtet werden, dass das maliziöse Modbuspacket verschickt wird und schlussendlich die Verbindung wieder aufgelöst wird. Somit ist der Angirff in kürzerster Zeit erfolgt und der Angreifer oder die Angreiferin ist nun wieder passiv geworden.
 
 #htl3r.fspace(
   figure(
-    image("../assets/injection/wireshark-komplette-injection.png", width: 120%),
+    image("../assets/injection/wireshark-komplette-injection.jpg", width: 120%),
     caption: "Injektion Angriff im Wireshark"
   )
 )
 
 === Fazit
-Für eine Modbus Injektion wird mehr Wissen über die Steuerung als bei Angriffen wie dem Fuzzing oder dem #htl3r.short[mitm] benötigt. Da sowohl die Unit ID bekannt sein muss als auch das Wissen, welche Register verwendet werden. Allerdings kann das sehr einfach durch ausprobieren beziehungsweise durch andere Angriffe herrausgefunden werden. 
+Für eine Modbus Injektion wird mehr Wissen über die Steuerung als bei Angriffen wie dem Fuzzing oder dem #htl3r.short[mitm] benötigt. Da sowohl die Unit ID bekannt sein muss als auch das Wissen, welche Register verwendet werden. Allerdings kann das sehr einfach durch ausprobieren beziehungsweise durch andere Angriffe herrausgefunden werden.

@@ -5,7 +5,7 @@
 
 Um eine realitätsnahe #htl3r.short[soc]-Umgebung zu schaffen, wird der FortiAnalyzer in die Topologie implementiert. Mithilfe der Integration in das Fortinet-Ökosystem bietet der FortiAnalyzer eine Übersicht über Risiken und Schwachstellen von Security-Geräten wie Firewalls. Es aggregiert alle Logs von Fortinet-Komponenten, um daraus übersichtliche Dashboards und Reports für #htl3r.short[soc]-Teams zu bauen @fortianalyzer.
 
-Mithilfe von #htl3r.shortpl[adom] kann der Zugriff auf Logs und Funktionen im #htl3r.short[gui] sowie #htl3r.short[cli] eingeschränkt werden. Dies ist besonders für große #htl3r.long[soc] sinnvoll. Des Weiteren können für Mitarbeiter des #htl3r.short[soc]-Teams automatische Reports als HTML, PDF, XML, CSV oder JSON generiert werden.
+Mithilfe von #htl3r.shortpl[adom] kann der Zugriff auf Logs und Funktionen im #htl3r.short[gui] sowie #htl3r.short[cli] eingeschränkt werden. Dies ist besonders für große #htl3r.long[soc] sinnvoll. Des Weiteren können für Mitarbeiterinnen und Mitarbeiter des #htl3r.short[soc]-Teams automatische Reports als HTML, PDF, XML, CSV oder JSON generiert werden.
 
 == FortiAnalyzer-Zertifizierung <faz-cert>
 
@@ -48,7 +48,7 @@ Um die FortiGate mit dem FortiAnalyzer zu verbinden, muss die Konfiguration an d
 
 Damit der FortiAnalyzer Logs der Geräte sammeln kann, müssen diese mittels #emph("Fabric Connectors") verbunden werden. Die Konfiguration dafür erfolgt explizit auf jedem Gerät. Anschließend können die Geräte entsprechend den #htl3r.short[adom]s zugeteilt werden, um diese für bestimmte Nutzer zugänglich zu machen. Daraufhin kann beispielsweise die Auslastung oder der Speicherbedarf einzelner Komponenten zentral überwacht werden.
 
-Die Konfiguration der Benutzer kann auch mit einem bestehenden #htl3r.short[ldap]-Service verknüpft werden. Dabei greift der FortiAnalyzer auf eine bestimmte Gruppe in der #htl3r.long[ad] Infrastruktur zu, um die User dieser Gruppe automatisch im FortiAnalyzer zu integrieren. Für das Abfragen der Daten von einem #htl3r.short[ldap]-Server sind entsprechende Zugangsdaten erforderlich.
+Die Konfiguration der User kann auch mit einem bestehenden #htl3r.short[ldap]-Service verknüpft werden. Dabei greift der FortiAnalyzer auf eine bestimmte Gruppe in der #htl3r.long[ad] Infrastruktur zu, um die User dieser Gruppe automatisch im FortiAnalyzer zu integrieren. Für das Abfragen der Daten von einem #htl3r.short[ldap]-Server sind entsprechende Zugangsdaten erforderlich.
 
 #pagebreak()
 
@@ -61,7 +61,7 @@ Im folgenden Beispiel wurde ein Report am Standort Wien generiert. Die Daten von
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("../assets/fortianalyzer/faz-report.png"),
+    image("../assets/fortianalyzer/faz-report.jpg"),
     caption: [Auszug aus einem FortiAnalyzer Report]
   )
 )
@@ -73,7 +73,7 @@ Im #htl3r.long[soc] spielt auch die Inspizierung des Traffics eine wichtige Roll
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("../assets/fortianalyzer/faz-traffic.png"),
+    image("../assets/fortianalyzer/faz-traffic.jpg"),
     caption: [SOC-Dashboard des FortiAnalyzers]
   )
 )
@@ -83,7 +83,7 @@ Durch die Einbindung des #htl3r.short[ldap]-Servers bekommen die Mitarbeiterinne
 #htl3r.fspace(
   //total-width: 70%,
   figure(
-    image("../assets/fortianalyzer/faz-ldap.png", width: 100%),
+    image("../assets/fortianalyzer/faz-ldap.jpg", width: 100%),
     caption: [Konfiguration des LDAP-Servers im FortiAnalyzer]
   )
 )

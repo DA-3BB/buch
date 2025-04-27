@@ -79,7 +79,7 @@ Es gibt drei Arten von PDUs:
 Die Modbus #htl3r.longpl[pdu] bestehen alle aus einem 1 Byte langen Funktionscode/Fehlermeldungsfeld und maximal 252 Byte für die benötigten Daten in Big-Endian Schreibweise.
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/modbus-pdu.png"),
+    image("../assets/modbus/modbus-pdu.jpg"),
     caption: "Modbus Protocol Data Unit"
   )
 )
@@ -93,7 +93,7 @@ Der Bereich an Funktionscode reicht von 1-255, wobei 128-255 für Fehlermeldunge
 #htl3r.fspace(
   [
     #figure(
-      image("../assets/modbus/modbus-funktionscode-kategorien.png", width: 30%),
+      image("../assets/modbus/modbus-funktionscode-kategorien.jpg", width: 30%),
       caption: "Modbusfunktionscode Kategorien"
     ) <mod-kategorien>
   ]
@@ -187,7 +187,7 @@ Die Fehlercodes wurden im  @fehlercode erklärt.
 
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/modbus-slave-anfrageverarbeitung.png", width: 90%),
+    image("../assets/modbus/modbus-slave-anfrageverarbeitung.jpg", width: 90%),
     caption: "Modbus: Server Anfrageverarbeitung"
   )
 )
@@ -207,7 +207,7 @@ Die RS232 Schnittstelle ist die älterste, aber auch die am weitesten verbreitet
 
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/RS232-verkabelung.png", width: 50%),
+    image("../assets/modbus/RS232-verkabelung.jpg", width: 50%),
     caption: [RS232 Verkabelung @rs-232]
   )
 )
@@ -216,7 +216,7 @@ Die Schnittstelle RS422 erlaubt im Gegensatz zum Vorgänger RS232 eine Point-to-
 
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/RS422-verkabelung.png", width: 55%),
+    image("../assets/modbus/RS422-verkabelung.jpg", width: 55%),
     caption: [RS422 Verkabelung @rs-422]
   )
 )
@@ -225,7 +225,7 @@ Die Schnittstelle RS422 erlaubt im Gegensatz zum Vorgänger RS232 eine Point-to-
 Die RS485 Schnittstelle weist dieselben elektrischen Eigenschaften wie RS422 auf. Dazu kommt allerdings, dass RS485 Multipoint-to-Multipoint fähig ist. In der häufigsten Bauweise, die nur als zwei Drähten besteht ist sie jedoch nur Halbduplex fähig. Die Vollduplex Bauart mit vier  ist hingegen nur sehr selten zu finden. @serielleschnittstellen
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/RS485-verkabelung.png", width: 50%),
+    image("../assets/modbus/RS485-verkabelung.jpg", width: 50%),
     caption: [RS485 Verkabelung @rs-485]
   )
 )
@@ -235,7 +235,7 @@ Bei Modbus #htl3r.short[rtu] besteht die #htl3r.short[adu] zusätzlich zur #htl3
 
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/modbus-rtu-adu.png"),
+    image("../assets/modbus/modbus-rtu-adu.jpg"),
     caption: "Modbus RTU: Application Data Unit"
   )
 )
@@ -252,7 +252,7 @@ Im Adressfeld steht immer die Adress des Servers, die bei jedem Busteilnehmer ei
 Hier in einem abgefangenen Wireshark Frame dargestellt:
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/modbus-query.png", width: 90%),
+    image("../assets/modbus/modbus-query.jpg", width: 90%),
     caption: "Modbus TCP/IP - Anfrage"
   )
 )
@@ -265,7 +265,7 @@ Hier in einem abgefangenen Wireshark Frame dargestellt:
 Hier in einem abgefangenen Wireshark Frame dargestellt:
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/modbus-response.png", width: 90%),
+    image("../assets/modbus/modbus-response.jpg", width: 90%),
     caption: "Modbus TCP/IP - Antwort"
   )
 )
@@ -279,7 +279,7 @@ Bei Modbus #htl3r.short[ascii] ist der Aufbau sehr ähnlich zu Modbus #htl3r.sho
 
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/modbus-ascii-adu.png", width: 95%),
+    image("../assets/modbus/modbus-ascii-adu.jpg", width: 95%),
     caption: "Modbus ASCII: Application Data Unit"
   )
 )
@@ -296,7 +296,7 @@ Der #htl3r.short[mbap]-Header besteht aus 4 Teilen:
 
 #htl3r.fspace(
   figure(
-    image("../assets/modbus/modbus_tcp-ip_adu.png"),
+    image("../assets/modbus/modbus_tcp-ip_adu.jpg"),
     caption: "Modbus TCP/IP: Application Data Unit"
   )
 )

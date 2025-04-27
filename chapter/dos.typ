@@ -94,11 +94,11 @@ This thread now sleeping for 100 seconds...
 ^C
 ```
 
-Der Code ist aus Gründen der Übersichtlichkeit gekürzt#footnote("Dazwischen sind Informationen über neue Sockets sowie die Anzahl der derzeitigen Sockets (zwischen 524 und 51504)."). Außerdem ist ersichtlich, dass das Skript nach 51504 Paketen abgebrochen wurde (`^C`). Das ist darauf zurückzuführen, dass nach circa einer halben Stunde des Skripts noch immer kein Effekt erreicht wurde. Um das festzustellen, wurden parallel Tests ausgeführt - welche im folgenden Abschnitt dieses Kapitels noch genauer beschrieben und deren Ergebnisse interpretiert werden. Um es kurz zu sagen: Die Tests verliefen positiv. Slowloris konnte den #htl3r.short[http]-Server der #htl3r.short[sps] nicht beeinträchtigen.
+Der Code ist aus Gründen der Übersichtlichkeit gekürzt#footnote("Dazwischen sind Informationen über neue Sockets sowie die Anzahl der derzeitigen Sockets (zwischen 524 und 51504)."). Außerdem ist ersichtlich, dass das Skript nach 51504 Paketen abgebrochen wurde (`^C`). Das ist darauf zurückzuführen, dass nach circa einer halben Stunde des Skripts noch immer kein Effekt erreicht wurde. Um das festzustellen, wurden parallel Tests ausgeführt - welche im folgenden Abschnitt dieses Kapitels noch genauer beschrieben und deren Ergebnisse interpretiert werden. Zusammenfassend kann festgestellt werden: Die Tests verliefen positiv. Slowloris konnte den #htl3r.short[http]-Server der #htl3r.short[sps] nicht beeinträchtigen.
 
 #pagebreak()
 
-==== Stabilitätstests während Slowloris
+==== Stabilitätstests während Slowloris-Angriffs
 Die Erwartung an den #htl3r.short[dos]-Angriff ist es, dass ein User, welcher das Bahnnetzwerk über den Webserver der #htl3r.short[sps] steuern möchte, keinen Zugriff auf diesen hat. Während der Ausführung des Slowloris-Skripts wurde laufend ein Tests des Webservers und der Kommunikation mit dem Raspberry Pi durchgeführt.
 
 Zur Demonstration der Funktionalität ist im folgenden ein Ablauf der Kommunikation dokumentiert. Dieser wurde mehrfach durchgeführt.
@@ -106,14 +106,14 @@ Zur Demonstration der Funktionalität ist im folgenden ein Ablauf der Kommunikat
 1. Zugriff auf den Webserver: Der User kann auf den Webserver der #htl3r.short[sps] zugreifen und die Weichen (hier Weiche 2) ansteuern.
 
 #figure(
-  image("../assets/angriffe/dos/sps_screenshot.png", width: 90%),
+  image("../assets/angriffe/dos/sps_screenshot.jpg", width: 90%),
   caption: "Editieren der Position von Weiche 2"
 )
 
 2. Kommunikation zum Raspberry Pi: Die #htl3r.short[sps] muss nun die Änderungen der Weichen an den Raspberry Pi weiter geben. Dieser wirft Log-Messages, sobald er eine Änderung empfängt.
 
 #figure(
-  image("../assets/angriffe/dos/py_log.png", width: 90%),
+  image("../assets/angriffe/dos/py_log.jpg", width: 90%),
   caption: "Log-Messages auf dem Raspberry Pi"
 )
 
@@ -127,7 +127,7 @@ Anmerkung: Eine genaue Beschreibung, was die Log-Messages bedeuten, befindet sic
 Laut der Analyse durch das Skript von nmap ist die #htl3r.short[sps] anfällig auf einen Slowloris-#htl3r.short[dos]-Angriff. Nach rund 50.000 Paketen, welche durch Slowloris abgesendet wurden, gab es jedoch keine (erkennbare) Einschränkung des Webservers der #htl3r.short[sps].
 
 === Python-Skript - Denial of Service-Angriff
-Da der Angriff mit Slowloris fehlgeschlagen ist, musste eine alternative Möglichkeit für einen Angriff ausgesucht werden, um eine "zweite Meinung" einzubringen. Hierfür wurde ein selbst geschriebenes Python-Skript erstellt, welches Verbindungen mit dem Webserver der #htl3r.short[sps] aufbaut.
+Da der Angriff mit Slowloris fehlschlug, musste eine alternative Möglichkeit für einen Angriff ausgesucht werden, um eine "zweite Meinung" einzubringen. Hierfür wurde ein selbst geschriebenes Python-Skript erstellt, welches Verbindungen mit dem Webserver der #htl3r.short[sps] aufbaut.
 
 ==== Vorbereitung des Angriffs mit Python
 Das Skript `dos.py` ist im folgenden Abschnitt genauer beschrieben. Die Methoden des Python-Skripts sind einzeln genauer erklärt.
@@ -189,12 +189,12 @@ Finished DoS attack at 2025-01-22 16:53:50.205103
 Aus der Ausgabe ist ersichtlich, dass der Server aus 1000 aufgebauten Verbindungen 674-mal nicht erreichbar war - ersichtlich in Zeile 9.
 
 ==== Ergebnisse des Python-Skripts
-Im Gegensatz zu den Tests während dem Slowloris-Angriff ist das Python-Skript erfolgreich gewesen. Im Laufe der Tests wurde die Verbindung auf den Webserver der #htl3r.short[sps] abgebrochen.
+Im Gegensatz zu den Tests während dem Slowloris-Angriff war das Python-Skript erfolgreich. Im Laufe der Tests wurde die Verbindung auf den Webserver der #htl3r.short[sps] abgebrochen.
 
 Erwähnenswert ist, dass die Anzahl der Verbindungen drastisch erhöht werden musste, um einen Effekt zu erzielen. Beim erfolgreichen Versuch wurden die Verbindungen auf 100.000 hochgestuft.
 
 #figure(
-  image("../assets/angriffe/dos/dos_success.png", width: 80%),
+  image("../assets/angriffe/dos/dos_success.jpg", width: 80%),
   caption: "Fehlermeldung beim Zugriff auf den Webserver der SPS"
 )
 

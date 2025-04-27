@@ -9,12 +9,12 @@ Für die IT-Topologie wurde ein #htl3r.long[ad] mit zwei Standorten konfiguriert
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("../assets/topologie/it-topologie/topo-it.png"),
+    image("../assets/it-topologie/topo-it.png"),
     caption: [logischer Netzplan der IT-Topologie]
   )
 )
 
-Der Standort Wien ist in vier #htl3r.shortpl[vlan] mikrosegmentiert. Zwischen den einzelnen #htl3r.shortpl[vlan] routet die FortiGate mittels Inter-#htl3r.short[vlan]-Routing die Subnetze. Dabei wird mittels Firewall-Policies der Zugriff zwischen den VLANs begrenzt. Der Standort Eisenstadt trennt nur zwischen Mitarbeiter-PCs und Servern. Hier übernimmt ebenfalls die FortiGate die Kommunikation zwischen den #htl3r.shortpl[vlan]. Die #htl3r.shortpl[vlan] werden virtuell am vSphere mittels Distributed Virtual Switch konfiguriert.
+Der Standort Wien ist in vier #htl3r.shortpl[vlan] mikrosegmentiert. Zwischen den einzelnen #htl3r.shortpl[vlan] routet die FortiGate mittels Inter-#htl3r.short[vlan]-Routing die Subnetze. Dabei wird mittels Firewall-Policies der Zugriff zwischen den VLANs begrenzt. Der Standort Eisenstadt trennt nur zwischen PCs des Personals und Servern. Hier übernimmt ebenfalls die FortiGate die Kommunikation zwischen den #htl3r.shortpl[vlan]. Die #htl3r.shortpl[vlan] werden virtuell am vSphere mittels Distributed Virtual Switch konfiguriert.
 
 #htl3r.fspace(
   total-width: 100%,
@@ -26,13 +26,13 @@ Der Standort Wien ist in vier #htl3r.shortpl[vlan] mikrosegmentiert. Zwischen de
       [370], [WIEN-DC], [10.1.18.0/24], [Domain Controller und Jump-Server],
       [371], [WIEN-SERVERS], [10.2.18.0/24], [FTP-Server und Elasticsearch-Node],
       [372], [WIEN-SOC], [10.3.18.0/24], [FortiSIEM-Supervisor, -Worker, -Collector, FortiAnalyzer, FortiManager],
-      [373], [WIEN-CLIENTS], [10.4.18.0/24], [Alle Mitarbeiter PCs],
+      [373], [WIEN-CLIENTS], [10.4.18.0/24], [Alle PCs des Personals],
     ),
     caption: [Die Mikrosegmentierung von Standort Wien]
   )
 )
 
-Für die Limitierung des Traffics werden auf der FortiGate Policies konfiguriert. Dabei werden nur die benötigten Services zur Weiterleitung erlaubt. Beispielsweise benötigt der Übergang vom #htl3r.short[soc]-#htl3r.short[vlan] in das Domain Controller #htl3r.short[vlan] die Protokolle #htl3r.short[http], #htl3r.short[https] und #htl3r.short[ldap], um die Verbindung von Domain Controllern und dem #htl3r.short[siem] sicher zu stellen. Für die Mitarbeiter PCs wird zur Kommunikation mit den Domain Controllern Kerberos, #htl3r.short[ldap] und #htl3r.short[dns] benötigt.
+Für die Limitierung des Traffics werden auf der FortiGate Policies konfiguriert. Dabei werden nur die benötigten Services zur Weiterleitung erlaubt. Beispielsweise benötigt der Übergang vom #htl3r.short[soc]-#htl3r.short[vlan] in das Domain Controller #htl3r.short[vlan] die Protokolle #htl3r.short[http], #htl3r.short[https] und #htl3r.short[ldap], um die Verbindung von Domain Controllern und dem #htl3r.short[siem] sicher zu stellen. Für die PCs des Personals wird zur Kommunikation mit den Domain Controllern Kerberos, #htl3r.short[ldap] und #htl3r.short[dns] benötigt.
 
 === Speichern von Konfigurationen
 
@@ -95,7 +95,7 @@ In jedem Unternehmen gibt es auch Abteilungen, die mittels #htl3r.shortpl[ou] re
 
 #pagebreak()
 
-Die Benutzer und Gruppen sollen so realitätsnah wie möglich ein Unternehmen widerspiegeln. Dabei wurde primär auf den Aspekt eines #htl3r.long[soc] Rücksicht genommen, die mithilfe des FortiAnalyzer und des FortiSIEM die simulierten Mitarbeiterinnen und Mitarbeiter in die Netzwerküberwachung einbinden soll. Mehr dazu in @faz und @fsm. Jeweils ein Nutzer pro Abteilung wird als Protected User ausgeführt.
+Die User und Gruppen sollen so realitätsnah wie möglich ein Unternehmen widerspiegeln. Dabei wurde primär auf den Aspekt eines #htl3r.long[soc] Rücksicht genommen, die mithilfe des FortiAnalyzer und des FortiSIEM die simulierten Mitarbeiterinnen und Mitarbeiter in die Netzwerküberwachung einbinden soll. Mehr dazu in @faz und @fsm. Jeweils ein Nutzer pro Abteilung wird als Protected User ausgeführt.
 
 #htl3r.fspace(
   total-width: 100%,
@@ -219,7 +219,7 @@ Um die beiden Domain-Controller besser zu administrieren wurde ein Jump-Server e
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("../assets/active-directory/ad-jump.png"),
+    image("../assets/active-directory/ad-jump.jpg"),
     caption: [logischer Netzplan der IT-Topologie]
   )
 )
@@ -244,7 +244,7 @@ Die physische 60E FortiGate wird mittels LAN-Kabel mit dem Switch der OT verbund
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("../assets/it-topologie/it-ot-verbindung.png"),
+    image("../assets/it-topologie/it-ot-verbindung.jpg"),
     caption: [Physische Verbindung der IT mit der OT]
   )
 )

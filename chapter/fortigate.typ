@@ -17,7 +17,7 @@ Von Fortinet wurde dem Team das Training für die Zertifizierung auf der Fortine
 
 #htl3r.fspace(
     figure(
-        image("../assets/fortigate/FAQ-snippet_Excel-3.png", width: 120%),
+        image("../assets/fortigate/FAQ-snippet_Excel-3.jpg", width: 120%),
         caption: "Ausschnitt der Excel-Tabelle mit den FAQs"
     )
 )\
@@ -32,7 +32,7 @@ Jeden Tag wurde eine Anzahl von 20 neuen FAQs gelernt. Man bekommt jeweils eine 
 
 #htl3r.fspace(
     figure(
-        image("../assets/fortigate/anki_screenshot_example_faq_closed.png", width: 100%),
+        image("../assets/fortigate/anki_screenshot_example_faq_closed.jpg", width: 100%),
         caption: "Beispiel einer verdeckten Karteikarte"
     )
 )
@@ -41,7 +41,7 @@ Mit dem Drücken einer Taste auf der Tastatur wird die richtige Antwort sichtbar
 
 #htl3r.fspace(
     figure(
-        image("../assets/fortigate/anki_screenshot_example_faq_open.png", width: 100%),
+        image("../assets/fortigate/anki_screenshot_example_faq_open.jpg", width: 100%),
         caption: "Beispiel einer offenen Karteikarte"
     )
 )
@@ -55,7 +55,7 @@ Im ersten Kapitel des Kurses lernt man die Grundlagen über die FortiGate, die #
 Im folgenden Bild erkennt man die physischen Ports eins bis drei, welche mit Aliassen versehen sind (bsp.: Port3 --> Inet), für die leichtere Lesbarkeit der Konfiguration. Jedes der angezeigten Interfaces hat eine IP-Adresse erhalten, entweder über #htl3r.short[dhcp] oder statisch. Dieser Unterschied kann aus der Grafik allerdings nicht entnommen werden, dafür ist ein tieferer Einblick notwendig. In der letzten Spalte sieht man die Protokolle "Ping", "#htl3r.short[https]", "#htl3r.short[ssh]" und "#htl3r.short[http]", diese Protokolle sind für den administrativen Zugriff auf die FortiGate, auf diesen Interfaces erlaubt.
 #htl3r.fspace(
     figure(
-        image("../assets/fortigate/interface-overview.png", width: 100%),
+        image("../assets/fortigate/interface-overview.jpg", width: 100%),
         caption: "Konfigurationsübersicht der Interfaces"
     )
 )
@@ -72,7 +72,7 @@ Das Kapitel umfasst ebenfalls, welche Möglichkeiten der Administrierung zur Ver
 
 #htl3r.fspace(
     figure(
-        image("../assets/fortigate/trusted-hosts.png", width: 70%),
+        image("../assets/fortigate/trusted-hosts.jpg", width: 70%),
         caption: "Beispielkonfiguration eines trusted hosts"
     )
 )
@@ -89,7 +89,7 @@ Als Beispiel: Die folgende Grafik zeigt ein einfaches Netzwerk (linke Seite), mi
 
 #htl3r.fspace(
     figure(
-        image("../assets/fortigate/szenario_policy.png", width: 120%),
+        image("../assets/fortigate/szenario_policy.jpg", width: 120%),
         caption: "Netzplan für die folgende Beispielkonfiguration einer Policy"
     )
 )
@@ -97,7 +97,7 @@ Als Beispiel: Die folgende Grafik zeigt ein einfaches Netzwerk (linke Seite), mi
 Wenn man den Zugriff für das #htl3r.short[lan] ins Internet erlauben möchte, wobei nur Adressen des #htl3r.short[lan]s sowie die User in der Gruppe "Internet_Access" zugelassen werden, würde man folgende Werte setzen:
 #htl3r.fspace(
     figure(
-        image("../assets/fortigate/simple_policy.png", width: 70%),
+        image("../assets/fortigate/simple_policy.jpg", width: 70%),
         caption: "Beispielhafte Policy Konfiguration"
     )
 )
@@ -113,7 +113,7 @@ Die selbe Konfiguration ist auch über die #htl3r.short[cli] möglich:
 #htl3r.full[nat] ist hauptsächlich dafür zuständig, private IP-Adressen auf öffentliche zu übersetzen, hierbei meist die Quell-Adresse. Da es nicht unendlich viele öffentlichen IP-Adressen gibt, ist dieses Verfahren hilfreich, um diese zu sparen, da mit Hilfe von #htl3r.full[pat] mehrere Adressen auf eine öffentliche zugewiesen werden und dann auch wieder auf die privaten zurück zu übersetzen. NAT übersetzt Adressen entweder anhand der outgoing-IP-Adresse des Interfaces oder anhand eines Pools. Das folgende Bild zeigt die NAT-Konfigurationsoptionen, welche pro Firewall-Policy zur Verfügung stehen:
 #htl3r.fspace
     #figure(
-        image("../assets/fortigate/policy_NAT.png", width: 80%),
+        image("../assets/fortigate/policy_NAT.jpg", width: 80%),
         caption: "Beispielhafte NAT Policy Konfiguration"
     )
 )
@@ -134,7 +134,7 @@ Zu den häufigsten Anwendungsfällen zählt ein Admin-Zugriff von Extern: Ein Ad
 
 #htl3r.fspace(
     figure(
-        image("../assets/fortigate/VIPs.png", width: 80%),
+        image("../assets/fortigate/VIPs.jpg", width: 80%),
         caption: "Beispielhafte VIP Konfiguration"
     )
 )
@@ -194,28 +194,28 @@ Folgende Bilder zeigen die Erstellung eines lokalen Benutzers auf der FortiGate:
 1. Art des Kontos bestimmen:
 #htl3r.fspace(
     figure(
-        image("../assets/fortigate/user-create1.png", width: 40%),
+        image("../assets/fortigate/user-create1.jpg", width: 40%),
         caption: "Benutzer erstellen Schritt 1"
     )
 )
 2. Benutzername und Passwort setzen:
 #htl3r.fspace(
     figure(
-        image("../assets/fortigate/user-create2.png", width: 70%),
+        image("../assets/fortigate/user-create2.jpg", width: 70%),
         caption: "Benutzer erstellen Schritt 2"
     )
 )
 3. Falls gewollt Zwei-Faktor Authentifizierung aktivieren:
 #htl3r.fspace(
     figure(
-        image("../assets/fortigate/user-create3.png", width: 80%),
+        image("../assets/fortigate/user-create3.jpg", width: 80%),
         caption: "Benutzer erstellen Schritt 3"
     )
 )
 4. Benutzerkonto aktivieren und wenn gewollt zu Gruppen hinzufügen:
 #htl3r.fspace(
     figure(
-        image("../assets/fortigate/user-create4.png", width: 80%),
+        image("../assets/fortigate/user-create4.jpg", width: 80%),
         caption: "Benutzer erstellen Schritt 4"
     )
 )
@@ -236,7 +236,7 @@ Für Active Directory Umgebungen gibt es zwei Methoden des #htl3r.long[sso] Proz
 Beispiel: #htl3r.short[dc]-agent mode, nachdem die #htl3r.short[dc]-agents und collector-agent in der Domäne installiert wurden, wird auf der FortiGate folgendes entweder über die #htl3r.short[gui] oder #htl3r.short[cli] Konfiguriert:
 #htl3r.fspace(
     figure(
-        image("../assets/fortigate/collector-agent-config.png", width: 80%),
+        image("../assets/fortigate/collector-agent-config.jpg", width: 80%),
         caption: "Collector-agent Einbindung"
     )
 )
@@ -265,7 +265,7 @@ Bei der Full-SSL-Inspection kann es allerdings zu Zertifikat-Warnungen kommen. D
 Es sind default Profile vorhanden, das Sperrsymbol zeigt, dass diese Profile nicht bearbeitet werden können. Zusätzlich zu dem anpassbaren "custom-deep-inspection profile" können auch eigene Profile erstellt werden.
 #htl3r.fspace(
     figure(
-        image("../assets/fortigate/ssl-inspection-profiles.png", width: 80%),
+        image("../assets/fortigate/ssl-inspection-profiles.jpg", width: 80%),
         caption: "Default SSL-Profile"
     )
 )
@@ -273,7 +273,7 @@ Es sind default Profile vorhanden, das Sperrsymbol zeigt, dass diese Profile nic
 Beim Konfigurieren der SSL-Optionen kann man wählen, welche Richtung inspiziert wird (Ingoing/Outgoing). "Multiple Clients Connecting to Multiple Servers" ist Outgoing und ist gedacht um den Traffic der eigenen Mitarbeiter einzuschränken. "Protecting SSL Server" schützt den eigen-betriebenen Server, wie zum Beispiel ein Web Server, welcher von außen erreichbar ist.
 #htl3r.fspace(
     figure(
-        image("../assets/fortigate/SSL-inspection_options.png", width: 80%),
+        image("../assets/fortigate/SSL-inspection_options.jpg", width: 80%),
         caption: "SSL-Profile Optionen"
     )
 )
@@ -329,14 +329,14 @@ Falls ein Virus erkannt wird, wird dem Client eine Block-Site angezeigt.
 
 #htl3r.fspace(
         figure(
-            image("../assets/fortigate/av-block-page.png", width: 80%),
+            image("../assets/fortigate/av-block-page.jpg", width: 80%),
             caption: "Block-Page des Eicar-Testfiles"
         )
     )
 
 #htl3r.fspace(
         figure(
-            image("../assets/fortigate/AV-profile.png", width: 80%),
+            image("../assets/fortigate/AV-profile.jpg", width: 80%),
             caption: "GUI-Konfiguration eines Antivirus-Profiles"
         )
     )
@@ -376,14 +376,14 @@ Für URL Filter gibt es jedoch nicht alle Actions die es für FortiGuard Kategor
 
 #htl3r.fspace(
         figure(
-            image("../assets/fortigate/webfilter_categories.png", width: 80%),
-            caption: "GUI-Konfiguration eines Webfilter-Profiles mit Kategorien"
+            image("../assets/fortigate/webfilter_categories.jpg", width: 80%),
+            caption: "GUI-Konfiguration eines Webfilter-Profiles mit \n Kategorien"
         )
     )
 
 #htl3r.fspace(
         figure(
-            image("../assets/fortigate/webfilter-profile.png", width: 80%),
+            image("../assets/fortigate/webfilter-profile.jpg", width: 80%),
             caption: "GUI-Konfiguration eines Webfilter-Profiles mit statischen URL-Filtern"
         )
     )
@@ -424,7 +424,7 @@ Beim Hinzufügen von Signaturen zu einem IPS Profil kann man folgende Einstellun
 
 #htl3r.fspace(
         figure(
-            image("../assets/fortigate/IPS_Signatures2.png", width: 120%),
+            image("../assets/fortigate/IPS_Signatures2.jpg", width: 120%),
             caption: "Signatur Datenbank bei einem IPS Profile"
         )
     )
@@ -452,7 +452,7 @@ Für einen #htl3r.short[ssl] #htl3r.short[vpn] müssen folgende Schritte abgearb
 In der unten gezeigten Grafik wird ein SSL-VPN Portal konfiguriert. Hierbei werden User auf jeweils eine VPN Verbindung gleichzeitig beschränkt. Der Tunnel-Mode wird verwendet und Split-Tunneling ist deaktiviert. Für die Zuweisung von IP-Adressen im Tunnel an die Clients, wird der Pool "SSLVPN_TUNNEL_ADDR1" verwendet.
 #htl3r.fspace(
         figure(
-            image("../assets/fortigate/ssl-profile.png", width: 100%),
+            image("../assets/fortigate/ssl-profile.jpg", width: 100%),
             caption: "Konfiguration eines SSL Portals"
         )
     )
@@ -460,7 +460,7 @@ In der unten gezeigten Grafik wird ein SSL-VPN Portal konfiguriert. Hierbei werd
 Die folgende Grafik zeigt die SSL-VPN Einstellungen, diese gelten für alle SSL-VPN Tunnel. Man setzt den Status des SSL-VPNs, auf welchen Interfaces die Firewall Session-Anfragen annimmt, der Port welcher für die Verbindung verwendet werden soll und das Zertifikat mit dem die Firewall identifiziert wird.
 #htl3r.fspace(
         figure(
-            image("../assets/fortigate/ssl-vpn-settings.png", width: 90%),
+            image("../assets/fortigate/ssl-vpn-settings.jpg", width: 90%),
             caption: "Konfiguration der SSL Settings"
         )
     )
@@ -469,7 +469,7 @@ Die Konfiguration des Profiles reicht allerdings noch nicht aus, um den Traffic 
 
 Zusätzlich dazu, wenn man im Profile Proxy-based Mode auswählt muss man darauf achten, dass in der Firewall Policy der Mode auch Proxy-based-Inspection ist.
 
-=== SD-WAN Configuration and Monitoring
+=== SD-WAN Configuration und Monitoring
 #htl3r.full[sdwan] ist ein Teil von #htl3r.full[sdn], dabei dreht sich alles um einen dynamischen, effizienten und Applikations-basierten Weiterleitungsprozess. Die #htl3r.short[sdwan] Lösung von Fortinet nennt sich Secure #htl3r.short[sdwan], da mithilfe der FortiOS-Funktionen Sicherheit automatisch implementiert wird. Dafür werden Features wie IPsec, Link Überwachung, fortgeschrittenes Routing, traffic-shaping und UTM-Inspection verwendet. Anhand von Adresse, Protokoll, Service oder Applikation werden die Daten weitergeleitet. Allerdings funktioniert #htl3r.short[sdwan] nur für Outgoing-Traffic, das Retour-Paket könnte also einen anderen Pfad nehmen. \
 
 Der häufigste Anwendungsfall von #htl3r.short[sdwan] - laut Fortinet - ist DIA - Direct Internet Access. Hierbei gibt es mehrere Uplinks, welche sich in Kosten und Performance unterscheiden. Kritischer Traffic wird über die Links mit der besten Performance weitergeleitet, während non-critical Traffic nach einem best-effort System übertragen wird. Die teuersten Links werden entweder nur als Backup oder nur für den kritischen Traffic verwendet.
@@ -478,7 +478,7 @@ Ein weiterer Anwendungsfall ist Site-to-Site Traffic, also die Verbindung von St
 
 #htl3r.fspace(
         figure(
-            image("../assets/fortigate/site-to-site-sdwan-scenario.png", width: 100%),
+            image("../assets/fortigate/site-to-site-sdwan-scenario.jpg", width: 100%),
             caption: "SD-WAN Site-to-Site Szenario"
         )
     )
@@ -497,7 +497,7 @@ Ein weiterer Anwendungsfall ist Site-to-Site Traffic, also die Verbindung von St
 Das folgende Bild zeigt, dass die Zonen "Inside" und "Outside" erstellt wurden und die Members "LAN", "WAN1" und "WAN2" erstellt und den Zonen zugewiesen worden sind.
 #htl3r.fspace(
         figure(
-            image("../assets/fortigate/sdwan-zone-members.png", width: 80%),
+            image("../assets/fortigate/sdwan-zone-members.jpg", width: 80%),
             caption: "SD-WAN Zonen und Members"
         )
     )
@@ -505,7 +505,7 @@ Das folgende Bild zeigt, dass die Zonen "Inside" und "Outside" erstellt wurden u
 Die untenstehende Grafik zeigt den ersten Teil einer SD-WAN Rule, hierbei kann die Source nach Adresse und User gefiltert werden, die Destination nach Adresse, Protokoll oder Internet Service.
 #htl3r.fspace(
         figure(
-            image("../assets/fortigate/sdwan-policy-part1.png", width: 70%),
+            image("../assets/fortigate/sdwan-policy-part1.jpg", width: 70%),
             caption: "SD-WAN Rule Part eins"
         )
     )
@@ -513,17 +513,17 @@ Die untenstehende Grafik zeigt den ersten Teil einer SD-WAN Rule, hierbei kann d
 Die nächste Grafik zeigt den zweiten Teil einer SD-WAN Regel, hierbei wird ausgewählt nach welchem Prinzip das "beste" Interface gewählt werden soll.
 #htl3r.fspace(
         figure(
-            image("../assets/fortigate/sdwan-policy-part2.png", width: 110%),
+            image("../assets/fortigate/sdwan-policy-part2.jpg", width: 110%),
             caption: "SD-WAN Rule Part zwei"
         )
     )
 
-Die Regeln werden wie Firewall Policies von oben nach unten durchsucht, allerdings erlauben SD-WAN Regeln keinen Traffic. Es muss also eine passende Firewall Policy geben, welche den Traffic erlaubt, damit im nächsten Schritt SD-WAN verwendet werden kann. Falls keine SD-WAN Regel zutrifft, wird die Implicit-Regel verwendet. Diese verwendet einfach die normale Routing Tabelle, wobei automatisch loadbalancing aktiviert wird.
+Die Regeln werden - wie Firewall Policies - von oben nach unten durchsucht, allerdings erlauben SD-WAN Regeln keinen Traffic. Es muss also eine passende Firewall Policy geben, welche den Traffic erlaubt, damit im nächsten Schritt SD-WAN verwendet werden kann. Falls keine SD-WAN Regel zutrifft, wird die Implicit-Regel verwendet. Diese verwendet einfach die normale Routing Tabelle, wobei automatisch loadbalancing aktiviert wird.
 
 Das folgende Bild zeigt die zugehörige Firewall Policy zu der zuvor konfigurierten SD-WAN Regel.
 #htl3r.fspace(
         figure(
-            image("../assets/fortigate/sdwan-firewall-policy.png", width: 80%),
+            image("../assets/fortigate/sdwan-firewall-policy.jpg", width: 80%),
             caption: "Die passende Firewall Policy zur SD-WAN Regel"
         )
     )
@@ -542,7 +542,7 @@ Definiert wird die HA-Gruppe mit einem Namen, einer Nummer, einem Passwort und d
 #htl3r.fspace(
     [
         #figure(
-            image("../assets/fortigate/ha-config.png", width: 100%),
+            image("../assets/fortigate/ha-config.jpg", width: 100%),
             caption: "Konfiguration eines HA Members"
         ) <ha-gui>
     ]
@@ -557,7 +557,7 @@ Definiert wird die HA-Gruppe mit einem Namen, einer Nummer, einem Passwort und d
 )  <ha-cli>
 #htl3r.fspace(
         figure(
-            image("../assets/fortigate/ha-cluster-cut.png", width: 110%),
+            image("../assets/fortigate/ha-cluster-cut.jpg", width: 110%),
             caption: "Status eines HA Clusters"
         )
     )
@@ -582,4 +582,3 @@ Zusammengefasst ist die FortiGate eine Firewall mit einer Vielzahl an modernen F
 
 
 //#total-words Words insgesamt
-

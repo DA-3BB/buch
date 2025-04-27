@@ -17,13 +17,13 @@ Jede #htl3r.short[adom] hat dabei eigene Geräte, Policy Packages und Objekte we
 )
 #htl3r.fspace(
   figure(
-    image("../assets/fortimanager/create_new_adom.png", width: 110%),
+    image("../assets/fortimanager/create_new_adom.jpg", width: 110%),
     caption: "Erstellen einer neuen ADOM"
   )
 )
 
 === Fazit
-Der FortiManager eignet sich für große Unternehmen, mit einer hohen Anzahl an Fortinet Geräten. Die Verwaltung wird stark vereinfacht und es gibt gute Möglichkeiten für das gleichzeitige Arbeiten mehrerer Administratoren. 
+Der FortiManager eignet sich für große Unternehmen, mit einer hohen Anzahl an Fortinet Geräten. Die Verwaltung wird stark vereinfacht und es gibt gute Möglichkeiten für das gleichzeitige Arbeiten mehrerer Administratoren.
 
 /*
 //=== Policy Packages

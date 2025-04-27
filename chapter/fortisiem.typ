@@ -32,17 +32,17 @@ Für den Betrieb eines FortiSIEMs sind Grundkonfigurationen notwendig. Damit das
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("assets/fortisiem.png"),
+    image("assets/fortisiem.jpg"),
     caption: [Konfiguration des E-Mail-Gateways]
   )
 )
 */
 
-Benutzer und Rollen sind ein wichtiger Bestandteil in der Konfiguration des FortiSIEMs. Dadurch können spezifische Bereiche des FortiSIEMs begrenzt werden. Darunter fallen neben Zugriff auf bestimmte Daten auch Informationen von #htl3r.short[cmdb]-Reports, Begrenzung des #htl3r.short[gui]-Zugriffs und die Verhinderung von verzerrten Rohdaten in der Datenbank. Letzteres ist für eine #htl3r.short[dsgvo]-konforme Speicherung von Daten notwendig @dsgvo.
+User und Rollen sind ein wichtiger Bestandteil in der Konfiguration des FortiSIEMs. Dadurch können spezifische Bereiche des FortiSIEMs begrenzt werden. Darunter fallen neben Zugriff auf bestimmte Daten auch Informationen von #htl3r.short[cmdb]-Reports, Begrenzung des #htl3r.short[gui]-Zugriffs und die Verhinderung von verzerrten Rohdaten in der Datenbank. Letzteres ist für eine #htl3r.short[dsgvo]-konforme Speicherung von Daten notwendig @dsgvo.
 
-Beispielsweise kann eine zertifizierte FortiGate-Mitarbeiterin nur die Daten von Firewalls abrufen oder die Administratorinnen und Administratoren einer #htl3r.short[ad] Infrastruktur nur Daten von Windows-Servern einsehen.
+Beispielsweise kann eine zertifizierte FortiGate-Mitarbeiterin nur die Daten von Firewalls abrufen oder der Administrator einer #htl3r.short[ad] Infrastruktur nur Daten von Windows-Servern einsehen.
 
-Die Benutzer können neben lokal angelegten Accounts in der #htl3r.short[cmdb] durch einen externen #htl3r.short[ldap] und #htl3r.short[radius] Server authentifiziert werden. Im Falle der Topologie wurde durch #htl3r.short[ldap] auf die errichtete #htl3r.short[ad] Infrastruktur zugegriffen. Für die genaue Abbildung der Benutzer und Gruppen im #htl3r.long[ad] siehe @ad-infra.
+Die User können neben lokal angelegten Accounts in der #htl3r.short[cmdb] durch einen externen #htl3r.short[ldap] und #htl3r.short[radius] Server authentifiziert werden. Im Falle der Topologie wurde durch #htl3r.short[ldap] auf die errichtete #htl3r.short[ad] Infrastruktur zugegriffen. Für die genaue Abbildung der User und Gruppen im #htl3r.long[ad] siehe @ad-infra.
 
 === Geräte lokalisieren <fsm-cert-agents>
 
@@ -61,7 +61,7 @@ Die Events können beim Abrufen nach unterschiedlichen Attributen gefiltert werd
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("../assets/fortisiem/fsm-analytics2.png"),
+    image("../assets/fortisiem/fsm-analytics2.jpg"),
     caption: [Auszug aus den FortiSIEM-Analytics]
   )
 )
@@ -72,14 +72,14 @@ Regeln sind im FortiSIEM essenziell für das Generieren von #emph("Incidents") i
 
 Mithilfe der #htl3r.long[pam] Daten können #emph("Performance Rules") eingerichtet werden. Diese können beispielsweise bei Erreichung eines bestimmten Speicherlimits oder bei Überschreitung der #htl3r.short[cpu]-Auslastung ein #emph("Incident") generieren. Im #emph("Analytics Tab") können auch direkt beim Erstellen von Abfragen Regeln konfiguriert werden. FortiSIEM ist auch mit MITREs #htl3r.short[attck]-Datenbank kompatibel, um Regeln mit den neusten globalen Sicherheitslücken zu verbinden.
 
-#emph("Incidents") geben Systemadministratoren einen Überblick über die derzeitigen Schwachstellen in einem Netzwerk. Anhand den Daten generiert das FortiSIEM ein #emph("Incident")-Dashboard. Über #emph("Notification Policies") lassen sich automatisierte E-Mails oder #htl3r.short[sms] verschicken, die mit vordefinierten E-Mail-Templates ausgestattet sind und individuelle Nachrichten beinhalten können.
+#emph("Incidents") geben Systemadministratorinnen und Systemadministratoren einen Überblick über die derzeitigen Schwachstellen in einem Netzwerk. Anhand den Daten generiert das FortiSIEM ein #emph("Incident")-Dashboard. Über #emph("Notification Policies") lassen sich automatisierte E-Mails oder #htl3r.short[sms] verschicken, die mit vordefinierten E-Mail-Templates ausgestattet sind und individuelle Nachrichten beinhalten können.
 
 Für die Überwachung von systemkritischen Applikationen stellt das FortiSIEM sogenannte #emph("Business Services") bereit. Dadurch können spezielle #emph("Incidents") für Applikationen wie Oracle und SQL-Datenbanken oder Microsoft-Exchange-Server generiert werden. Diese Daten können in individuellen #emph("Business Service Dashboards") sichtbar gestaltet werden.
 
 #htl3r.fspace(
   total-width: 86%,
   figure(
-    image("../assets/fortisiem/fsm-dashboard2.png"),
+    image("../assets/fortisiem/fsm-dashboard2.jpg"),
     caption: [Auszug aus dem FortiSIEM-Dashboard]
   )
 )
@@ -200,7 +200,7 @@ Die Installationsanforderungen für die Worker-Node des FortiSIEM (Version 7.2.4
 #htl3r.fspace(
   total-width: 95%,
   figure(
-    image("../assets/fortisiem/fsm-wk.png"),
+    image("../assets/fortisiem/fsm-wk.jpg"),
     caption: [Status der Supervisor- und Worker-Nodes im FortiSIEM]
   )
 )
@@ -218,7 +218,7 @@ Die Installationsanforderungen für die Worker-Node des FortiSIEM (Version 7.2.4
 #htl3r.fspace(
   total-width: 91%,
   figure(
-    image("../assets/fortisiem/fsm-cl.png"),
+    image("../assets/fortisiem/fsm-cl.jpg"),
     caption: [Status der Collector-Nodes im FortiSIEM]
   )
 )
@@ -236,7 +236,7 @@ Für das Elasticsearch wurde ein Ubuntu-Server verwendet. Hierbei wird nicht der
   text: read("../assets/fortisiem/elasticsearch_script1.sh")
 )
 
-Für das Betreiben eines Elasticsearch auf einem Linux-Server müssen systemweite Konfigurationen in der Datei `/etc/security/limits.conf` übernommen werden. Dabei muss für den Benutzer `ubuntu` die Anzahl an Threads auf 4096 und die Anzahl an File Descriptors auf 65535 gesetzt werden. Ebenfalls ist empfohlen, Memory-Swapping zu deaktivieren. Um dies auch nach einem Neustart beizubehalten, sind auch alle Swap-Partitionen in `/etc/fstab` auszukommentieren.
+Für das Betreiben eines Elasticsearch auf einem Linux-Server müssen systemweite Konfigurationen in der Datei `/etc/security/limits.conf` übernommen werden. Dabei muss für den User `ubuntu` die Anzahl an Threads auf 4096 und die Anzahl an File Descriptors auf 65535 gesetzt werden. Ebenfalls ist empfohlen, Memory-Swapping zu deaktivieren. Um dies auch nach einem Neustart beizubehalten, sind auch alle Swap-Partitionen in `/etc/fstab` auszukommentieren.
 
 #htl3r.code-file(
   caption: "Ubuntu-Server-Konfiguration für Elasticsearch",
@@ -279,22 +279,22 @@ Für die Nutzung von Agents sind im FortiSIEM Agent-User zu konfigurieren. Durch
 
 Die Windows-Server am Standort Wien werden auf ihre Ressourcen und Applikationen überwacht. Zusätzlich werden die Security, System und Application Logs unter Windows abgerufen. Die Installation erfolgt über das verteilen der Agents mittels #htl3r.short[ftp]-Server. Nach der Installation des Windows-Agents müssen im #htl3r.long[ad] Security Audit Policies konfiguriert werden. Windows-Server erzeugen nativ Logs, die im Event-Viewer zu sehen sind. Diese reichen aber nicht aus und müssen mittels #htl3r.shortpl[gpo] erweitert werden. Hierfür wird die Security Audit #htl3r.short[gpo] mit der #htl3r.long[ou] für die Domain Controller verknüpft. Anschließend können die Events im FortiSIEM abgerufen werden.
 
-Neben Metriken und Logs können auch Dateien und Verzeichnisse auf ihre Änderungen überprüft werden. Im Falle des Domain-Controllers wird das Verzeichnis des lokalen sowie Enterprise Administrators und der SYSVOL Ordner im #htl3r.long[ad] überwacht. Falls zum Beispiel ein Angreifer im Policies Ordner von SYSVOL ein Powershell-Script hinterlässt, wird dieses durch ein Alert im Dashboard bekannt gegeben. Eine weitere Maßnahme zur Abhärtung von Windows-Server sind die Überwachung von Registry-Einträgen. FortiSIEM bietet hier die Option nach bestimmten Schlüsseln in den Stammverzeichnissen der Windows-Registry zu suchen. Die gesamte Konfiguration bildet ein Agent-Template, das auf die Windows-Server im #htl3r.long[ad] zugewiesen wird.
+Neben Metriken und Logs können auch Dateien und Verzeichnisse auf ihre Änderungen überprüft werden. Im Falle des Domain-Controllers wird das Verzeichnis des lokalen sowie Enterprise Administrators und der SYSVOL Ordner im #htl3r.long[ad] überwacht. Falls zum Beispiel eine Angreiferin oder ein Angreifer im Policies Ordner von SYSVOL ein Powershell-Script hinterlässt, wird dieses durch ein Alert im Dashboard bekannt gegeben. Eine weitere Maßnahme zur Abhärtung von Windows-Server sind die Überwachung von Registry-Einträgen. FortiSIEM bietet hier die Option nach bestimmten Schlüsseln in den Stammverzeichnissen der Windows-Registry zu suchen. Die gesamte Konfiguration bildet ein Agent-Template, das auf die Windows-Server im #htl3r.long[ad] zugewiesen wird.
 
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("../assets/fortisiem/fsm-agent-template.png"),
+    image("../assets/fortisiem/fsm-agent-template.jpg"),
     caption: [Auszug aus der Agent-Template-Konfiguration innerhalb des FortiSIEM]
   )
 )
 
-Nach Abschluss der Konfiguration können im Dashboard schon die ersten Incidents beobachtet werden. Sortiert nach der Dringlichkeit werden die Geräte und Benutzer angezeigt, welche die meisten Incidents hervorrufen. Nach näherer Betrachtung eines Geräts kann die Zeitspanne der aufgetretenen Incidents beobachtet werden. Dadurch berechnet das FortiSIEM auch einen Incident-Score, der durch die Anzahl an aufgetrenenen Ereignissen steigt. Auf Basis der Incidents können für die Mitarbeiter des Unternehmens Cases erstellt werden, um den Überblick über Sicherheitsmaßnahmen zu behalten.
+Nach Abschluss der Konfiguration können im Dashboard schon die ersten Incidents beobachtet werden. Sortiert nach der Dringlichkeit werden die Geräte und User angezeigt, welche die meisten Incidents hervorrufen. Nach näherer Betrachtung eines Geräts kann die Zeitspanne der aufgetretenen Incidents beobachtet werden. Dadurch berechnet das FortiSIEM auch einen Incident-Score, der durch die Anzahl an aufgetrenenen Ereignissen steigt. Auf Basis der Incidents können für die Mitarbeiterinnen und Mitarbeiter des Unternehmens Cases erstellt werden, um den Überblick über Sicherheitsmaßnahmen zu behalten.
 
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("../assets/fortisiem/fsm-incident-jump.png"),
+    image("../assets/fortisiem/fsm-incident-jump.jpg"),
     caption: [Incidents des Jump-Servers am Standort Wien]
   )
 )
@@ -304,7 +304,7 @@ Die Konfiguration des Agents für Linux-Server basiert auf den gleichen vorher g
 #htl3r.fspace(
   total-width: 80%,
   figure(
-    image("../assets/fortisiem/fsm-investigate.png"),
+    image("../assets/fortisiem/fsm-investigate.jpg"),
     caption: [Der Enumeration of System Information Incident]
   )
 )
@@ -314,20 +314,20 @@ Die FortiGate wird zusätzlich zum FortiAnalyzer durch das FortiSIEM über die #
 #htl3r.fspace(
   total-width: 80%,
   figure(
-    image("../assets/fortisiem/fsm-fg.png"),
+    image("../assets/fortisiem/fsm-fg.jpg"),
     caption: [Die Dashboard-Widgets für die FortiGate]
   )
 )
 
 #pagebreak()
 
-Um die Benutzer des #htl3r.short[ad] in das FortiSIEM einzubinden, kann auch hier ein externer #htl3r.short[ldap]-Server zur Authentifizierung implementiert werden. Als Base Distinguished Name wird `CN=%s,CN=Users,DC=wien,DC=3bb-testlab,DC=at` definiert. Die Variable `%s` wird zum Einfügen des Benutzernamens beim Login verwendet. Nach erfolgreicher Authentifizierung mit dem Domain-Controller kann nun in der #htl3r.long[cmdb] ein User erstellt und dem #htl3r.short[ldap]-Server zugewiesen werden.
+Um die User des #htl3r.short[ad] in das FortiSIEM einzubinden, kann auch hier ein externer #htl3r.short[ldap]-Server zur Authentifizierung implementiert werden. Als Base Distinguished Name wird `CN=%s,CN=Users,DC=wien,DC=3bb-testlab,DC=at` definiert. Die Variable `%s` wird zum Einfügen des Usernamen beim Login verwendet. Nach erfolgreicher Authentifizierung mit dem Domain-Controller kann nun in der #htl3r.long[cmdb] ein User erstellt und dem #htl3r.short[ldap]-Server zugewiesen werden.
 
 #htl3r.fspace(
   //total-width: 55%,
   figure(
-    image("../assets/fortisiem/fsm-ldap.png", width: 65%),
-    caption: [Login am FortiSIEM durch den SOC-Benutzer]
+    image("../assets/fortisiem/fsm-ldap.jpg", width: 65%),
+    caption: [Login am FortiSIEM durch den SOC-User]
   )
 )
 
