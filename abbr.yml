@@ -349,9 +349,9 @@ gpio:
     singular: General Purpose Input/Output,
   description: Ein Kontaktstifft der als Eingabe oder Ausgabekontakt am Raspberry Pi vorhanden ist.
 
-fub:
+fup:
   short:
-    singular: FUB
+    singular: FUP
   long:
     singular: Funktionsplan
   description: Eine grafische Programmiersprache der Siemens LOGO!, die mit logische Funktionsblöcken funktioniert.
