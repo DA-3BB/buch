@@ -8,7 +8,7 @@ Im folgenden Kapitel wird die Konfiguration der Website des #htl3r.short[http]-S
 Der #htl3r.short[lwe] generiert bei neu erstellten Projekten benötigte Seiten. Diese sind in der untenstehenden Abbildung aufgelistet und werden im folgenden genauer beschrieben.
 
 #figure(
-  image("../assets/lwe/seitenuebersicht.png", width: 25%),
+  image("../assets/lwe/seitenuebersicht.jpg", width: 25%),
   caption: "Seiten des LOGO! Web-Editors"
 )
 
@@ -19,7 +19,7 @@ Pages sind die Seiten, die am #htl3r.short[http]-Server der #htl3r.short[sps] ge
 #pagebreak()
 
 #figure(
-  image("../assets/lwe/login-seite.png", width: 65%),
+  image("../assets/lwe/login-seite.jpg", width: 65%),
   caption: "Login-Seite im LOGO! Web-Editor"
 )
 
@@ -58,7 +58,7 @@ Die Konfiguration lautet (vereinfacht) wie folgt:
 Für die Home Page werden die Components, welche der #htl3r.short[lwe] zur Verfügung stellt, benötigt. Die gegebene Auswahl ist die folgende:
 
 #figure(
-  image("../assets/lwe/component.png", width: 55%),
+  image("../assets/lwe/component.jpg", width: 55%),
   caption: "Komponente für den Webserver"
 )
 
@@ -71,14 +71,14 @@ Die Push Buttons ("Schalter") setzen den Wert des Merkers „dauerhaft“ – al
 Die Konfiguration der Home Page kann nun mithilfe der Komponenten gestartet werden. Klickt man auf die Page, so öffnet sich eine weiße Seite. Rechts findet man die betroffenen Properties, welche als erstes betrachtet werden.
 
 #figure(
-  image("../assets/lwe/home-prop.png", width: 45%),
+  image("../assets/lwe/home-prop.jpg", width: 45%),
   caption: "Home Page - Properties"
 )
 
 Unter Styles kann man ein Hintergrundbild für die Website auswählen und die Auflösung des Bildes bearbeiten. In diesem Fall wird ein Bild des Bahnnetzwerks gewählt.
 
 #figure(
-  image("../assets/lwe/home-3bb.png", width: 100%),
+  image("../assets/lwe/home-3bb.jpg", width: 100%),
   caption: "Home Page - Hintergrundbild"
 )
 
@@ -94,7 +94,7 @@ Es bietet sich an, die vier Weichen mit Push Buttons und den Start- sowie Stopp-
 Zieht man einen Push-Button auf die Seite, so kann man dessen Eigenschaften ("Properties") betrachten.
 
 #figure(
-  image("../assets/lwe/push-start.png", width: 50%),
+  image("../assets/lwe/push-start.jpg", width: 50%),
   caption: "Default-Properties eines Push-Buttons"
 )
 
@@ -105,7 +105,7 @@ Neben allgemeinen Punkten wie der Größe und Position des Buttons oder dem Bild
 Der bearbeitete Button sieht nun wie folgt aus und kann nun auf die Position der Weiche 1 im Hintergrundbild gezogen werden.
 
 #figure(
-  image("../assets/lwe/push-done.png", width: 50%),
+  image("../assets/lwe/push-done.jpg", width: 50%),
   caption: "Bearbeitete Properties eines Push-Buttons"
 )
 
@@ -118,7 +118,7 @@ Weiters wurden auch ein Logo sowie ein Feld mit dem aktuellen Datum und Uhrzeit 
 In der endgültigen Konfiguration wird im Browser folgende Webseite angezeigt
 
 #figure(
-  image("../assets/lwe/finito.png", width: 100%),
+  image("../assets/lwe/finito.jpg", width: 100%),
   caption: "Gesamtes Design der Website"
 )
 
@@ -126,7 +126,7 @@ In der endgültigen Konfiguration wird im Browser folgende Webseite angezeigt
 Um die Website auf die #htl3r.short[sps] zu spielen, benötigt die #htl3r.short[sps] eine Mikro-SD-Karte. Im #htl3r.short[lwe] gibt es oben im Menü den folgenden Button:
 
 #figure(
-  image("../assets/lwe/deploy.png", width: 35%),
+  image("../assets/lwe/deploy.jpg", width: 35%),
   caption: "Button für das Speichern auf die SD-Karte"
 )
 
@@ -135,7 +135,7 @@ Ist der Upload abgeschlossen, so kann man die SD-Karte in die #htl3r.short[sps] 
 #pagebreak()
 
 #figure(
-  image("../assets/lwe/signin.png", width: 80%),
+  image("../assets/lwe/signin.jpg", width: 80%),
   caption: "Anmeldung auf der SPS zur neuen Website"
 )
 

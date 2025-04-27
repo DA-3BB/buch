@@ -18,7 +18,7 @@ python3 ModBusSploit-main/start.py
 ```
 #htl3r.fspace(
   figure(
-    image("../assets/injection/modbussploit-start.png"),
+    image("../assets/injection/modbussploit-start.jpg"),
     caption: "ModBusSploit gestartet"
   )
 )
@@ -41,7 +41,7 @@ exploit
 ```
 #htl3r.fspace(
   figure(
-    image("../assets/injection/modbussploit-angirff.png"),
+    image("../assets/injection/modbussploit-angirff.jpg"),
     caption: "Injektion Angriff ausgeführt"
   )
 )
@@ -50,10 +50,10 @@ Der Verlauf kann nun auch im Wireshark betrachtet werden. Dabei ist zu sehen, da
 
 #htl3r.fspace(
   figure(
-    image("../assets/injection/wireshark-komplette-injection.png", width: 120%),
+    image("../assets/injection/wireshark-komplette-injection.jpg", width: 120%),
     caption: "Injektion Angriff im Wireshark"
   )
 )
 
 === Fazit
-Für eine Modbus Injektion wird mehr Wissen über die Steuerung als bei Angriffen wie dem Fuzzing oder dem #htl3r.short[mitm] benötigt. Da sowohl die Unit ID bekannt sein muss als auch das Wissen, welche Register verwendet werden. Allerdings kann das sehr einfach durch ausprobieren beziehungsweise durch andere Angriffe herrausgefunden werden. 
+Für eine Modbus Injektion wird mehr Wissen über die Steuerung als bei Angriffen wie dem Fuzzing oder dem #htl3r.short[mitm] benötigt. Da sowohl die Unit ID bekannt sein muss als auch das Wissen, welche Register verwendet werden. Allerdings kann das sehr einfach durch ausprobieren beziehungsweise durch andere Angriffe herrausgefunden werden.

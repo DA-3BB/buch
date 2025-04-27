@@ -27,7 +27,7 @@ Die Kommunikation der #htl3r.short[sps] läuft ausschließlich über den Etherne
 #pagebreak()
 
 #figure(
-  image("../assets/python_programm/sps/logo_software.png", width: 50%),
+  image("../assets/python_programm/sps/logo_software.jpg", width: 50%),
   caption: "Ausschnitt des Programms der SPS - Weichensteuerung"
 )
 
@@ -246,7 +246,7 @@ Man kann nun den Webserver der #htl3r.short[sps] von einem Management-PC starten
 ("admin") belassen.
 
 #figure(
-  image("../assets/python_programm/sps/login.png", width: 80%),
+  image("../assets/python_programm/sps/login.jpg", width: 80%),
   caption: "Ausschnitt des Webservers der SPS - Login-Seite"
 )
 
@@ -255,12 +255,12 @@ In diesem Beispieldurchlauf wird die Weiche 4 bearbeitet. Um das zu initialisier
 In den folgenden beiden Bildern befindet sich Screenshots aus dem "LOGO! Variablen"-Tab der #htl3r.short[sps]. Man beachte, dass Merker 4 in der letzten Zeile vom Wert false auf den Wert true gesetzt wird.
 
 #figure(
-  image("../assets/python_programm/sps/weiche4_false.png", width: 80%),
+  image("../assets/python_programm/sps/weiche4_false.jpg", width: 80%),
   caption: "Ausschnitt des Webservers der SPS - Merker 4 mit Wert false"
 )
 
 #figure(
-  image("../assets/python_programm/sps/weiche4_true.png", width: 80%),
+  image("../assets/python_programm/sps/weiche4_true.jpg", width: 80%),
   caption: "Ausschnitt des Webservers der SPS - Merker 4 mit Wert true"
 )
 
@@ -269,7 +269,7 @@ In den folgenden beiden Bildern befindet sich Screenshots aus dem "LOGO! Variabl
 Beim Ändern des Merkers wird der zugehörige Coil vom entsprechenden Merker am Raspberry Pi angesprochen. Man kann den Schaltplan der Weiche 4 betrachten:
 
 #figure(
-  image("../assets/python_programm/sps/logo_weiche4.png", width: 60%),
+  image("../assets/python_programm/sps/logo_weiche4.jpg", width: 60%),
   caption: "Ausschnitt des Programms der SPS - Weiche 4"
 )
 
@@ -287,8 +287,8 @@ Der Zustand der Weiche 4 wurde also von "min" auf "max" geschaltet. Die Weiche h
         columns: (auto, auto),
         rows:    (auto, auto),
         gutter: 1em,
-        [ #image("../assets/python_programm/img/weiche4_pos2.png",   width: 90%) ],
-        [ #image("../assets/python_programm/img/weiche4_pos1.png", width: 90%) ],
+        [ #image("../assets/python_programm/img/weiche4_pos2.jpg",   width: 90%) ],
+        [ #image("../assets/python_programm/img/weiche4_pos1.jpg", width: 90%) ],
     ),
     caption: [Vergleich der Position der Weiche 4]
 ) //<glacier>

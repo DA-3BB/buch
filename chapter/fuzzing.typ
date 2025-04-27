@@ -30,7 +30,7 @@ Dieser startet das Fuzzing - wie auf der Kommandozeile sichtbar wird - unverzüg
 #htl3r.fspace(
   [
     #figure(
-      image("../assets/fuzzing/fuzzing-powershell.png", width: 110%),
+      image("../assets/fuzzing/fuzzing-powershell.jpg", width: 110%),
       caption: "Terminalausgabe beim Starten des Fuzzing Scripts"
     ) <fuzzingstart>
   ]
@@ -40,7 +40,7 @@ Ein Feature von boofuzz ist es dabei auch einen Webserver lokal am Port 26000 zu
 #htl3r.fspace(
   [
     #figure(
-      image("../assets/fuzzing/fuzzing-web.png"),
+      image("../assets/fuzzing/fuzzing-web.jpg"),
       caption: "Fuzzing im Browser"
     ) <fuzzingweb>
   ]
@@ -49,7 +49,7 @@ Ein Feature von boofuzz ist es dabei auch einen Webserver lokal am Port 26000 zu
 Wenn das Fuzzing durch den Wireshark betrachtet wird, ist zu sehen, dass immer wieder #htl3r.short[tcp]-Session mit dem Ziel 10.100.0.11 aufgebaut werden, ein Modbuspaket gesendet wird und die Session wieder abgebaut wird. All dies erfolgt so schnell, so dass die Antwort nicht einmal angezeigt wird.
 #htl3r.fspace(
   figure(
-    image("../assets/fuzzing/wireshark-fuzzing.png"),
+    image("../assets/fuzzing/wireshark-fuzzing.jpg"),
     caption: "Fuzzing im Wireshark"
   )
 )

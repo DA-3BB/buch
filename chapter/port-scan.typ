@@ -176,7 +176,7 @@ Für die #htl3r.short[sps] kann man die LOGO!Soft Comfort 8.4 verwenden und in d
 In der LOGO!Soft Comfort findet man unter den Online-Einstellungen der #htl3r.short[sps] im Reiter „Einstellungen für Zugriffskontrolle“ folgende Übersichtstabelle:
 
 #figure(
-  image("../assets/angriffe/port-scanning/sps_zugriffssicherheit.png", width: 70%),
+  image("../assets/angriffe/port-scanning/sps_zugriffssicherheit.jpg", width: 70%),
   caption: "Übersicht über die Zugriffssicherheit der SPS"
 )
 
@@ -396,4 +396,4 @@ Die LOGO!Soft 8.4 besitzt keine zentrale Port-Übersicht, daher ist es schwer, o
 
 === Fazit
 
-Die Port-Scans haben gezeigt, dass nicht nur die erwarteten Ports offen sind. Es gibt Ports, die zwar offen sind, jedoch nicht erkannt werden - wie #htl3r.short[cups] am Raspberry Pi, sowie Ports, die nicht auf dem lokalen Gerät ausgelesen werden können - wie #htl3r.short[https] auf der #htl3r.short[sps]. Es ist wichtig, regelmäßig zu prüfen, welche Ports offen sind und ob diese benötigt werden, da jeder offene Port eine potenzielle Angriffsfläche bietet. 
+Die Port-Scans haben gezeigt, dass nicht nur die erwarteten Ports offen sind. Es gibt Ports, die zwar offen sind, jedoch nicht erkannt werden - wie #htl3r.short[cups] am Raspberry Pi, sowie Ports, die nicht auf dem lokalen Gerät ausgelesen werden können - wie #htl3r.short[https] auf der #htl3r.short[sps]. Es ist wichtig, regelmäßig zu prüfen, welche Ports offen sind und ob diese benötigt werden, da jeder offene Port eine potenzielle Angriffsfläche bietet.

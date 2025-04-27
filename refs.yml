@@ -202,10 +202,9 @@ proxybased:
   title: Proxy-based Scanning Mode
   author: Rashmi Bhardwaj
   url:
-    value: https://networkinterview.com/wp-content/uploads/2022/08/fortigate-utm-2.jpg.webp 
+    value: https://networkinterview.com/wp-content/uploads/2022/08/fortigate-utm-2.jpg.webp
     date: 2025-03-19
   date: 2024
-
 
 rs-232:
   type: misc
@@ -224,23 +223,23 @@ rs-422:
     value: https://assets.omega.com/resources/rs422-rs485-rs232-2.jpg
     date: 2024-12-04
   date: 2019-04-16
-  
+
 rs-485:
   type: misc
-  title: RS485 protocol 
+  title: RS485 protocol
   author: Dwyer Instruments, LLC
   url:
     value: https://assets.omega.com/resources/rs422-rs485-rs232-3.jpg
     date: 2024-12-04
   date: 2019-04-16
-  
+
 rasphatquelle:
   type: misc
   title: \[P022 - Extra IO - PCA9685\] PCAPWM,0,4095 is not working
   author: heinemannj
   url:
-   value: https://user-images.githubusercontent.com/3251642/120479001-bc3ffa00-c3ad-11eb-9c05-37ec21182aa7.png
-   date: 2025-01-03
+    value: https://user-images.githubusercontent.com/3251642/120479001-bc3ffa00-c3ad-11eb-9c05-37ec21182aa7.jpg
+    date: 2025-01-03
   date: 2021-6-2
 
 raspquelle:
@@ -248,8 +247,8 @@ raspquelle:
   title: Raspberry Pi 3 Model B / B+
   author: fhunleth
   url:
-   value: https://hexdocs.pm/nerves_system_rpi3/assets/images/raspberry-pi-3-model-b.png
-   date: 2025-01-03
+    value: https://hexdocs.pm/nerves_system_rpi3/assets/images/raspberry-pi-3-model-b.jpg
+    date: 2025-01-03
   date: 2016
 
 portscanlegal:
@@ -257,6 +256,6 @@ portscanlegal:
   title: The Official Nmap Project Guide to Network Discovery and Security Scanning - Legal Issues
   author: nmap
   url:
-   value: https://nmap.org/book/legal-issues.html
-   date: 2024-12-17
+    value: https://nmap.org/book/legal-issues.html
+    date: 2024-12-17
   date: 2024

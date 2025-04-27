@@ -61,7 +61,7 @@ Im folgenden Beispiel wurde ein Report am Standort Wien generiert. Die Daten von
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("../assets/fortianalyzer/faz-report.png"),
+    image("../assets/fortianalyzer/faz-report.jpg"),
     caption: [Auszug aus einem FortiAnalyzer Report]
   )
 )
@@ -73,7 +73,7 @@ Im #htl3r.long[soc] spielt auch die Inspizierung des Traffics eine wichtige Roll
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("../assets/fortianalyzer/faz-traffic.png"),
+    image("../assets/fortianalyzer/faz-traffic.jpg"),
     caption: [SOC-Dashboard des FortiAnalyzers]
   )
 )
@@ -83,7 +83,7 @@ Durch die Einbindung des #htl3r.short[ldap]-Servers bekommen die Mitarbeiterinne
 #htl3r.fspace(
   //total-width: 70%,
   figure(
-    image("../assets/fortianalyzer/faz-ldap.png", width: 100%),
+    image("../assets/fortianalyzer/faz-ldap.jpg", width: 100%),
     caption: [Konfiguration des LDAP-Servers im FortiAnalyzer]
   )
 )

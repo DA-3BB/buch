@@ -55,12 +55,13 @@ Bevor der Angriff gestartet wird, wird geschaut ob sich die zu angreifenden Ziel
 ```bash
   ettercap -T -s 'lq'
 ```
-Dabei kann in der @hostscan erkannt werden, dass vier Geräte im Netzwerk gefunden wurden. Nachdem der Netzaufbau bekannt ist können die IP-Adressen auch gleich den Geräten zugeordnet werden, ein Angreifer oder eine Angreiferin ohne dieses Wissen kann die IP-Adressen einfach durchtesten um das gewünschte Gerät zu erreichen. 
+<<<<<<< HEAD
+Dabei kann in der @hostscan erkannt werden, dass vier Geräte im Netzwerk gefunden wurden. Nachdem der Netzaufbau bekannt ist können die IP-Adressen auch gleich den Geräten zugeordnet werden, ein Angreifer oder eine Angreiferin ohne dieses Wissen kann die IP-Adressen einfach durchtesten um das gewünschte Gerät zu erreichen.
 
 #htl3r.fspace(
   [
     #figure(
-      image("../assets/mitm/mitm-hostscan.png"),
+      image("../assets/mitm/mitm-hostscan.jpg"),
       caption: "Hostscan mit ettercap"
     ) <hostscan>
   ]
@@ -75,7 +76,7 @@ Nach dem Scan kann mit dem #htl3r.short[mitm]-Angriff und somit dem #htl3r.short
 Der Output des Befehls gibt gleich mehrere Informationen preis. Einerseits auf welchem Interface der Angriff stattfindet.
 #htl3r.fspace(
   figure(
-    image("../assets/mitm/mitm-1.png"),
+    image("../assets/mitm/mitm-1.jpg"),
     caption: "Ausgabe MITM Angriff: Interface"
   )
 )
@@ -84,7 +85,7 @@ Andererseits wird angezeigt, dass beide Angriffsziele im Netzwerk gefunden wurde
 
 #htl3r.fspace(
   figure(
-    image("../assets/mitm/mitm-2.png"),
+    image("../assets/mitm/mitm-2.jpg"),
     caption: "Ausgabe MITM Angriff: Angriffsziele"
   )
 )
@@ -93,7 +94,7 @@ Und als letztes werden fortlaufend alle Pakete im Terminal aufgelistet die bei d
 
 #htl3r.fspace(
   figure(
-    image("../assets/mitm/mitm-3.png"),
+    image("../assets/mitm/mitm-3.jpg"),
     caption: "Ausgabe MITM Angriff: abgefangene Pakete"
   )
 )
@@ -104,7 +105,7 @@ Das #htl3r.short[arp] Spoofing kann auch mittels Wireshark inspiziert werden. Di
 #htl3r.fspace(
   [
     #figure(
-      image("../assets/mitm/wireshark-arp-spoofing_teil1.png"),
+      image("../assets/mitm/wireshark-arp-spoofing_teil1.jpg"),
       caption: "ARP Request Posioning - Teil 1"
     )
    <arp1>
@@ -115,7 +116,7 @@ Im nächsten Schritt sendet die Kali-Linux-#htl3r.short[vm] #htl3r.short[arp] An
 
 #htl3r.fspace(
   figure(
-    image("../assets/mitm/wireshark-arp-spoofing_teil2.png"),
+    image("../assets/mitm/wireshark-arp-spoofing_teil2.jpg"),
     caption: "ARP Request Posioning - Teil 2"
   )
 )
@@ -125,7 +126,7 @@ Nun werden wie in @spooferfolg gezeigt die Modbuspakete über das Angreifergerä
 #htl3r.fspace(
   [
     #figure(
-      image("../assets/mitm/wireshark_mitm.png"),
+      image("../assets/mitm/wireshark_mitm.jpg"),
       caption: "Wiresharkauszug von einem erfolgreichen MITM-Angriff"
     )
     <spooferfolg>
@@ -144,7 +145,7 @@ Damit der Filter bei Ettercap angegeben werden kann, muss er noch in eine Binär
 
 #htl3r.fspace(
   figure(
-    image("../assets/mitm/terminal-create-filter.png"),
+    image("../assets/mitm/terminal-create-filter.jpg"),
     caption: "Etterfilter generieren"
   )
 )
@@ -157,7 +158,7 @@ Nun kann der #htl3r.short[mitm]-Angriff erneut mit dem Filter ausgeführt werden
 
 #htl3r.fspace(
   figure(
-    image("../assets/mitm/arp-posioning-filter.png"),
+    image("../assets/mitm/arp-posioning-filter.jpg"),
     caption: "MITM durch ARP Spoofing mit einem Filter"
   )
 )
@@ -166,7 +167,7 @@ Mit Wireshark kann nun beobachtet werden, dass alle Modbuspakete mit einem _Writ
 
 #htl3r.fspace(
   figure(
-    image("../assets/mitm/mitm-coil-false.png", width: 120%),
+    image("../assets/mitm/mitm-coil-false.jpg", width: 120%),
     caption: "MITM mit einem Filter im Wireshark"
   )
 )

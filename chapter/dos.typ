@@ -106,14 +106,14 @@ Zur Demonstration der Funktionalität ist im folgenden ein Ablauf der Kommunikat
 1. Zugriff auf den Webserver: Der User kann auf den Webserver der #htl3r.short[sps] zugreifen und die Weichen (hier Weiche 2) ansteuern.
 
 #figure(
-  image("../assets/angriffe/dos/sps_screenshot.png", width: 90%),
+  image("../assets/angriffe/dos/sps_screenshot.jpg", width: 90%),
   caption: "Editieren der Position von Weiche 2"
 )
 
 2. Kommunikation zum Raspberry Pi: Die #htl3r.short[sps] muss nun die Änderungen der Weichen an den Raspberry Pi weiter geben. Dieser wirft Log-Messages, sobald er eine Änderung empfängt.
 
 #figure(
-  image("../assets/angriffe/dos/py_log.png", width: 90%),
+  image("../assets/angriffe/dos/py_log.jpg", width: 90%),
   caption: "Log-Messages auf dem Raspberry Pi"
 )
 
@@ -194,7 +194,7 @@ Im Gegensatz zu den Tests während dem Slowloris-Angriff war das Python-Skript e
 Erwähnenswert ist, dass die Anzahl der Verbindungen drastisch erhöht werden musste, um einen Effekt zu erzielen. Beim erfolgreichen Versuch wurden die Verbindungen auf 100.000 hochgestuft.
 
 #figure(
-  image("../assets/angriffe/dos/dos_success.png", width: 80%),
+  image("../assets/angriffe/dos/dos_success.jpg", width: 80%),
   caption: "Fehlermeldung beim Zugriff auf den Webserver der SPS"
 )
 

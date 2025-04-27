@@ -17,7 +17,7 @@ Als erstes wird der Ausgangszustand betrachtet. Hierfür wurde ein #htl3r.short[
 #pagebreak()
 
 #figure(
-  image("../assets/angriffe/replay/wireshark_before.png", width: 100%),
+  image("../assets/angriffe/replay/wireshark_before.jpg", width: 100%),
   caption: "Ausschnitt des HTTP-Paketes vor der Änderung der Weiche in Wireshark"
 )
 
@@ -47,7 +47,7 @@ Anmerkung: Eine genaue Beschreibung der Positionen und Nummerierungen findet sic
 Nun wird vom Nutzer die Stellung der Weiche 4 bearbeitet und im Capture von Wireshark nach einer Änderung in den Daten gesucht. Diese findet sich in folgendem Paket:
 
 #figure(
-  image("../assets/angriffe/replay/wireshark_after.png", width: 100%),
+  image("../assets/angriffe/replay/wireshark_after.jpg", width: 100%),
   caption: "Ausschnitt des HTTP-Paketes nach der Änderung der Weiche in Wireshark"
 )
 
@@ -70,7 +70,7 @@ Man kann erkennen, dass die Weiche 4 von der Position 1 in die Position 0 gewech
 Das Paket, das den gesuchten Befehl enthält, ist das folgende:
 
 #figure(
-  image("../assets/angriffe/replay/wireshark_switch.png", width: 100%),
+  image("../assets/angriffe/replay/wireshark_switch.jpg", width: 100%),
   caption: "Ausschnitt des HTTP-Paketes mit dem Befehl zum Ändern der Weiche in Wireshark"
 )
 
@@ -106,7 +106,7 @@ Um dies zu umgehen, kann man die Session-ID (Cookies) auslesen. Theoretisch kann
 Die Cookies des Webinterfaces der #htl3r.short[sps] kann man in den gespeicherten Variablen des Browsers (unter Firefox dem Webspeicher) auslesen.
 
 #figure(
-  image("../assets/angriffe/replay/session-id.png", width: 100%),
+  image("../assets/angriffe/replay/session-id.jpg", width: 100%),
   caption: "Session-ID des Management-PC im Browser"
 )
 
@@ -163,8 +163,8 @@ Als weitere Überprüfung kann man die pysische Position der Weiche vergleichen.
         columns: (auto, auto),
         rows:    (auto, auto),
         gutter: 1em,
-        [ #image("../assets/angriffe/replay/weiche4_pos2.png",   width: 90%) ],
-        [ #image("../assets/angriffe/replay/weiche4_pos1.png", width: 90%) ],
+        [ #image("../assets/angriffe/replay/weiche4_pos2.jpg",   width: 90%) ],
+        [ #image("../assets/angriffe/replay/weiche4_pos1.jpg", width: 90%) ],
     ),
     caption: [Vergleich der Position der Weiche 4: Links vor und rechts nach dem Angriff]
 ) //<glacier>

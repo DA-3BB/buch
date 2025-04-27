@@ -9,7 +9,7 @@ Für die IT-Topologie wurde ein #htl3r.long[ad] mit zwei Standorten konfiguriert
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("../assets/topologie/it-topologie/topo-it.png"),
+    image("../assets/it-topologie/topo-it.png"),
     caption: [logischer Netzplan der IT-Topologie]
   )
 )
@@ -219,7 +219,7 @@ Um die beiden Domain-Controller besser zu administrieren wurde ein Jump-Server e
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("../assets/active-directory/ad-jump.png"),
+    image("../assets/active-directory/ad-jump.jpg"),
     caption: [logischer Netzplan der IT-Topologie]
   )
 )
@@ -244,7 +244,7 @@ Die physische 60E FortiGate wird mittels LAN-Kabel mit dem Switch der OT verbund
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("../assets/it-topologie/it-ot-verbindung.png"),
+    image("../assets/it-topologie/it-ot-verbindung.jpg"),
     caption: [Physische Verbindung der IT mit der OT]
   )
 )

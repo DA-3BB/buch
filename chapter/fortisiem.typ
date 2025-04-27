@@ -32,7 +32,7 @@ Für den Betrieb eines FortiSIEMs sind Grundkonfigurationen notwendig. Damit das
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("assets/fortisiem.png"),
+    image("assets/fortisiem.jpg"),
     caption: [Konfiguration des E-Mail-Gateways]
   )
 )
@@ -61,7 +61,7 @@ Die Events können beim Abrufen nach unterschiedlichen Attributen gefiltert werd
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("../assets/fortisiem/fsm-analytics2.png"),
+    image("../assets/fortisiem/fsm-analytics2.jpg"),
     caption: [Auszug aus den FortiSIEM-Analytics]
   )
 )
@@ -79,7 +79,7 @@ Für die Überwachung von systemkritischen Applikationen stellt das FortiSIEM so
 #htl3r.fspace(
   total-width: 86%,
   figure(
-    image("../assets/fortisiem/fsm-dashboard2.png"),
+    image("../assets/fortisiem/fsm-dashboard2.jpg"),
     caption: [Auszug aus dem FortiSIEM-Dashboard]
   )
 )
@@ -200,7 +200,7 @@ Die Installationsanforderungen für die Worker-Node des FortiSIEM (Version 7.2.4
 #htl3r.fspace(
   total-width: 95%,
   figure(
-    image("../assets/fortisiem/fsm-wk.png"),
+    image("../assets/fortisiem/fsm-wk.jpg"),
     caption: [Status der Supervisor- und Worker-Nodes im FortiSIEM]
   )
 )
@@ -218,7 +218,7 @@ Die Installationsanforderungen für die Worker-Node des FortiSIEM (Version 7.2.4
 #htl3r.fspace(
   total-width: 91%,
   figure(
-    image("../assets/fortisiem/fsm-cl.png"),
+    image("../assets/fortisiem/fsm-cl.jpg"),
     caption: [Status der Collector-Nodes im FortiSIEM]
   )
 )
@@ -284,7 +284,7 @@ Neben Metriken und Logs können auch Dateien und Verzeichnisse auf ihre Änderun
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("../assets/fortisiem/fsm-agent-template.png"),
+    image("../assets/fortisiem/fsm-agent-template.jpg"),
     caption: [Auszug aus der Agent-Template-Konfiguration innerhalb des FortiSIEM]
   )
 )
@@ -294,7 +294,7 @@ Nach Abschluss der Konfiguration können im Dashboard schon die ersten Incidents
 #htl3r.fspace(
   total-width: 100%,
   figure(
-    image("../assets/fortisiem/fsm-incident-jump.png"),
+    image("../assets/fortisiem/fsm-incident-jump.jpg"),
     caption: [Incidents des Jump-Servers am Standort Wien]
   )
 )
@@ -304,7 +304,7 @@ Die Konfiguration des Agents für Linux-Server basiert auf den gleichen vorher g
 #htl3r.fspace(
   total-width: 80%,
   figure(
-    image("../assets/fortisiem/fsm-investigate.png"),
+    image("../assets/fortisiem/fsm-investigate.jpg"),
     caption: [Der Enumeration of System Information Incident]
   )
 )
@@ -314,7 +314,7 @@ Die FortiGate wird zusätzlich zum FortiAnalyzer durch das FortiSIEM über die #
 #htl3r.fspace(
   total-width: 80%,
   figure(
-    image("../assets/fortisiem/fsm-fg.png"),
+    image("../assets/fortisiem/fsm-fg.jpg"),
     caption: [Die Dashboard-Widgets für die FortiGate]
   )
 )
@@ -326,7 +326,7 @@ Um die User des #htl3r.short[ad] in das FortiSIEM einzubinden, kann auch hier ei
 #htl3r.fspace(
   //total-width: 55%,
   figure(
-    image("../assets/fortisiem/fsm-ldap.png", width: 65%),
+    image("../assets/fortisiem/fsm-ldap.jpg", width: 65%),
     caption: [Login am FortiSIEM durch den SOC-User]
   )
 )

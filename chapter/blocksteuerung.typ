@@ -10,7 +10,7 @@ Bevor die Steuerung selbst erklärt werden kann, ist wichtig zu wissen, dass die
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/3BB_Gleisplan_bloecke-mit-beschriftung.png", width: 90%),
+    image("../assets/blocksteuerung/3BB_Gleisplan_bloecke-mit-beschriftung.jpg", width: 90%),
     caption: "Gleisplan mit Blöcken"
   )
 )
@@ -19,7 +19,7 @@ Bei der Grenze zwischen zwei Gleisabschnitten sind Reflex-Lichtschranken eingeba
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/3BB_Netzplanabschnit.png"),
+    image("../assets/blocksteuerung/3BB_Netzplanabschnit.jpg"),
     caption: "Aufbau Blockübergang"
   )
 )
@@ -174,7 +174,7 @@ Wie in @mapping beschrieben, wird jeder Modbus Input und Output einer Adresse im
 #htl3r.fspace(
   [
     #figure(
-      image("../assets/blocksteuerung/inputs-vergleich.png", width: 80%),
+      image("../assets/blocksteuerung/inputs-vergleich.jpg", width: 80%),
       caption: "Vergleich Network und Digital Inputs und Outputs"
     )
     <netinput>
@@ -189,7 +189,7 @@ Vor jedem Output ist dabei die #htl3r.short[udf] "ende" angeschlossen.
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/udf-ende-angeschlossen.png", width: 50%),
+    image("../assets/blocksteuerung/udf-ende-angeschlossen.jpg", width: 50%),
     caption: "UDF Ende in der Steuerung"
   )
 )
@@ -200,7 +200,7 @@ Die #htl3r.short[udf] "ende" schaltet dabei einen RS-Flip-Flop vor den Output. M
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/udf-ende-blockteuerung.png"),
+    image("../assets/blocksteuerung/udf-ende-blockteuerung.jpg"),
     caption: "UDF Ende"
   )
 )
@@ -211,7 +211,7 @@ Jeder Gleisabschnitt hat eine Reflex-Lichtschranke am Blockanfang und eine am Bl
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/blockubergang.png", width: 75%),
+    image("../assets/blocksteuerung/blockubergang.jpg", width: 75%),
     caption: "Übergang von einem Block in den anderen"
   )
 )
@@ -223,17 +223,17 @@ In der @ausfahrt kann dieses Verhalten beobachtet werden. Dabei ist "I1" die Blo
 #htl3r.fspace(
   [
     #figure(
-      image("../assets/blocksteuerung/input-2.png", width: 75%),
+      image("../assets/blocksteuerung/input-2.jpg", width: 75%),
       caption: "Blockausfahrtsignal im Schaltbild"
     ) <ausfahrt>
   ]
 )
 #pagebreak()
-Wenn nun auf der danebenliegenen Reflex-Lichtschranke ein Signal gesendet wird, in diesem Fall "I2", wird sie nicht durchgeschaltet, weil die Steuerung nur mit Blockausfahrtsignalen arbeitet und ansonsten ein zurückliegender Block eingeschaltet werden würde. 
+Wenn nun auf der danebenliegenen Reflex-Lichtschranke ein Signal gesendet wird, in diesem Fall "I2", wird sie nicht durchgeschaltet, weil die Steuerung nur mit Blockausfahrtsignalen arbeitet und ansonsten ein zurückliegender Block eingeschaltet werden würde.
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/input-3.png", width: 75%),
+    image("../assets/blocksteuerung/input-3.jpg", width: 75%),
     caption: "Blockeinfahrtsignal im Schaltbild"
   )
 )
@@ -242,7 +242,7 @@ Die Funktion dahinter versteckt sich in der #htl3r.short[udf] "anfang". Die #htl
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/udf-anfang.png", width: 110%),
+    image("../assets/blocksteuerung/udf-anfang.jpg", width: 110%),
     caption: "UDF Anfang"
   )
 )
@@ -255,10 +255,10 @@ In der @weiche0 ist zu sehen, dass "I2" die Reflex-Lichtschranke das Blockausfah
 #htl3r.fspace(
   [
     #figure(
-      image("../assets/blocksteuerung/weiche2.png", width: 90%),
+      image("../assets/blocksteuerung/weiche2.jpg", width: 90%),
       caption: "Schaltbild der Inputverarbeitung mit Weichenausgang LOW"
     ) <weiche0>
-  ] 
+  ]
 )
 #pagebreak()
 Sollte die Weiche in die andere Richtung geschaltet sein, wird stattdessen wie in @weiche1 abgebildet der Output "Q2" freigeschaltet.
@@ -266,7 +266,7 @@ Sollte die Weiche in die andere Richtung geschaltet sein, wird stattdessen wie i
 #htl3r.fspace(
   [
     #figure(
-      image("../assets/blocksteuerung/weiche3.png", width: 90%),
+      image("../assets/blocksteuerung/weiche3.jpg", width: 90%),
       caption: "Schaltbild der Inputverarbeitung mit Weichenausgang HIGH"
     ) <weiche1>
   ]
@@ -276,7 +276,7 @@ Die #htl3r.short[udf] "weichensteuerung" ist dabei eine AND-Verknüpfung von der
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/udf-weichenstellung.png", width: 85%),
+    image("../assets/blocksteuerung/udf-weichenstellung.jpg", width: 85%),
     caption: "UDF Weichenstellung"
   )
 )
@@ -284,38 +284,38 @@ Die #htl3r.short[udf] "weichensteuerung" ist dabei eine AND-Verknüpfung von der
 === Überschreiben der Weichenstellung
 Beim Fahren über die Weiche in die gegengesetzte Richtung entsteht das Problem, dass die Weiche in die richtige Richtung gestellt sein muss, damit der Zug die Weiche nicht aufschneidet. Um dieses Problem zu bewältigen muss der Weichenzustand überschrieben werden, sobald der Zug über diese fährt. Gleichzeitg soll aber der Weichenzustand immer noch manuell eingestellt werden können.
 
-In @weichensteuerung ist "NQ1" der Ausgang zur Weiche und "I1" der Userinput mit dem die Weiche gesteuert werden kann. Zu sehen ist außerdem der Input "I2", der eine Reflex-Lichtschranke un der Ausgang "Q1" der einen Block darstellt. 
+In @weichensteuerung ist "NQ1" der Ausgang zur Weiche und "I1" der Userinput mit dem die Weiche gesteuert werden kann. Zu sehen ist außerdem der Input "I2", der eine Reflex-Lichtschranke un der Ausgang "Q1" der einen Block darstellt.
 \ \
 Vor dem Weichenausgang hängt dabei eine #htl3r.short[udf] "OWeiche" oder "Overwrite Weiche". Die #htl3r.short[udf] ermöglicht dabei, dass solange der Zug nicht in die Gegenrichtung über die Weiche fährt, dass der User die Weiche kontrolliert siehe @weichensteuerung.
 
 #htl3r.fspace(
   [
     #figure(
-      image("../assets/blocksteuerung/ueberweiche2.png", width: 85%),
+      image("../assets/blocksteuerung/ueberweiche2.jpg", width: 85%),
       caption: "Schaltbild Weichensteuerung durch User"
     )
     <weichensteuerung>
   ]
 )
 
-Fährt die Modelleisenbahn in die Gegenrichtung über die Weiche, triggert das entweder den Input _Low_ oder _High_ der #htl3r.short[udf] "OWeiche". Die #htl3r.long[udf] bewirkt daraufhin, dass der aktuelle Zustand der Weiche überschrieben wird. 
+Fährt die Modelleisenbahn in die Gegenrichtung über die Weiche, triggert das entweder den Input _Low_ oder _High_ der #htl3r.short[udf] "OWeiche". Die #htl3r.long[udf] bewirkt daraufhin, dass der aktuelle Zustand der Weiche überschrieben wird.
 #pagebreak()
 In @ueberschreiben ist zu sehen, dass die Reflex-Lichtschranke "I2" an ging und somit das Signal sendet, dass der Zug in die Gegenrichtung über die Weiche fährt. Dies passiert, indem das Programm beim Freischalten des Blockabschnitts den Input _Low_ triggert, der wiederum nach einer kurzen Verzögerung den Steuerausgang für die Weiche "NQ1" auf Low stellt und somit der Userinput überschrieben wird.
 
 #htl3r.fspace(
   [
     #figure(
-      image("../assets/blocksteuerung/ueberweiche3.png", width: 90%),
+      image("../assets/blocksteuerung/ueberweiche3.jpg", width: 90%),
       caption: "Schaltbild Weichensteuerung überschrieben"
     ) <ueberschreiben>
-  ] 
+  ]
 )
 #pagebreak()
 Die #htl3r.short[udf] "OWeiche" sieht für den low-overwrite und den high-overwrite gleich aus. Die #htl3r.short[udf] besteht jeweils aus zwei Triggern und einer Kombination aus AND und OR Gattern, die das Überschreiben ermöglichen. Der erste Trigger (4,5 Sekunden) ist dabei zuständig für eine kurze Verzögerung vor dem Überschreiben. Die Verzögerung wird benötigt, damit im restlichen Programm der nächste Block in die richtige Richtung freigeschaltet wird. Der zweite Trigger (7 Sekunden) ist die Zeit, die das Überschreiben anhalten soll. Diese Zeit ist die gemessene Dauer, die die Modelleisenbahn benötigt, um vom triggern der #htl3r.short[udf] "OWeiche" bis zur Weiche selbst zu gelangen.
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/udf-oweiche.png"),
+    image("../assets/blocksteuerung/udf-oweiche.jpg"),
     caption: "UDF Overwrite Weichenstellung"
   )
 )
@@ -326,20 +326,20 @@ Die gleichzeitige Verarbeitung von zwei nebeneinander liegenden Reflex-Lichtschr
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/reflex-aus.png", width: 70%),
+    image("../assets/blocksteuerung/reflex-aus.jpg", width: 70%),
     caption: "Netzplan deaktiverter Reflexlichtschranke"
   )
 )
 
-Um die Blockeinfahrts-Reflex-Lichtschranke abzuschalten muss zwischen jedem Input und jeder #htl3r.short[udf] "anfang" ein XOR und ein AND Gatter geschaltet werden siehe @deaktivierung. Die zwei zusätzlichen Bausteine bewirken, dass Blöck nur von der jeweiligen Reflex-Lichtschranke eingeschaltet werden können - so wie bisher auch - aber gleichzeitig, dass die Blöcke nicht eingeschaltet werden, wenn es sich um das Blockeinfahrtsignal handelt. 
+Um die Blockeinfahrts-Reflex-Lichtschranke abzuschalten muss zwischen jedem Input und jeder #htl3r.short[udf] "anfang" ein XOR und ein AND Gatter geschaltet werden siehe @deaktivierung. Die zwei zusätzlichen Bausteine bewirken, dass Blöck nur von der jeweiligen Reflex-Lichtschranke eingeschaltet werden können - so wie bisher auch - aber gleichzeitig, dass die Blöcke nicht eingeschaltet werden, wenn es sich um das Blockeinfahrtsignal handelt.
 
 #htl3r.fspace(
   [
     #figure(
-      image("../assets/blocksteuerung/input-deaktivieren.png"),
+      image("../assets/blocksteuerung/input-deaktivieren.jpg"),
       caption: "Blockschaltbild mit Inputdeaktiverung"
     ) <deaktivierung>
-  ] 
+  ]
 )
 #pagebreak()
 === Stoppen der Steuerung
@@ -347,13 +347,13 @@ Die gesamte Steuerung wird gestoppt, indem auf allen Gleisabschnitten der Strom 
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/stopp.png", width: 45%),
+    image("../assets/blocksteuerung/stopp.jpg", width: 45%),
     caption: "Merker zum Stoppen mit Anschlüssen zu Reset-Eingängen der Outputs"
   )
 )
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/stopp-2.png", width: 45%),
+    image("../assets/blocksteuerung/stopp-2.jpg", width: 45%),
     caption: "Vereinfachtes Programm mit Stoppmerker und einem Output"
   )
 )

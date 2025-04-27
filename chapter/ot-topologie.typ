@@ -14,7 +14,7 @@ Um einer realitätsnahen Eisenbahnstrecke gerecht zu werden, ist die Eisenbahn i
 
 
 #figure(
-    image("../assets/ot-topologie/gleisplan/3BB_Gleisplan_bloecke-mit-beschriftung.png", width: 74%),
+    image("../assets/ot-topologie/gleisplan/3BB_Gleisplan_bloecke-mit-beschriftung.jpg", width: 74%),
     caption: "Gleisplan mit Blöcken"
 )
 
@@ -28,7 +28,7 @@ Um die Komponenten in der Nähe der Modelleisenbahnanlage zu plazieren, wurde ei
 )
 
 #figure(
-    image("../assets/topologie/ot-topologie/3BB_Netzplan_v2_1.png"),
+    image("../assets/topologie/ot-topologie/3BB_Netzplan_v2_1.jpg"),
     caption: "OT Netzplan - Physischer Aufbau der OT"
 )
 
@@ -64,21 +64,21 @@ Zum Programmieren selbst wurde in diesem Projekt die Sprache "#htl3r.long[fup]".
 Die Oberfläche von 'LOGO!Soft Comfort' ist in zwei große Bereiche eingeteilt, den 'Diagram Mode' und das 'Network Project'. Im Diagram Mode gibt es das Fenster 'Instrutions' aus dem die Funktionsblöcke in den 'Diagram Editor' gezogen werden können. Im 'Diagram Editor' wird dabei die gesammte Steuerung abgebildet.
 
 #figure(
-    image("../assets/topologie/ot-topologie/Logo!soft-comfort_uebersicht_diagram-mode.png", width: 85%),
+    image("../assets/topologie/ot-topologie/Logo!soft-comfort_uebersicht_diagram-mode.jpg", width: 85%),
     caption: "LOGO!Soft Comfort - Übersicht Diagram Mode"
 )
 
 Um das Programm zu testen - ohne dieses immer auf die #htl3r.short[sps] laden zu müssen - befindet sich im Diagram Editor auch die Option für den Simulationsmodus. Im Simulationsmodus können die unterschiedlichen Inputs an- und ausgeschalten werden, um verfolgen zu können, was dies in der Steuerung bewirkt. In der @simulationsmodus sieht man, dass der Input I1 im Simulationsmodus aktivert worden ist. Die Auswirkungen können dabei durch die nun rot eingefärbte Verbindung beobachtet werden.
 
 #figure(
-    image("../assets/topologie/ot-topologie/Logo!soft-comfort_simulation-mode.png", width: 80%),
+    image("../assets/topologie/ot-topologie/Logo!soft-comfort_simulation-mode.jpg", width: 80%),
     caption: "Diagram Editor - Simulationsmodus"
 ) <simulationsmodus>\
 
 Im 'Network Project' ist auch wieder der Diagram Editor abgebildet. Dieser wird hier benutzt, um das aktuelle Programm der #htl3r.short[sps] abzubilden beziehungsweise Änderungen vorzunehmen, die danach wieder auf die #htl3r.short[sps] gespielt werden.
 
 #figure(
-    image("../assets/topologie/ot-topologie/Logo!soft-comfort_uebersicht_network-project.png", width: 80%),
+    image("../assets/topologie/ot-topologie/Logo!soft-comfort_uebersicht_network-project.jpg", width: 80%),
     caption: "LOGO!Soft Comfort - Übersicht Network Project"
 )\
 
@@ -92,21 +92,21 @@ Wenn man den anderen Weg wählt, weil man das akutelle Programm einer #htl3r.sho
 Bevor das Programm angezeigt wird, wird man zu einem Konnektivitätstest weitergeleitet, bei dem die IP-Adresse der #htl3r.short[sps] anzugeben und das Interface vom PC auszuwählen ist. Der Test funktioniert, wenn der Balken grün aufleuchtet. Wenn dies nicht passiert, ist funktioniert etwas an der Netzwerkverbindung zwichen PC und #htl3r.short[sps] nicht.
 
 #figure(
-    image("../assets/ot-topologie/sps-test.png", width: 70%),
+    image("../assets/ot-topologie/sps-test.jpg", width: 70%),
     caption: "Test der Konnektivität zwischen PC und SPS"
 )\
 #pagebreak()
 Nach einer erfogreichen Konnektivität wird nicht nur im Diagram Editor das Programm angezeigt, es wird auch in der Network View die #htl3r.short[sps] abgebildet siehe @networkview. Auf dieser können nun Einstellungen wie die IP-Adresse der #htl3r.short[sps] getätigt aber auch das Busprotokoll Modbus aktiviert werden. Weiters ist zu erkennen, dass die #htl3r.short[sps] nicht nur eine Verbindung zum PC hat, sondern auch vier weitere Verbindungen. Diese zeigen auf, dass im Programm auf externe Inputs beziehungsweise Outputs verwiesen wird. Im Falle des Projekts ist das der Raspberry PI und die drei Relaismodule.
 
 #figure(
-    image("../assets/topologie/ot-topologie/Logo!soft-comfort_network-view.png", width: 80%),
+    image("../assets/topologie/ot-topologie/Logo!soft-comfort_network-view.jpg", width: 80%),
     caption: "Network View"
 ) <networkview>
 
 Wenn man auf eine dieser vier Verbindungen klickt, werden weitere Details angezeigt. In diesem Fall ist ersichtlich, dass die Verbinung mit dem Gerät "10.100.0.11" besteht. Dieses ist im gegebenen Fall ein Relaismodul. Weiters ist zu erkennen, dass zwei unterschiedliche Variablentypen vom Realismodul abgefragt werden - #htl3r.longpl[coil] und #htl3r.longpl[di]. Diese werden mit Adressen im Variablenspeicher verknüpft, um im Programm benutzt zu werden.
 
 #figure(
-    image("../assets/topologie/ot-topologie/Logo!soft-comfort_modbus-device.png",width: 85%),
+    image("../assets/topologie/ot-topologie/Logo!soft-comfort_modbus-device.jpg",width: 85%),
     caption: "Verbindungen zu einem Modbus Device"
 )
 
@@ -131,7 +131,7 @@ Das besondere an dem Waveshare Relais ist, dass es über Modbus TCP Funktionen v
 \ \
 Um die Grundkonfiguration der Waveshare Relais vorzunehmen, kann die Software 'VirCom'#footnote["https://www.waveshare.com/wiki/Modbus_POE_ETH_Relay_(B)#How_to_Connect_Modbus_POE_ETH_Relay_to_Waveshare_Cloud"] eingesetzt werden. Diese findet mit einem Klick auf "Device" alle Waveshare Module, die im Netzwerk hängen, ohne die IP-Adresse oder sonstige Informationen zu haben. Sobald die IP-Adresse der Geräte bekannt ist, können alle anderen Einstellungen auch mit dieser mit der IP-Adresse des Relais Moduls über einen Webbrowser getätigt werden.
 #figure(
-    image("../assets/ot-topologie/vircom.png", width: 60%),
+    image("../assets/ot-topologie/vircom.jpg", width: 60%),
     caption: "Vircom Software"
 )
 Um die Relais bestmöglich nach Anwendungsfall einzusetzten, sollte zuerste der richtige Control Mode eingestellt werden. Die Control Modes geben an wie die Eingänge und Ausgänge der Relaismodule geschaltet werden sollen. Dabei ist zu beachten, dass beim linkage Modus die Relais nicht seperat angesprochen werden können.
@@ -145,8 +145,8 @@ Um den Blockübertritt zu erkennen, werden Reflex-Lichtschranken an beiden Seite
 Genutzt wird dabei die "ZIMO SN1D Reflex-Lichtschranke", diese erfordern keine weitere Manipulation der Gleise oder des Zugs oder sonst irgendeine Konfiguration.
 
 #htl3r.fspace(
-  figure(image("../assets/topologie/ot-topologie/hersteller-zimo-stein-stationaer-einrichtungs-modul-zimo-sn1d-reflex-lichtschranke.png"), caption: "Bauteile Reflex-Lichtschranke"),
-  figure(image("../assets/topologie/ot-topologie/hersteller-zimo-stein-stationaer-einrichtungs-modul-zimo-sn1d-reflex-lichtschranke~4.png"), caption: "Installationsweise Reflexlichtschranke"),
+  figure(image("../assets/topologie/ot-topologie/hersteller-zimo-stein-stationaer-einrichtungs-modul-zimo-sn1d-reflex-lichtschranke.jpg"), caption: "Bauteile Reflex-Lichtschranke"),
+  figure(image("../assets/topologie/ot-topologie/hersteller-zimo-stein-stationaer-einrichtungs-modul-zimo-sn1d-reflex-lichtschranke~4.jpg"), caption: "Installationsweise Reflexlichtschranke"),
 )
 #pagebreak()
 === Switch
@@ -160,6 +160,6 @@ In der #htl3r.short[ot]-Topologie wird zum Verbinden der Geräte ein Hirschmann 
 Um die IT-Welt mit der #htl3r.short[ot]-Welt zu verknüpfen wird eine Firewall, genauer gesagt eine FortiGate 60E benutzt. Diese ist mit den FortiGates der Standorte Eisenstadt und Wien mittels #htl3r.short[ipsec] #htl3r.short[vpn] Verbindungen verknüpft.
 
 #figure(
-    image("../assets/topologie/ot-topologie/komponenten/fortigate-60e-grafik.png", width: 60%),
+    image("../assets/topologie/ot-topologie/komponenten/fortigate-60e-grafik.jpg", width: 60%),
     caption: "FortiGate 60E - Firewall"
 )
