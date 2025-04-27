@@ -55,7 +55,7 @@ Bevor der Angriff gestartet wird, wird geschaut ob sich die zu angreifenden Ziel
 ```bash
   ettercap -T -s 'lq'
 ```
-Dabei kann in der @hostscan erkannt werden, dass vier Geräte im Netzwerk gefunden wurden. Nachdem der Netzaufbau bekannt ist können die IP-Adressen auch gleich den Geräten zugeordnet werden, ein*e Angreifer*in ohne dieses Wissen kann dies einfach durch durchtesten ausprobieren. 
+Dabei kann in der @hostscan erkannt werden, dass vier Geräte im Netzwerk gefunden wurden. Nachdem der Netzaufbau bekannt ist können die IP-Adressen auch gleich den Geräten zugeordnet werden, ein Angreifer oder eine Angreiferin ohne dieses Wissen kann die IP-Adressen einfach durchtesten um das gewünschte Gerät zu erreichen. 
 
 #htl3r.fspace(
   [
@@ -111,7 +111,7 @@ Das #htl3r.short[arp] Spoofing kann auch mittels Wireshark inspiziert werden. Di
   ]
 )
 
-Im nächsten Schritt sendet die Kali-Linux-#htl3r.short[vm] #htl3r.short[arp] Antworten an das jeweilige andere Gerät, um vorzutäuschen, dass die IP-Adresse beim Angreifer*in terminiert.
+Im nächsten Schritt sendet die Kali-Linux-#htl3r.short[vm] #htl3r.short[arp] Antworten an das jeweilige andere Gerät, um vorzutäuschen, dass die IP-Adresse beim Angreifer beziehungsweise bei der Angreiferin terminiert.
 
 #htl3r.fspace(
   figure(
@@ -120,7 +120,7 @@ Im nächsten Schritt sendet die Kali-Linux-#htl3r.short[vm] #htl3r.short[arp] An
   )
 )
 
-Nun werden wie in @spooferfolg gezeigt die Modbuspakete über den Angreifer geleitet und somit war der Angriff erfolgreich.
+Nun werden wie in @spooferfolg gezeigt die Modbuspakete über das Angreifergerät geleitet und somit war der Angriff erfolgreich.
 
 #htl3r.fspace(
   [

@@ -55,4 +55,4 @@ Wenn das Fuzzing durch den Wireshark betrachtet wird, ist zu sehen, dass immer w
 )
 
 === Fazit
-Für den Angriff Fuzzing ist kein Verständnis der Steuerung nötig, da alle möglichen Kombinationen von Attributen ausgetestet werden. Dies macht Fuzzing zum Testen der Steueranlage auf ungewolltes Verhalten sehr brauchbar. Gleichzeitg muss der*die Angreifer*in keinen genaueren einblick in die Steuerung haben um Schaden anzustellen.
+Für den Angriff Fuzzing ist kein Verständnis der Steuerung nötig, da alle möglichen Kombinationen von Attributen ausgetestet werden. Dies macht Fuzzing zum Testen der Steueranlage auf ungewolltes Verhalten sehr brauchbar. Gleichzeitg muss der Angreifer oder die Angreiferin keinen genaueren einblick in die Steuerung haben um Schaden anzustellen.
