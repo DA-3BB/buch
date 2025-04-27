@@ -337,20 +337,20 @@ Um die #htl3r.short[ot]-Topologie mit der Modelleisenbahn im FortiSIEM sichtbar 
 
 #htl3r.code-file(
   caption: "Hirschmann RS20 Grundkonfiguration",
-  filename: [fortisiem/rs20],
+  filename: [fortisiem/3bb-ot-switch.txt],
   ranges: ((1, 7), ),
   skips: ((8, 0), ),
-  text: read("../assets/fortisiem/3BB-OT-SWITCH")
+  text: read("../assets/fortisiem/3bb-ot-switch.txt")
 )
 
 Als Schnittstelle zur Überwachung wird #htl3r.short[snmp]v3 genutzt. Über einen eigens erstellen User und #htl3r.short[snmp]v3-Traps erfolgt die Übermittlung der Daten an das #htl3r.short[siem]. Der FortiSIEM-Collector nutzt die Zugangsdaten in der #htl3r.long[cmdb], um über den #htl3r.short[vpn] eine Verbindung zum Switch aufzubauen.
 
 #htl3r.code-file(
   caption: "Hirschmann RS20 SNMPv3-Konfiguration",
-  filename: [fortisiem/rs20],
+  filename: [fortisiem/3bb-ot-switch.txt],
   ranges: ((9, 99), ),
   skips: ((9, 0), ),
-  text: read("../assets/fortisiem/3BB-OT-SWITCH")
+  text: read("../assets/fortisiem/3bb-ot-switch.txt")
 )
 
 #pagebreak()
