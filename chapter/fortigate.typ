@@ -576,8 +576,10 @@ Als große Schwierigkeit hat sich die Konfigurationssynchronisation herausgestel
 Der große Vorteil von #htl3r.short[ha] liegt in der Ausfallsicherheit, somit kann innerhalb kürzester Zeit, ein Übergang zwischen aktiv und passiv passieren.
 
 === Fazit
-Während die FortiGate eine Firewall mit einer Vielzahl an modernen Funktionen ist,  welche gemeinsam eine sehr gute Grenze für das Trennen von Netzwerken bieten.
-Für das Szenario dieser Diplomarbeit haben sich die FortiGates sehr gut geeignet, es konnten alle gewünschten Funktionen in die Topologie implementiert werden, wie beispielsweise die Site-to-Site #htl3r.short[vpn]s. Bei komplexeren Topologien steigt der Arbeits- und Konfigurationsaufwand allerdings exponentiell und die Verwaltung wird schnell unübersichtlich.   
+Für das Szenario dieser Diplomarbeit haben sich die FortiGates sehr gut geeignet, es konnten alle gewünschten Funktionen in die Topologie implementiert werden, wie beispielsweise die Site-to-Site #htl3r.short[vpn]s. Bei komplexeren Topologien - dynamischen VPNs - steigt der Arbeits- und Konfigurationsaufwand allerdings exponentiell und die Verwaltung wird schnell unübersichtlich.    \
+Wenn man die Cisco-Syntax kennt, ist es Anfangs durchaus eine Herausforderung sich an ein neues Befehlssystem zu gewöhnen, ein "ping" wird plötzlich zu einem "exec ping", ungleich auch zu den Linux-based oder Windows Betriebssystemen. \
+Die FortiGate bietet sehr viele Security Funktionen an, allerdings ist das Netzwerk dadurch noch nicht gesichert, man muss sich wirklich mit den jeweiligen Funktionen auseinandersetzen und diese verstehen um sie sinnvoll verwenden zu können.
+
 
 // unsere Situaruion, gute verbindunng, arbeitsufwand steigt bei größeren Deployments, neu lernen wenn cisco kennt, ping -> exec ping, viele Security Features, muss man sich beschäftigen, FortiGate noch mehr können , 
 
