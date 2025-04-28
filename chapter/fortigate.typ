@@ -569,7 +569,7 @@ Welches Mitglied Primary wird, wird anhand der folgenden Parameter in der angege
 3. Priorität
 4. Seriennummer
 
-Es gibt allerdings auch die Möglichkeit die Punkte zwei (HA Uptime) und drei (Priorität) zu tauschen, damit kann man die Wahl des Primary besser steuern. Konfiguriert wird dies wie in @ha-gui mit dem Parameter "Increase priority effect" oder in der CLI @ha-cli mit ``` set override enable ```
+Es gibt allerdings auch die Möglichkeit die Punkte zwei (HA Uptime) und drei (Priorität) zu tauschen, damit kann man die Wahl des Primary besser steuern. Konfiguriert wird dies wie in @ha-gui mit dem Parameter "Increase priority effect" oder in der CLI @ha-cli mit ``` set override enable```.
 \
 Als große Schwierigkeit hat sich die Konfigurationssynchronisation herausgestellt, da hier alle Interfaces die exakt selbe Konfiguration haben müssen (ausgenommen HA-Interfaces). Eine rundandte Internetanbindung über zwei unterschiedliche #htl3r.full[isp] ist somit nur mit Switches möglich.
 
@@ -577,7 +577,7 @@ Der große Vorteil von #htl3r.short[ha] liegt in der Ausfallsicherheit, somit ka
 
 === Fazit
 Für das Szenario dieser Diplomarbeit haben sich die FortiGates sehr gut geeignet, es konnten alle gewünschten Funktionen in die Topologie implementiert werden, wie beispielsweise die Site-to-Site #htl3r.short[vpn]s. Bei komplexeren Topologien - dynamischen VPNs - steigt der Arbeits- und Konfigurationsaufwand allerdings exponentiell und die Verwaltung wird schnell unübersichtlich.    \
-Wenn man die Cisco-Syntax kennt, ist es Anfangs durchaus eine Herausforderung sich an ein neues Befehlssystem zu gewöhnen, ein "ping" wird plötzlich zu einem "exec ping", ungleich auch zu den Linux-based oder Windows Betriebssystemen. \
+Wenn man die Cisco-Syntax kennt, ist es Anfangs durchaus eine Herausforderung sich an ein neues Befehlssystem zu gewöhnen, ein ``` ping``` wird plötzlich zu einem ``` exec ping```, ungleich auch zu den Linux-based oder Windows Betriebssystemen. \
 Die FortiGate bietet sehr viele Security Funktionen an, allerdings ist das Netzwerk dadurch noch nicht gesichert, man muss sich wirklich mit den jeweiligen Funktionen auseinandersetzen und diese verstehen um sie sinnvoll verwenden zu können.
 
 
