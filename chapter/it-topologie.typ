@@ -196,8 +196,8 @@ Nach dem Neustart wird die #htl3r.short[adds]-Rolle für die Domain #emph("wien.
   caption: "Installieren der ADDS-Rolle",
   filename: [active-directory/wien-3bb-dc1.ps1],
   lang: "PowerShell",
-  ranges: ((23, 24), (30, 36)),
-  skips: ((22,0), (25,0), (29, 0), (37, 0)),
+  ranges: ((23, 24), (30, 31), (33, 36)),
+  skips: ((22,0), (25,0), (32, 0), (37, 0)),
   text: read("../assets/active-directory/wien-3bb-dc1.ps1")
 )
 
