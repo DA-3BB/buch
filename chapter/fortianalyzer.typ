@@ -24,11 +24,11 @@ Die FortiAnalyzer-#htl3r.short[vm] ist mit 8 GB RAM und 4 v#htl3r.short[cpu] aus
 
 #htl3r.code-file(
   caption: "Interface-Konfiguration des FortiAnalyzer",
-  filename: [fortianalyzer/WIEN-3BB-FAZ],
+  filename: [fortianalyzer/wien-3bb-faz.txt],
   ranges: ((1, 7), (14, 14)),
   skips: ((8, 0), ),
   lang: "fortios",
-  text: read("../assets/fortianalyzer/WIEN-3BB-FAZ")
+  text: read("../assets/fortianalyzer/wien-3bb-faz.txt")
 )
 
 Die Lizenzierung basiert auf der in der Lizenz eingetragenen IP-Adresse. Im Portal `support.fortinet.com` wird die IP-Adresse hinterlegt und die Lizenz heruntergeladen. Im FortiAnalyzer-#htl3r.short[gui] wird die Lizenz dann hochgeladen. Es ist eine Internetverbindung notwendig, um die online hinterlegte IP-Adresse der Lizenz zu überprüfen.
@@ -39,9 +39,9 @@ Um die FortiGate mit dem FortiAnalyzer zu verbinden, muss die Konfiguration an d
 
 #htl3r.code-file(
   caption: "Fabric Connector Konfiguration an der FortiGate",
-  filename: [fortianalyzer/WIEN-3BB-FG],
+  filename: [fortianalyzer/wien-3bb-fg.txt],
   lang: "fortios",
-  text: read("../assets/fortianalyzer/WIEN-3BB-FG"),
+  text: read("../assets/fortianalyzer/wien-3bb-fg.txt"),
 )
 
 === Logs aggregieren <faz-cert-logs>

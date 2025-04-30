@@ -292,7 +292,7 @@ Neben Metriken und Logs können auch Dateien und Verzeichnisse auf ihre Änderun
 Nach Abschluss der Konfiguration können im Dashboard schon die ersten Incidents beobachtet werden. Sortiert nach der Dringlichkeit werden die Geräte und User angezeigt, welche die meisten Incidents hervorrufen. Nach näherer Betrachtung eines Geräts kann die Zeitspanne der aufgetretenen Incidents beobachtet werden. Dadurch berechnet das FortiSIEM auch einen Incident-Score, der durch die Anzahl an aufgetrenenen Ereignissen steigt. Auf Basis der Incidents können für die Mitarbeiterinnen und Mitarbeiter des Unternehmens Cases erstellt werden, um den Überblick über Sicherheitsmaßnahmen zu behalten.
 
 #htl3r.fspace(
-  total-width: 100%,
+  total-width: 97%,
   figure(
     image("../assets/fortisiem/fsm-incident-jump.jpg"),
     caption: [Incidents des Jump-Servers am Standort Wien]
@@ -302,7 +302,7 @@ Nach Abschluss der Konfiguration können im Dashboard schon die ersten Incidents
 Die Konfiguration des Agents für Linux-Server basiert auf den gleichen vorher genannten Prinzipien. Nach der Installation ist der Agent im Ordner `/opt/fortinet/fortisiem/linux-agent` zu finden und über dem Systemd-Service `fortisiem-linux-agent` abrufbar. Für die Topologie wurde der #htl3r.short[ftp]-Server, die Elasticsearch All-in-One Node sowie eine Metasploitable-#htl3r.short[vm] mit Linux-Agents ausgestattet. Anhand der Elasticsearch-Node betrachten wir nun einen Beispiel-Incident. Das FortiSIEM hat bei der Eingabe des Befehls `uname -r` einen #emph("Enumeration of System Information Incident") ausgelöst.
 
 #htl3r.fspace(
-  total-width: 80%,
+  total-width: 90%,
   figure(
     image("../assets/fortisiem/fsm-investigate.jpg"),
     caption: [Der Enumeration of System Information Incident]
@@ -312,7 +312,7 @@ Die Konfiguration des Agents für Linux-Server basiert auf den gleichen vorher g
 Die FortiGate wird zusätzlich zum FortiAnalyzer durch das FortiSIEM über die #htl3r.short[api] überwacht. Dies ermöglicht die detaillierte Anzeige des Datenverkehrs innerhalb des Netzwerks. In Kombination mit einem Google-#htl3r.short[api]-Key können die Daten auf einer Karte veranschaulicht werden.
 
 #htl3r.fspace(
-  total-width: 80%,
+  total-width: 95%,
   figure(
     image("../assets/fortisiem/fsm-fg.jpg"),
     caption: [Die Dashboard-Widgets für die FortiGate]
@@ -337,20 +337,20 @@ Um die #htl3r.short[ot]-Topologie mit der Modelleisenbahn im FortiSIEM sichtbar 
 
 #htl3r.code-file(
   caption: "Hirschmann RS20 Grundkonfiguration",
-  filename: [fortisiem/rs20],
+  filename: [fortisiem/3bb-ot-switch.txt],
   ranges: ((1, 7), ),
   skips: ((8, 0), ),
-  text: read("../assets/fortisiem/3BB-OT-SWITCH")
+  text: read("../assets/fortisiem/3bb-ot-switch.txt")
 )
 
 Als Schnittstelle zur Überwachung wird #htl3r.short[snmp]v3 genutzt. Über einen eigens erstellen User und #htl3r.short[snmp]v3-Traps erfolgt die Übermittlung der Daten an das #htl3r.short[siem]. Der FortiSIEM-Collector nutzt die Zugangsdaten in der #htl3r.long[cmdb], um über den #htl3r.short[vpn] eine Verbindung zum Switch aufzubauen.
 
 #htl3r.code-file(
   caption: "Hirschmann RS20 SNMPv3-Konfiguration",
-  filename: [fortisiem/rs20],
+  filename: [fortisiem/3bb-ot-switch.txt],
   ranges: ((9, 99), ),
   skips: ((9, 0), ),
-  text: read("../assets/fortisiem/3BB-OT-SWITCH")
+  text: read("../assets/fortisiem/3bb-ot-switch.txt")
 )
 
 #pagebreak()

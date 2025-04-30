@@ -183,7 +183,7 @@ Die Konfiguration der Domain Controller wurde mittels Powershell-Scripts durchge
 
 #htl3r.code-file(
   caption: "Grundkonfiguration eines Domain Controllers",
-  filename: [active-directory/WIEN-3BB-DC1.ps1],
+  filename: [active-directory/wien-3bb-dc1.ps1],
   lang: "PowerShell",
   ranges: ((8, 17),),
   skips: ((7,0),(18,0)),
@@ -194,10 +194,10 @@ Nach dem Neustart wird die #htl3r.short[adds]-Rolle für die Domain #emph("wien.
 
 #htl3r.code-file(
   caption: "Installieren der ADDS-Rolle",
-  filename: [active-directory/WIEN-3BB-DC1.ps1],
+  filename: [active-directory/wien-3bb-dc1.ps1],
   lang: "PowerShell",
-  ranges: ((23, 24), (30, 36)),
-  skips: ((22,0), (25,0), (29, 0), (37, 0)),
+  ranges: ((23, 24), (30, 31), (33, 36)),
+  skips: ((22,0), (25,0), (32, 0), (37, 0)),
   text: read("../assets/active-directory/wien-3bb-dc1.ps1")
 )
 
@@ -205,7 +205,7 @@ Am Standort Wien wird ein redundanter #htl3r.short[dhcp]-Server betrieben. Die b
 
 #htl3r.code-file(
   caption: "Einrichten eines DHCP-Failovers",
-  filename: [active-directory/WIEN-3BB-DC1.ps1],
+  filename: [active-directory/wien-3bb-dc1.ps1],
   lang: "PowerShell",
   ranges: ((98, 104), ),
   skips: ((97, 0), (105, 0)),

@@ -3,15 +3,6 @@ nis-2:
     singular: NIS-2
   description: Richtlinie (EU) 2022/2555 des Europäischen Parlaments und des Rates vom 14. Dezember 2022 über Maßnahmen für ein hohes gemeinsames Cybersicherheitsniveau in der Union.
 
-hmi:
-  short:
-    singular: HMI
-    plural: HMIs
-  long:
-    singular: Human Machine Interface
-    plural: Human Machine Interfaces
-  description: Eine Steueroberfläche für das Bedienen von Geräten und Komponenten.
-
 sms:
   short:
     singular: SMS

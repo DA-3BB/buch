@@ -72,8 +72,8 @@ Im Programm der Siemens LOGO! #htl3r.short[sps] werden die Eingänge und Ausgän
     table(
       columns: 4,
       table.header([*Relaismodul*],[*VM Discrete Input*],[*VM Coils*], [*IP-Adresse*]),
-      [W1], [0.0 - 0.5], [1.0 - 1.3], [10.100.0.11],
-      [W2], [2.0 - 2.5], [3.0 - 3.3], [10.100.0.12],
+      [W1], [0.0 - 0.3], [1.0 - 1.3], [10.100.0.11],
+      [W2], [2.0 - 2.3], [3.0 - 3.3], [10.100.0.12],
       [W3], [4.0 - 4.5], [5.0 - 5.5], [10.100.0.13],
     ),
     caption: "Zuordnung Relais Module zum Variable Memory Speicher"
@@ -189,18 +189,18 @@ Vor jedem Output ist dabei die #htl3r.short[udf] "ende" angeschlossen.
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/udf-ende-angeschlossen.jpg", width: 50%),
+    image("../assets/blocksteuerung/udf-ende-angeschlossen.jpg", width: 40%),
     caption: "UDF Ende in der Steuerung"
   )
 )
 
-Die #htl3r.short[udf] "ende" schaltet dabei einen RS-Flip-Flop vor den Output. Mithilfe des RS-Flip-Flop kann der Output nun von seperaten Signalen ein- und ausgeschalten werden. Außerdem beinhaltet die #htl3r.short[udf] vor den Eingängen des RS-Flip-Flop jeweils ein OR Gatter, welches die Anzahl der Eingänge erweitert.
+Die #htl3r.short[udf] "ende" schaltet dabei ein RS-Flip-Flop vor den Output. Mithilfe des RS-Flip-Flop kann der Output nun von seperaten Signalen ein- und ausgeschalten werden. Außerdem beinhaltet die #htl3r.short[udf] vor den Eingängen des RS-Flip-Flop jeweils ein OR Gatter, welches die Anzahl der Eingänge erweitert.
 
 
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/udf-ende-blockteuerung.jpg"),
+    image("../assets/blocksteuerung/udf-ende-blockteuerung.jpg", width: 80%),
     caption: "UDF Ende"
   )
 )
@@ -276,7 +276,7 @@ Die #htl3r.short[udf] "weichensteuerung" ist dabei eine AND-Verknüpfung von der
 
 #htl3r.fspace(
   figure(
-    image("../assets/blocksteuerung/udf-weichenstellung.jpg", width: 85%),
+    image("../assets/blocksteuerung/udf-weichenstellung.jpg"),
     caption: "UDF Weichenstellung"
   )
 )
