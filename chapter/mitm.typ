@@ -55,10 +55,11 @@ Bevor der Angriff gestartet wird, wird geschaut ob sich die zu angreifenden Ziel
 ```bash
   ettercap -T -s 'lq'
 ```
-<<<<<<< HEAD
+
 Dabei kann in der @hostscan erkannt werden, dass vier Geräte im Netzwerk gefunden wurden. Nachdem der Netzaufbau bekannt ist können die IP-Adressen auch gleich den Geräten zugeordnet werden, ein Angreifer oder eine Angreiferin ohne dieses Wissen kann die IP-Adressen einfach durchtesten um das gewünschte Gerät zu erreichen.
 
 #htl3r.fspace(
+  total-width: 79%,
   [
     #figure(
       image("../assets/mitm/mitm-hostscan.jpg"),
